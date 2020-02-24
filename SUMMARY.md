@@ -4,9 +4,17 @@
   * [安裝環境](cpp_sec/install.md)
   * [編譯、輸入、輸出](cpp_sec/compile_io.md)
   * [資料型態&宣告](cpp_sec/Variable.md)
-  * Array
+  * [If/Else](cpp_sec/if_else.md)
+  * [Loop](cpp_sec/loop.md)
+  * [Array](cpp_sec/array.md)
   * String
+  * Vector
+  * Function
+  * Pointer
+  * Struct/Object
   * Linked-List
+  * Object-Oriented
+  * Binary
 * Data Structure
   * 時間複雜度
   * Stack

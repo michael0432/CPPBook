@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>C++ · GitBook</title>
+        <title>編譯、輸入、輸出 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="install.html" />
+    <link rel="next" href="Variable.html" />
     
     
-    <link rel="prev" href="../" />
+    <link rel="prev" href="install.html" />
     
 
     </head>
@@ -102,7 +102,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.2" data-path="cpp.html">
+        <li class="chapter " data-level="1.2" data-path="cpp.html">
             
                 <a href="cpp.html">
             
@@ -129,7 +129,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.2" data-path="compile_io.html">
+        <li class="chapter active" data-level="1.2.2" data-path="compile_io.html">
             
                 <a href="compile_io.html">
             
@@ -533,7 +533,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >C++</a>
+        <a href=".." >編譯、輸入、輸出</a>
     </h1>
 </div>
 
@@ -548,7 +548,66 @@
     
                                 <section class="normal markdown-section">
                                 
-                                
+                                <h1 id="&#x7DE8;&#x8B6F;&#x3001;&#x8F38;&#x5165;&#x3001;&#x8F38;&#x51FA;">&#x7DE8;&#x8B6F;&#x3001;&#x8F38;&#x5165;&#x3001;&#x8F38;&#x51FA;</h1>
+<h6 id="tags--c">tags = <code>C++</code></h6>
+<h2 id="&#x7DE8;&#x8B6F;">&#x7DE8;&#x8B6F;</h2>
+<p>C++&#x662F;&#x4E00;&#x7A2E;&#x7DE8;&#x8B6F;&#x5F0F;&#x7684;&#x8A9E;&#x8A00;&#xFF0C;&#x9700;&#x8981;&#x4F7F;&#x7528;&#x7DE8;&#x8B6F;&#x5668;(compiler)&#x5C07;&#x539F;&#x59CB;&#x78BC;&#x8F49;&#x63DB;&#x6210;&#x6A5F;&#x5668;&#x53EF;&#x4EE5;&#x8B80;&#x53D6;&#x7684;&#x683C;&#x5F0F;&#x3002;
+<img src="https://i.imgur.com/oFlMhpV.png" alt=""></p>
+<h2 id="hello-world">Hello, World!</h2>
+<p>Example: </p>
+<pre><code class="lang-cpp=1">#include &lt;iostream&gt;
+using namespace std;
+
+int main(){
+    cout &lt;&lt; &quot;Hello!&quot; &lt;&lt; endl;
+    return 0;
+}
+</code></pre>
+<pre><code class="lang-cpp=1">compile:
+g++ -std=c++11 filename.cpp
+run:
+./a.out
+</code></pre>
+<h2 id="&#x7A0B;&#x5F0F;&#x67B6;&#x69CB;">&#x7A0B;&#x5F0F;&#x67B6;&#x69CB;</h2>
+<pre><code class="lang-cpp=1">// include&#x51FD;&#x5F0F;&#x5EAB; 
+#include &lt;iostream&gt;
+
+// &#x4F7F;&#x7528;namespace
+using namespace std;
+
+// &#x5176;&#x4ED6;function
+int xxx(){
+    return xxx;
+}
+
+// &#x4E3B;&#x7A0B;&#x5F0F;
+int main(){
+    cout &lt;&lt; &quot;Hello!&quot; &lt;&lt; endl;
+    return 0;
+}
+</code></pre>
+<h2 id="&#x8F38;&#x5165;&#x8F38;&#x51FA;">&#x8F38;&#x5165;&#x8F38;&#x51FA;</h2>
+<p>&#x5E38;&#x7528;function / &#x6307;&#x4EE4;:</p>
+<ul>
+<li>cin : input<ul>
+<li>&#x4F7F;&#x7528;&gt;&gt;&#x9694;&#x958B;&#x6BCF;&#x500B;&#x8B8A;&#x6578;</li>
+</ul>
+</li>
+<li>cout : output<ul>
+<li>&#x4F7F;&#x7528;&lt;&lt;&#x9694;&#x958B;&#x6BCF;&#x500B;&#x8B8A;&#x6578;</li>
+</ul>
+</li>
+<li>endl : &#x63DB;&#x884C;&#x7B26;&#x865F;
+```cpp
+// &#x8F38;&#x5165;&#x8F38;&#x51FA;&#x7684;Library<h1 id="include-">include <iostream></iostream></h1>
+using namespace std;</li>
+</ul>
+<p>int x;
+string y;
+cin &gt;&gt; x &gt;&gt; y;
+cout &lt;&lt; x &lt;&lt; y &lt;&lt; endl;
+```</p>
+
                                 
                                 </section>
                             
@@ -575,12 +634,12 @@
 
             
                 
-                <a href="../" class="navigation navigation-prev " aria-label="Previous page: Introduction">
+                <a href="install.html" class="navigation navigation-prev " aria-label="Previous page: 安裝環境">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="install.html" class="navigation navigation-next " aria-label="Next page: 安裝環境">
+                <a href="Variable.html" class="navigation navigation-next " aria-label="Next page: 資料型態&宣告">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -591,7 +650,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"C++","level":"1.2","depth":1,"next":{"title":"安裝環境","level":"1.2.1","depth":2,"path":"cpp_sec/install.md","ref":"cpp_sec/install.md","articles":[]},"previous":{"title":"Introduction","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"neutral"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cpp_sec/cpp.md","mtime":"2020-02-21T06:10:33.821Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-02-24T08:40:46.640Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"編譯、輸入、輸出","level":"1.2.2","depth":2,"next":{"title":"資料型態&宣告","level":"1.2.3","depth":2,"path":"cpp_sec/Variable.md","ref":"cpp_sec/Variable.md","articles":[]},"previous":{"title":"安裝環境","level":"1.2.1","depth":2,"path":"cpp_sec/install.md","ref":"cpp_sec/install.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cpp_sec/compile_io.md","mtime":"2020-02-21T07:02:08.057Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-02-24T08:40:46.640Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

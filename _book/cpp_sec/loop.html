@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>C++ · GitBook</title>
+        <title>Loop · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="install.html" />
+    <link rel="next" href="array.html" />
     
     
-    <link rel="prev" href="../" />
+    <link rel="prev" href="if_else.html" />
     
 
     </head>
@@ -102,7 +102,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.2" data-path="cpp.html">
+        <li class="chapter " data-level="1.2" data-path="cpp.html">
             
                 <a href="cpp.html">
             
@@ -168,7 +168,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.5" data-path="loop.html">
+        <li class="chapter active" data-level="1.2.5" data-path="loop.html">
             
                 <a href="loop.html">
             
@@ -533,7 +533,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >C++</a>
+        <a href=".." >Loop</a>
     </h1>
 </div>
 
@@ -548,7 +548,82 @@
     
                                 <section class="normal markdown-section">
                                 
-                                
+                                <h1 id="&#x8FF4;&#x5708;">&#x8FF4;&#x5708;</h1>
+<h6 id="tags--c">tags = <code>C++</code></h6>
+<h3 id="while">While</h3>
+<pre><code class="lang-cpp=1">while(condition){
+    // loop
+}
+</code></pre>
+<h3 id="for">For</h3>
+<pre><code class="lang-cpp=1">for(&#x8D77;&#x59CB;&#x503C;;&#x3000;&#x7D42;&#x6B62;&#x689D;&#x4EF6;;&#x3000;&#x6BCF;&#x6B21;&#x8FF4;&#x5708;&#x66F4;&#x65B0;&#x7684;&#x503C;){
+
+}
+
+int i;
+for(i = 0; i&lt;n ; i++){
+    cout &lt;&lt; i &lt;&lt; endl;
+}
+
+// &#x4E5F;&#x80FD;&#x9019;&#x6A23;&#x5BEB;
+for(int i=0 ; i&lt;n ; i++){
+
+}
+
+// &#x53EF;&#x4EE5;&#x653E;&#x5F88;&#x591A;&#x689D;&#x4EF6;&#x6216;&#x8B8A;&#x6578;
+
+for(int i=0, int j=0 ; i&lt;n ; i++,j++){
+
+}
+</code></pre>
+<h3 id="break">Break</h3>
+<p>&#x57F7;&#x884C;&#x5230;break&#x6642;&#x6703;&#x8DF3;&#x51FA;&#x8FF4;&#x5708;</p>
+<pre><code class="lang-cpp=1">while(condition){
+    if(condition2){
+        break; // &#x8DF3;&#x51FA;while
+    }
+}
+
+for(int i=0 ; i&lt;n ; i++){
+    if(condition){
+        break; // &#x8DF3;&#x51FA;for
+    }
+}
+
+for(int i=0 ; i&lt;n ; i++){
+    for(int j=0 ; j&lt;n ; j++){
+        if(condition){
+            break; // &#x8DF3;&#x51FA;&#x7B2C;&#x4E8C;&#x5C64;for
+        }
+    }
+    // &#x5230;&#x9019;
+}
+</code></pre>
+<h3 id="continue">Continue</h3>
+<p>&#x8DF3;&#x904E;&#x6B64;&#x6B21;&#x8FF4;&#x5708;&#x5269;&#x4E0B;&#x7684;&#x6307;&#x4EE4;&#xFF0C;&#x57F7;&#x884C;&#x4E0B;&#x4E00;&#x6B21;&#x8FF4;&#x5708;</p>
+<pre><code class="lang-cpp=1">while(condition){
+    if(condition2){
+        continue;
+    }
+}
+
+for(int i=0 ; i&lt;n ; i++){
+    if(condition){
+        continue;
+    }
+}
+
+for(int i=0 ; i&lt;n ; i++){
+    for(int j=0 ; j&lt;n ; j++){
+        if(condition){
+            continue;
+        }
+    }
+}
+</code></pre>
+<h3 id="&#x5C0F;&#x7DF4;&#x7FD2;">&#x5C0F;&#x7DF4;&#x7FD2;</h3>
+<p><a href="https://www.hackerrank.com/challenges/c-tutorial-for-loop/problem" target="_blank">https://www.hackerrank.com/challenges/c-tutorial-for-loop/problem</a></p>
+
                                 
                                 </section>
                             
@@ -575,12 +650,12 @@
 
             
                 
-                <a href="../" class="navigation navigation-prev " aria-label="Previous page: Introduction">
+                <a href="if_else.html" class="navigation navigation-prev " aria-label="Previous page: If/Else">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="install.html" class="navigation navigation-next " aria-label="Next page: 安裝環境">
+                <a href="array.html" class="navigation navigation-next " aria-label="Next page: Array">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -591,7 +666,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"C++","level":"1.2","depth":1,"next":{"title":"安裝環境","level":"1.2.1","depth":2,"path":"cpp_sec/install.md","ref":"cpp_sec/install.md","articles":[]},"previous":{"title":"Introduction","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"neutral"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cpp_sec/cpp.md","mtime":"2020-02-21T06:10:33.821Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-02-24T08:40:46.640Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Loop","level":"1.2.5","depth":2,"next":{"title":"Array","level":"1.2.6","depth":2,"path":"cpp_sec/array.md","ref":"cpp_sec/array.md","articles":[]},"previous":{"title":"If/Else","level":"1.2.4","depth":2,"path":"cpp_sec/if_else.md","ref":"cpp_sec/if_else.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cpp_sec/loop.md","mtime":"2020-02-24T14:48:46.932Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-02-24T08:40:46.640Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

@@ -38,11 +38,8 @@ char c = '1';
 #### stdout
     My age is 10
 ### 小練習2
-加法，數字跟符號間會有" "隔開
-#### stdin
-1.7 + 5.5
-#### stdout
-7.3
+https://www.hackerrank.com/challenges/cpp-input-and-output/problem
+
 
 ## 資料型態轉換
 
