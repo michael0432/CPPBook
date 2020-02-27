@@ -7,7 +7,7 @@
   * [If/Else](cpp_sec/if_else.md)
   * [Loop](cpp_sec/loop.md)
   * [Array](cpp_sec/array.md)
-  * String
+  * [String](cpp_sec/string.md)
   * Vector
   * Function
   * Pointer
