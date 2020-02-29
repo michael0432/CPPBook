@@ -8,8 +8,8 @@
   * [Loop](cpp_sec/loop.md)
   * [Array](cpp_sec/array.md)
   * [String](cpp_sec/string.md)
-  * Vector
-  * Function
+  * [Function]
+  * [Vector]
   * Pointer
   * Struct/Object
   * Linked-List
