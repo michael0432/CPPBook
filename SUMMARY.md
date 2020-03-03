@@ -9,7 +9,7 @@
   * [Array](cpp_sec/array.md)
   * [String](cpp_sec/string.md)
   * [Function](cpp_sec/function.md)
-  * [Pointer]
+  * [Pointer](cpp_sec/pointer.md)
   * [Struct/Object]
   * Linked-List
   * Object-Oriented
@@ -21,12 +21,12 @@
   * Queue
   * Deque
   * Tree
+    * BFS
+    * DFS
   * Hash Table / Maps
 * Algorithm
   * Divide and Conquer
   * Dynammic Programming
   * Greedy
   * Tree / Graph
-    * BFS
-    * DFS
 
