@@ -70,3 +70,6 @@ char c = '3';
 int i = (int)c - '0';
 ```
 * Reference :https://zh.wikipedia.org/wiki/ASCII
+
+### 小練習
+* https://www.hackerrank.com/challenges/a-very-big-sum/problem

@@ -44,6 +44,8 @@ arr2 = arr // wrong !
 
 ### 小練習
 * https://www.hackerrank.com/challenges/arrays-introduction/problem
+* https://www.hackerrank.com/challenges/simple-array-sum/problem
+
 
 ### 2D Array
 ![](https://i.imgur.com/5s2aiaP.png)
@@ -73,3 +75,9 @@ int main(){
     } 
 }
 ```
+
+### 小練習
+* https://www.hackerrank.com/challenges/sherlock-and-array/problem
+* https://www.hackerrank.com/challenges/the-hurdle-race/problem
+* https://www.hackerrank.com/challenges/the-birthday-bar/problem
+

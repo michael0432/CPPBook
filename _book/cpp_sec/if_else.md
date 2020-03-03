@@ -72,3 +72,8 @@ switch(c){
 }
 
 ```
+
+### 小練習
+* https://www.hackerrank.com/challenges/drawing-book/problem
+* https://www.hackerrank.com/challenges/cats-and-a-mouse/problem
+* https://www.hackerrank.com/challenges/day-of-the-programmer/problem
