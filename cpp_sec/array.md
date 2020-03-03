@@ -55,7 +55,7 @@ int arr[3][2];
 ```
 * 給Array初始值:
 ```cpp=1
-int arr[3][2] = {{1,2},{3,4},{5,6}};
+int arr[3][2] = { {1,2},{3,4},{5,6} };
 int arr[3][2] = {0}; // 全部設為0
 ```
 * Input variable: 從stdin input一個大小為n*m的array

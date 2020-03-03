@@ -8,15 +8,15 @@
   * [Loop](cpp_sec/loop.md)
   * [Array](cpp_sec/array.md)
   * [String](cpp_sec/string.md)
-  * [Function]
-  * [Vector]
-  * Pointer
-  * Struct/Object
+  * [Function](cpp_sec/function.md)
+  * [Pointer]
+  * [Struct/Object]
   * Linked-List
   * Object-Oriented
   * Binary
 * Data Structure
   * 時間複雜度
+  * [Vector]
   * Stack
   * Queue
   * Deque
