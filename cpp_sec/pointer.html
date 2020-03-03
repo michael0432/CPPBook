@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Array · GitBook</title>
+        <title>Pointer · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="string.html" />
     
-    
-    <link rel="prev" href="loop.html" />
+    <link rel="prev" href="function.html" />
     
 
     </head>
@@ -181,7 +179,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.2.6" data-path="array.html">
+        <li class="chapter " data-level="1.2.6" data-path="array.html">
             
                 <a href="array.html">
             
@@ -220,7 +218,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.9" data-path="pointer.html">
+        <li class="chapter active" data-level="1.2.9" data-path="pointer.html">
             
                 <a href="pointer.html">
             
@@ -533,7 +531,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Array</a>
+        <a href=".." >Pointer</a>
     </h1>
 </div>
 
@@ -548,75 +546,132 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="array">Array</h1>
-<p>&#x9663;&#x5217;&#x662F;&#x4E00;&#x7A2E;&#x5B58;&#x653E;&#x9023;&#x7E8C;&#x8CC7;&#x6599;&#x7684;&#x65B9;&#x5F0F;&#xFF0C;Array&#x4E2D;&#x7684;&#x8CC7;&#x6599;&#x6703;&#x5B58;&#x653E;&#x5728;&#x8A18;&#x61B6;&#x9AD4;&#x4E2D;&#x9023;&#x7E8C;&#x7684;&#x5340;&#x584A;&#x3002;
-<img src="https://i.imgur.com/ymZag5n.png" alt=""></p>
-<h3 id="1d-array">1D Array</h3>
-<p>Array&#x7684;&#x5BA3;&#x544A;&#x65B9;&#x5F0F;&#x5982;&#x4E0B;:</p>
-<pre><code class="lang-cpp=1">&#x8CC7;&#x6599;&#x578B;&#x614B; Array&#x540D;&#x7A31;[Array&#x5927;&#x5C0F;];
-
-int arr[5];
-</code></pre>
-<p>&#x8207;Python&#x7684;list&#x4E0D;&#x540C;&#xFF0C;C++&#x7684;Array&#x8981;&#x5148;&#x5BA3;&#x544A;&#x5927;&#x5C0F;&#xFF0C;&#x624D;&#x80FD;&#x5728;&#x8A18;&#x61B6;&#x9AD4;&#x4E2D;&#x62FF;&#x5230;&#x5132;&#x5B58;&#x7A7A;&#x9593;&#x3002;</p>
+                                <h1 id="pointer-and-reference">Pointer and Reference</h1>
+<h6 id="tags--c">tags = <code>C++</code></h6>
+<h3 id="pointer">Pointer</h3>
+<p>&#x8B8A;&#x6578;&#x63D0;&#x4F9B;&#x4E00;&#x500B;&#x8A18;&#x61B6;&#x9AD4;&#x5132;&#x5B58;&#x7A7A;&#x9593;&#xFF0C;&#x5176;&#x4E2D;&#xFF0C;&#x4E00;&#x500B;&#x8B8A;&#x6578;&#x88E1;&#x9762;&#x5B58;&#x7684;&#x8CC7;&#x8A0A;&#x6709;&#xFF1A;</p>
 <ul>
-<li>&#x7D66;Array&#x521D;&#x59CB;&#x503C;:<pre><code class="lang-cpp=1">int arr[5] = {1,2,3,6,8};
-</code></pre>
-</li>
-<li>&#x53D6;Array&#x7684;&#x503C;:<pre><code class="lang-cpp=1">int a = arr[0];
-int b = arr[1];
-</code></pre>
-</li>
-<li><p>Input variable: &#x5F9E;stdin input&#x4E00;&#x500B;&#x5927;&#x5C0F;&#x70BA;n&#x7684;array</p>
-<pre><code class="lang-cpp=1">int main(){
-  int n;
-  cin &lt;&lt; n;
-  int array[n];
-  for(int i=0 ; i&lt;n ; i++){
-      int tmp;
-      cin &lt;&lt; tmp;
-      array[i] = tmp;
-  } 
+<li>&#x8CC7;&#x6599;&#x578B;&#x614B;</li>
+<li>&#x8A18;&#x61B6;&#x9AD4;&#x4F4D;&#x5740;</li>
+<li>&#x8B8A;&#x6578;&#x7684;&#x503C;</li>
+</ul>
+<p>&#x5982;&#x679C;&#x60F3;&#x77E5;&#x9053;&#x8B8A;&#x6578;&#x7684;&#x4F4D;&#x5740;&#x70BA;&#x4F55;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&amp;&#x4F86;&#x53D6;&#x5F97;&#xFF1A;</p>
+<pre><code class="lang-cpp=1">#include &lt;iostream&gt; 
+using namespace std; 
+
+int main() { 
+    int n = 10; 
+
+    cout &lt;&lt; &quot;n &#x7684;&#x503C;&#xFF1A;&quot; &lt;&lt; n &lt;&lt; endl &lt;&lt; &quot;n&#x7684;&#x4F4D;&#x5740;&#xFF1A;&quot; &lt;&lt; &amp;n &lt;&lt; endl; 
+
+    return 0; 
 }
 </code></pre>
-</li>
-<li><p>&#x6CE8;&#x610F;:Array&#x4E4B;&#x9593;&#x6C92;&#x6709;=&#x9019;&#x500B;&#x904B;&#x7B97;&#x5B50;:</p>
-<pre><code class="lang-cpp=1">int arr[5];
-int arr2[5];
-arr2 = arr // wrong !
+<p>&#x5728;C++&#x4E2D;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;Pointer&#x5B58;&#x53D6;&#x8A18;&#x61B6;&#x9AD4;&#x4F4D;&#x5740;&#xFF1A;</p>
+<pre><code class="lang-cpp=1">&#x8CC7;&#x6599;&#x578B;&#x614B;* &#x6307;&#x6A19;&#x540D;&#x7A31;;
+int n;
+int* a = &amp;n;
 </code></pre>
-</li>
-</ul>
-<h3 id="&#x5C0F;&#x7DF4;&#x7FD2;">&#x5C0F;&#x7DF4;&#x7FD2;</h3>
-<ul>
-<li><a href="https://www.hackerrank.com/challenges/arrays-introduction/problem" target="_blank">https://www.hackerrank.com/challenges/arrays-introduction/problem</a></li>
-</ul>
-<h3 id="2d-array">2D Array</h3>
-<p><img src="https://i.imgur.com/5s2aiaP.png" alt="">
-2D Array&#x7684;&#x5BA3;&#x544A;&#x65B9;&#x5F0F;:</p>
-<pre><code class="lang-cpp=1">&#x8CC7;&#x6599;&#x578B;&#x614B; Array&#x540D;&#x7A31;[&#x5217;&#x6578;][&#x884C;&#x6578;];
+<pre><code class="lang-cpp=1">#include &lt;iostream&gt; 
+using namespace std; 
 
-int arr[3][2];
-</code></pre>
-<ul>
-<li>&#x7D66;Array&#x521D;&#x59CB;&#x503C;:<pre><code class="lang-cpp=1">int arr[3][2] = { {1,2},{3,4},{5,6} };
-int arr[3][2] = {0}; // &#x5168;&#x90E8;&#x8A2D;&#x70BA;0
-</code></pre>
-</li>
-<li>Input variable: &#x5F9E;stdin input&#x4E00;&#x500B;&#x5927;&#x5C0F;&#x70BA;n*m&#x7684;array<pre><code class="lang-cpp=1">int main(){
-  int n,m;
-  cin &lt;&lt; n &lt;&lt; m;
-  int array[n][m];
-  for(int i=0 ; i&lt;n ; i++){
-      for(int j=0 ; j&lt;n ; j++){
-          int tmp;
-          cin &lt;&lt; tmp;
-          array[i][j] = tmp;
-      }
-  } 
+int main() { 
+    int n = 10; 
+    int *p = &amp;n;
+    cout &lt;&lt; &quot;n&#x7684;&#x4F4D;&#x5740;&#xFF1A;&quot; &lt;&lt; &amp;n &lt;&lt; endl &lt;&lt; &quot;p&#x5B58;&#x7684;&#x503C;&#xFF1A;&quot; &lt;&lt; p &lt;&lt; endl; 
+    cout &lt;&lt; &quot;p&#x4F4D;&#x5740;&#x8655;&#x7684;&#x7269;&#x4EF6;&#x503C;&#xFF1A;&quot; &lt;&lt; *p &lt;&lt; endl;
+
+    return 0; 
 }
 </code></pre>
-</li>
+<p>&#x82E5;&#x6539;&#x8B8A;*p&#x7684;&#x503C;&#xFF0C;&#x5373;&#x662F;&#x6539;&#x8B8A;n&#x7684;&#x503C;&#xFF0C;&#x56E0;&#x70BA;&#x662F;&#x66F4;&#x6539;&#x540C;&#x4E00;&#x500B;&#x8A18;&#x61B6;&#x9AD4;&#x5340;&#x584A;&#x5132;&#x5B58;&#x7684;&#x503C;&#x3002;</p>
+<pre><code class="lang-cpp=1">#include &lt;iostream&gt; 
+using namespace std; 
+
+int main() { 
+    int n = 10; 
+    int *p = &amp;n ; 
+
+    cout &lt;&lt; &quot;n = &quot; &lt;&lt; n &lt;&lt; endl
+         &lt;&lt; &quot;*p = &quot; &lt;&lt; *p &lt;&lt; endl; 
+
+    *p = 20; 
+
+    cout &lt;&lt; &quot;n = &quot; &lt;&lt; n &lt;&lt; endl
+         &lt;&lt; &quot;*p = &quot; &lt;&lt; *p &lt;&lt; endl;
+
+    return 0; 
+}
+</code></pre>
+<h1 id="&#x5C0F;&#x7DF4;&#x7FD2;">&#x5C0F;&#x7DF4;&#x7FD2;</h1>
+<ul>
+<li><a href="https://www.hackerrank.com/challenges/c-tutorial-pointer/problem" target="_blank">https://www.hackerrank.com/challenges/c-tutorial-pointer/problem</a></li>
 </ul>
+<h3 id="pointer-and-array">Pointer and Array</h3>
+<p>Array&#x5C07;&#x8CC7;&#x6599;&#x5B58;&#x5728;&#x4E00;&#x6BB5;&#x9023;&#x7E8C;&#x7684;&#x8A18;&#x61B6;&#x9AD4;&#x4F4D;&#x7F6E;&#xFF0C;&#x800C;&#x4F7F;&#x7528;Pointer&#x53EF;&#x4EE5;&#x5B58;&#x53D6;&#x8A18;&#x61B6;&#x9AD4;&#x4F4D;&#x5740;&#xFF0C;&#x56E0;&#x6B64;&#xFF0C;&#x53EF;&#x4EE5;&#x5C07;Pointer&#x6307;&#x5411;Array&#x958B;&#x59CB;&#x7684;&#x4F4D;&#x5740;&#xFF0C;&#x4E4B;&#x5F8C;&#x5C31;&#x53EF;&#x4EE5;&#x4E00;&#x4E00;&#x904D;&#x6B77;&#x3002;</p>
+<pre><code class="lang-cpp=1">#include &lt;iostream&gt; 
+using namespace std; 
+
+int main() { 
+    int size = 2;
+    int arr[] = {1,2};
+    int *ptr;
+    ptr = arr; //&#x6307;&#x5411;array
+
+    for(int i=0 ; i&lt;size ; i++){
+        cout &lt;&lt; &quot;&#x4F4D;&#x5740;: arr[&quot; &lt;&lt; i &lt;&lt; &quot;] :&quot; &lt;&lt; &amp;arr[i] &lt;&lt; &quot;, &quot; &lt;&lt; ptr+i&lt;&lt; endl;
+    }
+}
+</code></pre>
+<p>&#x4E5F;&#x5C31;&#x662F;&#x8AAA;&#xFF0C;&#x6211;&#x5011;&#x53EF;&#x4EE5;&#x5C07;&#x4E00;&#x500B;Array&#x7528;Pointer&#x4F86;&#x8868;&#x793A;&#xFF1A;</p>
+<pre><code class="lang-cpp=1">#include &lt;iostream&gt; 
+using namespace std; 
+
+int main() { 
+    int size = 2;
+    int arr[] = {1,2};
+
+    for(int i=0 ; i&lt;size ; i++){
+        cout &lt;&lt; &quot;&#x4F4D;&#x5740;: arr[&quot; &lt;&lt; i &lt;&lt; &quot;] :&quot; &lt;&lt; &amp;arr[i] &lt;&lt; &quot;, &quot; &lt;&lt; arr+i &lt;&lt; endl;
+    }
+    for(int i=0 ; i&lt;size ; i++){
+        cout &lt;&lt; &quot;&#x503C;: arr[&quot; &lt;&lt; i &lt;&lt; &quot;] :&quot; &lt;&lt; arr[i] &lt;&lt; &quot;, &quot; &lt;&lt; *(arr+i) &lt;&lt; endl;
+    }
+}
+</code></pre>
+<h3 id="pointer-and-2d-array">Pointer and 2D Array</h3>
+<p>&#x540C;&#x6A23;&#x7684;&#xFF0C;2D&#x7684;Array&#x4E5F;&#x53EF;&#x4EE5;&#x7528;pointer&#x4F86;&#x8868;&#x793A;&#xFF1A;
+| Array |  &#x7528;Pointer&#x8868;&#x793A; | &#x7528;Pointer&#x53D6;&#x503C; |
+| -------- |  -------- | -------- |
+| a[0][0]     | <em>*a     | </em> (<em>(a+0)+0) |
+| a[0][1]     | </em>(<em>a+1)     | </em> ( *(a+0)+1) |</p>
+<h3 id="reference">Reference</h3>
+<p>Reference&#x662F;&#x7269;&#x4EF6;&#x7684;&#x5225;&#x540D;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x4E00;&#x500B;&#x8B8A;&#x6578;&#x7684;&#x66FF;&#x4EE3;&#x540D;&#x7A31;&#x3002;</p>
+<pre><code class="lang-cpp=1">int n = 10;
+int *p = &amp;n; //Pointer&#xFF0C;&#x5132;&#x5B58;n&#x7684;&#x4F4D;&#x5740;
+int &amp;r = n; // Reference&#xFF0C;n&#x7684;&#x5225;&#x540D;
+int &amp;r; // wrong
+</code></pre>
+<p>Reference&#x7684;&#x8B8A;&#x6578;&#x8207;&#x539F;&#x672C;&#x7684;&#x8B8A;&#x6578;&#x90FD;&#x5C0D;&#x61C9;&#x5230;&#x540C;&#x4E00;&#x500B;&#x8A18;&#x61B6;&#x9AD4;&#x7A7A;&#x9593;&#xFF0C;&#x56E0;&#x6B64;&#x5C0D;&#x4EFB;&#x4F55;&#x4E00;&#x9805;&#x6539;&#x503C;&#xFF0C;&#x5169;&#x8005;&#x7684;&#x503C;&#x7686;&#x6703;&#x66F4;&#x6539;&#x3002;
+Example:</p>
+<pre><code class="lang-cpp=1">#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int n = 10;
+    int &amp;r = n;
+
+    cout &lt;&lt; &quot;n&#xFF1A;&quot; &lt;&lt; n &lt;&lt; endl
+         &lt;&lt; &quot;r&#xFF1A;&quot; &lt;&lt; r &lt;&lt; endl;
+
+    r = 20;
+
+    cout &lt;&lt; &quot;n&#xFF1A;&quot; &lt;&lt; n &lt;&lt; endl
+         &lt;&lt; &quot;r&#xFF1A;&quot; &lt;&lt; r &lt;&lt; endl;
+
+    return 0;
+}
+</code></pre>
 
                                 
                                 </section>
@@ -644,14 +699,10 @@ int arr[3][2] = {0}; // &#x5168;&#x90E8;&#x8A2D;&#x70BA;0
 
             
                 
-                <a href="loop.html" class="navigation navigation-prev " aria-label="Previous page: Loop">
+                <a href="function.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Function">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
-                
-                <a href="string.html" class="navigation navigation-next " aria-label="Next page: String">
-                    <i class="fa fa-angle-right"></i>
-                </a>
                 
             
         
@@ -660,7 +711,7 @@ int arr[3][2] = {0}; // &#x5168;&#x90E8;&#x8A2D;&#x70BA;0
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Array","level":"1.2.6","depth":2,"next":{"title":"String","level":"1.2.7","depth":2,"path":"cpp_sec/string.md","ref":"cpp_sec/string.md","articles":[]},"previous":{"title":"Loop","level":"1.2.5","depth":2,"path":"cpp_sec/loop.md","ref":"cpp_sec/loop.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cpp_sec/array.md","mtime":"2020-03-03T02:54:23.423Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-03-03T05:52:34.029Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Pointer","level":"1.2.9","depth":2,"next":{"title":"[Struct/Object]","level":"1.2.10","depth":2,"ref":"","articles":[]},"previous":{"title":"Function","level":"1.2.8","depth":2,"path":"cpp_sec/function.md","ref":"cpp_sec/function.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cpp_sec/pointer.md","mtime":"2020-03-03T05:50:53.088Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-03-03T05:52:34.029Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
