@@ -11,16 +11,24 @@
   * [Function](cpp_sec/function.md)
   * [Pointer](cpp_sec/pointer.md)
   * [Struct/Object]
-  * Linked-List
-  * Object-Oriented
-  * Binary
+  * [Object-Oriented]
+  * [Binary]
 * Data Structure
   * 時間複雜度
+  * [Linked-List](cpp_sec/list.md)
   * [Vector]
+    * 常用Method
+      * 新增/移除element
+      * 取得大小長度
+      * Iterator
+      * 常用語法Example
+    * Vector v.s. Array
+    * 小練習
   * Stack
   * Queue
   * Deque
-  * Tree
+  * [Graph](cpp_sec/graph.md)
+    * [Tree](cpp_sec/tree.md)
     * BFS
     * DFS
   * Hash Table / Maps
@@ -28,5 +36,4 @@
   * Divide and Conquer
   * Dynammic Programming
   * Greedy
-  * Tree / Graph
 
