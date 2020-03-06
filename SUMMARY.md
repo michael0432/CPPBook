@@ -29,7 +29,7 @@
   * Deque
   * [Graph](cpp_sec/graph.md)
     * [Tree](cpp_sec/tree.md)
-    * [BFS]
+    * [BFS](cpp_sec/bfs.md)
     * [DFS]
   * Hash Table / Maps
 * Algorithm
