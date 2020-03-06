@@ -29,8 +29,8 @@
   * Deque
   * [Graph](cpp_sec/graph.md)
     * [Tree](cpp_sec/tree.md)
-    * BFS
-    * DFS
+    * [BFS]
+    * [DFS]
   * Hash Table / Maps
 * Algorithm
   * Divide and Conquer
