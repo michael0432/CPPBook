@@ -73,3 +73,6 @@ int main(){
     } 
 }
 ```
+* https://www.hackerrank.com/challenges/sherlock-and-array/problem
+* https://www.hackerrank.com/challenges/the-hurdle-race/problem
+* https://www.hackerrank.com/challenges/the-birthday-bar/problem
