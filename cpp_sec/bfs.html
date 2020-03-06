@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Array · GitBook</title>
+        <title>BFS · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="string.html" />
     
-    
-    <link rel="prev" href="loop.html" />
+    <link rel="prev" href="tree.html" />
     
 
     </head>
@@ -181,7 +179,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.2.6" data-path="array.html">
+        <li class="chapter " data-level="1.2.6" data-path="array.html">
             
                 <a href="array.html">
             
@@ -499,7 +497,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.7.2" data-path="bfs.html">
+        <li class="chapter active" data-level="1.3.7.2" data-path="bfs.html">
             
                 <a href="bfs.html">
             
@@ -636,7 +634,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Array</a>
+        <a href=".." >BFS</a>
     </h1>
 </div>
 
@@ -651,77 +649,91 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="array">Array</h1>
-<p>&#x9663;&#x5217;&#x662F;&#x4E00;&#x7A2E;&#x5B58;&#x653E;&#x9023;&#x7E8C;&#x8CC7;&#x6599;&#x7684;&#x65B9;&#x5F0F;&#xFF0C;Array&#x4E2D;&#x7684;&#x8CC7;&#x6599;&#x6703;&#x5B58;&#x653E;&#x5728;&#x8A18;&#x61B6;&#x9AD4;&#x4E2D;&#x9023;&#x7E8C;&#x7684;&#x5340;&#x584A;&#x3002;
-<img src="https://i.imgur.com/ymZag5n.png" alt=""></p>
-<h3 id="1d-array">1D Array</h3>
-<p>Array&#x7684;&#x5BA3;&#x544A;&#x65B9;&#x5F0F;&#x5982;&#x4E0B;:</p>
-<pre><code class="lang-cpp=1">&#x8CC7;&#x6599;&#x578B;&#x614B; Array&#x540D;&#x7A31;[Array&#x5927;&#x5C0F;];
-
-int arr[5];
-</code></pre>
-<p>&#x8207;Python&#x7684;list&#x4E0D;&#x540C;&#xFF0C;C++&#x7684;Array&#x8981;&#x5148;&#x5BA3;&#x544A;&#x5927;&#x5C0F;&#xFF0C;&#x624D;&#x80FD;&#x5728;&#x8A18;&#x61B6;&#x9AD4;&#x4E2D;&#x62FF;&#x5230;&#x5132;&#x5B58;&#x7A7A;&#x9593;&#x3002;</p>
+                                <h1 id="bfs">BFS</h1>
+<p>&#x7D66;&#x4E00;&#x5F35;Graph&#xFF0C;&#x8981;&#x600E;&#x9EBC;&#x904D;&#x6B77;&#x9019;&#x5F35;&#x5716;&#xFF1F;&#xFF08;&#x8B80;&#x5230;&#x5716;&#x4E2D;&#x7684;&#x6BCF;&#x500B;Node&#xFF09;</p>
 <ul>
-<li>&#x7D66;Array&#x521D;&#x59CB;&#x503C;:<pre><code class="lang-cpp=1">int arr[5] = {1,2,3,6,8};
-</code></pre>
-</li>
-<li>&#x53D6;Array&#x7684;&#x503C;:<pre><code class="lang-cpp=1">int a = arr[0];
-int b = arr[1];
-</code></pre>
-</li>
-<li><p>Input variable: &#x5F9E;stdin input&#x4E00;&#x500B;&#x5927;&#x5C0F;&#x70BA;n&#x7684;array</p>
-<pre><code class="lang-cpp=1">int main(){
-  int n;
-  cin &lt;&lt; n;
-  int array[n];
-  for(int i=0 ; i&lt;n ; i++){
-      int tmp;
-      cin &lt;&lt; tmp;
-      array[i] = tmp;
-  } 
-}
-</code></pre>
-</li>
-<li><p>&#x6CE8;&#x610F;:Array&#x4E4B;&#x9593;&#x6C92;&#x6709;=&#x9019;&#x500B;&#x904B;&#x7B97;&#x5B50;:</p>
-<pre><code class="lang-cpp=1">int arr[5];
-int arr2[5];
-arr2 = arr // wrong !
-</code></pre>
+<li>BFS(Breadth-fisrt Search)<ul>
+<li>&#x5F9E;&#x5716;&#x7684;&#x4E00;&#x500B;Vertex&#x51FA;&#x767C;</li>
+<li>&#x5148;&#x8D70;&#x96E2;&#x8A72;Vertex&#x76F8;&#x9130;&#x7684;Vertex(&#x8DDD;&#x96E2;&#x70BA;1)</li>
+<li>&#x518D;&#x8D70;&#x5230;&#x8DDD;&#x96E2;&#x70BA;2&#x7684;Vertex</li>
+<li>&#x76F4;&#x5230;&#x8D70;&#x5230;&#x6700;&#x9060;&#x7684;&#x9EDE;&#xFF08;&#x8D70;&#x5B8C;&#x6240;&#x6709;&#x9EDE;&#xFF09;</li>
+</ul>
 </li>
 </ul>
+<p><img src="https://i.imgur.com/OqbqQjQ.png" alt=""></p>
+<ul>
+<li>DFS(Depth-first Search)</li>
+</ul>
+<p>&#x60F3;&#x8981;&#x4F9D;&#x7167;BFS&#x7684;&#x9806;&#x5E8F;&#x8D70;&#x5B8C;&#x6240;&#x6709;&#x9EDE;&#xFF0C;&#x53EF;&#x4EE5;&#x60F3;&#x6210;&#x627E;&#x51FA;&#x5C1A;&#x672A;&#x904D;&#x6B77;&#x7684;&#x9EDE;&#x7576;&#x505A;&#x8D77;&#x9EDE;&#xFF1A;</p>
+<ol>
+<li>&#x628A;&#x8D77;&#x9EDE;&#x653E;&#x5165;queue</li>
+<li>&#x62FF;&#x51FA;queue&#x7684;front</li>
+<li>&#x627E;&#x51FA;&#x8207;queue.front()&#x76F8;&#x9130;&#x7684;&#x9EDE;&#x653E;&#x5165;queue</li>
+<li>queue.pop()</li>
+<li>&#x91CD;&#x8907;2~4&#x76F4;&#x5230;queue&#x70BA;&#x7A7A;</li>
+</ol>
+<p><img src="https://i.imgur.com/kFEzg9G.png" alt=""></p>
+<h3 id="traverse-tree">Traverse Tree</h3>
+<pre><code class="lang-cpp=1">struct Node{
+    int data;
+    vector&lt;*Node&gt; neigh; 
+}; 
+
+void bfs(Node* first){
+    queue&lt;Node*&gt; q;
+    q.push(first);
+    while(!q.empty()){
+        // do what u want
+        q.front()-&gt;val;
+        //
+        for(int i=0 ; i&lt;q.front()-&gt;neigh.size() ; i++){
+            q.push(q.front()-&gt;neigh[i]);
+        }
+        q.pop();
+    }
+}
+</code></pre>
+<h3 id="traverse-graph">Traverse Graph</h3>
+<p>&#x4E0A;&#x9762;&#x7684;&#x4F8B;&#x5B50;&#x53EA;&#x80FD;&#x904D;&#x6B77;&#x6574;&#x500B;Tree&#xFF0C;&#x4F46;&#x82E5;&#x60F3;&#x904D;&#x6B77;Graph&#xFF0C;&#x6703;&#x78B0;&#x5230;&#x4E00;&#x554F;&#x984C;&#xFF1A;&#x6703;&#x904D;&#x6B77;&#x5230;&#x91CD;&#x8907;&#x7684;&#x9EDE;&#x5C0E;&#x81F4;&#x904D;&#x6B77;&#x7684;&#x9806;&#x5E8F;&#x6DF7;&#x4E82;&#xFF0C;&#x56E0;&#x6B64;&#x6211;&#x5011;&#x9700;&#x8981;&#x5728;Node&#x4E2D;&#x52A0;&#x5165;&#x4E00;&#x500B;&#x8B8A;&#x6578;&#x5132;&#x5B58;Node&#x7684;&#x72C0;&#x614B;&#xFF0C;&#x5728;&#x4E0A;&#x5716;&#x4E2D;&#x7528;&#x767D;&#x3001;&#x7070;&#x3001;&#x9ED1;&#x8868;&#x793A;&#x3002;</p>
+<ul>
+<li>&#x767D;&#xFF1A;&#x9084;&#x672A;&#x904D;&#x6B77;&#x5230;&#x6B64;Node&#xFF08;&#x672A;&#x653E;&#x9032;Queue&#xFF09;</li>
+<li>&#x7070;&#xFF1A;&#x904D;&#x6B77;&#x5230;&#x6B64;Node&#xFF0C;&#x4F46;&#x5C1A;&#x672A;&#x96E2;&#x958B;Queue</li>
+<li>&#x9ED1;&#xFF1A;&#x5DF2;&#x7D93;&#x904D;&#x6B77;&#x5B8C;&#x6B64;Node&#xFF08;&#x5DF2;pop&#x6389;&#xFF09;</li>
+</ul>
+<pre><code class="lang-cpp=1">struct Node{
+    int data;
+    int status; //&#x767D;:0, &#x7070;:1, &#x9ED1;:2
+    vector&lt;*Node&gt; neigh; 
+}; 
+
+void bfs(Node* first){
+    queue&lt;Node*&gt; q;
+    q.push(first);
+    while(!q.empty()){
+        q.front()-&gt;status = 1;
+        // do what u want
+        q.front()-&gt;val;
+        //
+        int size = q.size();
+        for(int d=0 ; d&lt;size ; d++){
+            // &#x4E00;&#x5C64;
+            for(int i=0 ; i&lt;q.front()-&gt;neigh.size() ; i++){
+                // &#x4E00;&#x500B;&#x9130;&#x5C45;&#xFF0C;&#x767D;&#x8272;&#x624D;&#x653E;&#x9032;queue
+                if(q.front()-&gt;neigh[i]-&gt;status == 0){
+                    q.push(q.front()-&gt;neigh[i]);
+                }
+            }
+            q.front()-&gt;status = 2;
+            q.pop();
+        }
+    }
+}
+</code></pre>
 <h3 id="&#x5C0F;&#x7DF4;&#x7FD2;">&#x5C0F;&#x7DF4;&#x7FD2;</h3>
 <ul>
-<li><a href="https://www.hackerrank.com/challenges/arrays-introduction/problem" target="_blank">https://www.hackerrank.com/challenges/arrays-introduction/problem</a></li>
-</ul>
-<h3 id="2d-array">2D Array</h3>
-<p><img src="https://i.imgur.com/5s2aiaP.png" alt="">
-2D Array&#x7684;&#x5BA3;&#x544A;&#x65B9;&#x5F0F;:</p>
-<pre><code class="lang-cpp=1">&#x8CC7;&#x6599;&#x578B;&#x614B; Array&#x540D;&#x7A31;[&#x5217;&#x6578;][&#x884C;&#x6578;];
-
-int arr[3][2];
-</code></pre>
-<ul>
-<li>&#x7D66;Array&#x521D;&#x59CB;&#x503C;:<pre><code class="lang-cpp=1">int arr[3][2] = { {1,2},{3,4},{5,6} };
-int arr[3][2] = {0}; // &#x5168;&#x90E8;&#x8A2D;&#x70BA;0
-</code></pre>
-</li>
-<li>Input variable: &#x5F9E;stdin input&#x4E00;&#x500B;&#x5927;&#x5C0F;&#x70BA;n*m&#x7684;array<pre><code class="lang-cpp=1">int main(){
-  int n,m;
-  cin &lt;&lt; n &lt;&lt; m;
-  int array[n][m];
-  for(int i=0 ; i&lt;n ; i++){
-      for(int j=0 ; j&lt;n ; j++){
-          int tmp;
-          cin &lt;&lt; tmp;
-          array[i][j] = tmp;
-      }
-  } 
-}
-</code></pre>
-</li>
-<li><a href="https://www.hackerrank.com/challenges/sherlock-and-array/problem" target="_blank">https://www.hackerrank.com/challenges/sherlock-and-array/problem</a></li>
-<li><a href="https://www.hackerrank.com/challenges/the-hurdle-race/problem" target="_blank">https://www.hackerrank.com/challenges/the-hurdle-race/problem</a></li>
-<li><a href="https://www.hackerrank.com/challenges/the-birthday-bar/problem" target="_blank">https://www.hackerrank.com/challenges/the-birthday-bar/problem</a></li>
+<li><a href="https://leetcode.com/problems/cousins-in-binary-tree/" target="_blank">https://leetcode.com/problems/cousins-in-binary-tree/</a></li>
+<li><a href="https://leetcode.com/problems/binary-tree-level-order-traversal/" target="_blank">https://leetcode.com/problems/binary-tree-level-order-traversal/</a></li>
+<li><a href="https://www.hackerrank.com/challenges/bfsshortreach/problem" target="_blank">https://www.hackerrank.com/challenges/bfsshortreach/problem</a></li>
 </ul>
 
                                 
@@ -750,14 +762,10 @@ int arr[3][2] = {0}; // &#x5168;&#x90E8;&#x8A2D;&#x70BA;0
 
             
                 
-                <a href="loop.html" class="navigation navigation-prev " aria-label="Previous page: Loop">
+                <a href="tree.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Tree">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
-                
-                <a href="string.html" class="navigation navigation-next " aria-label="Next page: String">
-                    <i class="fa fa-angle-right"></i>
-                </a>
                 
             
         
@@ -766,7 +774,7 @@ int arr[3][2] = {0}; // &#x5168;&#x90E8;&#x8A2D;&#x70BA;0
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Array","level":"1.2.6","depth":2,"next":{"title":"String","level":"1.2.7","depth":2,"path":"cpp_sec/string.md","ref":"cpp_sec/string.md","articles":[]},"previous":{"title":"Loop","level":"1.2.5","depth":2,"path":"cpp_sec/loop.md","ref":"cpp_sec/loop.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cpp_sec/array.md","mtime":"2020-03-06T15:41:40.164Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-03-06T16:40:05.548Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"BFS","level":"1.3.7.2","depth":3,"next":{"title":"[DFS]","level":"1.3.7.3","depth":3,"ref":"","articles":[]},"previous":{"title":"Tree","level":"1.3.7.1","depth":3,"path":"cpp_sec/tree.md","ref":"cpp_sec/tree.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cpp_sec/bfs.md","mtime":"2020-03-06T16:38:24.115Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-03-06T16:40:05.548Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
