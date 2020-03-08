@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>C++ · GitBook</title>
+        <title>Binary · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="install.html" />
     
-    
-    <link rel="prev" href="../" />
+    <link rel="prev" href="class.html" />
     
 
     </head>
@@ -102,7 +100,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.2" data-path="cpp.html">
+        <li class="chapter " data-level="1.2" data-path="cpp.html">
             
                 <a href="cpp.html">
             
@@ -246,7 +244,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.11" data-path="bitwise.html">
+        <li class="chapter active" data-level="1.2.11" data-path="bitwise.html">
             
                 <a href="bitwise.html">
             
@@ -623,7 +621,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >C++</a>
+        <a href=".." >Binary</a>
     </h1>
 </div>
 
@@ -638,7 +636,64 @@
     
                                 <section class="normal markdown-section">
                                 
-                                
+                                <h1 id="&#x4F4D;&#x5143;&#x904B;&#x7B97;">&#x4F4D;&#x5143;&#x904B;&#x7B97;</h1>
+<h6 id="tags--c">tags = <code>C++</code></h6>
+<h3 id="bitwise-operator">Bitwise operator</h3>
+<p>&#x4F4D;&#x5143;&#x904B;&#x7B97;&#x5B50;&#x7528;&#x65BC;&#x8868;&#x793A;bit&#x904B;&#x7B97;&#x7684;&#x908F;&#x8F2F;&#x95DC;&#x4FC2;</p>
+<ul>
+<li>&amp; : and</li>
+<li>| : or</li>
+<li>^ : xor</li>
+<li>| : not</li>
+</ul>
+<pre><code class="lang-cpp=1">#include &lt;iostream&gt;
+using namespace std;
+
+int main() { 
+    cout &lt;&lt; &quot;AND &#xFF1A;&quot; &lt;&lt; endl; 
+    cout &lt;&lt; &quot;0 AND 0\t\t&quot; &lt;&lt; (0 &amp; 0) &lt;&lt; endl; 
+    cout &lt;&lt; &quot;0 AND 1\t\t&quot; &lt;&lt; (0 &amp; 1) &lt;&lt; endl; 
+    cout &lt;&lt; &quot;1 AND 0\t\t&quot; &lt;&lt; (1 &amp; 0) &lt;&lt; endl; 
+    cout &lt;&lt; &quot;1 AND 1\t\t&quot; &lt;&lt; (1 &amp; 1) &lt;&lt; endl; 
+
+    cout &lt;&lt; &quot;OR &#xFF1A;&quot; &lt;&lt; endl; 
+    cout &lt;&lt; &quot;0 OR 0\t\t&quot; &lt;&lt; (0 | 0) &lt;&lt; endl; 
+    cout &lt;&lt; &quot;0 OR 1\t\t&quot; &lt;&lt; (0 | 1) &lt;&lt; endl; 
+    cout &lt;&lt; &quot;1 OR 0\t\t&quot; &lt;&lt; (1 | 0) &lt;&lt; endl; 
+    cout &lt;&lt; &quot;1 OR 1\t\t&quot; &lt;&lt; (1 | 1) &lt;&lt; endl; 
+
+    cout &lt;&lt; &quot;XOR &#xFF1A;&quot; &lt;&lt; endl; 
+    cout &lt;&lt; &quot;0 XOR 0\t\t&quot; &lt;&lt; (0 ^ 0) &lt;&lt; endl; 
+    cout &lt;&lt; &quot;0 XOR 1\t\t&quot; &lt;&lt; (0 ^ 1) &lt;&lt; endl; 
+    cout &lt;&lt; &quot;1 XOR 0\t\t&quot; &lt;&lt; (1 ^ 0) &lt;&lt; endl; 
+    cout &lt;&lt; &quot;1 XOR 1\t\t&quot; &lt;&lt; (1 ^ 1) &lt;&lt; endl; 
+
+    cout &lt;&lt; &quot;NOT &#xFF1A;&quot; &lt;&lt; endl; 
+    cout &lt;&lt; &quot;NOT 0\t\t&quot; &lt;&lt; (!0) &lt;&lt; endl; 
+    cout &lt;&lt; &quot;NOT 1\t\t&quot; &lt;&lt; (!1) &lt;&lt; endl; 
+
+    return 0;
+}
+</code></pre>
+<p>&#x5728;C/C++&#x4E2D;&#xFF0C;&#x53EF;&#x4EE5;&#x5C0D;&#x4E0D;&#x540C;&#x7684;&#x8CC7;&#x6599;&#x578B;&#x614B;&#x505A;&#x4F4D;&#x5143;&#x904B;&#x7B97;&#xFF1A;</p>
+<pre><code class="lang-cpp=1">int a = 3; // 11
+int b = 2; // 10
+int c = a &amp; b; // 11 &amp; 10 -&gt; 10
+cout &lt;&lt; c &lt;&lt; endl;
+</code></pre>
+<h3 id="&#x5DE6;&#x79FB;&#x8207;&#x53F3;&#x79FB;">&#x5DE6;&#x79FB;&#x8207;&#x53F3;&#x79FB;</h3>
+<h4 id="-&#x5DE6;&#x79FB;&#xFF0C;&#x5C07;&#x6240;&#x6709;bit&#x5F80;&#x5DE6;&#x79FB;">&lt;&lt; : &#x5DE6;&#x79FB;&#xFF0C;&#x5C07;&#x6240;&#x6709;bit&#x5F80;&#x5DE6;&#x79FB;</h4>
+<h4 id="-&#x53F3;&#x79FB;&#xFF0C;&#x5C07;&#x6240;&#x6709;bit&#x5F80;&#x53F3;&#x79FB;">&gt;&gt; : &#x53F3;&#x79FB;&#xFF0C;&#x5C07;&#x6240;&#x6709;bit&#x5F80;&#x53F3;&#x79FB;</h4>
+<pre><code class="lang-cpp=1">int n = 1; // 00...0001
+n = n &lt;&lt; 1; // 00..0010
+n = n &lt;&lt; 2; // 00..1000
+</code></pre>
+<h3 id="&#x5C0F;&#x7DF4;&#x7FD2;">&#x5C0F;&#x7DF4;&#x7FD2;</h3>
+<ul>
+<li><a href="https://leetcode.com/problems/hamming-distance/" target="_blank">https://leetcode.com/problems/hamming-distance/</a></li>
+<li><a href="https://leetcode.com/problems/number-complement/" target="_blank">https://leetcode.com/problems/number-complement/</a></li>
+</ul>
+
                                 
                                 </section>
                             
@@ -665,14 +720,10 @@
 
             
                 
-                <a href="../" class="navigation navigation-prev " aria-label="Previous page: Introduction">
+                <a href="class.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Struct/Object">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
-                
-                <a href="install.html" class="navigation navigation-next " aria-label="Next page: 安裝環境">
-                    <i class="fa fa-angle-right"></i>
-                </a>
                 
             
         
@@ -681,7 +732,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"C++","level":"1.2","depth":1,"next":{"title":"安裝環境","level":"1.2.1","depth":2,"path":"cpp_sec/install.md","ref":"cpp_sec/install.md","articles":[]},"previous":{"title":"Introduction","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"neutral"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cpp_sec/cpp.md","mtime":"2020-03-08T16:23:06.486Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-03-08T16:23:09.672Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Binary","level":"1.2.11","depth":2,"next":{"title":"Data Structure","level":"1.3","depth":1,"ref":"","articles":[{"title":"時間複雜度","level":"1.3.1","depth":2,"ref":"","articles":[]},{"title":"Linked-List","level":"1.3.2","depth":2,"path":"cpp_sec/list.md","ref":"cpp_sec/list.md","articles":[]},{"title":"[Vector]","level":"1.3.3","depth":2,"ref":"","articles":[{"title":"常用Method","level":"1.3.3.1","depth":3,"ref":"","articles":[{"title":"新增/移除element","level":"1.3.3.1.1","depth":4,"ref":"","articles":[]},{"title":"取得大小長度","level":"1.3.3.1.2","depth":4,"ref":"","articles":[]},{"title":"Iterator","level":"1.3.3.1.3","depth":4,"ref":"","articles":[]},{"title":"常用語法Example","level":"1.3.3.1.4","depth":4,"ref":"","articles":[]}]},{"title":"Vector v.s. Array","level":"1.3.3.2","depth":3,"ref":"","articles":[]},{"title":"小練習","level":"1.3.3.3","depth":3,"ref":"","articles":[]}]},{"title":"Stack","level":"1.3.4","depth":2,"ref":"","articles":[]},{"title":"Queue","level":"1.3.5","depth":2,"ref":"","articles":[]},{"title":"Deque","level":"1.3.6","depth":2,"ref":"","articles":[]},{"title":"Graph","level":"1.3.7","depth":2,"path":"cpp_sec/graph.md","ref":"cpp_sec/graph.md","articles":[{"title":"Tree","level":"1.3.7.1","depth":3,"path":"cpp_sec/tree.md","ref":"cpp_sec/tree.md","articles":[]},{"title":"BFS","level":"1.3.7.2","depth":3,"path":"cpp_sec/bfs.md","ref":"cpp_sec/bfs.md","articles":[]},{"title":"[DFS]","level":"1.3.7.3","depth":3,"ref":"","articles":[]}]},{"title":"Hash Table / Maps","level":"1.3.8","depth":2,"ref":"","articles":[]}]},"previous":{"title":"Struct/Object","level":"1.2.10","depth":2,"path":"cpp_sec/class.md","ref":"cpp_sec/class.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cpp_sec/bitwise.md","mtime":"2020-03-08T16:23:06.484Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-03-08T16:23:09.672Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
