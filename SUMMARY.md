@@ -10,9 +10,8 @@
   * [String](cpp_sec/string.md)
   * [Function](cpp_sec/function.md)
   * [Pointer](cpp_sec/pointer.md)
-  * [Struct/Object]
-  * [Object-Oriented]
-  * [Binary]
+  * [Struct/Object](cpp_sec/class.md)
+  * [Binary](cpp_sec/bitwise.md)
 * Data Structure
   * 時間複雜度
   * [Linked-List](cpp_sec/list.md)
