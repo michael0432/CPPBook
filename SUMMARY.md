@@ -33,9 +33,9 @@
   * Divide and Conquer
   * Dynammic Programming
   * Greedy
-  * [Graph]
-    * [Shortest Path]
-      * [Bellmen-Ford Algorithm]
+  * [Graph](cpp_sec/graph.md)
+    * [Shortest Path](cpp_sec/shortest_path.md)
+      * [Bellmen-Ford Algorithm](cpp_sec/bf.md)
       * [Shortest Path on DAG]
-      * [Dijkstra's Algorithm]
+      * [Dijkstra's Algorithm](cpp_sec/Dijkstra.md)
 
