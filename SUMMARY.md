@@ -11,18 +11,13 @@
   * [Function](cpp_sec/function.md)
   * [Pointer](cpp_sec/pointer.md)
   * [Struct/Object](cpp_sec/class.md)
-  * [Binary](cpp_sec/bitwise.md)
+  * [位元運算](cpp_sec/bitwise.md)
+
 * Data Structure
   * 時間複雜度
   * [Linked-List](cpp_sec/list.md)
-  * [Vector]
-    * 常用Method
-      * 新增/移除element
-      * 取得大小長度
-      * Iterator
-      * 常用語法Example
-    * Vector v.s. Array
-    * 小練習
+  * [Vector](cpp_sec/vector.md)
+    * [常用Method](cpp_sec/vector_method.md)
   * Stack
   * Queue
   * Deque
@@ -31,8 +26,16 @@
     * [BFS](cpp_sec/bfs.md)
     * [DFS]
   * Hash Table / Maps
+  * Heap
+  * Priority Queue
+  * Disjoint Set
 * Algorithm
   * Divide and Conquer
   * Dynammic Programming
   * Greedy
+  * [Graph]
+    * [Shortest Path]
+      * [Bellmen-Ford Algorithm]
+      * [Shortest Path on DAG]
+      * [Dijkstra's Algorithm]
 

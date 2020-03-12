@@ -102,8 +102,28 @@ int main() {
     }
 }
 ```
+
+### Pointer ++, --
+對pointer進行 ++或-- 的運算時，會將pointer移到前一格，因此可以用pointer的方式遍歷array
+```cpp=1
+#include <iostream> 
+using namespace std; 
+
+int main() { 
+    int size = 2;
+    int arr[] = {1,2};
+    int *begin = arr + 0;
+    int *end = arr + size;
+    int *ptr;
+    for(ptr=begin ; ptr!=end ; ptr++){
+        cout << *ptr << endl;
+    }
+}
+```
+
 ### Pointer and 2D Array
 同樣的，2D的Array也可以用pointer來表示：
+
 | Array |  用Pointer表示 | 用Pointer取值 |
 | -------- |  -------- | -------- |
 | a[0][0]     | **a     | * (*(a+0)+0) |
