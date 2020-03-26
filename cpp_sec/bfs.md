@@ -1,4 +1,5 @@
 # BFS
+###### tags = `Data Structure`
 
 
 給一張Graph，要怎麼遍歷這張圖？（讀到圖中的每個Node）
@@ -84,6 +85,9 @@ void bfs(Node* first){
 ```
 
 ### 小練習
+* https://leetcode.com/problems/binary-tree-right-side-view/
+* https://leetcode.com/problems/maximum-level-sum-of-a-binary-tree/
+* https://leetcode.com/problems/number-of-closed-islands/
 * https://leetcode.com/problems/cousins-in-binary-tree/
 * https://leetcode.com/problems/binary-tree-level-order-traversal/
 * https://www.hackerrank.com/challenges/bfsshortreach/problem

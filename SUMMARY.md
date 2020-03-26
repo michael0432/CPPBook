@@ -18,17 +18,22 @@
   * [Linked-List](cpp_sec/list.md)
   * [Vector](cpp_sec/vector.md)
     * [常用Method](cpp_sec/vector_method.md)
-  * Stack
-  * Queue
+  * [Stack](cpp_sec/stack.md)
+    * [常用Method](cpp_sec/stack_method.md)
+  * [Queue](cpp_sec/queue.md)
+    * [常用Method](cpp_sec/queue_method.md)
   * Deque
   * [Graph](cpp_sec/graph.md)
     * [Tree](cpp_sec/tree.md)
+      * Binary tree
+      * Red Black tree
+      * AVL tree
     * [BFS](cpp_sec/bfs.md)
     * [DFS]
   * Hash Table / Maps
   * Heap
   * Priority Queue
-  * Disjoint Set
+  * Set / Disjoint Set
 * Algorithm
   * Divide and Conquer
   * Dynammic Programming
