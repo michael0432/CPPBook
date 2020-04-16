@@ -29,7 +29,7 @@
       * Red Black tree
       * AVL tree
     * [BFS](cpp_sec/bfs.md)
-    * [DFS]
+    * [DFS](cpp_sec/dfs.md)
   * Hash Table / Maps
   * Heap
   * Priority Queue
@@ -43,4 +43,6 @@
       * [Bellmen-Ford Algorithm](cpp_sec/bf.md)
       * [Shortest Path on DAG]
       * [Dijkstra's Algorithm](cpp_sec/Dijkstra.md)
+    * [Minumum Spanning Tree]
+    * [Maximum Flow]
 
