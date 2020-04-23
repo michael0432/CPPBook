@@ -30,7 +30,8 @@
       * AVL tree
     * [BFS](cpp_sec/bfs.md)
     * [DFS](cpp_sec/dfs.md)
-  * Hash Table / Maps
+  * [Hash Table / Maps](cpp_sec/hashmap.md)
+    * [常用Method](cpp_sec/hashmap_method.md)
   * Heap
   * Priority Queue
   * Set / Disjoint Set

@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Stack · GitBook</title>
+        <title>常用Method · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="stack_method.html" />
     
-    
-    <link rel="prev" href="vector_method.html" />
+    <link rel="prev" href="hashmap.html" />
     
 
     </head>
@@ -336,7 +334,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.3.4" data-path="stack.html">
+        <li class="chapter " data-level="1.3.4" data-path="stack.html">
             
                 <a href="stack.html">
             
@@ -530,7 +528,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.3.8.1" data-path="hashmap_method.html">
+        <li class="chapter active" data-level="1.3.8.1" data-path="hashmap_method.html">
             
                 <a href="hashmap_method.html">
             
@@ -783,7 +781,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Stack</a>
+        <a href=".." >常用Method</a>
     </h1>
 </div>
 
@@ -798,76 +796,79 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="stack">Stack</h1>
+                                <h1 id="hashmap&#x5E38;&#x7528;method">HashMap&#x5E38;&#x7528;Method</h1>
 <h6 id="tags--data-structure">tags = <code>Data Structure</code></h6>
-<p>Stack&#x662F;&#x4E00;&#x7A2E;Last-in-First-Out&#x7684;&#x8CC7;&#x6599;&#x7D50;&#x69CB;&#xFF0C;&#x6700;&#x665A;&#x9032;&#x5165;stack&#x7684;&#x8CC7;&#x6599;&#x6703;&#x6700;&#x5148;&#x88AB;&#x62FF;&#x51FA;&#x4F86;&#x3002;
-<img src="https://i.imgur.com/Xg3IkGP.png" alt=""></p>
-<p>Stack&#x6700;&#x4E3B;&#x8981;&#x7684;&#x529F;&#x80FD;&#x662F;&#x300C;&#x8A18;&#x5F97;&#x5148;&#x524D;&#x7684;&#x8CC7;&#x8A0A;&#x300D;&#xFF0C;&#x901A;&#x5E38;&#x7528;&#x4F86;&#x300C;&#x56DE;&#x5FA9;&#x5230;&#x5148;&#x524D;&#x7684;&#x72C0;&#x614B;&#x300D;(Back-tracking)</p>
-<p>Stack&#x6709;&#x5E7E;&#x500B;&#x57FA;&#x672C;&#x7684;method&#xFF1A;</p>
+<p>C++&#x4E2D;&#x4F7F;&#x7528;unordered_map&#x4F86;&#x8868;&#x793A;HashMap</p>
+<pre><code class="lang-cpp=1">#include&lt;unordered_map&gt;
+unordered_map&lt;string, int&gt; m; // &#x7B2C;&#x4E00;&#x500B;&#x503C;&#x70BA;key&#x7684;&#x8CC7;&#x6599;&#x578B;&#x614B;, &#x7B2C;&#x4E8C;&#x500B;&#x503C;&#x70BA;value&#x7684;&#x8CC7;&#x6599;&#x578B;&#x614B;
+</code></pre>
+<h3 id="insert">Insert</h3>
+<pre><code class="lang-cpp=1">m[&quot;key&quot;] = 1;
+</code></pre>
+<h3 id="edit">Edit</h3>
+<pre><code class="lang-cpp=1">m[&quot;key&quot;] = 1;
+</code></pre>
+<h3 id="delete">Delete</h3>
+<pre><code class="lang-cpp=1">m.erase(&quot;key&quot;);
+</code></pre>
+<h3 id="search">Search</h3>
+<pre><code class="lang-cpp=1">cout &lt;&lt; m[&quot;key&quot;];
+</code></pre>
+<h3 id="empty">Empty</h3>
+<pre><code class="lang-cpp=1">if(m.empty()){
+
+}
+</code></pre>
+<h3 id="&#x7528;iterator&#x904D;&#x6B77;">&#x7528;iterator&#x904D;&#x6B77;</h3>
+<pre><code class="lang-cpp=1">for(unordered_map&lt;string, int&gt;:: it = m.begin(); it!=m.end(); it++){
+    cout &lt;&lt; it-&gt;first &lt;&lt; endl; // key
+    cout &lt;&lt; it-&gt;second &lt;&lt; endl; // value
+}
+</code></pre>
+<p>&#x6216;&#x662F;</p>
+<pre><code class="lang-cpp=1">for(auto it = m.begin(); it!=m.end(); it++){
+    cout &lt;&lt; it-&gt;first &lt;&lt; endl; // key
+    cout &lt;&lt; it-&gt;second &lt;&lt; endl; // value
+}
+</code></pre>
+<h3 id="&#x82E5;key&#x70BA;&#x81EA;&#x5DF1;&#x5B9A;&#x7FA9;&#x7684;class">&#x82E5;key&#x70BA;&#x81EA;&#x5DF1;&#x5B9A;&#x7FA9;&#x7684;class</h3>
+<p>&#x932F;&#x8AA4;&#x7684;&#x5BEB;&#x6CD5;: &#x6C92;&#x6709;hash function</p>
+<pre><code class="lang-cpp=1">class CustomClass{
+public:
+    int a;
+    int b;
+};
+
+int main(){
+    unordered_map&lt;CustomClass, int&gt; m; // compile error
+}
+</code></pre>
+<p>&#x6B63;&#x78BA;&#x7684;&#x5BEB;&#x6CD5;: &#x8981;&#x81EA;&#x5DF1;&#x5B9A;&#x7FA9;hash function
+&#x9700;&#x8981;&#x5169;&#x500B;&#x5143;&#x7D20;:</p>
 <ul>
-<li>push()</li>
-<li>pop()</li>
-<li>isempty()</li>
-<li>top()</li>
-<li>size()</li>
+<li>operator ==</li>
+<li>hash
+```cpp=1
+struct CustomClass{
+public:
+  int a;
+  int b;
+  bool operator==(const CustomClass&amp; c) const
+  {<pre><code>  return a == c.a &amp;&amp; b == c.b;
+</code></pre>  }
+};</li>
 </ul>
-<h3 id="&#x7528;array&#x5BE6;&#x4F5C;stack">&#x7528;Array&#x5BE6;&#x4F5C;Stack</h3>
-<p>&#x4F7F;&#x7528;array&#x4F86;&#x5BE6;&#x4F5C;stack&#x6642;&#xFF1A;</p>
-<ul>
-<li>top()<ul>
-<li>&#x7D00;&#x9304;&#x76EE;&#x524D;stack&#x7684;&#x6700;&#x5F8C;&#x4E00;&#x7B46;&#x8CC7;&#x6599;&#x5728;array&#x7684;&#x54EA;&#x500B;&#x4F4D;&#x7F6E;</li>
-<li>return array[top]</li>
-</ul>
-</li>
-<li>push()<ul>
-<li>&#x5C07;&#x4E00;&#x7B46;&#x8CC7;&#x6599;&#x653E;&#x9032;array[top]</li>
-<li>&#x82E5;array&#x5927;&#x5C0F;&#x4E0D;&#x5920;&#xFF0C;&#x91CD;&#x65B0;&#x5EFA;&#x7ACB;&#x4E00;&#x500B;&#x5927;&#x5C0F;&#x66F4;&#x5927;&#x7684;array</li>
-</ul>
-</li>
-<li>pop()<ul>
-<li>top--</li>
-</ul>
-</li>
-<li>isempty()<ul>
-<li>&#x770B;top&#x662F;&#x5426;&#x70BA;0</li>
-</ul>
-</li>
-<li>size()<ul>
-<li>return top</li>
-</ul>
-</li>
-</ul>
-<h3 id="&#x7528;linked-list&#x5BE6;&#x4F5C;stack">&#x7528;Linked-List&#x5BE6;&#x4F5C;Stack</h3>
-<p>&#x7528;Linked-List&#x4F86;&#x5BE6;&#x4F5C;stack&#x6642;&#xFF1A;</p>
-<ul>
-<li>top()<ul>
-<li>Linklist&#x7684;first&#xFF08;&#x7B2C;&#x4E00;&#x500B;node&#xFF09;</li>
-</ul>
-</li>
-<li>push()<ul>
-<li>&#x5C07;&#x65B0;&#x7684;node&#x6307;&#x5411;&#x539F;&#x672C;&#x7684;&#x7B2C;&#x4E00;&#x500B;node&#xFF0C;&#x4E26;&#x5C07;&#x7B2C;&#x4E00;&#x500B;node&#x6539;&#x70BA;&#x6B64;node</li>
-</ul>
-</li>
-<li>pop()<ul>
-<li>&#x5C07;first-&gt;next&#x6539;&#x70BA;&#x7B2C;&#x4E00;&#x500B;node&#xFF0C;&#x79FB;&#x9664;&#x539F;&#x672C;&#x7684;first</li>
-</ul>
-</li>
-<li>isempty()<ul>
-<li>&#x78BA;&#x8A8D;first&#x662F;&#x5426;&#x70BA;null</li>
-</ul>
-</li>
-<li>size()<ul>
-<li>&#x6574;&#x500B;linked-list&#x7684;size</li>
-</ul>
-</li>
-</ul>
-<h3 id="&#x5C0F;&#x7DF4;&#x7FD2;">&#x5C0F;&#x7DF4;&#x7FD2;</h3>
-<ul>
-<li><a href="https://www.hackerrank.com/challenges/maximum-element/problem" target="_blank">https://www.hackerrank.com/challenges/maximum-element/problem</a></li>
-<li><a href="https://leetcode.com/problems/valid-parentheses/" target="_blank">https://leetcode.com/problems/valid-parentheses/</a></li>
-<li><a href="https://leetcode.com/problems/backspace-string-compare/" target="_blank">https://leetcode.com/problems/backspace-string-compare/</a></li>
-<li><a href="https://leetcode.com/problems/reverse-substrings-between-each-pair-of-parentheses/" target="_blank">https://leetcode.com/problems/reverse-substrings-between-each-pair-of-parentheses/</a></li>
-</ul>
+<p>class hashFunction{
+public:
+    size_t operator()(const Person&amp; p) const
+    { 
+        return p.a + p.b; 
+    } 
+}</p>
+<p>int main(){
+    unordered_map<customclass, int=""> m;
+}
+```</customclass,></p>
 
                                 
                                 </section>
@@ -895,14 +896,10 @@
 
             
                 
-                <a href="vector_method.html" class="navigation navigation-prev " aria-label="Previous page: 常用Method">
+                <a href="hashmap.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Hash Table / Maps">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
-                
-                <a href="stack_method.html" class="navigation navigation-next " aria-label="Next page: 常用Method">
-                    <i class="fa fa-angle-right"></i>
-                </a>
                 
             
         
@@ -911,7 +908,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Stack","level":"1.3.4","depth":2,"next":{"title":"常用Method","level":"1.3.4.1","depth":3,"path":"cpp_sec/stack_method.md","ref":"cpp_sec/stack_method.md","articles":[]},"previous":{"title":"常用Method","level":"1.3.3.1","depth":3,"path":"cpp_sec/vector_method.md","ref":"cpp_sec/vector_method.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cpp_sec/stack.md","mtime":"2020-04-23T11:26:20.429Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-23T11:29:04.983Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"常用Method","level":"1.3.8.1","depth":3,"next":{"title":"Heap","level":"1.3.9","depth":2,"ref":"","articles":[]},"previous":{"title":"Hash Table / Maps","level":"1.3.8","depth":2,"path":"cpp_sec/hashmap.md","ref":"cpp_sec/hashmap.md","articles":[{"title":"常用Method","level":"1.3.8.1","depth":3,"path":"cpp_sec/hashmap_method.md","ref":"cpp_sec/hashmap_method.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cpp_sec/hashmap_method.md","mtime":"2020-04-23T03:58:22.156Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-23T11:29:04.983Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
