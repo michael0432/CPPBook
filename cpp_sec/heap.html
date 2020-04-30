@@ -1,0 +1,978 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Heap · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="priority_queue.html" />
+    
+    
+    <link rel="prev" href="hashmap_method.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="cpp.html">
+            
+                <a href="cpp.html">
+            
+                    
+                    C++
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="install.html">
+            
+                <a href="install.html">
+            
+                    
+                    安裝環境
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="compile_io.html">
+            
+                <a href="compile_io.html">
+            
+                    
+                    編譯、輸入、輸出
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="Variable.html">
+            
+                <a href="Variable.html">
+            
+                    
+                    資料型態&宣告
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="if_else.html">
+            
+                <a href="if_else.html">
+            
+                    
+                    If/Else
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="loop.html">
+            
+                <a href="loop.html">
+            
+                    
+                    Loop
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="array.html">
+            
+                <a href="array.html">
+            
+                    
+                    Array
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.7" data-path="string.html">
+            
+                <a href="string.html">
+            
+                    
+                    String
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.8" data-path="function.html">
+            
+                <a href="function.html">
+            
+                    
+                    Function
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.9" data-path="pointer.html">
+            
+                <a href="pointer.html">
+            
+                    
+                    Pointer
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.10" data-path="class.html">
+            
+                <a href="class.html">
+            
+                    
+                    Struct/Object
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.11" data-path="bitwise.html">
+            
+                <a href="bitwise.html">
+            
+                    
+                    位元運算
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" >
+            
+                <span>
+            
+                    
+                    Data Structure
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" >
+            
+                <span>
+            
+                    
+                    時間複雜度
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="list.html">
+            
+                <a href="list.html">
+            
+                    
+                    Linked-List
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="vector.html">
+            
+                <a href="vector.html">
+            
+                    
+                    Vector
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.3.1" data-path="vector_method.html">
+            
+                <a href="vector_method.html">
+            
+                    
+                    常用Method
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="stack.html">
+            
+                <a href="stack.html">
+            
+                    
+                    Stack
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.4.1" data-path="stack_method.html">
+            
+                <a href="stack_method.html">
+            
+                    
+                    常用Method
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="queue.html">
+            
+                <a href="queue.html">
+            
+                    
+                    Queue
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.5.1" data-path="queue_method.html">
+            
+                <a href="queue_method.html">
+            
+                    
+                    常用Method
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.6" >
+            
+                <span>
+            
+                    
+                    Deque
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.7" data-path="graph.html">
+            
+                <a href="graph.html">
+            
+                    
+                    Graph
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.7.1" data-path="tree.html">
+            
+                <a href="tree.html">
+            
+                    
+                    Tree
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.7.1.1" >
+            
+                <span>
+            
+                    
+                    Binary tree
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.7.1.2" >
+            
+                <span>
+            
+                    
+                    Red Black tree
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.7.1.3" >
+            
+                <span>
+            
+                    
+                    AVL tree
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.7.2" data-path="bfs.html">
+            
+                <a href="bfs.html">
+            
+                    
+                    BFS
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.7.3" data-path="dfs.html">
+            
+                <a href="dfs.html">
+            
+                    
+                    DFS
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.8" data-path="hashmap.html">
+            
+                <a href="hashmap.html">
+            
+                    
+                    Hash Table / Maps
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.8.1" data-path="hashmap_method.html">
+            
+                <a href="hashmap_method.html">
+            
+                    
+                    常用method
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.3.9" data-path="heap.html">
+            
+                <a href="heap.html">
+            
+                    
+                    Heap
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.10" data-path="priority_queue.html">
+            
+                <a href="priority_queue.html">
+            
+                    
+                    Priority Queue
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.10.1" data-path="priority_queue_method.html">
+            
+                <a href="priority_queue_method.html">
+            
+                    
+                    常用method
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.11" data-path="set.html">
+            
+                <a href="set.html">
+            
+                    
+                    Set / Disjoint Set
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" >
+            
+                <span>
+            
+                    
+                    Algorithm
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" >
+            
+                <span>
+            
+                    
+                    Divide and Conquer
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" >
+            
+                <span>
+            
+                    
+                    Dynammic Programming
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" >
+            
+                <span>
+            
+                    
+                    Greedy
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="graph.html">
+            
+                <a href="graph.html">
+            
+                    
+                    Graph
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.4.1" data-path="shortest_path.html">
+            
+                <a href="shortest_path.html">
+            
+                    
+                    Shortest Path
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.4.1.1" data-path="bf.html">
+            
+                <a href="bf.html">
+            
+                    
+                    Bellmen-Ford Algorithm
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4.1.2" >
+            
+                <span>
+            
+                    
+                    [Shortest Path on DAG]
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4.1.3" data-path="Dijkstra.html">
+            
+                <a href="Dijkstra.html">
+            
+                    
+                    Dijkstra's Algorithm
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4.2" >
+            
+                <span>
+            
+                    
+                    [Minumum Spanning Tree]
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4.3" >
+            
+                <span>
+            
+                    
+                    [Maximum Flow]
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Heap</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="heap">Heap</h1>
+<h6 id="tags--data-structure">tags = <code>Data Structure</code></h6>
+<p>Heap&#x662F;&#x4E00;&#x500B;&#x300C;&#x5806;&#x300D;&#x7684;&#x8CC7;&#x6599;&#x7D50;&#x69CB;&#xFF0C;&#x662F;&#x4E00;&#x7A2E;&#x7279;&#x5225;&#x7684;&#x6A39;&#x72C0;&#x7D50;&#x69CB;&#xFF0C;&#x5728;C++&#x4E4B;&#x4E2D;&#x4E26;&#x4E0D;&#x662F;&#x4E00;&#x500B;&#x5167;&#x5EFA;&#x7684;STL&#x3002;</p>
+<p>&#x4EE5;&#x4E0B;&#x4EE5;&#x6700;&#x57FA;&#x672C;&#x7684;Binary heap&#x7576;&#x505A;&#x4F8B;&#x5B50;&#xFF0C;Binary heap&#x6709;&#x4EE5;&#x4E0B;&#x7684;&#x7279;&#x6027;&#xFF1A;</p>
+<ul>
+<li>&#x6BCF;&#x500B;node&#x6709;&#x5169;&#x500B;Children</li>
+<li>&#x70BA;complete binary tree(&#x6BCF;&#x4E00;&#x5C64;&#x5F9E;&#x5DE6;&#x5230;&#x53F3;&#x4E0D;&#x53EF;&#x4EE5;&#x6709;&#x8DF3;&#x904E;&#x7684;Node)<ul>
+<li>&#x539F;&#x56E0;&#xFF1A;&#x5BB9;&#x6613;&#x627E;parent-child&#x7684;&#x95DC;&#x4FC2;</li>
+<li>&#x5047;&#x8A2D;&#x5C07;&#x9019;&#x500B;tree&#x7528;vector&#x8868;&#x793A;&#xFF0C;&#x5247;index&#x70BA;i&#x7684;node&#xFF1A;<ul>
+<li>&#x5176;left child&#x5FC5;&#x5B9A;&#x4F4D;&#x5728;index(2i)&#xFF1B;</li>
+<li>&#x5176;right child&#x5FC5;&#x5B9A;&#x4F4D;&#x5728;index(2i+1)&#xFF1B;</li>
+<li>&#x5176;parent&#x5FC5;&#x5B9A;&#x4F4D;&#x5728;index(&#x230A;i/2&#x230B;)&#x3002;</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://i.imgur.com/NSZWlu9.png" alt=""></p>
+<ul>
+<li>Max Heap : <ul>
+<li>Max Heap&#x7684;&#x9650;&#x5236;&#x70BA;&#xFF1A;&#x6BCF;&#x500B;Node&#x90FD;&#x8981;&#x6BD4;&#x81EA;&#x5DF1;&#x7684;child&#x5927;&#xFF0C;&#x4E0A;&#x5716;&#x5373;&#x70BA;Max Heap</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>Min Heap<ul>
+<li>Min Heap&#x7684;&#x9650;&#x5236;&#x70BA;&#xFF1A;&#x6BCF;&#x500B;Node&#x90FD;&#x8981;&#x6BD4;&#x81EA;&#x5DF1;&#x7684;child&#x5C0F;&#x3002;</li>
+</ul>
+</li>
+</ul>
+<h3 id="heap&#x7684;&#x57FA;&#x672C;&#x64CD;&#x4F5C;">Heap&#x7684;&#x57FA;&#x672C;&#x64CD;&#x4F5C;</h3>
+<p>&#x4EE5;Max heap&#x70BA;&#x4F8B;&#xFF0C;heap&#x6703;&#x9700;&#x8981;&#x5E7E;&#x500B;&#x57FA;&#x672C;&#x7684;&#x64CD;&#x4F5C;&#xFF1A;</p>
+<ul>
+<li><p>Heapify:</p>
+<ul>
+<li>&#x76EE;&#x7684;&#xFF1A;&#x78BA;&#x4FDD;&#x4E00;&#x500B;node&#x7B26;&#x5408;max heap&#x7684;&#x689D;&#x4EF6;</li>
+<li>&#x6BD4;&#x8F03;&#x6B64;node&#x8207;&#x5176;child&#xFF0C;&#x5C07;&#x6700;&#x5C0F;&#x7684;node&#x8B8A;&#x70BA;root</li>
+</ul>
+</li>
+<li><p>Build heap:</p>
+<ul>
+<li>&#x76EE;&#x7684;&#xFF1A;&#x78BA;&#x4FDD;heap&#x70BA;&#x4E00;&#x500B;max heap(&#x6216;min heap)</li>
+<li>&#x5C0D;&#x6240;&#x6709;&#x6709;child&#x7684;node&#x505A;heapify</li>
+</ul>
+</li>
+</ul>
+<h3 id="heap-sort">Heap sort</h3>
+<p>Heap&#x88AB;&#x767C;&#x660E;&#x51FA;&#x4F86;&#x7684;&#x76EE;&#x7684;&#x4E4B;&#x4E00;&#x662F;&#x7528;&#x4F86;&#x4F5C;sort&#x4F7F;&#x7528;&#xFF0C;&#x5047;&#x8A2D;&#x76EE;&#x524D;&#x7684;heap&#x5982;&#x4E0B;&#x5716;&#xFF1A;</p>
+<p><img src="https://i.imgur.com/wA3EJy5.png" alt=""></p>
+<p>Heap Sort&#x7684;&#x6B65;&#x9A5F;&#xFF1A;</p>
+<pre><code>1. &#x5148;&#x5C07;&#x6700;&#x5C0F;&#x7684;node&#x53D6;&#x51FA;
+2. &#x91CD;&#x5EFA;Heap
+3. &#x91CD;&#x8907;&#x4EE5;&#x4E0A;&#x6B65;&#x9A5F;
+</code></pre><p>Example:</p>
+<ol>
+<li><p>&#x5148;&#x5C07;&#x6700;&#x5C0F;&#x7684;node&#x53D6;&#x51FA;
+<img src="https://i.imgur.com/fHv9OON.png" alt=""></p>
+</li>
+<li><p>&#x91CD;&#x5EFA;heap:</p>
+<ul>
+<li>&#x5C07;&#x6700;&#x5F8C;&#x4E00;&#x500B;node&#x653E;&#x5230;&#x7B2C;&#x4E00;&#x500B;</li>
+<li>&#x505A;heapify:<ul>
+<li>&#x6BD4;&#x8F03;root&#x8207;&#x81EA;&#x5DF1;&#x7684;&#x5169;&#x500B;child&#xFF0C;&#x627E;&#x51FA;&#x6700;&#x5C0F;&#x503C;&#x8207;root&#x4EA4;&#x63DB;</li>
+<li>&#x5C0D;&#x4EA4;&#x63DB;&#x904E;&#x7684;subtree&#x505A;heapify
+<img src="https://i.imgur.com/nmEsFvp.png" alt="">
+<img src="https://i.imgur.com/VVbChDh.png" alt=""></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>&#x91CD;&#x8907;1. 2.&#x5169;&#x500B;&#x6B65;&#x9A5F;&#x76F4;&#x5230;heap&#x70BA;&#x7A7A;</p>
+</li>
+</ol>
+<h4 id="&#x6642;&#x9593;&#x8907;&#x96DC;&#x5EA6;&#xFF1F;">&#x6642;&#x9593;&#x8907;&#x96DC;&#x5EA6;&#xFF1F;</h4>
+<ul>
+<li>&#x6BCF;&#x6B21;Heapify : O(logn)</li>
+<li>&#x8981;&#x505A;n&#x6B21;heapify : O(n)</li>
+</ul>
+<p>&#x6642;&#x9593;&#x8907;&#x96DC;&#x5EA6;&#x70BA;O(nlogn)</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="hashmap_method.html" class="navigation navigation-prev " aria-label="Previous page: 常用method">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="priority_queue.html" class="navigation navigation-next " aria-label="Next page: Priority Queue">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Heap","level":"1.3.9","depth":2,"next":{"title":"Priority Queue","level":"1.3.10","depth":2,"path":"cpp_sec/priority_queue.md","ref":"cpp_sec/priority_queue.md","articles":[{"title":"常用method","level":"1.3.10.1","depth":3,"path":"cpp_sec/priority_queue_method.md","ref":"cpp_sec/priority_queue_method.md","articles":[]}]},"previous":{"title":"常用method","level":"1.3.8.1","depth":3,"path":"cpp_sec/hashmap_method.md","ref":"cpp_sec/hashmap_method.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cpp_sec/heap.md","mtime":"2020-04-30T02:16:53.305Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-30T09:03:24.639Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

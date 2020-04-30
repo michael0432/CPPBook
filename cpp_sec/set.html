@@ -1,0 +1,1172 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Set / Disjoint Set · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    <link rel="prev" href="priority_queue_method.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="cpp.html">
+            
+                <a href="cpp.html">
+            
+                    
+                    C++
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="install.html">
+            
+                <a href="install.html">
+            
+                    
+                    安裝環境
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="compile_io.html">
+            
+                <a href="compile_io.html">
+            
+                    
+                    編譯、輸入、輸出
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="Variable.html">
+            
+                <a href="Variable.html">
+            
+                    
+                    資料型態&宣告
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="if_else.html">
+            
+                <a href="if_else.html">
+            
+                    
+                    If/Else
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="loop.html">
+            
+                <a href="loop.html">
+            
+                    
+                    Loop
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="array.html">
+            
+                <a href="array.html">
+            
+                    
+                    Array
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.7" data-path="string.html">
+            
+                <a href="string.html">
+            
+                    
+                    String
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.8" data-path="function.html">
+            
+                <a href="function.html">
+            
+                    
+                    Function
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.9" data-path="pointer.html">
+            
+                <a href="pointer.html">
+            
+                    
+                    Pointer
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.10" data-path="class.html">
+            
+                <a href="class.html">
+            
+                    
+                    Struct/Object
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.11" data-path="bitwise.html">
+            
+                <a href="bitwise.html">
+            
+                    
+                    位元運算
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" >
+            
+                <span>
+            
+                    
+                    Data Structure
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" >
+            
+                <span>
+            
+                    
+                    時間複雜度
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="list.html">
+            
+                <a href="list.html">
+            
+                    
+                    Linked-List
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="vector.html">
+            
+                <a href="vector.html">
+            
+                    
+                    Vector
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.3.1" data-path="vector_method.html">
+            
+                <a href="vector_method.html">
+            
+                    
+                    常用Method
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="stack.html">
+            
+                <a href="stack.html">
+            
+                    
+                    Stack
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.4.1" data-path="stack_method.html">
+            
+                <a href="stack_method.html">
+            
+                    
+                    常用Method
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="queue.html">
+            
+                <a href="queue.html">
+            
+                    
+                    Queue
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.5.1" data-path="queue_method.html">
+            
+                <a href="queue_method.html">
+            
+                    
+                    常用Method
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.6" >
+            
+                <span>
+            
+                    
+                    Deque
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.7" data-path="graph.html">
+            
+                <a href="graph.html">
+            
+                    
+                    Graph
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.7.1" data-path="tree.html">
+            
+                <a href="tree.html">
+            
+                    
+                    Tree
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.7.1.1" >
+            
+                <span>
+            
+                    
+                    Binary tree
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.7.1.2" >
+            
+                <span>
+            
+                    
+                    Red Black tree
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.7.1.3" >
+            
+                <span>
+            
+                    
+                    AVL tree
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.7.2" data-path="bfs.html">
+            
+                <a href="bfs.html">
+            
+                    
+                    BFS
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.7.3" data-path="dfs.html">
+            
+                <a href="dfs.html">
+            
+                    
+                    DFS
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.8" data-path="hashmap.html">
+            
+                <a href="hashmap.html">
+            
+                    
+                    Hash Table / Maps
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.8.1" data-path="hashmap_method.html">
+            
+                <a href="hashmap_method.html">
+            
+                    
+                    常用method
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.9" data-path="heap.html">
+            
+                <a href="heap.html">
+            
+                    
+                    Heap
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.10" data-path="priority_queue.html">
+            
+                <a href="priority_queue.html">
+            
+                    
+                    Priority Queue
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.10.1" data-path="priority_queue_method.html">
+            
+                <a href="priority_queue_method.html">
+            
+                    
+                    常用method
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.3.11" data-path="set.html">
+            
+                <a href="set.html">
+            
+                    
+                    Set / Disjoint Set
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" >
+            
+                <span>
+            
+                    
+                    Algorithm
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" >
+            
+                <span>
+            
+                    
+                    Divide and Conquer
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" >
+            
+                <span>
+            
+                    
+                    Dynammic Programming
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" >
+            
+                <span>
+            
+                    
+                    Greedy
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="graph.html">
+            
+                <a href="graph.html">
+            
+                    
+                    Graph
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.4.1" data-path="shortest_path.html">
+            
+                <a href="shortest_path.html">
+            
+                    
+                    Shortest Path
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.4.1.1" data-path="bf.html">
+            
+                <a href="bf.html">
+            
+                    
+                    Bellmen-Ford Algorithm
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4.1.2" >
+            
+                <span>
+            
+                    
+                    [Shortest Path on DAG]
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4.1.3" data-path="Dijkstra.html">
+            
+                <a href="Dijkstra.html">
+            
+                    
+                    Dijkstra's Algorithm
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4.2" >
+            
+                <span>
+            
+                    
+                    [Minumum Spanning Tree]
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4.3" >
+            
+                <span>
+            
+                    
+                    [Maximum Flow]
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Set / Disjoint Set</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="set">Set</h1>
+<h6 id="tags--data-structure">tags = <code>Data Structure</code></h6>
+<p>Set&#x70BA;&#x96C6;&#x5408;&#xFF0C;&#x5373;&#x5C07;&#x5143;&#x7D20;&#x5206;&#x6210;&#x4E00;&#x5718;&#x4E00;&#x5718;&#x7684;&#x985E;&#x5225;&#x3002;
+&#x8209;&#x4F8B;&#x4F86;&#x8AAA;&#xFF0C;&#x6211;&#x5011;&#x53EF;&#x4EE5;&#x628A;&#x6B63;&#x6574;&#x6578;&#x5206;&#x6210;&#x5947;&#x6578;&#x8DDF;&#x5076;&#x6578;&#x5169;&#x500B;&#x96C6;&#x5408;:</p>
+<ul>
+<li>&#x5947;&#x6578;:{1,3,5,7.....}</li>
+<li>&#x5076;&#x6578;:{2,4,6,8.....}</li>
+</ul>
+<p>&#x5728;&#x5BEB;&#x7A0B;&#x5F0F;&#x6216;&#x89E3;&#x6C7A;&#x65E5;&#x5E38;&#x751F;&#x6D3B;&#x7684;&#x554F;&#x984C;&#x6642;&#xFF0C;&#x6211;&#x5011;&#x6642;&#x5E38;&#x6703;&#x9700;&#x8981;&#x5C0D;&#x96C6;&#x5408;&#x505A;:</p>
+<ul>
+<li>&#x5408;&#x4F75;&#xFF08;&#x5169;&#x500B;&#x96C6;&#x5408;&#x7D50;&#x5408;&#x6210;&#x4E00;&#x500B;&#x96C6;&#x5408;&#xFF09;</li>
+<li>&#x627E;&#x5C0B;&#xFF08;&#x627E;&#x67D0;&#x500B;&#x5143;&#x7D20;&#x4F4D;&#x65BC;&#x54EA;&#x500B;&#x96C6;&#x5408;&#xFF09;</li>
+<li>&#x4EA4;&#x96C6;</li>
+<li>&#x806F;&#x96C6;</li>
+<li>&#x5DEE;&#x96C6;</li>
+</ul>
+<h3 id="set">Set</h3>
+<h4 id="&#x7528;array&#x5132;&#x5B58;set">&#x7528;Array&#x5132;&#x5B58;set</h4>
+<p>&#x6700;&#x76F4;&#x89C0;&#x7684;&#x65B9;&#x5F0F;&#x662F;&#x7528;array&#x5132;&#x5B58;&#x4E00;&#x500B;&#x96C6;&#x5408;&#xFF0C;&#x6BCF;&#x4E00;&#x500B;Array&#x4EE3;&#x8868;&#x4E00;&#x500B;&#x96C6;&#x5408;</p>
+<pre><code class="lang-cpp=1">class Set{
+    vector&lt;int&gt; v(1000);
+};
+</code></pre>
+<p>&#x7F3A;&#x9EDE;&#xFF1A;</p>
+<ul>
+<li>&#x505A;&#x806F;&#x96C6;&#x3001;&#x4EA4;&#x96C6;&#x3001;&#x5DEE;&#x96C6;&#x7B49;&#x904B;&#x7B97;&#x5F88;&#x6162;</li>
+</ul>
+<h4 id="&#x7528;hash-table&#x5132;&#x5B58;set">&#x7528;Hash Table&#x5132;&#x5B58;set</h4>
+<p>&#x9019;&#x6642;&#x6703;&#x60F3;&#x5230;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;Hash Table&#x4F86;&#x5132;&#x5B58;set&#xFF0C;&#x5982;&#x6B64;&#x4E00;&#x4F86;&#xFF0C;&#x5728;&#x627E;&#x5C0B;&#x7279;&#x5B9A;&#x5143;&#x7D20;&#x6642;&#x7684;&#x901F;&#x5EA6;&#x5C31;&#x6703;&#x8B8A;&#x5FEB;&#xFF0C;&#x505A;&#x806F;&#x96C6;&#x3001;&#x4EA4;&#x96C6;&#x3001;&#x5DEE;&#x96C6;&#x7684;&#x6642;&#x9593;&#x4E5F;&#x6703;&#x8B8A;&#x5FEB;&#x3002;</p>
+<pre><code class="lang-cpp=1">class Set{
+    unordered_set&lt;int&gt; s(1000);
+};
+</code></pre>
+<h3 id="disjoint-set">Disjoint Set</h3>
+<p>Disjoint Set&#x70BA;&#x4E92;&#x65A5;&#x96C6;&#xFF0C;&#x5373;&#x662F;&#x4E00;&#x5806;&#x96C6;&#x5408;&#x5011;&#xFF0C;&#x5F7C;&#x6B64;&#x7684;element&#x90FD;&#x4E0D;&#x6703;&#x91CD;&#x8907;&#xFF0C;&#x50CF;&#x4E0A;&#x9762;&#x8209;&#x7684;&#x5947;&#x6578;&#x5076;&#x6578;&#x53CA;&#x70BA;&#x4E92;&#x65A5;&#x96C6;&#xFF0C;&#x7531;&#x65BC;&#x96C6;&#x5408;&#x5011;&#x90FD;&#x6C92;&#x6709;&#x4EA4;&#x96C6;&#xFF0C;&#x56E0;&#x6B64;&#x4EA4;&#x96C6;&#x3001;&#x5DEE;&#x96C6;&#x7B49;&#x904B;&#x7B97;&#x90FD;&#x4E0D;&#x5FC5;&#x8981;&#xFF0C;&#x9019;&#x7A2E;&#x72C0;&#x6CC1;&#x4E0B;&#x53EA;&#x9700;&#x8981;&#x8003;&#x616E;&#x5E7E;&#x500B;&#x904B;&#x7B97;:</p>
+<ul>
+<li>&#x5408;&#x4F75;</li>
+<li>&#x627E;&#x5C0B;</li>
+</ul>
+<h4 id="&#x7528;array&#x5B58;disjoint-set">&#x7528;Array&#x5B58;disjoint set</h4>
+<p>&#x5047;&#x8A2D;&#x73FE;&#x5728;set&#x7E3D;&#x5171;&#x6709;n&#x500B;element&#xFF0C;&#x4FBF;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x4E00;&#x500B;array&#x5B58;&#x6240;&#x6709;&#x7684;element&#x6240;&#x5728;&#x7684;set&#x3002;</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>9</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Value</td>
+<td>4</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>3</td>
+<td>2</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>4</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="lang-cpp=1">vector&lt;int&gt; disjoint_set(10);
+</code></pre>
+<p>&#x4E00;&#x958B;&#x59CB;&#x9084;&#x6C92;&#x5206;&#x5718;&#x7684;&#x6642;&#x5019;&#xFF0C;&#x53EF;&#x4EE5;&#x60F3;&#x50CF;&#x6BCF;&#x500B;&#x4EBA;&#x662F;&#x81EA;&#x5DF1;&#x4E00;&#x7D44;(&#x7E3D;&#x5171;&#x6709;10&#x500B;element&#xFF0C;&#x6BCF;&#x500B;set&#x7686;&#x70BA;1&#x500B;element)</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>9</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Value</td>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>7</td>
+<td>8</td>
+<td>9</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="lang-cpp=1">void init(){
+    for(int i=0 ; i&lt;10 ; i++){
+        disjoint_set[i] = i;
+    }
+}
+</code></pre>
+<h5 id="find">Find</h5>
+<pre><code class="lang-cpp=1">int find(int x){
+    return disjoint_set[x];
+}
+</code></pre>
+<h5 id="equal">Equal</h5>
+<pre><code class="lang-cpp=1">int equal(int x, int y){
+    return disjoint_set[x] == disjoint_set[y];
+}
+</code></pre>
+<h5 id="union">Union</h5>
+<pre><code class="lang-cpp=1">void union(int x, int y){
+   if(!equal(x,y)){
+       for(int i=0 ; i&lt;10 ; i++){
+           if(disjoint_set[i] == x){
+               disjoint_set[i] = y;
+           }
+       }
+   }
+}
+</code></pre>
+<p>&#x6642;&#x9593;&#x8907;&#x96DC;&#x5EA6;?</p>
+<h3 id="disjoint-set-forest">Disjoint set Forest</h3>
+<p>&#x4E0A;&#x8FF0;&#x7684;&#x65B9;&#x6CD5;&#x662F;&#x7528;array&#x5B58;&#x6BCF;&#x500B;element&#x5206;&#x5225;&#x5C6C;&#x65BC;&#x54EA;&#x4E00;&#x500B;set&#xFF0C;&#x9019;&#x88E1;&#x6539;&#x6210;&#x5B58;&#x6BCF;&#x500B;element&#x7684;&#x8001;&#x5927;&#x662F;&#x8AB0;&#x3002;</p>
+<p>&#x539F;&#x672C;&#x7684;&#x8868;&#x793A;&#x6CD5;:</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>9</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Value</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>3</td>
+<td>4</td>
+<td>1</td>
+<td>3</td>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>&#x4EE5;&#x4E0A;&#x8FF0;&#x7684;&#x65B9;&#x5F0F;&#x8868;&#x793A;:</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>9</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Value</td>
+<td>1</td>
+<td>1</td>
+<td>8</td>
+<td>2</td>
+<td>4</td>
+<td>5</td>
+<td>2</td>
+<td>4</td>
+<td>8</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+<p><img src="https://i.imgur.com/PLzwodk.png" alt=""></p>
+<h4 id="init">Init</h4>
+<p>&#x5728;&#x9084;&#x6C92;&#x5206;&#x5718;&#x7684;&#x6642;&#x5019;&#xFF0C;&#x53EF;&#x4EE5;&#x60F3;&#x6210;&#x6BCF;&#x500B;element&#x7684;&#x8001;&#x5927;&#x90FD;&#x662F;&#x81EA;&#x5DF1;</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>9</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Value</td>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>7</td>
+<td>8</td>
+<td>9</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="lang-cpp=1">void init(){
+    for(int i=0 ; i&lt;10 ; i++){
+        disjoint_set[i] = i;
+    }
+}
+</code></pre>
+<h4 id="find">Find</h4>
+<p>&#x627E;&#x5230;&#x67D0;&#x500B;element&#x662F;&#x5C6C;&#x65BC;&#x54EA;&#x500B;set(&#x9019;&#x500B;set&#x7684;&#x8001;&#x5927;&#x662F;&#x8AB0;)</p>
+<pre><code class="lang-cpp=1">int find(int x){
+    while(x != disjoint_set[x]){
+        x = disjoint_set[x];
+    }
+    return x;
+}
+</code></pre>
+<p>&#x66F4;&#x7C21;&#x55AE;&#x7684;&#x5BEB;&#x6CD5;:</p>
+<pre><code class="lang-cpp=1">int find(int x){
+    return x == disjoint_set[x] ? x : find(disjoint_set[x]);
+}
+</code></pre>
+<h4 id="equal">Equal</h4>
+<p>&#x5224;&#x65B7;&#x5169;&#x500B;element&#x662F;&#x5426;&#x662F;&#x540C;&#x4E00;&#x500B;set</p>
+<pre><code class="lang-cpp=1">int equal(int x, int y){
+    return find(x) == find(y);
+}
+</code></pre>
+<h4 id="union">Union</h4>
+<p>&#x5408;&#x4F75;&#x5169;&#x500B;set&#xFF0C;&#x4E26;&#x9078;&#x64C7;&#x4E00;&#x500B;element&#x4F5C;&#x70BA;&#x8001;&#x5927;</p>
+<p><img src="https://i.imgur.com/ghrRa0x.png" alt=""></p>
+<pre><code class="lang-cpp=1">void union(int x, int y){
+    x = find(x); // x&#x7684;&#x8001;&#x5927;
+    y = find(y); // y&#x7684;&#x8001;&#x5927;
+    disjoint_set[y] = x;
+}
+</code></pre>
+<h3 id="&#x5C0F;&#x7DF4;&#x7FD2;">&#x5C0F;&#x7DF4;&#x7FD2;</h3>
+<ul>
+<li><a href="https://leetcode.com/problems/friend-circles/" target="_blank">https://leetcode.com/problems/friend-circles/</a></li>
+<li><a href="https://leetcode.com/problems/number-of-operations-to-make-network-connected/" target="_blank">https://leetcode.com/problems/number-of-operations-to-make-network-connected/</a></li>
+</ul>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="priority_queue_method.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 常用method">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Set / Disjoint Set","level":"1.3.11","depth":2,"next":{"title":"Algorithm","level":"1.4","depth":1,"ref":"","articles":[{"title":"Divide and Conquer","level":"1.4.1","depth":2,"ref":"","articles":[]},{"title":"Dynammic Programming","level":"1.4.2","depth":2,"ref":"","articles":[]},{"title":"Greedy","level":"1.4.3","depth":2,"ref":"","articles":[]},{"title":"Graph","level":"1.4.4","depth":2,"path":"cpp_sec/graph.md","ref":"cpp_sec/graph.md","articles":[{"title":"Shortest Path","level":"1.4.4.1","depth":3,"path":"cpp_sec/shortest_path.md","ref":"cpp_sec/shortest_path.md","articles":[{"title":"Bellmen-Ford Algorithm","level":"1.4.4.1.1","depth":4,"path":"cpp_sec/bf.md","ref":"cpp_sec/bf.md","articles":[]},{"title":"[Shortest Path on DAG]","level":"1.4.4.1.2","depth":4,"ref":"","articles":[]},{"title":"Dijkstra's Algorithm","level":"1.4.4.1.3","depth":4,"path":"cpp_sec/Dijkstra.md","ref":"cpp_sec/Dijkstra.md","articles":[]}]},{"title":"[Minumum Spanning Tree]","level":"1.4.4.2","depth":3,"ref":"","articles":[]},{"title":"[Maximum Flow]","level":"1.4.4.3","depth":3,"ref":"","articles":[]}]}]},"previous":{"title":"常用method","level":"1.3.10.1","depth":3,"path":"cpp_sec/priority_queue_method.md","ref":"cpp_sec/priority_queue_method.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cpp_sec/set.md","mtime":"2020-04-30T09:01:54.538Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-30T09:03:24.639Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
