@@ -53,7 +53,6 @@ for(auto it = m.begin(); it!=m.end(); it++){
 ### 若key為自己定義的class
 
 錯誤的寫法: 沒有hash function
-
 ```cpp=1
 class CustomClass{
 public:
@@ -68,10 +67,8 @@ int main(){
 
 正確的寫法: 要自己定義hash function
 需要兩個元素:
-
 * operator ==
 * hash
-
 ```cpp=1
 struct CustomClass{
 public:
