@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>BFS · GitBook</title>
+        <title>Heap · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,8 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="dfs.html" />
+    <link rel="next" href="priority_queue.html" />
     
+    
+    <link rel="prev" href="hashmap_method.html" />
     
 
     </head>
@@ -483,7 +485,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.3.7.2" data-path="bfs.html">
+        <li class="chapter " data-level="1.3.7.2" data-path="bfs.html">
             
                 <a href="bfs.html">
             
@@ -546,7 +548,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.9" data-path="heap.html">
+        <li class="chapter active" data-level="1.3.9" data-path="heap.html">
             
                 <a href="heap.html">
             
@@ -800,7 +802,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >BFS</a>
+        <a href=".." >Heap</a>
     </h1>
 </div>
 
@@ -815,98 +817,85 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="bfs">BFS</h1>
+                                <h1 id="heap">Heap</h1>
 <h6 id="tags--data-structure">tags = <code>Data Structure</code></h6>
-<p>&#x7D66;&#x4E00;&#x5F35;Graph&#xFF0C;&#x8981;&#x600E;&#x9EBC;&#x904D;&#x6B77;&#x9019;&#x5F35;&#x5716;&#xFF1F;&#xFF08;&#x8B80;&#x5230;&#x5716;&#x4E2D;&#x7684;&#x6BCF;&#x500B;Node&#xFF09;</p>
+<p>Heap&#x662F;&#x4E00;&#x500B;&#x300C;&#x5806;&#x300D;&#x7684;&#x8CC7;&#x6599;&#x7D50;&#x69CB;&#xFF0C;&#x662F;&#x4E00;&#x7A2E;&#x7279;&#x5225;&#x7684;&#x6A39;&#x72C0;&#x7D50;&#x69CB;&#xFF0C;&#x5728;C++&#x4E4B;&#x4E2D;&#x4E26;&#x4E0D;&#x662F;&#x4E00;&#x500B;&#x5167;&#x5EFA;&#x7684;STL&#x3002;</p>
+<p>&#x4EE5;&#x4E0B;&#x4EE5;&#x6700;&#x57FA;&#x672C;&#x7684;Binary heap&#x7576;&#x505A;&#x4F8B;&#x5B50;&#xFF0C;Binary heap&#x6709;&#x4EE5;&#x4E0B;&#x7684;&#x7279;&#x6027;&#xFF1A;</p>
 <ul>
-<li>BFS(Breadth-fisrt Search)<ul>
-<li>&#x5F9E;&#x5716;&#x7684;&#x4E00;&#x500B;Vertex&#x51FA;&#x767C;</li>
-<li>&#x5148;&#x8D70;&#x96E2;&#x8A72;Vertex&#x76F8;&#x9130;&#x7684;Vertex(&#x8DDD;&#x96E2;&#x70BA;1)</li>
-<li>&#x518D;&#x8D70;&#x5230;&#x8DDD;&#x96E2;&#x70BA;2&#x7684;Vertex</li>
-<li>&#x76F4;&#x5230;&#x8D70;&#x5230;&#x6700;&#x9060;&#x7684;&#x9EDE;&#xFF08;&#x8D70;&#x5B8C;&#x6240;&#x6709;&#x9EDE;&#xFF09;</li>
+<li>&#x6BCF;&#x500B;node&#x6709;&#x5169;&#x500B;Children</li>
+<li>&#x70BA;complete binary tree(&#x6BCF;&#x4E00;&#x5C64;&#x5F9E;&#x5DE6;&#x5230;&#x53F3;&#x4E0D;&#x53EF;&#x4EE5;&#x6709;&#x8DF3;&#x904E;&#x7684;Node)<ul>
+<li>&#x539F;&#x56E0;&#xFF1A;&#x5BB9;&#x6613;&#x627E;parent-child&#x7684;&#x95DC;&#x4FC2;</li>
+<li>&#x5047;&#x8A2D;&#x5C07;&#x9019;&#x500B;tree&#x7528;vector&#x8868;&#x793A;&#xFF0C;&#x5247;index&#x70BA;i&#x7684;node&#xFF1A;<ul>
+<li>&#x5176;left child&#x5FC5;&#x5B9A;&#x4F4D;&#x5728;index(2i)&#xFF1B;</li>
+<li>&#x5176;right child&#x5FC5;&#x5B9A;&#x4F4D;&#x5728;index(2i+1)&#xFF1B;</li>
+<li>&#x5176;parent&#x5FC5;&#x5B9A;&#x4F4D;&#x5728;index(&#x230A;i/2&#x230B;)&#x3002;</li>
 </ul>
 </li>
 </ul>
-<p><img src="https://i.imgur.com/OqbqQjQ.png" alt=""></p>
-<ul>
-<li>DFS(Depth-first Search)</li>
+</li>
 </ul>
-<p>&#x60F3;&#x8981;&#x4F9D;&#x7167;BFS&#x7684;&#x9806;&#x5E8F;&#x8D70;&#x5B8C;&#x6240;&#x6709;&#x9EDE;&#xFF0C;&#x53EF;&#x4EE5;&#x60F3;&#x6210;&#x627E;&#x51FA;&#x5C1A;&#x672A;&#x904D;&#x6B77;&#x7684;&#x9EDE;&#x7576;&#x505A;&#x8D77;&#x9EDE;&#xFF1A;</p>
+<p><img src="https://i.imgur.com/NSZWlu9.png" alt=""></p>
+<ul>
+<li>Max Heap : <ul>
+<li>Max Heap&#x7684;&#x9650;&#x5236;&#x70BA;&#xFF1A;&#x6BCF;&#x500B;Node&#x90FD;&#x8981;&#x6BD4;&#x81EA;&#x5DF1;&#x7684;child&#x5927;&#xFF0C;&#x4E0A;&#x5716;&#x5373;&#x70BA;Max Heap</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>Min Heap<ul>
+<li>Min Heap&#x7684;&#x9650;&#x5236;&#x70BA;&#xFF1A;&#x6BCF;&#x500B;Node&#x90FD;&#x8981;&#x6BD4;&#x81EA;&#x5DF1;&#x7684;child&#x5C0F;&#x3002;</li>
+</ul>
+</li>
+</ul>
+<h3 id="heap&#x7684;&#x57FA;&#x672C;&#x64CD;&#x4F5C;">Heap&#x7684;&#x57FA;&#x672C;&#x64CD;&#x4F5C;</h3>
+<p>&#x4EE5;Max heap&#x70BA;&#x4F8B;&#xFF0C;heap&#x6703;&#x9700;&#x8981;&#x5E7E;&#x500B;&#x57FA;&#x672C;&#x7684;&#x64CD;&#x4F5C;&#xFF1A;</p>
+<ul>
+<li><p>Heapify:</p>
+<ul>
+<li>&#x76EE;&#x7684;&#xFF1A;&#x78BA;&#x4FDD;&#x4E00;&#x500B;node&#x7B26;&#x5408;max heap&#x7684;&#x689D;&#x4EF6;</li>
+<li>&#x6BD4;&#x8F03;&#x6B64;node&#x8207;&#x5176;child&#xFF0C;&#x5C07;&#x6700;&#x5C0F;&#x7684;node&#x8B8A;&#x70BA;root</li>
+</ul>
+</li>
+<li><p>Build heap:</p>
+<ul>
+<li>&#x76EE;&#x7684;&#xFF1A;&#x78BA;&#x4FDD;heap&#x70BA;&#x4E00;&#x500B;max heap(&#x6216;min heap)</li>
+<li>&#x5C0D;&#x6240;&#x6709;&#x6709;child&#x7684;node&#x505A;heapify</li>
+</ul>
+</li>
+</ul>
+<h3 id="heap-sort">Heap sort</h3>
+<p>Heap&#x88AB;&#x767C;&#x660E;&#x51FA;&#x4F86;&#x7684;&#x76EE;&#x7684;&#x4E4B;&#x4E00;&#x662F;&#x7528;&#x4F86;&#x4F5C;sort&#x4F7F;&#x7528;&#xFF0C;&#x5047;&#x8A2D;&#x76EE;&#x524D;&#x7684;heap&#x5982;&#x4E0B;&#x5716;&#xFF1A;</p>
+<p><img src="https://i.imgur.com/wA3EJy5.png" alt=""></p>
+<p>Heap Sort&#x7684;&#x6B65;&#x9A5F;&#xFF1A;</p>
+<pre><code>1. &#x5148;&#x5C07;&#x6700;&#x5C0F;&#x7684;node&#x53D6;&#x51FA;
+2. &#x91CD;&#x5EFA;Heap
+3. &#x91CD;&#x8907;&#x4EE5;&#x4E0A;&#x6B65;&#x9A5F;
+</code></pre><p>Example:</p>
 <ol>
-<li>&#x628A;&#x8D77;&#x9EDE;&#x653E;&#x5165;queue</li>
-<li>&#x62FF;&#x51FA;queue&#x7684;front</li>
-<li>&#x627E;&#x51FA;&#x8207;queue.front()&#x76F8;&#x9130;&#x7684;&#x9EDE;&#x653E;&#x5165;queue</li>
-<li>queue.pop()</li>
-<li>&#x91CD;&#x8907;2~4&#x76F4;&#x5230;queue&#x70BA;&#x7A7A;</li>
+<li><p>&#x5148;&#x5C07;&#x6700;&#x5C0F;&#x7684;node&#x53D6;&#x51FA;
+<img src="https://i.imgur.com/fHv9OON.png" alt=""></p>
+</li>
+<li><p>&#x91CD;&#x5EFA;heap:</p>
+<ul>
+<li>&#x5C07;&#x6700;&#x5F8C;&#x4E00;&#x500B;node&#x653E;&#x5230;&#x7B2C;&#x4E00;&#x500B;</li>
+<li>&#x505A;heapify:<ul>
+<li>&#x6BD4;&#x8F03;root&#x8207;&#x81EA;&#x5DF1;&#x7684;&#x5169;&#x500B;child&#xFF0C;&#x627E;&#x51FA;&#x6700;&#x5C0F;&#x503C;&#x8207;root&#x4EA4;&#x63DB;</li>
+<li>&#x5C0D;&#x4EA4;&#x63DB;&#x904E;&#x7684;subtree&#x505A;heapify
+<img src="https://i.imgur.com/nmEsFvp.png" alt="">
+<img src="https://i.imgur.com/VVbChDh.png" alt=""></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>&#x91CD;&#x8907;1. 2.&#x5169;&#x500B;&#x6B65;&#x9A5F;&#x76F4;&#x5230;heap&#x70BA;&#x7A7A;</p>
+</li>
 </ol>
-<p><img src="https://i.imgur.com/kFEzg9G.png" alt=""></p>
-<h3 id="traverse-tree">Traverse Tree</h3>
-<pre><code class="lang-cpp=1">struct Node{
-    int data;
-    vector&lt;*Node&gt; neigh; 
-}; 
-
-void bfs(Node* first){
-    queue&lt;Node*&gt; q;
-    q.push(first);
-    while(!q.empty()){
-        // do what u want
-        q.front()-&gt;val;
-        //
-        for(int i=0 ; i&lt;q.front()-&gt;neigh.size() ; i++){
-            q.push(q.front()-&gt;neigh[i]);
-        }
-        q.pop();
-    }
-}
-</code></pre>
-<h3 id="traverse-graph">Traverse Graph</h3>
-<p>&#x4E0A;&#x9762;&#x7684;&#x4F8B;&#x5B50;&#x53EA;&#x80FD;&#x904D;&#x6B77;&#x6574;&#x500B;Tree&#xFF0C;&#x4F46;&#x82E5;&#x60F3;&#x904D;&#x6B77;Graph&#xFF0C;&#x6703;&#x78B0;&#x5230;&#x4E00;&#x554F;&#x984C;&#xFF1A;&#x6703;&#x904D;&#x6B77;&#x5230;&#x91CD;&#x8907;&#x7684;&#x9EDE;&#x5C0E;&#x81F4;&#x904D;&#x6B77;&#x7684;&#x9806;&#x5E8F;&#x6DF7;&#x4E82;&#xFF0C;&#x56E0;&#x6B64;&#x6211;&#x5011;&#x9700;&#x8981;&#x5728;Node&#x4E2D;&#x52A0;&#x5165;&#x4E00;&#x500B;&#x8B8A;&#x6578;&#x5132;&#x5B58;Node&#x7684;&#x72C0;&#x614B;&#xFF0C;&#x5728;&#x4E0A;&#x5716;&#x4E2D;&#x7528;&#x767D;&#x3001;&#x7070;&#x3001;&#x9ED1;&#x8868;&#x793A;&#x3002;</p>
+<h4 id="&#x6642;&#x9593;&#x8907;&#x96DC;&#x5EA6;&#xFF1F;">&#x6642;&#x9593;&#x8907;&#x96DC;&#x5EA6;&#xFF1F;</h4>
 <ul>
-<li>&#x767D;&#xFF1A;&#x9084;&#x672A;&#x904D;&#x6B77;&#x5230;&#x6B64;Node&#xFF08;&#x672A;&#x653E;&#x9032;Queue&#xFF09;</li>
-<li>&#x7070;&#xFF1A;&#x904D;&#x6B77;&#x5230;&#x6B64;Node&#xFF0C;&#x4F46;&#x5C1A;&#x672A;&#x96E2;&#x958B;Queue</li>
-<li>&#x9ED1;&#xFF1A;&#x5DF2;&#x7D93;&#x904D;&#x6B77;&#x5B8C;&#x6B64;Node&#xFF08;&#x5DF2;pop&#x6389;&#xFF09;</li>
+<li>&#x6BCF;&#x6B21;Heapify : O(logn)</li>
+<li>&#x8981;&#x505A;n&#x6B21;heapify : O(n)</li>
 </ul>
-<pre><code class="lang-cpp=1">struct Node{
-    int data;
-    int status; //&#x767D;:0, &#x7070;:1, &#x9ED1;:2
-    vector&lt;*Node&gt; neigh; 
-}; 
-
-void bfs(Node* first){
-    queue&lt;Node*&gt; q;
-    q.push(first);
-    while(!q.empty()){
-        q.front()-&gt;status = 1;
-        // do what u want
-        q.front()-&gt;val;
-        //
-        int size = q.size();
-        for(int d=0 ; d&lt;size ; d++){
-            // &#x4E00;&#x5C64;
-            for(int i=0 ; i&lt;q.front()-&gt;neigh.size() ; i++){
-                // &#x4E00;&#x500B;&#x9130;&#x5C45;&#xFF0C;&#x767D;&#x8272;&#x624D;&#x653E;&#x9032;queue
-                if(q.front()-&gt;neigh[i]-&gt;status == 0){
-                    q.push(q.front()-&gt;neigh[i]);
-                }
-            }
-            q.front()-&gt;status = 2;
-            q.pop();
-        }
-    }
-}
-</code></pre>
-<ul>
-<li>Follow up: &#x662F;&#x4E0D;&#x662F;&#x4E0D;&#x9700;&#x8981;&#x5B58;&#x767D;&#x7070;&#x9ED1;&#x4E09;&#x7A2E;&#x72C0;&#x614B;?</li>
-</ul>
-<h3 id="&#x5C0F;&#x7DF4;&#x7FD2;">&#x5C0F;&#x7DF4;&#x7FD2;</h3>
-<ul>
-<li><a href="https://leetcode.com/problems/binary-tree-right-side-view/" target="_blank">https://leetcode.com/problems/binary-tree-right-side-view/</a></li>
-<li><a href="https://leetcode.com/problems/maximum-level-sum-of-a-binary-tree/" target="_blank">https://leetcode.com/problems/maximum-level-sum-of-a-binary-tree/</a></li>
-<li><a href="https://leetcode.com/problems/cousins-in-binary-tree/" target="_blank">https://leetcode.com/problems/cousins-in-binary-tree/</a></li>
-<li><a href="https://leetcode.com/problems/jump-game-iii/" target="_blank">https://leetcode.com/problems/jump-game-iii/</a></li>
-<li><a href="https://www.hackerrank.com/challenges/bfsshortreach/problem" target="_blank">https://www.hackerrank.com/challenges/bfsshortreach/problem</a></li>
-</ul>
+<p>&#x6642;&#x9593;&#x8907;&#x96DC;&#x5EA6;&#x70BA;O(nlogn)</p>
 
                                 
                                 </section>
@@ -934,8 +923,12 @@ void bfs(Node* first){
 
             
                 
+                <a href="hashmap_method.html" class="navigation navigation-prev " aria-label="Previous page: 常用method">
+                    <i class="fa fa-angle-left"></i>
+                </a>
                 
-                <a href="dfs.html" class="navigation navigation-next navigation-unique" aria-label="Next page: DFS">
+                
+                <a href="priority_queue.html" class="navigation navigation-next " aria-label="Next page: Priority Queue">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -946,7 +939,7 @@ void bfs(Node* first){
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"BFS","level":"1.3.7.2","depth":3,"next":{"title":"DFS","level":"1.3.7.3","depth":3,"path":"cpp_sec/dfs.md","ref":"cpp_sec/dfs.md","articles":[]},"previous":{"title":"AVL tree","level":"1.3.7.1.3","depth":4,"ref":"","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cpp_sec/bfs.md","mtime":"2020-04-15T03:16:14.247Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-30T09:03:24.639Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Heap","level":"1.3.9","depth":2,"next":{"title":"Priority Queue","level":"1.3.10","depth":2,"path":"cpp_sec/priority_queue.md","ref":"cpp_sec/priority_queue.md","articles":[{"title":"常用method","level":"1.3.10.1","depth":3,"path":"cpp_sec/priority_queue_method.md","ref":"cpp_sec/priority_queue_method.md","articles":[]}]},"previous":{"title":"常用method","level":"1.3.8.1","depth":3,"path":"cpp_sec/hashmap_method.md","ref":"cpp_sec/hashmap_method.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cpp_sec/heap.md","mtime":"2020-04-30T02:16:53.305Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-30T09:03:24.639Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

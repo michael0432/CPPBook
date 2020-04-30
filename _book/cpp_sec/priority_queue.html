@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>BFS · GitBook</title>
+        <title>Priority Queue · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,8 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="dfs.html" />
+    <link rel="next" href="priority_queue_method.html" />
     
+    
+    <link rel="prev" href="heap.html" />
     
 
     </head>
@@ -483,7 +485,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.3.7.2" data-path="bfs.html">
+        <li class="chapter " data-level="1.3.7.2" data-path="bfs.html">
             
                 <a href="bfs.html">
             
@@ -559,7 +561,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.10" data-path="priority_queue.html">
+        <li class="chapter active" data-level="1.3.10" data-path="priority_queue.html">
             
                 <a href="priority_queue.html">
             
@@ -800,7 +802,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >BFS</a>
+        <a href=".." >Priority Queue</a>
     </h1>
 </div>
 
@@ -815,97 +817,35 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="bfs">BFS</h1>
+                                <h1 id="priority-queue">Priority Queue</h1>
 <h6 id="tags--data-structure">tags = <code>Data Structure</code></h6>
-<p>&#x7D66;&#x4E00;&#x5F35;Graph&#xFF0C;&#x8981;&#x600E;&#x9EBC;&#x904D;&#x6B77;&#x9019;&#x5F35;&#x5716;&#xFF1F;&#xFF08;&#x8B80;&#x5230;&#x5716;&#x4E2D;&#x7684;&#x6BCF;&#x500B;Node&#xFF09;</p>
+<p>Priority Queue&#x662F;&#x4E00;&#x7A2E;&#x300C;&#x5148;&#x53D6;&#x51FA;&#x6700;&#x91CD;&#x8981;&#x8CC7;&#x6599;&#x300D;&#x7684;queue&#x3002;</p>
 <ul>
-<li>BFS(Breadth-fisrt Search)<ul>
-<li>&#x5F9E;&#x5716;&#x7684;&#x4E00;&#x500B;Vertex&#x51FA;&#x767C;</li>
-<li>&#x5148;&#x8D70;&#x96E2;&#x8A72;Vertex&#x76F8;&#x9130;&#x7684;Vertex(&#x8DDD;&#x96E2;&#x70BA;1)</li>
-<li>&#x518D;&#x8D70;&#x5230;&#x8DDD;&#x96E2;&#x70BA;2&#x7684;Vertex</li>
-<li>&#x76F4;&#x5230;&#x8D70;&#x5230;&#x6700;&#x9060;&#x7684;&#x9EDE;&#xFF08;&#x8D70;&#x5B8C;&#x6240;&#x6709;&#x9EDE;&#xFF09;</li>
+<li>Priority : &#x8CC7;&#x6599;&#x7684;&#x512A;&#x5148;&#x5EA6;&#xFF08;&#x91CD;&#x8981;&#x5EA6;&#xFF09;</li>
+</ul>
+<p>Priority queue&#x5206;&#x70BA;&#x5169;&#x7A2E;&#xFF1A;Max priority queue / Min priority queue&#xFF0C;&#x5206;&#x5225;&#x70BA;&#x512A;&#x5148;&#x53D6;&#x51FA;&#x6B0A;&#x91CD;&#x6700;&#x91CD;&#x7684;&#x8CC7;&#x6599;&#x5373;&#x53D6;&#x51FA;&#x6B0A;&#x91CD;&#x6700;&#x8F15;&#x7684;&#x8CC7;&#x6599;&#x3002;</p>
+<p>&#x4EE5;Max priority queue&#x70BA;&#x4F8B;&#xFF0E;&#x9700;&#x8981;&#x4E09;&#x500B;&#x6700;&#x57FA;&#x672C;&#x7684;&#x64CD;&#x4F5C;&#xFF1A;</p>
+<ul>
+<li>Delete : &#x53D6;&#x5F97;&#x6700;&#x91CD;&#x8981;&#x7684;&#x8CC7;&#x6599;&#x4E26;&#x5C07;&#x5176;&#x5F9E;queue&#x4E2D;&#x522A;&#x9664;</li>
+<li>Insert : &#x5C07;&#x4E00;&#x7B46;&#x8CC7;&#x6599;&#x653E;&#x9032;queue&#x4E2D;</li>
+<li>Update Priority : &#x66F4;&#x65B0;&#x8CC7;&#x6599;&#x7684;&#x512A;&#x5148;&#x7A0B;&#x5EA6;</li>
+</ul>
+<p><img src="https://i.imgur.com/NSZWlu9.png" alt=""></p>
+<h3 id="&#x7528;max-heap&#x5BE6;&#x73FE;priority-queue">&#x7528;Max heap&#x5BE6;&#x73FE;priority queue</h3>
+<p>&#x6211;&#x5011;&#x6703;&#x767C;&#x73FE;&#xFF0C;&#x4E0A;&#x8FF0;&#x9700;&#x8981;&#x7684;&#x4E09;&#x500B;&#x57FA;&#x672C;&#x7684;&#x64CD;&#x4F5C;&#x90FD;&#x53EF;&#x4EE5;&#x5C0D;&#x61C9;&#x5230;max heap&#x7684;&#x64CD;&#x4F5C;&#xFF1A;</p>
+<ul>
+<li>Delete : &#x5C07;heap&#x7684;root&#x522A;&#x9664;&#xFF0C;&#x4E26;&#x5C07;heap&#x66F4;&#x65B0;&#xFF08;&#x8207;heap sort&#x7684;&#x65B9;&#x6CD5;&#x76F8;&#x540C;&#xFF09;</li>
+<li>Insert : &#x5C07;&#x4E00;&#x7B46;&#x8CC7;&#x6599;&#x653E;&#x9032;heap&#x7684;&#x6700;&#x5C3E;&#x7AEF;&#xFF08;complete binary tree&#x7684;&#x6700;&#x5C3E;&#x7AEF;&#xFF09;&#xFF0C;&#x4E26;&#x5C0D;&#x5176;&#x6240;&#x6709;&#x7684;&#x7956;&#x5148;&#x505A;heapify</li>
+<li>Update Priority : <ul>
+<li>&#x5C07;&#x4E00;&#x500B;node&#x7684;&#x512A;&#x5148;&#x7A0B;&#x5EA6;&#x63D0;&#x9AD8;&#xFF1A;&#x66F4;&#x65B0;&#x8A72;node&#x7684;&#x512A;&#x5148;&#x5EA6;&#x4E26;&#x5C0D;&#x8A72;node&#x6240;&#x6709;&#x7684;&#x7956;&#x5148;&#x505A;heapify</li>
+<li>&#x5C07;&#x4E00;&#x500B;node&#x7684;&#x512A;&#x5148;&#x7A0B;&#x5EA6;&#x964D;&#x4F4E;&#xFF1A;&#x66F4;&#x65B0;&#x8A72;node&#x7684;&#x512A;&#x5148;&#x5EA6;&#x4E26;&#x5C0D;&#x8A72;node&#x7684;&#x6240;&#x6709;&#x5B50;&#x5B6B;&#x505A;heapify</li>
 </ul>
 </li>
 </ul>
-<p><img src="https://i.imgur.com/OqbqQjQ.png" alt=""></p>
-<ul>
-<li>DFS(Depth-first Search)</li>
-</ul>
-<p>&#x60F3;&#x8981;&#x4F9D;&#x7167;BFS&#x7684;&#x9806;&#x5E8F;&#x8D70;&#x5B8C;&#x6240;&#x6709;&#x9EDE;&#xFF0C;&#x53EF;&#x4EE5;&#x60F3;&#x6210;&#x627E;&#x51FA;&#x5C1A;&#x672A;&#x904D;&#x6B77;&#x7684;&#x9EDE;&#x7576;&#x505A;&#x8D77;&#x9EDE;&#xFF1A;</p>
-<ol>
-<li>&#x628A;&#x8D77;&#x9EDE;&#x653E;&#x5165;queue</li>
-<li>&#x62FF;&#x51FA;queue&#x7684;front</li>
-<li>&#x627E;&#x51FA;&#x8207;queue.front()&#x76F8;&#x9130;&#x7684;&#x9EDE;&#x653E;&#x5165;queue</li>
-<li>queue.pop()</li>
-<li>&#x91CD;&#x8907;2~4&#x76F4;&#x5230;queue&#x70BA;&#x7A7A;</li>
-</ol>
-<p><img src="https://i.imgur.com/kFEzg9G.png" alt=""></p>
-<h3 id="traverse-tree">Traverse Tree</h3>
-<pre><code class="lang-cpp=1">struct Node{
-    int data;
-    vector&lt;*Node&gt; neigh; 
-}; 
-
-void bfs(Node* first){
-    queue&lt;Node*&gt; q;
-    q.push(first);
-    while(!q.empty()){
-        // do what u want
-        q.front()-&gt;val;
-        //
-        for(int i=0 ; i&lt;q.front()-&gt;neigh.size() ; i++){
-            q.push(q.front()-&gt;neigh[i]);
-        }
-        q.pop();
-    }
-}
-</code></pre>
-<h3 id="traverse-graph">Traverse Graph</h3>
-<p>&#x4E0A;&#x9762;&#x7684;&#x4F8B;&#x5B50;&#x53EA;&#x80FD;&#x904D;&#x6B77;&#x6574;&#x500B;Tree&#xFF0C;&#x4F46;&#x82E5;&#x60F3;&#x904D;&#x6B77;Graph&#xFF0C;&#x6703;&#x78B0;&#x5230;&#x4E00;&#x554F;&#x984C;&#xFF1A;&#x6703;&#x904D;&#x6B77;&#x5230;&#x91CD;&#x8907;&#x7684;&#x9EDE;&#x5C0E;&#x81F4;&#x904D;&#x6B77;&#x7684;&#x9806;&#x5E8F;&#x6DF7;&#x4E82;&#xFF0C;&#x56E0;&#x6B64;&#x6211;&#x5011;&#x9700;&#x8981;&#x5728;Node&#x4E2D;&#x52A0;&#x5165;&#x4E00;&#x500B;&#x8B8A;&#x6578;&#x5132;&#x5B58;Node&#x7684;&#x72C0;&#x614B;&#xFF0C;&#x5728;&#x4E0A;&#x5716;&#x4E2D;&#x7528;&#x767D;&#x3001;&#x7070;&#x3001;&#x9ED1;&#x8868;&#x793A;&#x3002;</p>
-<ul>
-<li>&#x767D;&#xFF1A;&#x9084;&#x672A;&#x904D;&#x6B77;&#x5230;&#x6B64;Node&#xFF08;&#x672A;&#x653E;&#x9032;Queue&#xFF09;</li>
-<li>&#x7070;&#xFF1A;&#x904D;&#x6B77;&#x5230;&#x6B64;Node&#xFF0C;&#x4F46;&#x5C1A;&#x672A;&#x96E2;&#x958B;Queue</li>
-<li>&#x9ED1;&#xFF1A;&#x5DF2;&#x7D93;&#x904D;&#x6B77;&#x5B8C;&#x6B64;Node&#xFF08;&#x5DF2;pop&#x6389;&#xFF09;</li>
-</ul>
-<pre><code class="lang-cpp=1">struct Node{
-    int data;
-    int status; //&#x767D;:0, &#x7070;:1, &#x9ED1;:2
-    vector&lt;*Node&gt; neigh; 
-}; 
-
-void bfs(Node* first){
-    queue&lt;Node*&gt; q;
-    q.push(first);
-    while(!q.empty()){
-        q.front()-&gt;status = 1;
-        // do what u want
-        q.front()-&gt;val;
-        //
-        int size = q.size();
-        for(int d=0 ; d&lt;size ; d++){
-            // &#x4E00;&#x5C64;
-            for(int i=0 ; i&lt;q.front()-&gt;neigh.size() ; i++){
-                // &#x4E00;&#x500B;&#x9130;&#x5C45;&#xFF0C;&#x767D;&#x8272;&#x624D;&#x653E;&#x9032;queue
-                if(q.front()-&gt;neigh[i]-&gt;status == 0){
-                    q.push(q.front()-&gt;neigh[i]);
-                }
-            }
-            q.front()-&gt;status = 2;
-            q.pop();
-        }
-    }
-}
-</code></pre>
-<ul>
-<li>Follow up: &#x662F;&#x4E0D;&#x662F;&#x4E0D;&#x9700;&#x8981;&#x5B58;&#x767D;&#x7070;&#x9ED1;&#x4E09;&#x7A2E;&#x72C0;&#x614B;?</li>
-</ul>
 <h3 id="&#x5C0F;&#x7DF4;&#x7FD2;">&#x5C0F;&#x7DF4;&#x7FD2;</h3>
 <ul>
-<li><a href="https://leetcode.com/problems/binary-tree-right-side-view/" target="_blank">https://leetcode.com/problems/binary-tree-right-side-view/</a></li>
-<li><a href="https://leetcode.com/problems/maximum-level-sum-of-a-binary-tree/" target="_blank">https://leetcode.com/problems/maximum-level-sum-of-a-binary-tree/</a></li>
-<li><a href="https://leetcode.com/problems/cousins-in-binary-tree/" target="_blank">https://leetcode.com/problems/cousins-in-binary-tree/</a></li>
-<li><a href="https://leetcode.com/problems/jump-game-iii/" target="_blank">https://leetcode.com/problems/jump-game-iii/</a></li>
-<li><a href="https://www.hackerrank.com/challenges/bfsshortreach/problem" target="_blank">https://www.hackerrank.com/challenges/bfsshortreach/problem</a></li>
+<li><a href="https://leetcode.com/problems/last-stone-weight/" target="_blank">https://leetcode.com/problems/last-stone-weight/</a></li>
+<li><a href="https://leetcode.com/problems/sort-characters-by-frequency/" target="_blank">https://leetcode.com/problems/sort-characters-by-frequency/</a></li>
 </ul>
 
                                 
@@ -934,8 +874,12 @@ void bfs(Node* first){
 
             
                 
+                <a href="heap.html" class="navigation navigation-prev " aria-label="Previous page: Heap">
+                    <i class="fa fa-angle-left"></i>
+                </a>
                 
-                <a href="dfs.html" class="navigation navigation-next navigation-unique" aria-label="Next page: DFS">
+                
+                <a href="priority_queue_method.html" class="navigation navigation-next " aria-label="Next page: 常用method">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -946,7 +890,7 @@ void bfs(Node* first){
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"BFS","level":"1.3.7.2","depth":3,"next":{"title":"DFS","level":"1.3.7.3","depth":3,"path":"cpp_sec/dfs.md","ref":"cpp_sec/dfs.md","articles":[]},"previous":{"title":"AVL tree","level":"1.3.7.1.3","depth":4,"ref":"","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cpp_sec/bfs.md","mtime":"2020-04-15T03:16:14.247Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-30T09:03:24.639Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Priority Queue","level":"1.3.10","depth":2,"next":{"title":"常用method","level":"1.3.10.1","depth":3,"path":"cpp_sec/priority_queue_method.md","ref":"cpp_sec/priority_queue_method.md","articles":[]},"previous":{"title":"Heap","level":"1.3.9","depth":2,"path":"cpp_sec/heap.md","ref":"cpp_sec/heap.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cpp_sec/priority_queue.md","mtime":"2020-04-30T09:02:03.781Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-30T09:03:24.639Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

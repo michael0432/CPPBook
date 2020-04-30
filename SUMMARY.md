@@ -30,10 +30,12 @@
       * AVL tree
     * [BFS](cpp_sec/bfs.md)
     * [DFS](cpp_sec/dfs.md)
-  * Hash Table / Maps
-  * Heap
-  * Priority Queue
-  * Set / Disjoint Set
+  * [Hash Table / Maps](cpp_sec/hashmap.md)
+    * [常用method](cpp_sec/hashmap_method.md)
+  * [Heap](cpp_sec/heap.md)
+  * [Priority Queue](cpp_sec/priority_queue.md)
+    * [常用method](cpp_sec/priority_queue_method.md)
+  * [Set / Disjoint Set](cpp_sec/set.md)
 * Algorithm
   * Divide and Conquer
   * Dynammic Programming

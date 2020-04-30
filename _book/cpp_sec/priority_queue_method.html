@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>BFS · GitBook</title>
+        <title>常用method · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,8 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="dfs.html" />
+    <link rel="next" href="set.html" />
     
+    
+    <link rel="prev" href="priority_queue.html" />
     
 
     </head>
@@ -483,7 +485,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.3.7.2" data-path="bfs.html">
+        <li class="chapter " data-level="1.3.7.2" data-path="bfs.html">
             
                 <a href="bfs.html">
             
@@ -573,7 +575,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.3.10.1" data-path="priority_queue_method.html">
+        <li class="chapter active" data-level="1.3.10.1" data-path="priority_queue_method.html">
             
                 <a href="priority_queue_method.html">
             
@@ -800,7 +802,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >BFS</a>
+        <a href=".." >常用method</a>
     </h1>
 </div>
 
@@ -815,98 +817,65 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="bfs">BFS</h1>
+                                <h1 id="priority-queue&#x5E38;&#x7528;method">Priority Queue&#x5E38;&#x7528;method</h1>
 <h6 id="tags--data-structure">tags = <code>Data Structure</code></h6>
-<p>&#x7D66;&#x4E00;&#x5F35;Graph&#xFF0C;&#x8981;&#x600E;&#x9EBC;&#x904D;&#x6B77;&#x9019;&#x5F35;&#x5716;&#xFF1F;&#xFF08;&#x8B80;&#x5230;&#x5716;&#x4E2D;&#x7684;&#x6BCF;&#x500B;Node&#xFF09;</p>
-<ul>
-<li>BFS(Breadth-fisrt Search)<ul>
-<li>&#x5F9E;&#x5716;&#x7684;&#x4E00;&#x500B;Vertex&#x51FA;&#x767C;</li>
-<li>&#x5148;&#x8D70;&#x96E2;&#x8A72;Vertex&#x76F8;&#x9130;&#x7684;Vertex(&#x8DDD;&#x96E2;&#x70BA;1)</li>
-<li>&#x518D;&#x8D70;&#x5230;&#x8DDD;&#x96E2;&#x70BA;2&#x7684;Vertex</li>
-<li>&#x76F4;&#x5230;&#x8D70;&#x5230;&#x6700;&#x9060;&#x7684;&#x9EDE;&#xFF08;&#x8D70;&#x5B8C;&#x6240;&#x6709;&#x9EDE;&#xFF09;</li>
-</ul>
-</li>
-</ul>
-<p><img src="https://i.imgur.com/OqbqQjQ.png" alt=""></p>
-<ul>
-<li>DFS(Depth-first Search)</li>
-</ul>
-<p>&#x60F3;&#x8981;&#x4F9D;&#x7167;BFS&#x7684;&#x9806;&#x5E8F;&#x8D70;&#x5B8C;&#x6240;&#x6709;&#x9EDE;&#xFF0C;&#x53EF;&#x4EE5;&#x60F3;&#x6210;&#x627E;&#x51FA;&#x5C1A;&#x672A;&#x904D;&#x6B77;&#x7684;&#x9EDE;&#x7576;&#x505A;&#x8D77;&#x9EDE;&#xFF1A;</p>
-<ol>
-<li>&#x628A;&#x8D77;&#x9EDE;&#x653E;&#x5165;queue</li>
-<li>&#x62FF;&#x51FA;queue&#x7684;front</li>
-<li>&#x627E;&#x51FA;&#x8207;queue.front()&#x76F8;&#x9130;&#x7684;&#x9EDE;&#x653E;&#x5165;queue</li>
-<li>queue.pop()</li>
-<li>&#x91CD;&#x8907;2~4&#x76F4;&#x5230;queue&#x70BA;&#x7A7A;</li>
-</ol>
-<p><img src="https://i.imgur.com/kFEzg9G.png" alt=""></p>
-<h3 id="traverse-tree">Traverse Tree</h3>
-<pre><code class="lang-cpp=1">struct Node{
-    int data;
-    vector&lt;*Node&gt; neigh; 
-}; 
+<h3 id="&#x5BA3;&#x544A;">&#x5BA3;&#x544A;</h3>
+<p>&#x5BA3;&#x544A;priority queue&#x9700;&#x8981;&#x4E09;&#x500B;&#x8B8A;&#x6578;&#xFF1A;queue&#x4E2D;&#x7684;&#x8CC7;&#x6599;&#x578B;&#x614B;&#x3001;&#x7528;&#x4EC0;&#x9EBC;&#x8CC7;&#x6599;&#x7D50;&#x69CB;&#x5132;&#x5B58;heap&#x3001;&#x6BD4;&#x8F03;priority&#x7684;&#x65B9;&#x5F0F;&#x3002;</p>
+<pre><code class="lang-cpp=1">#include &lt;queue&gt;
+priority_queue&lt;int, vector&lt;int&gt;, greater&lt;int&gt;()&gt; pq;
+// int : &#x8CC7;&#x6599;&#x578B;&#x614B;&#x70BA;int
+// vector&lt;int&gt; : &#x7528;vector&#x5B58;heap&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x7528;deque
+// greater&lt;int&gt;() : max heap
+// less&lt;int&gt;() : min heap
+</code></pre>
+<h3 id="push">Push</h3>
+<p>&#x628A;element&#x653E;&#x9032;priority queue&#x4E2D;</p>
+<pre><code class="lang-cpp=1">pq.push(1);
+</code></pre>
+<h3 id="push">Push</h3>
+<p>&#x628A;element&#x653E;&#x9032;priority queue&#x4E2D;</p>
+<pre><code class="lang-cpp=1">pq.push(1);
+</code></pre>
+<h3 id="pop">Pop</h3>
+<p>&#x5C07;heap&#x7684;root&#x522A;&#x9664;</p>
+<pre><code class="lang-cpp=1">pq.pop();
+</code></pre>
+<h3 id="top">Top</h3>
+<p>&#x56DE;&#x50B3;heap&#x7684;root</p>
+<pre><code class="lang-cpp=1">cout &lt;&lt; pq.top() &lt;&lt; endl;
+</code></pre>
+<h3 id="empty">Empty</h3>
+<p>&#x56DE;&#x50B3;priority queue&#x662F;&#x5426;&#x70BA;&#x7A7A;</p>
+<pre><code class="lang-cpp=1">if(pq.empty()){
 
-void bfs(Node* first){
-    queue&lt;Node*&gt; q;
-    q.push(first);
-    while(!q.empty()){
-        // do what u want
-        q.front()-&gt;val;
-        //
-        for(int i=0 ; i&lt;q.front()-&gt;neigh.size() ; i++){
-            q.push(q.front()-&gt;neigh[i]);
-        }
-        q.pop();
-    }
 }
 </code></pre>
-<h3 id="traverse-graph">Traverse Graph</h3>
-<p>&#x4E0A;&#x9762;&#x7684;&#x4F8B;&#x5B50;&#x53EA;&#x80FD;&#x904D;&#x6B77;&#x6574;&#x500B;Tree&#xFF0C;&#x4F46;&#x82E5;&#x60F3;&#x904D;&#x6B77;Graph&#xFF0C;&#x6703;&#x78B0;&#x5230;&#x4E00;&#x554F;&#x984C;&#xFF1A;&#x6703;&#x904D;&#x6B77;&#x5230;&#x91CD;&#x8907;&#x7684;&#x9EDE;&#x5C0E;&#x81F4;&#x904D;&#x6B77;&#x7684;&#x9806;&#x5E8F;&#x6DF7;&#x4E82;&#xFF0C;&#x56E0;&#x6B64;&#x6211;&#x5011;&#x9700;&#x8981;&#x5728;Node&#x4E2D;&#x52A0;&#x5165;&#x4E00;&#x500B;&#x8B8A;&#x6578;&#x5132;&#x5B58;Node&#x7684;&#x72C0;&#x614B;&#xFF0C;&#x5728;&#x4E0A;&#x5716;&#x4E2D;&#x7528;&#x767D;&#x3001;&#x7070;&#x3001;&#x9ED1;&#x8868;&#x793A;&#x3002;</p>
-<ul>
-<li>&#x767D;&#xFF1A;&#x9084;&#x672A;&#x904D;&#x6B77;&#x5230;&#x6B64;Node&#xFF08;&#x672A;&#x653E;&#x9032;Queue&#xFF09;</li>
-<li>&#x7070;&#xFF1A;&#x904D;&#x6B77;&#x5230;&#x6B64;Node&#xFF0C;&#x4F46;&#x5C1A;&#x672A;&#x96E2;&#x958B;Queue</li>
-<li>&#x9ED1;&#xFF1A;&#x5DF2;&#x7D93;&#x904D;&#x6B77;&#x5B8C;&#x6B64;Node&#xFF08;&#x5DF2;pop&#x6389;&#xFF09;</li>
-</ul>
-<pre><code class="lang-cpp=1">struct Node{
-    int data;
-    int status; //&#x767D;:0, &#x7070;:1, &#x9ED1;:2
-    vector&lt;*Node&gt; neigh; 
-}; 
-
-void bfs(Node* first){
-    queue&lt;Node*&gt; q;
-    q.push(first);
-    while(!q.empty()){
-        q.front()-&gt;status = 1;
-        // do what u want
-        q.front()-&gt;val;
-        //
-        int size = q.size();
-        for(int d=0 ; d&lt;size ; d++){
-            // &#x4E00;&#x5C64;
-            for(int i=0 ; i&lt;q.front()-&gt;neigh.size() ; i++){
-                // &#x4E00;&#x500B;&#x9130;&#x5C45;&#xFF0C;&#x767D;&#x8272;&#x624D;&#x653E;&#x9032;queue
-                if(q.front()-&gt;neigh[i]-&gt;status == 0){
-                    q.push(q.front()-&gt;neigh[i]);
-                }
-            }
-            q.front()-&gt;status = 2;
-            q.pop();
-        }
-    }
-}
+<h3 id="size">Size</h3>
+<p>&#x56DE;&#x50B3;priority queue&#x7684;&#x5927;&#x5C0F;</p>
+<pre><code class="lang-cpp=1">cout &lt;&lt; pq.size() &lt;&lt; endl;
 </code></pre>
-<ul>
-<li>Follow up: &#x662F;&#x4E0D;&#x662F;&#x4E0D;&#x9700;&#x8981;&#x5B58;&#x767D;&#x7070;&#x9ED1;&#x4E09;&#x7A2E;&#x72C0;&#x614B;?</li>
-</ul>
-<h3 id="&#x5C0F;&#x7DF4;&#x7FD2;">&#x5C0F;&#x7DF4;&#x7FD2;</h3>
-<ul>
-<li><a href="https://leetcode.com/problems/binary-tree-right-side-view/" target="_blank">https://leetcode.com/problems/binary-tree-right-side-view/</a></li>
-<li><a href="https://leetcode.com/problems/maximum-level-sum-of-a-binary-tree/" target="_blank">https://leetcode.com/problems/maximum-level-sum-of-a-binary-tree/</a></li>
-<li><a href="https://leetcode.com/problems/cousins-in-binary-tree/" target="_blank">https://leetcode.com/problems/cousins-in-binary-tree/</a></li>
-<li><a href="https://leetcode.com/problems/jump-game-iii/" target="_blank">https://leetcode.com/problems/jump-game-iii/</a></li>
-<li><a href="https://www.hackerrank.com/challenges/bfsshortreach/problem" target="_blank">https://www.hackerrank.com/challenges/bfsshortreach/problem</a></li>
-</ul>
+<h3 id="custom-class-priority-queue">Custom Class Priority Queue</h3>
+<p>&#x6709;&#x4E9B;&#x6642;&#x5019;&#xFF0C;priority queue&#x6709;&#x53EF;&#x80FD;&#x9700;&#x8981;&#x5B58;&#x81EA;&#x5DF1;&#x5B9A;&#x7FA9;&#x7684;class&#xFF0C;&#x9019;&#x6642;&#x9700;&#x8981;&#x81EA;&#x5DF1;&#x5B9A;&#x7FA9;&#x6BD4;&#x5927;&#x5C0F;&#x7684;function&#x3002;</p>
+<pre><code class="lang-cpp=1">class customClass{
+    int x;
+    int y;
+};
+
+class Compare{
+
+};
+
+priority_queue&lt;customClass, vector&lt;customClass&gt;, Compare&gt; pq
+class Compare
+{
+public:
+    bool operator() (const customClass&amp; a, const customClass&amp; b)
+    {
+        return a.x &gt; b.x; // &#x5F9E;&#x5C0F;&#x6392;&#x5230;&#x5927;
+    }
+};
+</code></pre>
+<h3 id="&#x6CE8;&#x610F;&#xFF01;-c&#x7684;priority-queue&#x4E0D;&#x652F;&#x63F4;&#x66F4;&#x6539;&#x6B0A;&#x91CD;">&#x6CE8;&#x610F;&#xFF01; C++&#x7684;priority queue&#x4E0D;&#x652F;&#x63F4;&#x66F4;&#x6539;&#x6B0A;&#x91CD;</h3>
 
                                 
                                 </section>
@@ -934,8 +903,12 @@ void bfs(Node* first){
 
             
                 
+                <a href="priority_queue.html" class="navigation navigation-prev " aria-label="Previous page: Priority Queue">
+                    <i class="fa fa-angle-left"></i>
+                </a>
                 
-                <a href="dfs.html" class="navigation navigation-next navigation-unique" aria-label="Next page: DFS">
+                
+                <a href="set.html" class="navigation navigation-next " aria-label="Next page: Set / Disjoint Set">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -946,7 +919,7 @@ void bfs(Node* first){
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"BFS","level":"1.3.7.2","depth":3,"next":{"title":"DFS","level":"1.3.7.3","depth":3,"path":"cpp_sec/dfs.md","ref":"cpp_sec/dfs.md","articles":[]},"previous":{"title":"AVL tree","level":"1.3.7.1.3","depth":4,"ref":"","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cpp_sec/bfs.md","mtime":"2020-04-15T03:16:14.247Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-30T09:03:24.639Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"常用method","level":"1.3.10.1","depth":3,"next":{"title":"Set / Disjoint Set","level":"1.3.11","depth":2,"path":"cpp_sec/set.md","ref":"cpp_sec/set.md","articles":[]},"previous":{"title":"Priority Queue","level":"1.3.10","depth":2,"path":"cpp_sec/priority_queue.md","ref":"cpp_sec/priority_queue.md","articles":[{"title":"常用method","level":"1.3.10.1","depth":3,"path":"cpp_sec/priority_queue_method.md","ref":"cpp_sec/priority_queue_method.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cpp_sec/priority_queue_method.md","mtime":"2020-04-30T09:02:11.217Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-30T09:03:24.639Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

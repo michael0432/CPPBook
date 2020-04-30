@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>BFS · GitBook</title>
+        <title>Set / Disjoint Set · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,8 +57,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="dfs.html" />
     
+    <link rel="prev" href="priority_queue_method.html" />
     
 
     </head>
@@ -483,7 +483,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.3.7.2" data-path="bfs.html">
+        <li class="chapter " data-level="1.3.7.2" data-path="bfs.html">
             
                 <a href="bfs.html">
             
@@ -591,7 +591,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.11" data-path="set.html">
+        <li class="chapter active" data-level="1.3.11" data-path="set.html">
             
                 <a href="set.html">
             
@@ -800,7 +800,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >BFS</a>
+        <a href=".." >Set / Disjoint Set</a>
     </h1>
 </div>
 
@@ -815,97 +815,284 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="bfs">BFS</h1>
+                                <h1 id="set">Set</h1>
 <h6 id="tags--data-structure">tags = <code>Data Structure</code></h6>
-<p>&#x7D66;&#x4E00;&#x5F35;Graph&#xFF0C;&#x8981;&#x600E;&#x9EBC;&#x904D;&#x6B77;&#x9019;&#x5F35;&#x5716;&#xFF1F;&#xFF08;&#x8B80;&#x5230;&#x5716;&#x4E2D;&#x7684;&#x6BCF;&#x500B;Node&#xFF09;</p>
+<p>Set&#x70BA;&#x96C6;&#x5408;&#xFF0C;&#x5373;&#x5C07;&#x5143;&#x7D20;&#x5206;&#x6210;&#x4E00;&#x5718;&#x4E00;&#x5718;&#x7684;&#x985E;&#x5225;&#x3002;
+&#x8209;&#x4F8B;&#x4F86;&#x8AAA;&#xFF0C;&#x6211;&#x5011;&#x53EF;&#x4EE5;&#x628A;&#x6B63;&#x6574;&#x6578;&#x5206;&#x6210;&#x5947;&#x6578;&#x8DDF;&#x5076;&#x6578;&#x5169;&#x500B;&#x96C6;&#x5408;:</p>
 <ul>
-<li>BFS(Breadth-fisrt Search)<ul>
-<li>&#x5F9E;&#x5716;&#x7684;&#x4E00;&#x500B;Vertex&#x51FA;&#x767C;</li>
-<li>&#x5148;&#x8D70;&#x96E2;&#x8A72;Vertex&#x76F8;&#x9130;&#x7684;Vertex(&#x8DDD;&#x96E2;&#x70BA;1)</li>
-<li>&#x518D;&#x8D70;&#x5230;&#x8DDD;&#x96E2;&#x70BA;2&#x7684;Vertex</li>
-<li>&#x76F4;&#x5230;&#x8D70;&#x5230;&#x6700;&#x9060;&#x7684;&#x9EDE;&#xFF08;&#x8D70;&#x5B8C;&#x6240;&#x6709;&#x9EDE;&#xFF09;</li>
+<li>&#x5947;&#x6578;:{1,3,5,7.....}</li>
+<li>&#x5076;&#x6578;:{2,4,6,8.....}</li>
 </ul>
-</li>
-</ul>
-<p><img src="https://i.imgur.com/OqbqQjQ.png" alt=""></p>
+<p>&#x5728;&#x5BEB;&#x7A0B;&#x5F0F;&#x6216;&#x89E3;&#x6C7A;&#x65E5;&#x5E38;&#x751F;&#x6D3B;&#x7684;&#x554F;&#x984C;&#x6642;&#xFF0C;&#x6211;&#x5011;&#x6642;&#x5E38;&#x6703;&#x9700;&#x8981;&#x5C0D;&#x96C6;&#x5408;&#x505A;:</p>
 <ul>
-<li>DFS(Depth-first Search)</li>
+<li>&#x5408;&#x4F75;&#xFF08;&#x5169;&#x500B;&#x96C6;&#x5408;&#x7D50;&#x5408;&#x6210;&#x4E00;&#x500B;&#x96C6;&#x5408;&#xFF09;</li>
+<li>&#x627E;&#x5C0B;&#xFF08;&#x627E;&#x67D0;&#x500B;&#x5143;&#x7D20;&#x4F4D;&#x65BC;&#x54EA;&#x500B;&#x96C6;&#x5408;&#xFF09;</li>
+<li>&#x4EA4;&#x96C6;</li>
+<li>&#x806F;&#x96C6;</li>
+<li>&#x5DEE;&#x96C6;</li>
 </ul>
-<p>&#x60F3;&#x8981;&#x4F9D;&#x7167;BFS&#x7684;&#x9806;&#x5E8F;&#x8D70;&#x5B8C;&#x6240;&#x6709;&#x9EDE;&#xFF0C;&#x53EF;&#x4EE5;&#x60F3;&#x6210;&#x627E;&#x51FA;&#x5C1A;&#x672A;&#x904D;&#x6B77;&#x7684;&#x9EDE;&#x7576;&#x505A;&#x8D77;&#x9EDE;&#xFF1A;</p>
-<ol>
-<li>&#x628A;&#x8D77;&#x9EDE;&#x653E;&#x5165;queue</li>
-<li>&#x62FF;&#x51FA;queue&#x7684;front</li>
-<li>&#x627E;&#x51FA;&#x8207;queue.front()&#x76F8;&#x9130;&#x7684;&#x9EDE;&#x653E;&#x5165;queue</li>
-<li>queue.pop()</li>
-<li>&#x91CD;&#x8907;2~4&#x76F4;&#x5230;queue&#x70BA;&#x7A7A;</li>
-</ol>
-<p><img src="https://i.imgur.com/kFEzg9G.png" alt=""></p>
-<h3 id="traverse-tree">Traverse Tree</h3>
-<pre><code class="lang-cpp=1">struct Node{
-    int data;
-    vector&lt;*Node&gt; neigh; 
-}; 
-
-void bfs(Node* first){
-    queue&lt;Node*&gt; q;
-    q.push(first);
-    while(!q.empty()){
-        // do what u want
-        q.front()-&gt;val;
-        //
-        for(int i=0 ; i&lt;q.front()-&gt;neigh.size() ; i++){
-            q.push(q.front()-&gt;neigh[i]);
-        }
-        q.pop();
+<h3 id="set">Set</h3>
+<h4 id="&#x7528;array&#x5132;&#x5B58;set">&#x7528;Array&#x5132;&#x5B58;set</h4>
+<p>&#x6700;&#x76F4;&#x89C0;&#x7684;&#x65B9;&#x5F0F;&#x662F;&#x7528;array&#x5132;&#x5B58;&#x4E00;&#x500B;&#x96C6;&#x5408;&#xFF0C;&#x6BCF;&#x4E00;&#x500B;Array&#x4EE3;&#x8868;&#x4E00;&#x500B;&#x96C6;&#x5408;</p>
+<pre><code class="lang-cpp=1">class Set{
+    vector&lt;int&gt; v(1000);
+};
+</code></pre>
+<p>&#x7F3A;&#x9EDE;&#xFF1A;</p>
+<ul>
+<li>&#x505A;&#x806F;&#x96C6;&#x3001;&#x4EA4;&#x96C6;&#x3001;&#x5DEE;&#x96C6;&#x7B49;&#x904B;&#x7B97;&#x5F88;&#x6162;</li>
+</ul>
+<h4 id="&#x7528;hash-table&#x5132;&#x5B58;set">&#x7528;Hash Table&#x5132;&#x5B58;set</h4>
+<p>&#x9019;&#x6642;&#x6703;&#x60F3;&#x5230;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;Hash Table&#x4F86;&#x5132;&#x5B58;set&#xFF0C;&#x5982;&#x6B64;&#x4E00;&#x4F86;&#xFF0C;&#x5728;&#x627E;&#x5C0B;&#x7279;&#x5B9A;&#x5143;&#x7D20;&#x6642;&#x7684;&#x901F;&#x5EA6;&#x5C31;&#x6703;&#x8B8A;&#x5FEB;&#xFF0C;&#x505A;&#x806F;&#x96C6;&#x3001;&#x4EA4;&#x96C6;&#x3001;&#x5DEE;&#x96C6;&#x7684;&#x6642;&#x9593;&#x4E5F;&#x6703;&#x8B8A;&#x5FEB;&#x3002;</p>
+<pre><code class="lang-cpp=1">class Set{
+    unordered_set&lt;int&gt; s(1000);
+};
+</code></pre>
+<h3 id="disjoint-set">Disjoint Set</h3>
+<p>Disjoint Set&#x70BA;&#x4E92;&#x65A5;&#x96C6;&#xFF0C;&#x5373;&#x662F;&#x4E00;&#x5806;&#x96C6;&#x5408;&#x5011;&#xFF0C;&#x5F7C;&#x6B64;&#x7684;element&#x90FD;&#x4E0D;&#x6703;&#x91CD;&#x8907;&#xFF0C;&#x50CF;&#x4E0A;&#x9762;&#x8209;&#x7684;&#x5947;&#x6578;&#x5076;&#x6578;&#x53CA;&#x70BA;&#x4E92;&#x65A5;&#x96C6;&#xFF0C;&#x7531;&#x65BC;&#x96C6;&#x5408;&#x5011;&#x90FD;&#x6C92;&#x6709;&#x4EA4;&#x96C6;&#xFF0C;&#x56E0;&#x6B64;&#x4EA4;&#x96C6;&#x3001;&#x5DEE;&#x96C6;&#x7B49;&#x904B;&#x7B97;&#x90FD;&#x4E0D;&#x5FC5;&#x8981;&#xFF0C;&#x9019;&#x7A2E;&#x72C0;&#x6CC1;&#x4E0B;&#x53EA;&#x9700;&#x8981;&#x8003;&#x616E;&#x5E7E;&#x500B;&#x904B;&#x7B97;:</p>
+<ul>
+<li>&#x5408;&#x4F75;</li>
+<li>&#x627E;&#x5C0B;</li>
+</ul>
+<h4 id="&#x7528;array&#x5B58;disjoint-set">&#x7528;Array&#x5B58;disjoint set</h4>
+<p>&#x5047;&#x8A2D;&#x73FE;&#x5728;set&#x7E3D;&#x5171;&#x6709;n&#x500B;element&#xFF0C;&#x4FBF;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x4E00;&#x500B;array&#x5B58;&#x6240;&#x6709;&#x7684;element&#x6240;&#x5728;&#x7684;set&#x3002;</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>9</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Value</td>
+<td>4</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>3</td>
+<td>2</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>4</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="lang-cpp=1">vector&lt;int&gt; disjoint_set(10);
+</code></pre>
+<p>&#x4E00;&#x958B;&#x59CB;&#x9084;&#x6C92;&#x5206;&#x5718;&#x7684;&#x6642;&#x5019;&#xFF0C;&#x53EF;&#x4EE5;&#x60F3;&#x50CF;&#x6BCF;&#x500B;&#x4EBA;&#x662F;&#x81EA;&#x5DF1;&#x4E00;&#x7D44;(&#x7E3D;&#x5171;&#x6709;10&#x500B;element&#xFF0C;&#x6BCF;&#x500B;set&#x7686;&#x70BA;1&#x500B;element)</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>9</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Value</td>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>7</td>
+<td>8</td>
+<td>9</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="lang-cpp=1">void init(){
+    for(int i=0 ; i&lt;10 ; i++){
+        disjoint_set[i] = i;
     }
 }
 </code></pre>
-<h3 id="traverse-graph">Traverse Graph</h3>
-<p>&#x4E0A;&#x9762;&#x7684;&#x4F8B;&#x5B50;&#x53EA;&#x80FD;&#x904D;&#x6B77;&#x6574;&#x500B;Tree&#xFF0C;&#x4F46;&#x82E5;&#x60F3;&#x904D;&#x6B77;Graph&#xFF0C;&#x6703;&#x78B0;&#x5230;&#x4E00;&#x554F;&#x984C;&#xFF1A;&#x6703;&#x904D;&#x6B77;&#x5230;&#x91CD;&#x8907;&#x7684;&#x9EDE;&#x5C0E;&#x81F4;&#x904D;&#x6B77;&#x7684;&#x9806;&#x5E8F;&#x6DF7;&#x4E82;&#xFF0C;&#x56E0;&#x6B64;&#x6211;&#x5011;&#x9700;&#x8981;&#x5728;Node&#x4E2D;&#x52A0;&#x5165;&#x4E00;&#x500B;&#x8B8A;&#x6578;&#x5132;&#x5B58;Node&#x7684;&#x72C0;&#x614B;&#xFF0C;&#x5728;&#x4E0A;&#x5716;&#x4E2D;&#x7528;&#x767D;&#x3001;&#x7070;&#x3001;&#x9ED1;&#x8868;&#x793A;&#x3002;</p>
-<ul>
-<li>&#x767D;&#xFF1A;&#x9084;&#x672A;&#x904D;&#x6B77;&#x5230;&#x6B64;Node&#xFF08;&#x672A;&#x653E;&#x9032;Queue&#xFF09;</li>
-<li>&#x7070;&#xFF1A;&#x904D;&#x6B77;&#x5230;&#x6B64;Node&#xFF0C;&#x4F46;&#x5C1A;&#x672A;&#x96E2;&#x958B;Queue</li>
-<li>&#x9ED1;&#xFF1A;&#x5DF2;&#x7D93;&#x904D;&#x6B77;&#x5B8C;&#x6B64;Node&#xFF08;&#x5DF2;pop&#x6389;&#xFF09;</li>
-</ul>
-<pre><code class="lang-cpp=1">struct Node{
-    int data;
-    int status; //&#x767D;:0, &#x7070;:1, &#x9ED1;:2
-    vector&lt;*Node&gt; neigh; 
-}; 
-
-void bfs(Node* first){
-    queue&lt;Node*&gt; q;
-    q.push(first);
-    while(!q.empty()){
-        q.front()-&gt;status = 1;
-        // do what u want
-        q.front()-&gt;val;
-        //
-        int size = q.size();
-        for(int d=0 ; d&lt;size ; d++){
-            // &#x4E00;&#x5C64;
-            for(int i=0 ; i&lt;q.front()-&gt;neigh.size() ; i++){
-                // &#x4E00;&#x500B;&#x9130;&#x5C45;&#xFF0C;&#x767D;&#x8272;&#x624D;&#x653E;&#x9032;queue
-                if(q.front()-&gt;neigh[i]-&gt;status == 0){
-                    q.push(q.front()-&gt;neigh[i]);
-                }
-            }
-            q.front()-&gt;status = 2;
-            q.pop();
-        }
+<h5 id="find">Find</h5>
+<pre><code class="lang-cpp=1">int find(int x){
+    return disjoint_set[x];
+}
+</code></pre>
+<h5 id="equal">Equal</h5>
+<pre><code class="lang-cpp=1">int equal(int x, int y){
+    return disjoint_set[x] == disjoint_set[y];
+}
+</code></pre>
+<h5 id="union">Union</h5>
+<pre><code class="lang-cpp=1">void union(int x, int y){
+   if(!equal(x,y)){
+       for(int i=0 ; i&lt;10 ; i++){
+           if(disjoint_set[i] == x){
+               disjoint_set[i] = y;
+           }
+       }
+   }
+}
+</code></pre>
+<p>&#x6642;&#x9593;&#x8907;&#x96DC;&#x5EA6;?</p>
+<h3 id="disjoint-set-forest">Disjoint set Forest</h3>
+<p>&#x4E0A;&#x8FF0;&#x7684;&#x65B9;&#x6CD5;&#x662F;&#x7528;array&#x5B58;&#x6BCF;&#x500B;element&#x5206;&#x5225;&#x5C6C;&#x65BC;&#x54EA;&#x4E00;&#x500B;set&#xFF0C;&#x9019;&#x88E1;&#x6539;&#x6210;&#x5B58;&#x6BCF;&#x500B;element&#x7684;&#x8001;&#x5927;&#x662F;&#x8AB0;&#x3002;</p>
+<p>&#x539F;&#x672C;&#x7684;&#x8868;&#x793A;&#x6CD5;:</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>9</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Value</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>3</td>
+<td>4</td>
+<td>1</td>
+<td>3</td>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>&#x4EE5;&#x4E0A;&#x8FF0;&#x7684;&#x65B9;&#x5F0F;&#x8868;&#x793A;:</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>9</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Value</td>
+<td>1</td>
+<td>1</td>
+<td>8</td>
+<td>2</td>
+<td>4</td>
+<td>5</td>
+<td>2</td>
+<td>4</td>
+<td>8</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+<p><img src="https://i.imgur.com/PLzwodk.png" alt=""></p>
+<h4 id="init">Init</h4>
+<p>&#x5728;&#x9084;&#x6C92;&#x5206;&#x5718;&#x7684;&#x6642;&#x5019;&#xFF0C;&#x53EF;&#x4EE5;&#x60F3;&#x6210;&#x6BCF;&#x500B;element&#x7684;&#x8001;&#x5927;&#x90FD;&#x662F;&#x81EA;&#x5DF1;</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>9</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Value</td>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>7</td>
+<td>8</td>
+<td>9</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="lang-cpp=1">void init(){
+    for(int i=0 ; i&lt;10 ; i++){
+        disjoint_set[i] = i;
     }
 }
 </code></pre>
-<ul>
-<li>Follow up: &#x662F;&#x4E0D;&#x662F;&#x4E0D;&#x9700;&#x8981;&#x5B58;&#x767D;&#x7070;&#x9ED1;&#x4E09;&#x7A2E;&#x72C0;&#x614B;?</li>
-</ul>
+<h4 id="find">Find</h4>
+<p>&#x627E;&#x5230;&#x67D0;&#x500B;element&#x662F;&#x5C6C;&#x65BC;&#x54EA;&#x500B;set(&#x9019;&#x500B;set&#x7684;&#x8001;&#x5927;&#x662F;&#x8AB0;)</p>
+<pre><code class="lang-cpp=1">int find(int x){
+    while(x != disjoint_set[x]){
+        x = disjoint_set[x];
+    }
+    return x;
+}
+</code></pre>
+<p>&#x66F4;&#x7C21;&#x55AE;&#x7684;&#x5BEB;&#x6CD5;:</p>
+<pre><code class="lang-cpp=1">int find(int x){
+    return x == disjoint_set[x] ? x : find(disjoint_set[x]);
+}
+</code></pre>
+<h4 id="equal">Equal</h4>
+<p>&#x5224;&#x65B7;&#x5169;&#x500B;element&#x662F;&#x5426;&#x662F;&#x540C;&#x4E00;&#x500B;set</p>
+<pre><code class="lang-cpp=1">int equal(int x, int y){
+    return find(x) == find(y);
+}
+</code></pre>
+<h4 id="union">Union</h4>
+<p>&#x5408;&#x4F75;&#x5169;&#x500B;set&#xFF0C;&#x4E26;&#x9078;&#x64C7;&#x4E00;&#x500B;element&#x4F5C;&#x70BA;&#x8001;&#x5927;</p>
+<p><img src="https://i.imgur.com/ghrRa0x.png" alt=""></p>
+<pre><code class="lang-cpp=1">void union(int x, int y){
+    x = find(x); // x&#x7684;&#x8001;&#x5927;
+    y = find(y); // y&#x7684;&#x8001;&#x5927;
+    disjoint_set[y] = x;
+}
+</code></pre>
 <h3 id="&#x5C0F;&#x7DF4;&#x7FD2;">&#x5C0F;&#x7DF4;&#x7FD2;</h3>
 <ul>
-<li><a href="https://leetcode.com/problems/binary-tree-right-side-view/" target="_blank">https://leetcode.com/problems/binary-tree-right-side-view/</a></li>
-<li><a href="https://leetcode.com/problems/maximum-level-sum-of-a-binary-tree/" target="_blank">https://leetcode.com/problems/maximum-level-sum-of-a-binary-tree/</a></li>
-<li><a href="https://leetcode.com/problems/cousins-in-binary-tree/" target="_blank">https://leetcode.com/problems/cousins-in-binary-tree/</a></li>
-<li><a href="https://leetcode.com/problems/jump-game-iii/" target="_blank">https://leetcode.com/problems/jump-game-iii/</a></li>
-<li><a href="https://www.hackerrank.com/challenges/bfsshortreach/problem" target="_blank">https://www.hackerrank.com/challenges/bfsshortreach/problem</a></li>
+<li><a href="https://leetcode.com/problems/friend-circles/" target="_blank">https://leetcode.com/problems/friend-circles/</a></li>
+<li><a href="https://leetcode.com/problems/number-of-operations-to-make-network-connected/" target="_blank">https://leetcode.com/problems/number-of-operations-to-make-network-connected/</a></li>
 </ul>
 
                                 
@@ -934,10 +1121,10 @@ void bfs(Node* first){
 
             
                 
-                
-                <a href="dfs.html" class="navigation navigation-next navigation-unique" aria-label="Next page: DFS">
-                    <i class="fa fa-angle-right"></i>
+                <a href="priority_queue_method.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 常用method">
+                    <i class="fa fa-angle-left"></i>
                 </a>
+                
                 
             
         
@@ -946,7 +1133,7 @@ void bfs(Node* first){
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"BFS","level":"1.3.7.2","depth":3,"next":{"title":"DFS","level":"1.3.7.3","depth":3,"path":"cpp_sec/dfs.md","ref":"cpp_sec/dfs.md","articles":[]},"previous":{"title":"AVL tree","level":"1.3.7.1.3","depth":4,"ref":"","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cpp_sec/bfs.md","mtime":"2020-04-15T03:16:14.247Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-30T09:03:24.639Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Set / Disjoint Set","level":"1.3.11","depth":2,"next":{"title":"Algorithm","level":"1.4","depth":1,"ref":"","articles":[{"title":"Divide and Conquer","level":"1.4.1","depth":2,"ref":"","articles":[]},{"title":"Dynammic Programming","level":"1.4.2","depth":2,"ref":"","articles":[]},{"title":"Greedy","level":"1.4.3","depth":2,"ref":"","articles":[]},{"title":"Graph","level":"1.4.4","depth":2,"path":"cpp_sec/graph.md","ref":"cpp_sec/graph.md","articles":[{"title":"Shortest Path","level":"1.4.4.1","depth":3,"path":"cpp_sec/shortest_path.md","ref":"cpp_sec/shortest_path.md","articles":[{"title":"Bellmen-Ford Algorithm","level":"1.4.4.1.1","depth":4,"path":"cpp_sec/bf.md","ref":"cpp_sec/bf.md","articles":[]},{"title":"[Shortest Path on DAG]","level":"1.4.4.1.2","depth":4,"ref":"","articles":[]},{"title":"Dijkstra's Algorithm","level":"1.4.4.1.3","depth":4,"path":"cpp_sec/Dijkstra.md","ref":"cpp_sec/Dijkstra.md","articles":[]}]},{"title":"[Minumum Spanning Tree]","level":"1.4.4.2","depth":3,"ref":"","articles":[]},{"title":"[Maximum Flow]","level":"1.4.4.3","depth":3,"ref":"","articles":[]}]}]},"previous":{"title":"常用method","level":"1.3.10.1","depth":3,"path":"cpp_sec/priority_queue_method.md","ref":"cpp_sec/priority_queue_method.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cpp_sec/set.md","mtime":"2020-04-30T09:01:54.538Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-30T09:03:24.639Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
