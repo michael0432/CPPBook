@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Array · GitBook</title>
+        <title>Dynammic Programming · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="string.html" />
     
-    
-    <link rel="prev" href="loop.html" />
+    <link rel="prev" href="dc.html" />
     
 
     </head>
@@ -181,7 +179,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.2.6" data-path="array.html">
+        <li class="chapter " data-level="1.2.6" data-path="array.html">
             
                 <a href="array.html">
             
@@ -638,7 +636,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.2" data-path="dp.html">
+        <li class="chapter active" data-level="1.4.2" data-path="dp.html">
             
                 <a href="dp.html">
             
@@ -802,7 +800,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Array</a>
+        <a href=".." >Dynammic Programming</a>
     </h1>
 </div>
 
@@ -817,77 +815,133 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="array">Array</h1>
-<p>&#x9663;&#x5217;&#x662F;&#x4E00;&#x7A2E;&#x5B58;&#x653E;&#x9023;&#x7E8C;&#x8CC7;&#x6599;&#x7684;&#x65B9;&#x5F0F;&#xFF0C;Array&#x4E2D;&#x7684;&#x8CC7;&#x6599;&#x6703;&#x5B58;&#x653E;&#x5728;&#x8A18;&#x61B6;&#x9AD4;&#x4E2D;&#x9023;&#x7E8C;&#x7684;&#x5340;&#x584A;&#x3002;
-<img src="https://i.imgur.com/ymZag5n.png" alt=""></p>
-<h3 id="1d-array">1D Array</h3>
-<p>Array&#x7684;&#x5BA3;&#x544A;&#x65B9;&#x5F0F;&#x5982;&#x4E0B;:</p>
-<pre><code class="lang-cpp=1">&#x8CC7;&#x6599;&#x578B;&#x614B; Array&#x540D;&#x7A31;[Array&#x5927;&#x5C0F;];
-
-int arr[5];
-</code></pre>
-<p>&#x8207;Python&#x7684;list&#x4E0D;&#x540C;&#xFF0C;C++&#x7684;Array&#x8981;&#x5148;&#x5BA3;&#x544A;&#x5927;&#x5C0F;&#xFF0C;&#x624D;&#x80FD;&#x5728;&#x8A18;&#x61B6;&#x9AD4;&#x4E2D;&#x62FF;&#x5230;&#x5132;&#x5B58;&#x7A7A;&#x9593;&#x3002;</p>
+                                <h1 id="dynamic-programming">Dynamic Programming</h1>
+<h6 id="tags--algorithm">tags = <code>Algorithm</code></h6>
+<h3 id="&#x57FA;&#x672C;&#x6982;&#x5FF5;">&#x57FA;&#x672C;&#x6982;&#x5FF5;</h3>
+<p>Dynamic Programming(&#x52D5;&#x614B;&#x898F;&#x5283;)&#x662F;&#x4E00;&#x7A2E;&#x5229;&#x7528;&#x5C0F;&#x554F;&#x984C;&#x89E3;&#x5927;&#x554F;&#x984C;&#x7684;&#x6F14;&#x7B97;&#x6CD5;&#xFF0C;&#x85C9;&#x7531;&#x628A;&#x5C0F;&#x554F;&#x984C;&#x7684;&#x7B54;&#x6848;&#x8A18;&#x8D77;&#x4F86;&#xFF0C;&#x907F;&#x514D;&#x8A08;&#x7B97;&#x91CD;&#x8907;&#x7684;&#x89E3;&#xFF0C;&#x7528;&#x7A7A;&#x9593;&#x63DB;&#x53D6;&#x6642;&#x9593;&#x3002;</p>
+<h3 id="&#x8CBB;&#x5F0F;&#x6578;&#x5217;">&#x8CBB;&#x5F0F;&#x6578;&#x5217;</h3>
 <ul>
-<li>&#x7D66;Array&#x521D;&#x59CB;&#x503C;:<pre><code class="lang-cpp=1">int arr[5] = {1,2,3,6,8};
-</code></pre>
-</li>
-<li>&#x53D6;Array&#x7684;&#x503C;:<pre><code class="lang-cpp=1">int a = arr[0];
-int b = arr[1];
-</code></pre>
-</li>
-<li><p>Input variable: &#x5F9E;stdin input&#x4E00;&#x500B;&#x5927;&#x5C0F;&#x70BA;n&#x7684;array</p>
-<pre><code class="lang-cpp=1">int main(){
-  int n;
-  cin &lt;&lt; n;
-  int array[n];
-  for(int i=0 ; i&lt;n ; i++){
-      int tmp;
-      cin &lt;&lt; tmp;
-      array[i] = tmp;
-  } 
+<li><a href="https://leetcode.com/problems/fibonacci-number/" target="_blank">https://leetcode.com/problems/fibonacci-number/</a></li>
+</ul>
+<h4 id="recursivetop-down">Recursive(Top Down)</h4>
+<ul>
+<li>F(n) = F(n-1) + F(n-2)</li>
+</ul>
+<pre><code class="lang-cpp=1">int fib(int n){
+    if(n == 0) return 0;
+    if(n == 1) return 1;
+    return fib(n-1) + fib(n-2);
 }
 </code></pre>
-</li>
-<li><p>&#x6CE8;&#x610F;:Array&#x4E4B;&#x9593;&#x6C92;&#x6709;=&#x9019;&#x500B;&#x904B;&#x7B97;&#x5B50;:</p>
-<pre><code class="lang-cpp=1">int arr[5];
-int arr2[5];
-arr2 = arr // wrong !
+<p>&#x6642;&#x9593;&#x8907;&#x96DC;&#x5EA6;?</p>
+<p><img src="https://i.imgur.com/Nrqe5M0.png" alt=""></p>
+<ul>
+<li>&#x91CD;&#x8907;&#x7B97;&#x4E86;&#x5F88;&#x591A;&#x6771;&#x897F;! &#x5982;&#x679C;&#x8A18;&#x4E0B;&#x4F86;&#x5462;?</li>
+</ul>
+<pre><code class="lang-cpp=1">int fib(vector&lt;int&gt;&amp; mem, int n){
+    if(n == 0) return 0;
+    if(n == 1) return 1;
+    if(mem[n] != -1){
+        return mem[n];
+    }
+    else{
+        mem[n] = fib(n-1) + fib(n-2);
+        return mem[n];
+    }
+}
+
+int main(){
+    int n;
+    cin &lt;&lt; n;
+    vector&lt;int&gt; mem(n+1, -1);
+    return fib(mem, n);
+}
 </code></pre>
+<p>&#x6642;&#x9593;&#x8907;&#x96DC;&#x5EA6;?</p>
+<h4 id="bottom-up">Bottom Up</h4>
+<p>&#x5F9E;&#x4E0A;&#x9762;&#x7684;&#x65B9;&#x6CD5;&#x767C;&#x73FE;&#xFF0C;&#x907F;&#x514D;&#x91CD;&#x8907;&#x8A08;&#x7B97;&#x6700;&#x7C21;&#x55AE;&#x7684;&#x65B9;&#x5F0F;&#x5C31;&#x662F;&#x5F9E;f(0)&#x958B;&#x59CB;&#x8A08;&#x7B97;&#x5230;f(n)&#xFF0C;&#x4E26;&#x628A;&#x904E;&#x7A0B;&#x4E2D;&#x7684;&#x7D50;&#x679C;&#x90FD;&#x8A18;&#x8D77;&#x4F86;&#x3002;</p>
+<pre><code class="lang-cpp=1">int fib(int n){
+    if(n == 0) return 0;
+    vector&lt;int&gt; mem(n,-1);
+    mem[0] = 0;
+    mem[1] = 1;
+    for(int i=2; i&lt;=n ; i++){
+        mem[i] = mem[i-1] + mem[i-2];
+    }
+    return mem[n];
+}
+&#x6642;&#x9593;&#x8907;&#x96DC;&#x5EA6;?
+</code></pre>
+<h4 id="&#x601D;&#x8DEF;">&#x601D;&#x8DEF;</h4>
+<p>Dynammic Programming&#x7684;&#x984C;&#x76EE;&#x901A;&#x5E38;&#x6BD4;&#x8F03;&#x96E3;&#x60F3;&#x5230;&#x89E3;&#x6CD5;&#xFF0C;&#x53EF;&#x4EE5;&#x5617;&#x8A66;&#x7528;&#x4EE5;&#x4E0B;&#x7684;&#x601D;&#x8DEF;</p>
+<ol>
+<li>&#x627E;&#x51FA;recursive function</li>
+<li>&#x78BA;&#x8A8D;edge case</li>
+<li>&#x78BA;&#x8A8D;&#x8981;&#x7528;top down&#x9084;&#x662F;bottom up</li>
+</ol>
+<h3 id="climb-stairs">Climb Stairs</h3>
+<ul>
+<li><p><a href="https://leetcode.com/problems/climbing-stairs/" target="_blank">https://leetcode.com/problems/climbing-stairs/</a></p>
+</li>
+<li><p>&#x627E;&#x51FA;recursive function</p>
+</li>
+<li>&#x78BA;&#x8A8D;edge case</li>
+<li>&#x78BA;&#x8A8D;&#x8981;&#x7528;top down&#x9084;&#x662F;bottom up</li>
+</ul>
+<p>&#x6642;&#x9593;&#x8907;&#x96DC;&#x5EA6;?</p>
+<h3 id="unique-path">Unique Path</h3>
+<ul>
+<li><p><a href="https://leetcode.com/problems/unique-paths/" target="_blank">https://leetcode.com/problems/unique-paths/</a></p>
+</li>
+<li><p>&#x627E;&#x51FA;recursive function</p>
+</li>
+<li>&#x78BA;&#x8A8D;edge case</li>
+<li>&#x78BA;&#x8A8D;&#x8981;&#x7528;top down&#x9084;&#x662F;bottom up</li>
+</ul>
+<p>&#x6642;&#x9593;&#x8907;&#x96DC;&#x5EA6;?</p>
+<h3 id="lcs">LCS</h3>
+<ul>
+<li><p><a href="https://leetcode.com/problems/longest-common-subsequence/" target="_blank">https://leetcode.com/problems/longest-common-subsequence/</a></p>
+</li>
+<li><p>&#x627E;&#x51FA;recursive function</p>
+<ul>
+<li>&#x628A;text1&#x8DDF;text2&#x62C6;&#x6210;&#x5169;&#x500B;&#x90E8;&#x5206;: text1 = sub1 + e1, text2 = sub2 + e2&#xFF0C;e1&#x8DDF;e2&#x70BA;&#x6700;&#x5F8C;&#x4E00;&#x500B;&#x5B57;&#x5143;</li>
+<li>LCS(text1, text2)&#x8868;&#x793A;text1, text2&#x7684;LCS</li>
+<li>&#x8003;&#x616E;&#x5E7E;&#x500B;case:<ul>
+<li>LCS&#x5305;&#x542B;e1&#xFF0C;&#x4E0D;&#x5305;&#x542B;e2 : LCS(text1, text2) = LCS(text1, sub2)</li>
+<li>LCS&#x5305;&#x542B;e2&#xFF0C;&#x4E0D;&#x5305;&#x542B;e1 : LCS(text1, text2) = LCS(sub1, text2)</li>
+<li>LCS&#x5305;&#x542B;e1, e2 : LCS(text1, text2) = LCS(sub1, sub2) + e1</li>
+<li>LCS&#x4E0D;&#x5305;&#x542B;e1, e2 : LCS(text1, text2) = LCS(sub1, sub2)</li>
+</ul>
+</li>
+<li>if e1 != e2<ul>
+<li>LCS(text1, text2) = max(LCS(text1, sub2), LCS(sub1, text2))</li>
+</ul>
+</li>
+<li>else<ul>
+<li>LCS(sub1, sub2) + e1</li>
+</ul>
 </li>
 </ul>
+</li>
+<li><p>&#x78BA;&#x8A8D;edge case</p>
+<ul>
+<li>LCS(&quot;&quot;, &quot;&quot;) = &quot;&quot;</li>
+</ul>
+</li>
+<li><p>&#x78BA;&#x8A8D;&#x8981;&#x7528;top down&#x9084;&#x662F;bottom up</p>
+<ul>
+<li>&#x7528;&#x4E00;&#x500B;mem[text1.size()][text2.size()]&#x5B58;</li>
+</ul>
+</li>
+</ul>
+<p>&#x6642;&#x9593;&#x8907;&#x96DC;&#x5EA6;?</p>
 <h3 id="&#x5C0F;&#x7DF4;&#x7FD2;">&#x5C0F;&#x7DF4;&#x7FD2;</h3>
 <ul>
-<li><a href="https://www.hackerrank.com/challenges/arrays-introduction/problem" target="_blank">https://www.hackerrank.com/challenges/arrays-introduction/problem</a></li>
-</ul>
-<h3 id="2d-array">2D Array</h3>
-<p><img src="https://i.imgur.com/5s2aiaP.png" alt="">
-2D Array&#x7684;&#x5BA3;&#x544A;&#x65B9;&#x5F0F;:</p>
-<pre><code class="lang-cpp=1">&#x8CC7;&#x6599;&#x578B;&#x614B; Array&#x540D;&#x7A31;[&#x5217;&#x6578;][&#x884C;&#x6578;];
-
-int arr[3][2];
-</code></pre>
-<ul>
-<li>&#x7D66;Array&#x521D;&#x59CB;&#x503C;:<pre><code class="lang-cpp=1">int arr[3][2] = { {1,2},{3,4},{5,6} };
-int arr[3][2] = {0}; // &#x5168;&#x90E8;&#x8A2D;&#x70BA;0
-</code></pre>
-</li>
-<li>Input variable: &#x5F9E;stdin input&#x4E00;&#x500B;&#x5927;&#x5C0F;&#x70BA;n*m&#x7684;array<pre><code class="lang-cpp=1">int main(){
-  int n,m;
-  cin &lt;&lt; n &lt;&lt; m;
-  int array[n][m];
-  for(int i=0 ; i&lt;n ; i++){
-      for(int j=0 ; j&lt;n ; j++){
-          int tmp;
-          cin &lt;&lt; tmp;
-          array[i][j] = tmp;
-      }
-  } 
-}
-</code></pre>
-</li>
-<li><a href="https://www.hackerrank.com/challenges/sherlock-and-array/problem" target="_blank">https://www.hackerrank.com/challenges/sherlock-and-array/problem</a></li>
-<li><a href="https://www.hackerrank.com/challenges/the-hurdle-race/problem" target="_blank">https://www.hackerrank.com/challenges/the-hurdle-race/problem</a></li>
-<li><a href="https://www.hackerrank.com/challenges/the-birthday-bar/problem" target="_blank">https://www.hackerrank.com/challenges/the-birthday-bar/problem</a></li>
+<li><a href="https://leetcode.com/problems/house-robber/" target="_blank">https://leetcode.com/problems/house-robber/</a></li>
+<li><a href="https://leetcode.com/problems/matrix-block-sum/" target="_blank">https://leetcode.com/problems/matrix-block-sum/</a></li>
+<li><a href="https://leetcode.com/problems/stone-game/" target="_blank">https://leetcode.com/problems/stone-game/</a></li>
+<li><a href="https://www.hackerrank.com/challenges/construct-the-array/problem" target="_blank">https://www.hackerrank.com/challenges/construct-the-array/problem</a></li>
 </ul>
 
                                 
@@ -916,14 +970,10 @@ int arr[3][2] = {0}; // &#x5168;&#x90E8;&#x8A2D;&#x70BA;0
 
             
                 
-                <a href="loop.html" class="navigation navigation-prev " aria-label="Previous page: Loop">
+                <a href="dc.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Divide and Conquer">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
-                
-                <a href="string.html" class="navigation navigation-next " aria-label="Next page: String">
-                    <i class="fa fa-angle-right"></i>
-                </a>
                 
             
         
@@ -932,7 +982,7 @@ int arr[3][2] = {0}; // &#x5168;&#x90E8;&#x8A2D;&#x70BA;0
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Array","level":"1.2.6","depth":2,"next":{"title":"String","level":"1.2.7","depth":2,"path":"cpp_sec/string.md","ref":"cpp_sec/string.md","articles":[]},"previous":{"title":"Loop","level":"1.2.5","depth":2,"path":"cpp_sec/loop.md","ref":"cpp_sec/loop.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cpp_sec/array.md","mtime":"2020-04-30T09:04:05.513Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-05-04T06:24:43.973Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Dynammic Programming","level":"1.4.2","depth":2,"next":{"title":"Greedy","level":"1.4.3","depth":2,"ref":"","articles":[]},"previous":{"title":"Divide and Conquer","level":"1.4.1","depth":2,"path":"cpp_sec/dc.md","ref":"cpp_sec/dc.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cpp_sec/dp.md","mtime":"2020-05-04T06:23:50.362Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-05-04T06:24:43.973Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
