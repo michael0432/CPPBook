@@ -37,8 +37,8 @@
     * [常用method](cpp_sec/priority_queue_method.md)
   * [Set / Disjoint Set](cpp_sec/set.md)
 * Algorithm
-  * Divide and Conquer
-  * Dynammic Programming
+  * [Divide and Conquer](cpp_sec/dc.md)
+  * [Dynammic Programming](cpp_sec/dp.md)
   * Greedy
   * [Graph](cpp_sec/graph.md)
     * [Shortest Path](cpp_sec/shortest_path.md)
