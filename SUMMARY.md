@@ -39,7 +39,7 @@
 * Algorithm
   * [Divide and Conquer](cpp_sec/dc.md)
   * [Dynammic Programming](cpp_sec/dp.md)
-  * Greedy
+  * [Greedy](cpp_sec/greedy.md)
   * [Graph](cpp_sec/graph.md)
     * [Shortest Path](cpp_sec/shortest_path.md)
       * [Bellmen-Ford Algorithm](cpp_sec/bf.md)
