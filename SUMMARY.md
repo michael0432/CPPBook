@@ -31,14 +31,22 @@
     * [BFS](cpp_sec/bfs.md)
     * [DFS](cpp_sec/dfs.md)
   * [Hash Table / Maps](cpp_sec/hashmap.md)
+<<<<<<< HEAD
     * [常用Method](cpp_sec/hashmap_method.md)
   * Heap
   * Priority Queue
   * Set / Disjoint Set
+=======
+    * [常用method](cpp_sec/hashmap_method.md)
+  * [Heap](cpp_sec/heap.md)
+  * [Priority Queue](cpp_sec/priority_queue.md)
+    * [常用method](cpp_sec/priority_queue_method.md)
+  * [Set / Disjoint Set](cpp_sec/set.md)
+>>>>>>> f8b710b1c0633d1dc6778cf5db0da47bcc269929
 * Algorithm
-  * Divide and Conquer
-  * Dynammic Programming
-  * Greedy
+  * [Divide and Conquer](cpp_sec/dc.md)
+  * [Dynammic Programming](cpp_sec/dp.md)
+  * [Greedy](cpp_sec/greedy.md)
   * [Graph](cpp_sec/graph.md)
     * [Shortest Path](cpp_sec/shortest_path.md)
       * [Bellmen-Ford Algorithm](cpp_sec/bf.md)

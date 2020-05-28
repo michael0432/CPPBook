@@ -4,7 +4,11 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<<<<<<< HEAD
         <title>常用Method · GitBook</title>
+=======
+        <title>常用method · GitBook</title>
+>>>>>>> f8b710b1c0633d1dc6778cf5db0da47bcc269929
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,6 +61,11 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
+<<<<<<< HEAD
+=======
+    <link rel="next" href="heap.html" />
+    
+>>>>>>> f8b710b1c0633d1dc6778cf5db0da47bcc269929
     
     <link rel="prev" href="hashmap.html" />
     
@@ -533,7 +542,11 @@
                 <a href="hashmap_method.html">
             
                     
+<<<<<<< HEAD
                     常用Method
+=======
+                    常用method
+>>>>>>> f8b710b1c0633d1dc6778cf5db0da47bcc269929
             
                 </a>
             
@@ -546,40 +559,89 @@
             
         </li>
     
+<<<<<<< HEAD
         <li class="chapter " data-level="1.3.9" >
             
                 <span>
+=======
+        <li class="chapter " data-level="1.3.9" data-path="heap.html">
+            
+                <a href="heap.html">
+>>>>>>> f8b710b1c0633d1dc6778cf5db0da47bcc269929
             
                     
                     Heap
             
+<<<<<<< HEAD
                 </span>
+=======
+                </a>
+>>>>>>> f8b710b1c0633d1dc6778cf5db0da47bcc269929
             
 
             
         </li>
     
+<<<<<<< HEAD
         <li class="chapter " data-level="1.3.10" >
             
                 <span>
+=======
+        <li class="chapter " data-level="1.3.10" data-path="priority_queue.html">
+            
+                <a href="priority_queue.html">
+>>>>>>> f8b710b1c0633d1dc6778cf5db0da47bcc269929
             
                     
                     Priority Queue
             
+<<<<<<< HEAD
                 </span>
+=======
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.10.1" data-path="priority_queue_method.html">
+            
+                <a href="priority_queue_method.html">
+            
+                    
+                    常用method
+            
+                </a>
+>>>>>>> f8b710b1c0633d1dc6778cf5db0da47bcc269929
             
 
             
         </li>
     
+<<<<<<< HEAD
         <li class="chapter " data-level="1.3.11" >
             
                 <span>
+=======
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.11" data-path="set.html">
+            
+                <a href="set.html">
+>>>>>>> f8b710b1c0633d1dc6778cf5db0da47bcc269929
             
                     
                     Set / Disjoint Set
             
+<<<<<<< HEAD
                 </span>
+=======
+                </a>
+>>>>>>> f8b710b1c0633d1dc6778cf5db0da47bcc269929
             
 
             
@@ -604,40 +666,70 @@
             <ul class="articles">
                 
     
+<<<<<<< HEAD
         <li class="chapter " data-level="1.4.1" >
             
                 <span>
+=======
+        <li class="chapter " data-level="1.4.1" data-path="dc.html">
+            
+                <a href="dc.html">
+>>>>>>> f8b710b1c0633d1dc6778cf5db0da47bcc269929
             
                     
                     Divide and Conquer
             
+<<<<<<< HEAD
                 </span>
+=======
+                </a>
+>>>>>>> f8b710b1c0633d1dc6778cf5db0da47bcc269929
             
 
             
         </li>
     
+<<<<<<< HEAD
         <li class="chapter " data-level="1.4.2" >
             
                 <span>
+=======
+        <li class="chapter " data-level="1.4.2" data-path="dp.html">
+            
+                <a href="dp.html">
+>>>>>>> f8b710b1c0633d1dc6778cf5db0da47bcc269929
             
                     
                     Dynammic Programming
             
+<<<<<<< HEAD
                 </span>
+=======
+                </a>
+>>>>>>> f8b710b1c0633d1dc6778cf5db0da47bcc269929
             
 
             
         </li>
     
+<<<<<<< HEAD
         <li class="chapter " data-level="1.4.3" >
             
                 <span>
+=======
+        <li class="chapter " data-level="1.4.3" data-path="greedy.html">
+            
+                <a href="greedy.html">
+>>>>>>> f8b710b1c0633d1dc6778cf5db0da47bcc269929
             
                     
                     Greedy
             
+<<<<<<< HEAD
                 </span>
+=======
+                </a>
+>>>>>>> f8b710b1c0633d1dc6778cf5db0da47bcc269929
             
 
             
@@ -781,7 +873,11 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
+<<<<<<< HEAD
         <a href=".." >常用Method</a>
+=======
+        <a href=".." >常用method</a>
+>>>>>>> f8b710b1c0633d1dc6778cf5db0da47bcc269929
     </h1>
 </div>
 
@@ -847,6 +943,7 @@ int main(){
 &#x9700;&#x8981;&#x5169;&#x500B;&#x5143;&#x7D20;:</p>
 <ul>
 <li>operator ==</li>
+<<<<<<< HEAD
 <li>hash
 ```cpp=1
 struct CustomClass{
@@ -859,16 +956,40 @@ public:
 };</li>
 </ul>
 <p>class hashFunction{
+=======
+<li>hash</li>
+</ul>
+<pre><code class="lang-cpp=1">struct CustomClass{
+public:
+    int a;
+    int b;
+    bool operator==(const CustomClass&amp; c) const
+    {
+        return a == c.a &amp;&amp; b == c.b;
+    }
+};
+
+class hashFunction{
+>>>>>>> f8b710b1c0633d1dc6778cf5db0da47bcc269929
 public:
     size_t operator()(const Person&amp; p) const
     { 
         return p.a + p.b; 
     } 
+<<<<<<< HEAD
 }</p>
 <p>int main(){
     unordered_map<customclass, int=""> m;
 }
 ```</customclass,></p>
+=======
+}
+
+int main(){
+    unordered_map&lt;CustomClass, int&gt; m;
+}
+</code></pre>
+>>>>>>> f8b710b1c0633d1dc6778cf5db0da47bcc269929
 
                                 
                                 </section>
@@ -896,11 +1017,22 @@ public:
 
             
                 
+<<<<<<< HEAD
                 <a href="hashmap.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Hash Table / Maps">
+=======
+                <a href="hashmap.html" class="navigation navigation-prev " aria-label="Previous page: Hash Table / Maps">
+>>>>>>> f8b710b1c0633d1dc6778cf5db0da47bcc269929
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
+<<<<<<< HEAD
+=======
+                <a href="heap.html" class="navigation navigation-next " aria-label="Next page: Heap">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+>>>>>>> f8b710b1c0633d1dc6778cf5db0da47bcc269929
             
         
     </div>
@@ -908,7 +1040,11 @@ public:
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
+<<<<<<< HEAD
             gitbook.page.hasChanged({"page":{"title":"常用Method","level":"1.3.8.1","depth":3,"next":{"title":"Heap","level":"1.3.9","depth":2,"ref":"","articles":[]},"previous":{"title":"Hash Table / Maps","level":"1.3.8","depth":2,"path":"cpp_sec/hashmap.md","ref":"cpp_sec/hashmap.md","articles":[{"title":"常用Method","level":"1.3.8.1","depth":3,"path":"cpp_sec/hashmap_method.md","ref":"cpp_sec/hashmap_method.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cpp_sec/hashmap_method.md","mtime":"2020-04-23T03:58:22.156Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-23T11:29:04.983Z"},"basePath":"..","book":{"language":""}});
+=======
+            gitbook.page.hasChanged({"page":{"title":"常用method","level":"1.3.8.1","depth":3,"next":{"title":"Heap","level":"1.3.9","depth":2,"path":"cpp_sec/heap.md","ref":"cpp_sec/heap.md","articles":[]},"previous":{"title":"Hash Table / Maps","level":"1.3.8","depth":2,"path":"cpp_sec/hashmap.md","ref":"cpp_sec/hashmap.md","articles":[{"title":"常用method","level":"1.3.8.1","depth":3,"path":"cpp_sec/hashmap_method.md","ref":"cpp_sec/hashmap_method.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cpp_sec/hashmap_method.md","mtime":"2020-05-04T06:24:45.122Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-05-13T09:09:02.153Z"},"basePath":"..","book":{"language":""}});
+>>>>>>> f8b710b1c0633d1dc6778cf5db0da47bcc269929
         });
     </script>
 </div>
