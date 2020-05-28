@@ -122,6 +122,55 @@ Dynammic Programming的題目通常比較難想到解法，可以嘗試用以下
 
 時間複雜度?
 
+### LIS
+
+* https://leetcode.com/problems/longest-increasing-subsequence/
+
+#### DP
+
+1. 找出recursive function
+2. 確認edge case
+3. 確認要用top down還是bottom up
+
+時間複雜度?
+
+#### Greedy
+
+1. 找出每個數字「最好情況」可以被擺在哪
+
+### Maximum Subarray
+
+* https://leetcode.com/problems/maximum-subarray/
+
+#### DP
+1. 找出recursive function
+2. 確認edge case
+3. 確認要用top down還是bottom up
+
+### 0-1 背包問題
+
+每種物品只能放進背包一個或是不放進背包，在背包承重量有限的情況下，如何放進總價值最高的物品？
+
+| 物品 | 重量 |  價值 |
+| -------- | -------- |-------- |
+|   0   | 1 |  1  | 
+|   1   | 2 |  4  | 
+|   2   | 3 |  6  | 
+|   3   | 5 |  3  | 
+|   4   | 7 |  10  | 
+
+* 直覺：Greedy
+    * 可行嗎
+* DP
+    * 找出recursive function
+        * f(n, w) = max(f(n-1, w), f(n1, w-weight[n]) + value[n]);
+    * 確認edge case
+    * 確認要用top down還是bottom up
+
+
+* https://leetcode.com/problems/coin-change-2/description/
+
+
 ### 小練習
 * https://leetcode.com/problems/house-robber/
 * https://leetcode.com/problems/matrix-block-sum/
