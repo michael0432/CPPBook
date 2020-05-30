@@ -1,5 +1,5 @@
 # Summary
-* [Practice](cpp_sec/practice)
+* [Practice](cpp_sec/practice.md)
 
 * [C++](cpp_sec/cpp.md)
   * [安裝環境](cpp_sec/install.md)
