@@ -52,8 +52,9 @@
 
 
 ### 小練習
+* https://vjudge.net/problem/UVA-929
+* https://vjudge.net/problem/UVA-1112
 * https://leetcode.com/problems/network-delay-time/
-* https://onlinejudge.org/index.php?option=onlinejudge&page=show_problem&problem=870
 
 ### Reference
 * http://alrightchiu.github.io/SecondRound/single-source-shortest-pathdijkstras-algorithm.html
