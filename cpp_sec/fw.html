@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>常用Method · GitBook</title>
+        <title>Floyd-Warshall Algorithm · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="queue.html" />
     
-    
-    <link rel="prev" href="stack.html" />
+    <link rel="prev" href="Dijkstra.html" />
     
 
     </head>
@@ -363,7 +361,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter active" data-level="1.4.4.1" data-path="stack_method.html">
+        <li class="chapter " data-level="1.4.4.1" data-path="stack_method.html">
             
                 <a href="stack_method.html">
             
@@ -744,7 +742,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.4.1.4" data-path="fw.html">
+        <li class="chapter active" data-level="1.5.4.1.4" data-path="fw.html">
             
                 <a href="fw.html">
             
@@ -828,7 +826,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >常用Method</a>
+        <a href=".." >Floyd-Warshall Algorithm</a>
     </h1>
 </div>
 
@@ -843,66 +841,163 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="stack&#x5E38;&#x7528;method">Stack&#x5E38;&#x7528;method</h1>
-<h6 id="tags--data-structure">tags = <code>Data Structure</code></h6>
-<p>stack&#x662F;&#x4E00;&#x500B;C++&#x7684;Container&#xFF0C;&#x5C6C;&#x65BC;Standard Library(STL)&#xFF0C;&#x9700;&#x8981;include&#x3002;</p>
-<pre><code class="lang-cpp=1">#include &lt;stack&gt;
-
-int main(){
-    stack&lt;int&gt; st;
-}
-</code></pre>
-<h3 id="pushdata">push(data)</h3>
-<p>&#x5C07;&#x4E00;&#x7B46;&#x8CC7;&#x6599;&#x653E;&#x5165;stack</p>
-<pre><code class="lang-cpp=1">#include &lt;stack&gt;
-
-int main(){
-    stack&lt;int&gt; st;
-    st.push(3);
-}
-</code></pre>
-<h3 id="pop">pop()</h3>
-<p>&#x5C07;&#x6700;&#x4E0A;&#x9762;&#x7684;&#x4E00;&#x7B46;&#x8CC7;&#x6599;&#x62FF;&#x51FA;stack</p>
-<pre><code class="lang-cpp=1">#include &lt;stack&gt;
-
-int main(){
-    stack&lt;int&gt; st;
-    st.push(3);
-    st.pop();
-}
-</code></pre>
-<h3 id="top">top</h3>
-<p>&#x53D6;&#x5F97;stack&#x6700;&#x4E0A;&#x9762;&#xFF08;&#x6700;&#x5F8C;&#x653E;&#x5165;&#x7684;&#xFF09;&#x8CC7;&#x6599;</p>
-<pre><code class="lang-cpp=1">#include &lt;stack&gt;
-
-int main(){
-    stack&lt;int&gt; st;
-    st.push(3);
-    cout &lt;&lt; st.top();
-}
-</code></pre>
-<h3 id="empty">empty()</h3>
-<p>&#x5982;&#x679C;size&#x662F;0&#x56DE;&#x50B3;true&#xFF0C;&#x5176;&#x4ED6;&#x60C5;&#x6CC1;&#x56DE;&#x50B3;false</p>
-<pre><code class="lang-cpp=1">#include &lt;stack&gt;
-
-int main(){
-    stack&lt;int&gt; st;
-    st.push(3);
-    if(!st.empty()){
-        cout &lt;&lt; st.top();
-    }  
-}
-</code></pre>
-<h3 id="size">size()</h3>
-<p>&#x56DE;&#x50B3;stack&#x7684;&#x5927;&#x5C0F;</p>
-<pre><code class="lang-cpp=1">#include &lt;stack&gt;
-
-int main(){
-    stack&lt;int&gt; st;
-    st.push(3);
-    cout &lt;&lt; st.size() &lt;&lt; endl;  
-}
-</code></pre>
+                                <h1 id="floyd-warshall-algorithm">Floyd-Warshall Algorithm</h1>
+<h6 id="tags--algorithm">tags = <code>Algorithm</code></h6>
+<p>Bellman-Ford Algorithm&#x8DDF;Dijkstra&apos;s Algorithm&#x90FD;&#x662F;&#x7528;&#x65BC;&#x89E3;&#x6C7A;Single-source Shortest Path&#x7684;&#x554F;&#x984C;&#xFF0C;&#x5373;&#x51FA;&#x767C;&#x9EDE;&#x56FA;&#x5B9A;&#x70BA;&#x4E00;&#x500B;&#x9EDE;&#xFF0C;&#x6C42;&#x5176;&#x5230;&#x5176;&#x4ED6;&#x6240;&#x6709;&#x9EDE;&#x7684;&#x6700;&#x77ED;&#x8DDD;&#x96E2;&#x53CA;&#x6700;&#x77ED;&#x8DEF;&#x5F91;&#x3002;
+Floyd-Warshall Algorithm&#x7528;&#x65BC;&#x89E3;&#x6C7A;All-pairs Shortest Path&#x7684;&#x554F;&#x984C;&#xFF0C;&#x5373;&#x5C07;&#x6BCF;&#x500B;&#x9EDE;&#x90FD;&#x8996;&#x70BA;&#x8D77;&#x9EDE;&#xFF0C;&#x5C0B;&#x627E;&#x6240;&#x6709;&#x9EDE;&#x5230;&#x5176;&#x9918;&#x6240;&#x6709;&#x9EDE;&#x7684;&#x6700;&#x77ED;&#x8DEF;&#x5F91;&#x3002;</p>
+<h2 id="&#x4F7F;&#x7528;bellman-ford&#x53CA;dijkstra">&#x4F7F;&#x7528;Bellman-Ford&#x53CA;Dijkstra</h2>
+<p>All-pairs Shortest Path&#x7684;&#x554F;&#x984C;&#x6700;&#x76F4;&#x89C0;&#x7684;&#x89E3;&#x6CD5;&#x662F;&#x5C0D;&#x6240;&#x6709;&#x7684;&#x9EDE;&#x90FD;&#x505A;&#x4E00;&#x6B21;Single-source Shortest Path&#xFF0C;&#x5373;&#x53EF;&#x5F97;&#x5230;&#x7D50;&#x679C;&#x3002;</p>
+<p>&#x6642;&#x9593;&#x8907;&#x96DC;&#x5EA6;(V&#x70BA;&#x9EDE;&#x7684;&#x500B;&#x6578;&#xFF0C;E&#x70BA;&#x908A;&#x7684;&#x500B;&#x6578;)&#xFF1A;</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Bellman-Ford</th>
+<th>Dijkstra</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Single-source</td>
+<td>O(EV)</td>
+<td>O(E+VlogV)</td>
+</tr>
+<tr>
+<td>All-pairs</td>
+<td>O(EV^2)</td>
+<td>O(EV+V^2logV)</td>
+</tr>
+</tbody>
+</table>
+<p>&#x82E5;&#x8003;&#x616E;&#x6700;&#x58DE;&#x7684;&#x60C5;&#x6CC1;&#xFF0C;&#x5373;E=V^2&#xFF0C;&#x5247;&#x6642;&#x9593;&#x8907;&#x96DC;&#x5EA6;&#x70BA;&#xFF1A;</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Bellman-Ford</th>
+<th>Dijkstra</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Single-source</td>
+<td>O(V^3)</td>
+<td>O(V^2+VlogV)</td>
+</tr>
+<tr>
+<td>All-pairs</td>
+<td>O(V^4)</td>
+<td>O(V^3+V^2logV)</td>
+</tr>
+</tbody>
+</table>
+<p>&#x6709;&#x6C92;&#x6709;&#x66F4;&#x597D;&#x7684;&#x65B9;&#x6CD5;&#x5462;&#xFF1F;</p>
+<h2 id="floyd-warshall-algorithm">Floyd-Warshall Algorithm</h2>
+<ul>
+<li>&#x4E2D;&#x7E7C;&#x9EDE;(intermediate vertex)<ul>
+<li>&#x8003;&#x616E;&#x5F9E;X-&gt;Y&#x7684;&#x6700;&#x77ED;&#x8DEF;&#x5F91;&#xFF0C;&#x662F;&#x5426;&#x56E0;&#x70BA;&#x7D93;&#x904E;&#x4E86;&#x4E2D;&#x7E7C;&#x9EDE;Z&#x800C;&#x6E1B;&#x5C11;&#x8DDD;&#x96E2;</li>
+<li>&#x82E5;&#x539F;&#x5148;&#x7684;&#x6700;&#x77ED;&#x8DEF;&#x5F91;&#x662F;Path:X-&gt;Y&#xFF0C;&#x5728;&#x5F15;&#x5165;&#x4E2D;&#x7E7C;&#x9EDE;Z&#x5F8C;&#xFF0C;&#x6700;&#x77ED;&#x8DEF;&#x5F91;&#x5C31;&#x6709;&#x5169;&#x7A2E;&#x53EF;&#x80FD;&#xFF0C;Path:X-&gt;Y&#x6216;&#x8005;Path:X-&gt;Z-&gt;Y</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://i.imgur.com/pG4mqnP.png" alt=""></p>
+<p>&#x4EE5;&#x4E0A;&#x5716;&#x70BA;&#x4F8B;&#xFF0C;B&#x8DDF;C&#x53EF;&#x4EE5;&#x505A;&#x70BA;A-&gt;D&#x7684;&#x4E2D;&#x7E7C;&#x9EDE;</p>
+<ul>
+<li>&#x5C0D;&#x6BCF;&#x7D44;&#x51FA;&#x767C;&#x9EDE;X&#x53CA;&#x7D42;&#x9EDE;Y&#xFF0C;&#x90FD;&#x5B58;&#x5169;&#x500B;Set:<ul>
+<li>Set K: &#x5B58;&#x6240;&#x6709;&#x7684;&#x9EDE;<ul>
+<li>&#x521D;&#x59CB;&#x72C0;&#x614B;&#x70BA;&#x5B58;&#x6240;&#x6709;&#x7684;&#x9EDE;</li>
+</ul>
+</li>
+<li>Set S: &#x5B58;&#x76EE;&#x524D;&#x5DF2;&#x7D93;&#x8A08;&#x7B97;&#x904E;&#x7684;&#x4E2D;&#x7E7C;&#x9EDE;<ul>
+<li>&#x521D;&#x59CB;&#x72C0;&#x614B;&#x70BA;&#x7A7A;&#x7684;</li>
+<li>&#x96C6;&#x5408;S&#x7684;&#x4F5C;&#x7528;&#x662F;&#x627E;&#x5230;&#x300C;&#x67D0;&#x500B;vertex(X)&#x8D70;&#x5230;&#x67D0;&#x500B;vertex(Y)&#x300D;&#x7684;&#x6700;&#x77ED;&#x8DEF;&#x5F91;&#xFF0C;&#x56E0;&#x6B64;&#xFF0C;&#x4E0D;&#x540C;&#x7684;&#x300C;&#x8D77;&#x9EDE;vertex(X)&#x8207;&#x7D42;&#x9EDE;vertex(Y)&#x300D;&#x4E4B;&#x7D44;&#x5408;&#xFF0C;&#x90FD;&#x6709;&#x5404;&#x81EA;&#x7684;&#x96C6;&#x5408;S</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="example">Example</h3>
+<p>&#x4EE5;A-&gt;D&#x70BA;&#x4F8B;</p>
+<ul>
+<li>&#x5DE6;&#x5716;<ul>
+<li>Set K = {B,C}</li>
+<li>Set S = {A,D}</li>
+<li>Shortest path = 8</li>
+</ul>
+</li>
+<li>&#x53F3;&#x5716;&#xFF0C;&#x52A0;&#x5165;B&#x70BA;&#x4E2D;&#x7E7C;&#x9EDE;<ul>
+<li>Set K = {C}</li>
+<li>Set S = {A,B,D}</li>
+<li>Shortest path = 5</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://i.imgur.com/TlwtGgf.png" alt=""></p>
+<ul>
+<li>&#x52A0;&#x5165;C&#x70BA;&#x4E2D;&#x7E7C;&#x9EDE;<ul>
+<li>Set K = {}</li>
+<li>Set S = {A,B,C,D}</li>
+<li>Shortest path = 1</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://i.imgur.com/jn71gDa.png" alt=""></p>
+<p>Floyd-Warshall Algorithm&#xFF1A;&#x4EE5;&#x8F03;&#x5C0F;&#x6BB5;&#x7684;&#x6700;&#x77ED;&#x8DEF;&#x5F91;(subpath)&#xFF0C;&#x9023;&#x7D50;&#x51FA;&#x6700;&#x7D42;&#x7684;&#x6700;&#x77ED;&#x8DEF;&#x5F91;</p>
+<ul>
+<li>&#x5728;&#x5F15;&#x5165;&#x4E2D;&#x7E7C;&#x9EDE;vertex(k)&#x4E4B;&#x524D;&#xFF0C;&#x5DF2;&#x7D93;&#x627E;&#x5230;&#x300C;&#x5F15;&#x5165;&#x4E2D;&#x7E7C;&#x9EDE;vertex(k-1)&#x5F8C;&#xFF0C;&#x5F9E;vertex(X)&#x8D70;&#x5230;vertex(Y)&#x300D;&#x7684;&#x6700;&#x77ED;&#x8DEF;&#x5F91;&#xFF1B;</li>
+<li><p>&#x5728;&#x5F15;&#x5165;&#x4E2D;&#x7E7C;&#x9EDE;vertex(k-1)&#x4E4B;&#x524D;&#xFF0C;&#x5DF2;&#x7D93;&#x627E;&#x5230;&#x300C;&#x5F15;&#x5165;&#x4E2D;&#x7E7C;&#x9EDE;vertex(k-2)&#x5F8C;&#xFF0C;&#x5F9E;vertex(X)&#x8D70;&#x5230;vertex(Y)&#x300D;&#x7684;&#x6700;&#x77ED;&#x8DEF;&#x5F91;&#xFF1B;
+...</p>
+</li>
+<li><p>&#x5F15;&#x5165;&#x4E2D;&#x7E7C;&#x9EDE;k&#x6642;&#x6709;&#x5169;&#x7A2E;&#x53EF;&#x80FD;:</p>
+<ul>
+<li>Vertex(k)&#x5728;X-&gt;Y&#x7684;&#x6700;&#x77ED;&#x8DEF;&#x5F91;&#x4E0A;<ul>
+<li>&#x6700;&#x77ED;&#x8DEF;&#x5F91;&#x8B8A;&#x6210;X-&gt;...-&gt;k-&gt;...Y</li>
+</ul>
+</li>
+<li>Vertex(k)&#x4E0D;&#x5728;X-&gt;Y&#x7684;&#x6700;&#x77ED;&#x8DEF;&#x5F91;&#x4E0A;<ul>
+<li>&#x6700;&#x77ED;&#x8DEF;&#x5F91;&#x7DAD;&#x6301;X-&gt;...-&gt;Y</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>&#x53EF;&#x4EE5;&#x5BEB;&#x6210;:<ul>
+<li>ShortestPath(X,Y) = min(ShortestPath(X,k)+ShortestPath(k,Y)), k&#x70BA;&#x6240;&#x6709;&#x4E2D;&#x7E7C;&#x9EDE;(&#x5373;&#x5617;&#x8A66;&#x6240;&#x6709;&#x7684;&#x9EDE;)</li>
+</ul>
+</li>
+</ul>
+<h3 id="example">Example</h3>
+<p><img src="https://i.imgur.com/1C1ZNmJ.png" alt=""></p>
+<ul>
+<li>&#x5F15;&#x5165;A&#x70BA;&#x4E2D;&#x7E7C;&#x9EDE;<ul>
+<li>&#x5C0D;Distance Matrix&#x4E0A;&#x6240;&#x6709;&#x7684;&#x9EDE;&#x505A;&#x5F15;&#x5165;&#x4E2D;&#x7E7C;&#x9EDE;A&#xFF08;&#x5373;&#x5C0D;&#x6240;&#x6709;&#x53EF;&#x4EE5;&#x7D93;&#x904E;A&#x7684;&#x8DEF;&#x5F91;&#x505A;relax&#xFF09;<ul>
+<li>Distance[X][Y] = min(Distance[X][A]+Distance[A][Y], Distance[X][Y])</li>
+<li>Distnace[C][B] = min(Distance[C][A]+Distance[A][B], Distance[C][B])</li>
+<li>Distnace[C][B] = 4 + 2 = 6</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://i.imgur.com/mTY0aMF.png" alt=""></p>
+<ul>
+<li>&#x5F15;&#x5165;B&#x70BA;&#x4E2D;&#x7E7C;&#x9EDE;<ul>
+<li>Distance[A][C]=Distance[A][B]+Distance[B][C]=0</li>
+<li>Distance[A][D]=Distance[A][B]+Distance[B][D]=5</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://i.imgur.com/pr24vJu.png" alt=""></p>
+<ul>
+<li>&#x5F15;&#x5165;C&#x70BA;&#x4E2D;&#x7E7C;&#x9EDE;</li>
+<li>&#x5F15;&#x5165;D&#x70BA;&#x4E2D;&#x7E7C;&#x9EDE;</li>
+</ul>
+<p>&#x6642;&#x9593;&#x8907;&#x96DC;&#x5EA6;&#xFF1F;</p>
+<h3 id="&#x5C0F;&#x7DF4;&#x7FD2;">&#x5C0F;&#x7DF4;&#x7FD2;</h3>
+<ul>
+<li><a href="https://vjudge.net/problem/UVA-821" target="_blank">https://vjudge.net/problem/UVA-821</a></li>
+<li><a href="https://vjudge.net/problem/UVA-10171" target="_blank">https://vjudge.net/problem/UVA-10171</a></li>
+<li><a href="https://vjudge.net/problem/UVA-10463" target="_blank">https://vjudge.net/problem/UVA-10463</a></li>
+</ul>
 
                                 
                                 </section>
@@ -930,14 +1025,10 @@ int main(){
 
             
                 
-                <a href="stack.html" class="navigation navigation-prev " aria-label="Previous page: Stack">
+                <a href="Dijkstra.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Dijkstra's Algorithm">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
-                
-                <a href="queue.html" class="navigation navigation-next " aria-label="Next page: Queue">
-                    <i class="fa fa-angle-right"></i>
-                </a>
                 
             
         
@@ -946,7 +1037,7 @@ int main(){
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"常用Method","level":"1.4.4.1","depth":3,"next":{"title":"Queue","level":"1.4.5","depth":2,"path":"cpp_sec/queue.md","ref":"cpp_sec/queue.md","articles":[{"title":"常用Method","level":"1.4.5.1","depth":3,"path":"cpp_sec/queue_method.md","ref":"cpp_sec/queue_method.md","articles":[]}]},"previous":{"title":"Stack","level":"1.4.4","depth":2,"path":"cpp_sec/stack.md","ref":"cpp_sec/stack.md","articles":[{"title":"常用Method","level":"1.4.4.1","depth":3,"path":"cpp_sec/stack_method.md","ref":"cpp_sec/stack_method.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cpp_sec/stack_method.md","mtime":"2020-07-02T06:10:14.591Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-07-02T11:27:27.682Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Floyd-Warshall Algorithm","level":"1.5.4.1.4","depth":4,"next":{"title":"[Minumum Spanning Tree]","level":"1.5.4.2","depth":3,"ref":"","articles":[]},"previous":{"title":"Dijkstra's Algorithm","level":"1.5.4.1.3","depth":4,"path":"cpp_sec/Dijkstra.md","ref":"cpp_sec/Dijkstra.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cpp_sec/fw.md","mtime":"2020-07-02T07:20:07.341Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-07-02T11:27:27.682Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
