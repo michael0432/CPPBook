@@ -26,9 +26,8 @@
   * Deque
   * [Graph](cpp_sec/graph.md)
     * [Tree](cpp_sec/tree.md)
-      * Binary tree
-      * Red Black tree
-      * AVL tree
+      * [Binary Search Tree](cpp_sec/bst.md)
+      * [AVL Tree](cpp_sec/avl.md)
     * [BFS](cpp_sec/bfs.md)
     * [DFS](cpp_sec/dfs.md)
   * [Hash Table / Maps](cpp_sec/hashmap.md)
@@ -47,7 +46,9 @@
       * [Shortest Path on DAG]
       * [Dijkstra's Algorithm](cpp_sec/Dijkstra.md)
       * [Floyd-Warshall Algorithm](cpp_sec/fw.md)
-    * [Minumum Spanning Tree]
+    * [Minumum Spanning Tree](cpp_sec/mst.md)
+      * [Kruskal's Algorithm]
+      * [Prim's Algorithm]
     * [Maximum Flow]
-    * 
+  * Operating System
 
