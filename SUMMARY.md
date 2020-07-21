@@ -47,8 +47,8 @@
       * [Dijkstra's Algorithm](cpp_sec/Dijkstra.md)
       * [Floyd-Warshall Algorithm](cpp_sec/fw.md)
     * [Minumum Spanning Tree](cpp_sec/mst.md)
-      * [Kruskal's Algorithm]
-      * [Prim's Algorithm]
+      * [Kruskal's Algorithm](cpp_sec/kruskal.md)
+      * [Prim's Algorithm](cpp_sec/prim.md)
     * [Maximum Flow]
   * Operating System
 
