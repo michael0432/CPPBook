@@ -23,9 +23,9 @@ Prim's Algorithm一樣使用Greedy的概念找出Minimum Spanning Tree:
 ![](https://i.imgur.com/0br0ay5.png)
 
 * Step 2 : 對2走的到的點做relax
-    * key[1] = min(key[1], key[2]+weight(2,1))
-    * key[3] = min(key[3], key[2]+weight(2,3))
-    * key[6] = min(key[6], key[2]+weight(2,6))
+    * key[1] = min(key[1], weight(2,1))
+    * key[3] = min(key[3], weight(2,3))
+    * key[6] = min(key[6], weight(2,6))
 
 ![](https://i.imgur.com/OIu0epf.png)
 
@@ -35,8 +35,8 @@ Prim's Algorithm一樣使用Greedy的概念找出Minimum Spanning Tree:
 ![](https://i.imgur.com/6WOAz49.png)
 
 * Step 4 : 對3走的到的點做relax
-    * key[4] = min(key[4], key[3]+weight(3,4))
-    * key[6] = min(key[6], key[3]+weight(3,6))
+    * key[4] = min(key[4], weight(3,4))
+    * key[6] = min(key[6], weight(3,6))
 
 ![](https://i.imgur.com/qiC016O.png)
 
