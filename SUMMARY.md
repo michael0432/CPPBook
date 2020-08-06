@@ -50,5 +50,14 @@
       * [Kruskal's Algorithm](cpp_sec/kruskal.md)
       * [Prim's Algorithm](cpp_sec/prim.md)
     * [Maximum Flow]
-  * Operating System
-
+* [Operating System]
+  * [Install Linux](cpp_sec/installLinux.md)
+* [Object Oriented Programming](cpp_sec/oop.md)
+  * [Class Constructors](cpp_sec/constructor.md)
+  * [Class Methods](cpp_sec/method.md)
+  * [Encapsulation](cpp_sec/encapsulation.md)
+  * [Inheritance](cpp_sec/inheritance.md)
+  * [Polymorphism](cpp_sec/polymorphism.md)
+  * [Software Engineering Design]
+  * [Template]
+  * [Exception Handling]
