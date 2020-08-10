@@ -49,7 +49,8 @@
     * [Minumum Spanning Tree](cpp_sec/mst.md)
       * [Kruskal's Algorithm](cpp_sec/kruskal.md)
       * [Prim's Algorithm](cpp_sec/prim.md)
-    * [Maximum Flow]
+    * [Maximum Flow](cpp_sec/maximum_flow.md)
+      * [Ford-Fulkerson Algorithm](cpp_sec/ff.md)
 * [Operating System]
   * [Install Linux](cpp_sec/installLinux.md)
 * [Object Oriented Programming](cpp_sec/oop.md)

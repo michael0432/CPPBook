@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>安裝環境 · GitBook</title>
+        <title>Maximum Flow · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="compile_io.html" />
+    <link rel="next" href="ff.html" />
     
     
-    <link rel="prev" href="cpp.html" />
+    <link rel="prev" href="prim.html" />
     
 
     </head>
@@ -129,7 +129,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter active" data-level="1.3.1" data-path="install.html">
+        <li class="chapter " data-level="1.3.1" data-path="install.html">
             
                 <a href="install.html">
             
@@ -794,7 +794,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.4.3" data-path="maximum_flow.html">
+        <li class="chapter active" data-level="1.5.4.3" data-path="maximum_flow.html">
             
                 <a href="maximum_flow.html">
             
@@ -1034,7 +1034,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >安裝環境</a>
+        <a href=".." >Maximum Flow</a>
     </h1>
 </div>
 
@@ -1049,44 +1049,27 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="&#x5B89;&#x88DD;&#x74B0;&#x5883;">&#x5B89;&#x88DD;&#x74B0;&#x5883;</h1>
-<h6 id="tags--c">tags = <code>C++</code></h6>
-<h2 id="windows">Windows</h2>
+                                <h1 id="maximum-flow-problem">Maximum Flow Problem</h1>
+<h6 id="tags--algorithm">tags = <code>Algorithm</code></h6>
+<p>&#x5728;Maximum Flow&#x7684;&#x554F;&#x984C;&#x4E2D;&#xFF0C;&#x6211;&#x5011;&#x628A;&#x6709;&#x5411;&#x5716;&#x770B;&#x6210;&#x4E00;&#x500B;&#x7DB2;&#x8DEF;&#x67B6;&#x69CB;&#xFF0C;&#x6BCF;&#x4E00;&#x689D;&#x908A;(&#x6BCF;&#x6BB5;&#x7DDA;&#x8DEF;)&#x90FD;&#x6709;&#x81EA;&#x5DF1;&#x7684;&#x6D41;&#x91CF;&#x4E0A;&#x9650;&#xFF0C;&#x4E26;&#x4E14;&#x5728;&#x5716;&#x4E2D;&#x6709;&#x4E00;&#x500B;&#x8D77;&#x59CB;&#x9EDE;(source, &#x6E90;&#x982D;)&#x53CA;&#x4E00;&#x500B;&#x7D50;&#x675F;&#x9EDE;(termination, &#x7D42;&#x9EDE;)&#x3002;&#x9019;&#x7A2E;&#x985E;&#x578B;&#x7684;&#x5716;&#x7A31;&#x70BA;Flow Network&#x3002;</p>
+<h2 id="flow-network">Flow Network</h2>
+<p>Flow Network&#x662F;&#x4E00;&#x500B;weighted, directed graph&#xFF0C;&#x4E14;&#x6BCF;&#x500B;&#x908A;&#x7684;weighted&#x70BA;&#x975E;&#x8CA0;&#xFF0C;&#x7528;&#x4F86;&#x8868;&#x793A;&#x908A;&#x7684;&#x6D41;&#x91CF;&#x4E0A;&#x9650;(capacity)&#x3002;</p>
+<p><img src="https://i.imgur.com/zYlUX8X.png" alt=""></p>
 <ul>
-<li><p>&#x5B89;&#x88DD;MinGW</p>
-<ul>
-<li><a href="https://sourceforge.net/projects/mingw-w64/files/" target="_blank">https://sourceforge.net/projects/mingw-w64/files/</a></li>
-<li><img src="https://i.imgur.com/QcZTGWT.png" alt=""></li>
+<li>capacity: Edge(X,Y)&#x7684;weighted&#xFF0C;&#x8868;&#x793A;&#x70BA;c(X,Y)<ul>
+<li>&#x82E5;Edge(X,Y)&#x4E0D;&#x5B58;&#x5728;&#xFF0C;&#x5247;c(X,Y) = 0</li>
 </ul>
 </li>
-<li><p>&#x5B89;&#x88DD;LLVM</p>
-<ul>
-<li><a href="https://releases.llvm.org/download.html" target="_blank">https://releases.llvm.org/download.html</a></li>
-<li><img src="https://i.imgur.com/3jFM9N8.png" alt=""></li>
-<li><img src="https://i.imgur.com/ZcQkafj.png" alt=""></li>
+<li>source: flow&#x7684;&#x6E90;&#x982D;&#xFF0C;&#x53EF;&#x4EE5;&#x7522;&#x751F;&#x7121;&#x9650;&#x55AE;&#x4F4D;&#x6578;&#x91CF;&#x7684;flow</li>
+<li>termination: flow&#x7684;&#x7D42;&#x9EDE;&#xFF0C;&#x53EF;&#x4EE5;&#x63A5;&#x6536;&#x7121;&#x9650;&#x55AE;&#x4F4D;&#x6578;&#x91CF;&#x7684;flow</li>
+<li>flow: &#x5F9E;Vertex(X)&#x6D41;&#x5411;Vertex(Y)&#x7684;flow&#xFF0C;&#x8868;&#x793A;&#x70BA;f(X,Y)<ul>
+<li>Capacity constraint: &#x5F9E;Vertex(X)&#x6D41;&#x5411;Vertex(Y)&#x7684;flow&#xFF0C;&#x4E0D;&#x80FD;&#x6BD4;c(X,Y)&#x5927;&#xFF0C;&#x5373;c(X,Y) &gt;= f(X,Y)&#x3002;</li>
+<li>Skew symmetry: &#x82E5;f(X,Y) = 5&#xFF0C;&#x610F;&#x601D;&#x70BA;&#x5F9E;Vertex(X)&#x6D41;&#x5411;Vertex(Y)&#x7684;flow&#x70BA;5&#x55AE;&#x4F4D;&#xFF0C;&#x4E5F;&#x7B49;&#x50F9;&#x65BC;&#x610F;&#x601D;&#x70BA;&#x5F9E;Vertex(Y)&#x6D41;&#x5411;Vertex(X)&#x7684;flow&#x70BA;-5&#x55AE;&#x4F4D;&#xFF0C;&#x5373;f(Y,X) = -5&#x3002;</li>
+<li>Flow conservation: &#x5728;Graph&#x4E2D;&#x9664;&#x4E86;source&#x8DDF;termination&#x5169;&#x9EDE;&#x4E4B;&#x5916;&#xFF0C;&#x6BCF;&#x500B;Vertex&#x6D41;&#x9032;&#x7684;flow&#x8981;&#x7B49;&#x65BC;&#x6D41;&#x51FA;&#x7684;flow&#xFF0C;&#x4E5F;&#x5C31;&#x662F;flow&#x4E0D;&#x6703;&#x7121;&#x6545;&#x7684;&#x589E;&#x52A0;&#x6216;&#x6E1B;&#x5C11;&#x3002;</li>
 </ul>
 </li>
-<li><p>Merge</p>
-<ul>
-<li>&#x5206;&#x5225;&#x6253;&#x958B; MinGW-w64 &#x4EE5;&#x53CA; LLVM &#x7684;&#x5B89;&#x88DD;&#x4F4D;&#x7F6E;&#xFF0C;&#x4F9D;&#x7167;&#x525B;&#x525B;&#x7684;&#x5B89;&#x88DD;&#x72C0;&#x614B;&#xFF0C;&#x5206;&#x5225;&#x6703;&#x4F4D;&#x65BC; &#x201C;C:\mingw-w64\x86_64-8.1.0-posix-seh-rt_v6-rev0\mingw64&#x201D; &#x4EE5;&#x53CA; &#x201C;C:\LLVM&#x201D;&#x3002;&#x63A5;&#x8457;&#x5C07; mingw64 &#x8CC7;&#x6599;&#x593E;&#x7684;&#x6A94;&#x6848;&#x5168;&#x90E8;&#x8907;&#x88FD;&#x81F3; LLVM &#x8CC7;&#x6599;&#x593E;&#x4E2D;&#x3002;</li>
 </ul>
-</li>
-<li><p>VSCODE</p>
-<ul>
-<li><img src="https://i.imgur.com/TXCdctW.png" alt=""></li>
-</ul>
-</li>
-<li><p>&#x65B0;&#x589E;&#x4E00;&#x500B;&#x653E;cpp&#x6A94;&#x6848;&#x7684;&#x8CC7;&#x6599;&#x593E;</p>
-<ul>
-<li>&#x65B0;&#x589E;.vscode&#x8CC7;&#x6599;&#x593E;</li>
-<li><a href="https://drive.google.com/open?id=1JweMW0Pme4U_1FaiWpeZEKlsgEOnou4S" target="_blank">https://drive.google.com/open?id=1JweMW0Pme4U_1FaiWpeZEKlsgEOnou4S</a></li>
-</ul>
-</li>
-<li><p>&#x6E2C;&#x8A66;</p>
-</li>
-</ul>
-<pre><code class="lang-cpp=1">g++ -std=c++11 filename.cpp
-</code></pre>
+<p><img src="https://i.imgur.com/f1lYFob.png" alt=""></p>
 
                                 
                                 </section>
@@ -1114,12 +1097,12 @@
 
             
                 
-                <a href="cpp.html" class="navigation navigation-prev " aria-label="Previous page: C++">
+                <a href="prim.html" class="navigation navigation-prev " aria-label="Previous page: Prim's Algorithm">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="compile_io.html" class="navigation navigation-next " aria-label="Next page: 編譯、輸入、輸出">
+                <a href="ff.html" class="navigation navigation-next " aria-label="Next page: Ford-Fulkerson Algorithm">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1130,7 +1113,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"安裝環境","level":"1.3.1","depth":2,"next":{"title":"編譯、輸入、輸出","level":"1.3.2","depth":2,"path":"cpp_sec/compile_io.md","ref":"cpp_sec/compile_io.md","articles":[]},"previous":{"title":"C++","level":"1.3","depth":1,"path":"cpp_sec/cpp.md","ref":"cpp_sec/cpp.md","articles":[{"title":"安裝環境","level":"1.3.1","depth":2,"path":"cpp_sec/install.md","ref":"cpp_sec/install.md","articles":[]},{"title":"編譯、輸入、輸出","level":"1.3.2","depth":2,"path":"cpp_sec/compile_io.md","ref":"cpp_sec/compile_io.md","articles":[]},{"title":"資料型態&宣告","level":"1.3.3","depth":2,"path":"cpp_sec/Variable.md","ref":"cpp_sec/Variable.md","articles":[]},{"title":"If/Else","level":"1.3.4","depth":2,"path":"cpp_sec/if_else.md","ref":"cpp_sec/if_else.md","articles":[]},{"title":"Loop","level":"1.3.5","depth":2,"path":"cpp_sec/loop.md","ref":"cpp_sec/loop.md","articles":[]},{"title":"Array","level":"1.3.6","depth":2,"path":"cpp_sec/array.md","ref":"cpp_sec/array.md","articles":[]},{"title":"String","level":"1.3.7","depth":2,"path":"cpp_sec/string.md","ref":"cpp_sec/string.md","articles":[]},{"title":"Function","level":"1.3.8","depth":2,"path":"cpp_sec/function.md","ref":"cpp_sec/function.md","articles":[]},{"title":"Pointer","level":"1.3.9","depth":2,"path":"cpp_sec/pointer.md","ref":"cpp_sec/pointer.md","articles":[]},{"title":"Struct/Object","level":"1.3.10","depth":2,"path":"cpp_sec/class.md","ref":"cpp_sec/class.md","articles":[]},{"title":"位元運算","level":"1.3.11","depth":2,"path":"cpp_sec/bitwise.md","ref":"cpp_sec/bitwise.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cpp_sec/install.md","mtime":"2020-08-07T03:00:04.061Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-08-10T03:40:20.316Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Maximum Flow","level":"1.5.4.3","depth":3,"next":{"title":"Ford-Fulkerson Algorithm","level":"1.5.4.3.1","depth":4,"path":"cpp_sec/ff.md","ref":"cpp_sec/ff.md","articles":[]},"previous":{"title":"Prim's Algorithm","level":"1.5.4.2.2","depth":4,"path":"cpp_sec/prim.md","ref":"cpp_sec/prim.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cpp_sec/maximum_flow.md","mtime":"2020-08-09T01:18:35.041Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-08-10T03:40:20.316Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
