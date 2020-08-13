@@ -51,15 +51,21 @@
       * [Prim's Algorithm](cpp_sec/prim.md)
     * [Maximum Flow](cpp_sec/maximum_flow.md)
       * [Ford-Fulkerson Algorithm](cpp_sec/ff.md)
-* [Operating System]
+* [Operating System](cpp_sec/os_overview.md)
   * [Install Linux](cpp_sec/installLinux.md)
+  * [Process]
+  * [I/O]
+    * [File I/O]
+    * [Standard I/O]
+  * [Thread]
 * [Object Oriented Programming](cpp_sec/oop.md)
   * [Class Constructors](cpp_sec/constructor.md)
   * [Class Methods](cpp_sec/method.md)
   * [Encapsulation](cpp_sec/encapsulation.md)
   * [Inheritance](cpp_sec/inheritance.md)
   * [Polymorphism](cpp_sec/polymorphism.md)
+  * [Template](cpp_sec/template.md)
+  * [Exception Handling](cpp_sec/exception.md)
   * [Practice - Implement STL](cpp_sec/implementSTL.md)
-  * [Software Engineering Design]
-  * [Template]
-  * [Exception Handling]
+  * [Practice - Implement BigInt](cpp_sec/ImplementBigInt.md)
+  
