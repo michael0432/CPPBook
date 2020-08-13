@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Array · GitBook</title>
+        <title>Exception Handling · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="string.html" />
+    <link rel="next" href="implementSTL.html" />
     
     
-    <link rel="prev" href="loop.html" />
+    <link rel="prev" href="template.html" />
     
 
     </head>
@@ -194,7 +194,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.3.6" data-path="array.html">
+        <li class="chapter " data-level="1.3.6" data-path="array.html">
             
                 <a href="array.html">
             
@@ -1031,7 +1031,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7.7" data-path="exception.html">
+        <li class="chapter active" data-level="1.7.7" data-path="exception.html">
             
                 <a href="exception.html">
             
@@ -1105,7 +1105,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Array</a>
+        <a href=".." >Exception Handling</a>
     </h1>
 </div>
 
@@ -1120,78 +1120,108 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="array">Array</h1>
-<p>&#x9663;&#x5217;&#x662F;&#x4E00;&#x7A2E;&#x5B58;&#x653E;&#x9023;&#x7E8C;&#x8CC7;&#x6599;&#x7684;&#x65B9;&#x5F0F;&#xFF0C;Array&#x4E2D;&#x7684;&#x8CC7;&#x6599;&#x6703;&#x5B58;&#x653E;&#x5728;&#x8A18;&#x61B6;&#x9AD4;&#x4E2D;&#x9023;&#x7E8C;&#x7684;&#x5340;&#x584A;&#x3002;
-<img src="https://i.imgur.com/ymZag5n.png" alt=""></p>
-<h3 id="1d-array">1D Array</h3>
-<p>Array&#x7684;&#x5BA3;&#x544A;&#x65B9;&#x5F0F;&#x5982;&#x4E0B;:</p>
-<pre><code class="lang-cpp=1">&#x8CC7;&#x6599;&#x578B;&#x614B; Array&#x540D;&#x7A31;[Array&#x5927;&#x5C0F;];
-
-int arr[5];
-</code></pre>
-<p>&#x8207;Python&#x7684;list&#x4E0D;&#x540C;&#xFF0C;C++&#x7684;Array&#x8981;&#x5148;&#x5BA3;&#x544A;&#x5927;&#x5C0F;&#xFF0C;&#x624D;&#x80FD;&#x5728;&#x8A18;&#x61B6;&#x9AD4;&#x4E2D;&#x62FF;&#x5230;&#x5132;&#x5B58;&#x7A7A;&#x9593;&#x3002;</p>
+                                <h1 id="exception-handling">Exception Handling</h1>
+<h6 id="tags--oop">tags = <code>OOP</code></h6>
+<p>&#x7576;&#x7A0B;&#x5F0F;&#x767C;&#x751F;runtime error&#x6642;&#xFF0C;&#x82E5;&#x6C92;&#x6709;&#x505A;Exception Handling(Error Handling)&#xFF0C;&#x7A0B;&#x5F0F;&#x6703;&#x76F4;&#x63A5;&#x7D50;&#x675F;&#x57F7;&#x884C;&#xFF0C;&#x7136;&#x800C;&#xFF0C;&#x6211;&#x5011;&#x53EF;&#x4EE5;&#x85C9;&#x7531;Exception Handling&#x4F86;&#x8B93;&#x8A2D;&#x5B9A;&#x7576;&#x7A0B;&#x5F0F;&#x78B0;&#x5230;&#x7279;&#x5B9A;&#x932F;&#x8AA4;&#x6642;&#xFF0C;&#x8A72;&#x505A;&#x751A;&#x9EBC;&#x8655;&#x7406;&#x3002;</p>
+<p>&#x5728;C++&#x4E2D;&#xFF0C;&#x5229;&#x7528;try, catch, throw &#x4F86;&#x505A;Exception Handling:</p>
 <ul>
-<li>&#x7D66;Array&#x521D;&#x59CB;&#x503C;:<pre><code class="lang-cpp=1">int arr[5] = {1,2,3,6,8};
+<li>throw: &#x7576;&#x554F;&#x984C;&#x767C;&#x751F;&#x6642;&#xFF0C;&#x4E1F;&#x51FA;&#x4E00;&#x500B;exception</li>
+<li>catch: &#x6536;&#x5230;exception&#xFF0C;&#x4E26;&#x6C7A;&#x5B9A;&#x5982;&#x4F55;&#x8655;&#x7406;exception</li>
+<li>try: try&#x5B9A;&#x7FA9;&#x54EA;&#x500B;&#x6BB5;&#x843D;&#x7684;&#x7A0B;&#x5F0F;&#x78BC;&#x9700;&#x8981;&#x505A;Exception Handling</li>
+</ul>
+<p>catch, try&#x57FA;&#x672C;&#x7684;&#x683C;&#x5F0F;&#x9577;&#x9019;&#x6A23;:</p>
+<pre><code class="lang-cpp=1">try{
+    // protected code
+}
+catch(ExceptionName e1){
+    // catch block
+}
+catch(ExceptionName e2){
+    // catch block
+}
+...
 </code></pre>
-</li>
-<li>&#x53D6;Array&#x7684;&#x503C;:<pre><code class="lang-cpp=1">int a = arr[0];
-int b = arr[1];
-</code></pre>
-</li>
-<li><p>Input variable: &#x5F9E;stdin input&#x4E00;&#x500B;&#x5927;&#x5C0F;&#x70BA;n&#x7684;array</p>
-<pre><code class="lang-cpp=1">int main(){
-  int n;
-  cin &lt;&lt; n;
-  int array[n];
-  for(int i=0 ; i&lt;n ; i++){
-      int tmp;
-      cin &lt;&lt; tmp;
-      array[i] = tmp;
-  } 
+<p>throw&#x57FA;&#x672C;&#x683C;&#x5F0F;:</p>
+<pre><code class="lang-cpp=1">int divide(int a, int b){
+    if(b == 0)
+        string errmsg = &quot;divide zero&quot;;
+        throw errmsg;
+    return a/b;
 }
 </code></pre>
-</li>
-<li><p>&#x6CE8;&#x610F;:Array&#x4E4B;&#x9593;&#x6C92;&#x6709;=&#x9019;&#x500B;&#x904B;&#x7B97;&#x5B50;:</p>
-<pre><code class="lang-cpp=1">int arr[5];
-int arr2[5];
-arr2 = arr // wrong !
-</code></pre>
-</li>
-</ul>
-<h3 id="&#x5C0F;&#x7DF4;&#x7FD2;">&#x5C0F;&#x7DF4;&#x7FD2;</h3>
-<ul>
-<li><a href="https://www.hackerrank.com/challenges/arrays-introduction/problem" target="_blank">https://www.hackerrank.com/challenges/arrays-introduction/problem</a></li>
-</ul>
-<h3 id="2d-array">2D Array</h3>
-<p><img src="https://i.imgur.com/5s2aiaP.png" alt="">
-2D Array&#x7684;&#x5BA3;&#x544A;&#x65B9;&#x5F0F;:</p>
-<pre><code class="lang-cpp=1">&#x8CC7;&#x6599;&#x578B;&#x614B; Array&#x540D;&#x7A31;[&#x5217;&#x6578;][&#x884C;&#x6578;];
+<p>Example:</p>
+<pre><code class="lang-cpp=1">#include &lt;iostream&gt;
+#include &lt;exception&gt;
+#include &lt;string&gt;
 
-int arr[3][2];
-</code></pre>
-<ul>
-<li>&#x7D66;Array&#x521D;&#x59CB;&#x503C;:<pre><code class="lang-cpp=1">int arr[3][2] = { {1,2},{3,4},{5,6} };
-int arr[3][2] = {0}; // &#x5168;&#x90E8;&#x8A2D;&#x70BA;0
-</code></pre>
-</li>
-<li>Input variable: &#x5F9E;stdin input&#x4E00;&#x500B;&#x5927;&#x5C0F;&#x70BA;n*m&#x7684;array<pre><code class="lang-cpp=1">int main(){
-  int n,m;
-  cin &lt;&lt; n &lt;&lt; m;
-  int array[n][m];
-  for(int i=0 ; i&lt;n ; i++){
-      for(int j=0 ; j&lt;n ; j++){
-          int tmp;
-          cin &lt;&lt; tmp;
-          array[i][j] = tmp;
-      }
-  } 
+using namespace std;
+
+
+int divide(int a, int b){
+    if(b == 0){
+        string errmsg = &quot;divide zero&quot;;
+        throw errmsg;
+    }
+    return a/b;
+}
+
+int main(){
+    try{
+        cout &lt;&lt; divide(6,2) &lt;&lt; endl;
+        cout &lt;&lt; divide(6,0) &lt;&lt; endl;
+        cout &lt;&lt; divide(6,3) &lt;&lt; endl;
+    }
+
+    catch(const string e){
+        cerr&lt;&lt;e&lt;&lt;endl;
+    }
+    cout &lt;&lt; &quot;keep doing something&quot; &lt;&lt; endl;
+    return 0;
 }
 </code></pre>
-</li>
-<li><a href="https://www.hackerrank.com/challenges/sherlock-and-array/problem" target="_blank">https://www.hackerrank.com/challenges/sherlock-and-array/problem</a></li>
-<li><a href="https://www.hackerrank.com/challenges/the-hurdle-race/problem" target="_blank">https://www.hackerrank.com/challenges/the-hurdle-race/problem</a></li>
-<li><a href="https://www.hackerrank.com/challenges/the-birthday-bar/problem" target="_blank">https://www.hackerrank.com/challenges/the-birthday-bar/problem</a></li>
-</ul>
+<h2 id="c-standard-exception">C++ Standard Exception</h2>
+<p>C++&#x63D0;&#x4F9B;&#x4E86;&#x5F88;&#x591A;&#x5B9A;&#x7FA9;&#x597D;&#x7684;Standard Exception&#xFF0C;&#x53EF;&#x4EE5;&#x5229;&#x7528;Standard Exception&#x4F86;&#x4E1F;&#x51FA;&#x81EA;&#x5DF1;&#x5B9A;&#x7FA9;&#x7684;error</p>
+<p><img src="https://i.imgur.com/WpluogE.png" alt=""></p>
+<pre><code class="lang-cpp=1">#include &lt;iostream&gt;
+#include &lt;exception&gt;
+#include &lt;string&gt;
+#include &lt;vector&gt;
+using namespace std;
+
+int main(){
+    vector&lt;int&gt; myVec(1);
+    try{
+        myVec.at(20);
+    }
+    catch(exception&amp; e){
+        cerr &lt;&lt; &quot;Standard exception: &quot; &lt;&lt; e.what() &lt;&lt; endl;
+    }
+    cout &lt;&lt; &quot;keep doing something&quot; &lt;&lt; endl;
+}
+</code></pre>
+<h2 id="&#x81EA;&#x5B9A;&#x7FA9;exceptions">&#x81EA;&#x5B9A;&#x7FA9;exceptions</h2>
+<p>&#x53EF;&#x4EE5;&#x85C9;&#x7531;&#x7E7C;&#x627F;exception&#x9019;&#x500B;class&#x81EA;&#x5DF1;&#x5B9A;&#x7FA9;exception</p>
+<pre><code class="lang-cpp=1">#include &lt;iostream&gt;
+#include &lt;exception&gt;
+using namespace std;
+
+struct MyException : public exception {
+   const char* what () const throw () {
+      return &quot;C++ Exception&quot;;
+   }
+};
+
+int main() {
+   try {
+      throw MyException();
+   } catch(MyException&amp; e) {
+      cout &lt;&lt; &quot;MyException caught&quot; &lt;&lt; std::endl;
+      cout &lt;&lt; e.what() &lt;&lt; endl;
+   } catch(exception&amp; e) {
+      //Other errors
+   }
+}
+</code></pre>
 
                                 
                                 </section>
@@ -1219,12 +1249,12 @@ int arr[3][2] = {0}; // &#x5168;&#x90E8;&#x8A2D;&#x70BA;0
 
             
                 
-                <a href="loop.html" class="navigation navigation-prev " aria-label="Previous page: Loop">
+                <a href="template.html" class="navigation navigation-prev " aria-label="Previous page: Template">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="string.html" class="navigation navigation-next " aria-label="Next page: String">
+                <a href="implementSTL.html" class="navigation navigation-next " aria-label="Next page: Practice - Implement STL">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1235,7 +1265,7 @@ int arr[3][2] = {0}; // &#x5168;&#x90E8;&#x8A2D;&#x70BA;0
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Array","level":"1.3.6","depth":2,"next":{"title":"String","level":"1.3.7","depth":2,"path":"cpp_sec/string.md","ref":"cpp_sec/string.md","articles":[]},"previous":{"title":"Loop","level":"1.3.5","depth":2,"path":"cpp_sec/loop.md","ref":"cpp_sec/loop.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cpp_sec/array.md","mtime":"2020-08-10T03:40:22.200Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-08-13T05:25:24.083Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Exception Handling","level":"1.7.7","depth":2,"next":{"title":"Practice - Implement STL","level":"1.7.8","depth":2,"path":"cpp_sec/implementSTL.md","ref":"cpp_sec/implementSTL.md","articles":[]},"previous":{"title":"Template","level":"1.7.6","depth":2,"path":"cpp_sec/template.md","ref":"cpp_sec/template.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cpp_sec/exception.md","mtime":"2020-08-13T03:51:46.433Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-08-13T05:25:24.083Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

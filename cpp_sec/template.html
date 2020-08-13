@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Array · GitBook</title>
+        <title>Template · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="string.html" />
+    <link rel="next" href="exception.html" />
     
     
-    <link rel="prev" href="loop.html" />
+    <link rel="prev" href="polymorphism.html" />
     
 
     </head>
@@ -194,7 +194,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.3.6" data-path="array.html">
+        <li class="chapter " data-level="1.3.6" data-path="array.html">
             
                 <a href="array.html">
             
@@ -1018,7 +1018,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7.6" data-path="template.html">
+        <li class="chapter active" data-level="1.7.6" data-path="template.html">
             
                 <a href="template.html">
             
@@ -1105,7 +1105,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Array</a>
+        <a href=".." >Template</a>
     </h1>
 </div>
 
@@ -1120,78 +1120,155 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="array">Array</h1>
-<p>&#x9663;&#x5217;&#x662F;&#x4E00;&#x7A2E;&#x5B58;&#x653E;&#x9023;&#x7E8C;&#x8CC7;&#x6599;&#x7684;&#x65B9;&#x5F0F;&#xFF0C;Array&#x4E2D;&#x7684;&#x8CC7;&#x6599;&#x6703;&#x5B58;&#x653E;&#x5728;&#x8A18;&#x61B6;&#x9AD4;&#x4E2D;&#x9023;&#x7E8C;&#x7684;&#x5340;&#x584A;&#x3002;
-<img src="https://i.imgur.com/ymZag5n.png" alt=""></p>
-<h3 id="1d-array">1D Array</h3>
-<p>Array&#x7684;&#x5BA3;&#x544A;&#x65B9;&#x5F0F;&#x5982;&#x4E0B;:</p>
-<pre><code class="lang-cpp=1">&#x8CC7;&#x6599;&#x578B;&#x614B; Array&#x540D;&#x7A31;[Array&#x5927;&#x5C0F;];
-
-int arr[5];
-</code></pre>
-<p>&#x8207;Python&#x7684;list&#x4E0D;&#x540C;&#xFF0C;C++&#x7684;Array&#x8981;&#x5148;&#x5BA3;&#x544A;&#x5927;&#x5C0F;&#xFF0C;&#x624D;&#x80FD;&#x5728;&#x8A18;&#x61B6;&#x9AD4;&#x4E2D;&#x62FF;&#x5230;&#x5132;&#x5B58;&#x7A7A;&#x9593;&#x3002;</p>
+                                <h1 id="template">Template</h1>
+<h6 id="tags--oop">tags = <code>OOP</code></h6>
+<p>template&#x662F;&#x4E00;&#x7A2E;&#x6A21;&#x677F;&#xFF0C;&#x53EF;&#x4EE5;&#x7528;&#x4F86;&#x628A;&#x8CC7;&#x6599;&#x578B;&#x614B;&#x53C3;&#x6578;&#x5316;&#xFF0C;&#x900F;&#x904E;&#x7DE8;&#x8B6F;&#x5668;&#x6839;&#x64DA;&#x6A23;&#x677F;&#x5167;&#x5BB9;&#x7522;&#x751F;&#x5BE6;&#x969B;&#x7684;&#x7A0B;&#x5F0F;&#x78BC;&#x3002;template&#x5206;&#x6210;&#x5169;&#x7A2E;:</p>
 <ul>
-<li>&#x7D66;Array&#x521D;&#x59CB;&#x503C;:<pre><code class="lang-cpp=1">int arr[5] = {1,2,3,6,8};
+<li>Function Template</li>
+<li>Class Template</li>
+</ul>
+<h2 id="function-template">Function Template</h2>
+<p>Template&#x7684;&#x7528;&#x6CD5;&#x662F;&#x7528;&lt;&gt;&#x62EC;&#x8D77;&#x53C3;&#x6578;</p>
+<pre><code class="lang-cpp=1">template &lt;&#x578B;&#x614B; &#x6A23;&#x677F;&#x540D;&#x7A31;&gt;
 </code></pre>
-</li>
-<li>&#x53D6;Array&#x7684;&#x503C;:<pre><code class="lang-cpp=1">int a = arr[0];
-int b = arr[1];
-</code></pre>
-</li>
-<li><p>Input variable: &#x5F9E;stdin input&#x4E00;&#x500B;&#x5927;&#x5C0F;&#x70BA;n&#x7684;array</p>
-<pre><code class="lang-cpp=1">int main(){
-  int n;
-  cin &lt;&lt; n;
-  int array[n];
-  for(int i=0 ; i&lt;n ; i++){
-      int tmp;
-      cin &lt;&lt; tmp;
-      array[i] = tmp;
-  } 
+<p>&#x8209;&#x4F8B;&#x4F86;&#x8AAA;&#xFF0C;&#x5982;&#x679C;&#x8981;&#x5BEB;&#x5169;&#x500B;&#x8B8A;&#x6578;&#x76F8;&#x52A0;&#x7684;function&#xFF0C;&#x7576;input&#x8DDF;output&#x7684;&#x8CC7;&#x6599;&#x578B;&#x614B;&#x4E0D;&#x540C;&#x6642;&#xFF0C;&#x5C31;&#x8981;&#x91CD;&#x8907;&#x5BEB;&#x5F88;&#x591A;&#x5E7E;&#x4E4E;&#x4E00;&#x6A23;&#x7684;function:</p>
+<pre><code class="lang-cpp=1">
+int add(int a, int b){
+    return a+b;
+}
+float add(float a, float b){
+    return a+b;
 }
 </code></pre>
-</li>
-<li><p>&#x6CE8;&#x610F;:Array&#x4E4B;&#x9593;&#x6C92;&#x6709;=&#x9019;&#x500B;&#x904B;&#x7B97;&#x5B50;:</p>
-<pre><code class="lang-cpp=1">int arr[5];
-int arr2[5];
-arr2 = arr // wrong !
+<p>&#x5982;&#x679C;&#x4F7F;&#x7528;template&#xFF0C;&#x53EF;&#x4EE5;&#x7C21;&#x5316;&#x9019;&#x6BB5;&#x7A0B;&#x5F0F;&#x78BC;:</p>
+<pre><code class="lang-cpp=1">template &lt;class T&gt;
+T add(T a, T  b){
+    return a+b;
+};
 </code></pre>
-</li>
-</ul>
-<h3 id="&#x5C0F;&#x7DF4;&#x7FD2;">&#x5C0F;&#x7DF4;&#x7FD2;</h3>
-<ul>
-<li><a href="https://www.hackerrank.com/challenges/arrays-introduction/problem" target="_blank">https://www.hackerrank.com/challenges/arrays-introduction/problem</a></li>
-</ul>
-<h3 id="2d-array">2D Array</h3>
-<p><img src="https://i.imgur.com/5s2aiaP.png" alt="">
-2D Array&#x7684;&#x5BA3;&#x544A;&#x65B9;&#x5F0F;:</p>
-<pre><code class="lang-cpp=1">&#x8CC7;&#x6599;&#x578B;&#x614B; Array&#x540D;&#x7A31;[&#x5217;&#x6578;][&#x884C;&#x6578;];
+<p>&#x7DE8;&#x8B6F;&#x5668;&#x6703;&#x5728;&#x57F7;&#x884C;&#x5230;&#x9019;&#x500B;function&#x6642;&#xFF0C;&#x5EFA;&#x7ACB;&#x4E00;&#x500B;&#x6B64;&#x6A21;&#x677F;&#x7684;&#x5BE6;&#x4F8B;(instance)</p>
+<pre><code class="lang-cpp=1">template &lt;class T&gt;
+T add(T a, T  b){
+    return a+b;
+};
 
-int arr[3][2];
-</code></pre>
-<ul>
-<li>&#x7D66;Array&#x521D;&#x59CB;&#x503C;:<pre><code class="lang-cpp=1">int arr[3][2] = { {1,2},{3,4},{5,6} };
-int arr[3][2] = {0}; // &#x5168;&#x90E8;&#x8A2D;&#x70BA;0
-</code></pre>
-</li>
-<li>Input variable: &#x5F9E;stdin input&#x4E00;&#x500B;&#x5927;&#x5C0F;&#x70BA;n*m&#x7684;array<pre><code class="lang-cpp=1">int main(){
-  int n,m;
-  cin &lt;&lt; n &lt;&lt; m;
-  int array[n][m];
-  for(int i=0 ; i&lt;n ; i++){
-      for(int j=0 ; j&lt;n ; j++){
-          int tmp;
-          cin &lt;&lt; tmp;
-          array[i][j] = tmp;
-      }
-  } 
+int main(){
+    int a = 2, b = 3;
+    int c = add(a,b);
+    // &#x7DE8;&#x8B6F;&#x5668;&#x65B0;&#x589E;:
+    //int add(int a, int b){
+        //return a+b;
+    //}
 }
 </code></pre>
-</li>
-<li><a href="https://www.hackerrank.com/challenges/sherlock-and-array/problem" target="_blank">https://www.hackerrank.com/challenges/sherlock-and-array/problem</a></li>
-<li><a href="https://www.hackerrank.com/challenges/the-hurdle-race/problem" target="_blank">https://www.hackerrank.com/challenges/the-hurdle-race/problem</a></li>
-<li><a href="https://www.hackerrank.com/challenges/the-birthday-bar/problem" target="_blank">https://www.hackerrank.com/challenges/the-birthday-bar/problem</a></li>
-</ul>
+<p>&#x5982;&#x679C;&#x6709;&#x67D0;&#x500B;&#x7248;&#x672C;&#xFF0C;&#x4E0D;&#x60F3;&#x8981;&#x900F;&#x904E;&#x7DE8;&#x8B6F;&#x5668;&#x5EFA;&#x7ACB;:</p>
+<pre><code class="lang-cpp=1">template &lt;class T&gt;
+T add(T a, T  b){
+    return a+b;
+};
+template &lt;&gt;
+string add(string a, string b){
+    return a.size() + b.size();
+};
+</code></pre>
+<p>&#x82E5;input&#x7684;&#x683C;&#x5F0F;&#x4E0D;&#x540C;&#xFF0C;&#x53EF;&#x4EE5;&#x66F4;&#x6539;template&#x5BA3;&#x544A;&#x6642;&#x7684;input:</p>
+<pre><code class="lang-cpp=1">template &lt;class T1, class T2&gt;
+T2 add(T1 a, T2 b){
+    return a+b;
+};
+
+int main(){
+    int a = 2;
+    double b = 2.3;
+    double c = a + b;
+}
+</code></pre>
+<pre><code class="lang-cpp=1">template &lt;class T, int i&gt;
+T2 add(T1 a, T2 b){
+    return a+b;
+};
+</code></pre>
+<h2 id="class-template">Class Template</h2>
+<p>class template&#x7684;&#x7528;&#x6CD5;&#x8207;function template&#x5927;&#x81F4;&#x76F8;&#x540C;&#xFF0C;&#x4E00;&#x6A23;&#x900F;&#x904E;&#x7DE8;&#x8B6F;&#x5668;&#x6839;&#x64DA;&#x6A23;&#x677F;&#x5167;&#x5BB9;&#x7522;&#x751F;&#x5BE6;&#x969B;&#x7684;&#x7A0B;&#x5F0F;&#x78BC;&#xFF0C;&#x4E0D;&#x540C;&#x7684;&#x662F;&#xFF0C;&#x7DE8;&#x8B6F;&#x5668;&#x6703;&#x6839;&#x64DA;&#x6A23;&#x677F;&#x5EFA;&#x7ACB;&#x4E00;&#x500B;&#x6B64;class&#x7684;&#x5BE6;&#x4F8B;(instance)&#x3002;</p>
+<p>&#x8209;&#x4F8B;&#x4F86;&#x8AAA;:</p>
+<pre><code class="lang-cpp=1">template &lt;class T&gt;
+class myPair{
+private:
+    T v1;
+    T v2;
+public:
+    myPair(T first, T second){
+        v1 = first;
+        v2 = second;
+    }
+};
+
+int main(){
+    myPair&lt;int&gt; pair(13,27);
+    myPair&lt;string&gt; pair2(&quot;123&quot;,&quot;456&quot;);
+}
+</code></pre>
+<p>&#x8DDF;function template&#x76F8;&#x540C;&#xFF0C;&#x82E5;&#x6709;&#x67D0;&#x500B;&#x7248;&#x672C;&#x4E0D;&#x60F3;&#x900F;&#x904E;&#x7DE8;&#x8B6F;&#x5668;&#x76F4;&#x63A5;&#x5EFA;&#x7ACB;:</p>
+<pre><code class="lang-cpp=1">template &lt;class T&gt;
+class myPair{
+private:
+    T v1;
+    T v2;
+public:
+    myPair(T first, T second){
+        v1 = first;
+        v2 = second;
+    }
+    T getv1(){
+        return v1;
+    }
+};
+
+template &lt;&gt;
+class myPair&lt;string&gt;{
+private:
+    string v1;
+    string v2;
+public:
+    myPair(string first, string second){
+        v1 = second;
+        v2 = first;
+    }
+    string getv1(){
+        return v1;
+    }
+};
+
+int main(){
+    myPair&lt;int&gt; pair(13,27);
+    myPair&lt;string&gt; pair2(&quot;123&quot;,&quot;456&quot;);
+    cout &lt;&lt; pair.getv1() &lt;&lt; pair2.getv1() &lt;&lt; endl;
+}
+</code></pre>
+<p>&#x6B64;&#x5916;&#xFF0C;template&#x7684;&#x8CC7;&#x6599;&#x578B;&#x614B;&#x4E0D;&#x4E00;&#x5B9A;&#x5168;&#x90E8;&#x90FD;&#x8981;&#x662F;&#x81EA;&#x8A02;&#x7684;template&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x56FA;&#x5B9A;&#x7684;&#x578B;&#x614B;:</p>
+<pre><code class="lang-cpp=1">
+template &lt;class T, int N&gt;
+class mysequence {
+private:
+    T memblock [N];
+public:
+    void setmember (int x, T value){
+        memblock[x] = value;
+    }
+    T getmember (int x){
+        return memblock[x];
+    }
+};
+
+int main(){
+    mysequence&lt;int, 5&gt; myints;
+    mysequence &lt;double,5&gt; mydoubles;
+    myints.setmember (0,100);
+    mydoubles.setmember (3,3.1416);
+    cout &lt;&lt; myints.getmember(0) &lt;&lt; endl;
+    cout &lt;&lt; mydoubles.getmember(3) &lt;&lt; endl;
+}
+</code></pre>
 
                                 
                                 </section>
@@ -1219,12 +1296,12 @@ int arr[3][2] = {0}; // &#x5168;&#x90E8;&#x8A2D;&#x70BA;0
 
             
                 
-                <a href="loop.html" class="navigation navigation-prev " aria-label="Previous page: Loop">
+                <a href="polymorphism.html" class="navigation navigation-prev " aria-label="Previous page: Polymorphism">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="string.html" class="navigation navigation-next " aria-label="Next page: String">
+                <a href="exception.html" class="navigation navigation-next " aria-label="Next page: Exception Handling">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1235,7 +1312,7 @@ int arr[3][2] = {0}; // &#x5168;&#x90E8;&#x8A2D;&#x70BA;0
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Array","level":"1.3.6","depth":2,"next":{"title":"String","level":"1.3.7","depth":2,"path":"cpp_sec/string.md","ref":"cpp_sec/string.md","articles":[]},"previous":{"title":"Loop","level":"1.3.5","depth":2,"path":"cpp_sec/loop.md","ref":"cpp_sec/loop.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cpp_sec/array.md","mtime":"2020-08-10T03:40:22.200Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-08-13T05:25:24.083Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Template","level":"1.7.6","depth":2,"next":{"title":"Exception Handling","level":"1.7.7","depth":2,"path":"cpp_sec/exception.md","ref":"cpp_sec/exception.md","articles":[]},"previous":{"title":"Polymorphism","level":"1.7.5","depth":2,"path":"cpp_sec/polymorphism.md","ref":"cpp_sec/polymorphism.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cpp_sec/template.md","mtime":"2020-08-13T02:29:02.720Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-08-13T05:25:24.083Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
