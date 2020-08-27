@@ -38,3 +38,28 @@ int main(){
     obj.myMethod();
 }
 ```
+
+通常，為了讓程式簡潔，我們會將class的定義寫在header file裡(.h檔)，將method的實作寫在.cpp檔裡。
+
+myClass.h
+```cpp=1
+class myClass{
+public:
+    void myMethod();
+}
+```
+
+myClass.cpp
+```cpp=1
+void myClass::myMethod(){
+    cout << "hi!!" << endl;
+}
+```
+
+Main.cpp
+```cpp=1
+int main(){
+    Myclass obj;
+    obj.myMethod();
+}
+```

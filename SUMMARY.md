@@ -69,3 +69,8 @@
   * [Practice - Implement STL](cpp_sec/implementSTL.md)
   * [Practice - Implement BigInt](cpp_sec/ImplementBigInt.md)
   
+* [Practice]
+  * [STL Vector](cpp_sec/practice_vector.md)
+  * [HugeInt by Vector](cpp_sec/practice_hugeint.md)
+  * [Template]
+  * [Operator]
