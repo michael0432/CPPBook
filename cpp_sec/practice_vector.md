@@ -1,8 +1,8 @@
-# Practice - STL Vector
+# Practice - STL Vector (p1)
 
 實作一個STL Vector，Vector使用三個pointer來儲存vector的內容、大小及容量。
-Prob : https://github.com/michael0432/leetcode/tree/master/practice/prob/p1
-Ans : https://github.com/michael0432/leetcode/tree/master/practice/ans/p1
+
+Source code (p1): https://github.com/michael0432/practiceCplusplus
 
 ![](https://i.imgur.com/yrM3uxy.png)
 
@@ -24,7 +24,7 @@ Capacity為Vector目前容量的大小，Capacity擴大後便不會再變小。
 * Capacity擴增的規則:
     * 原vector的size為n，新的size為n'，原capacity為c
         * 若n'<=n，size及capacity都不變
-        * 若n'>n且n'<=c，size改成n'，capacity不便
+        * 若n'>n且n'<=c，size改成n'，capacity不變
         * 若n'>c
             * 若n'>2*n，新的capacity為n'
             * 若n'<=2*n，新的capacity為2*n
@@ -39,9 +39,6 @@ Capacity為Vector目前容量的大小，Capacity擴大後便不會再變小。
 
 ### Assign
 將vector的值變成跟另一個vector相同
-
-* 原vector的size = input vector的size
-* 若需要擴增vector，原vecvor的capacity = input vector的size
 
 ## 測試程式是否正確
 

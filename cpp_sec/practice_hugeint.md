@@ -1,8 +1,8 @@
-# Practice - STL HugeInteger
+# Practice - HugeInteger (p2)
 
-利用上次練習的Vector實作HugeInteger的+,-,*,/,%運算
-Prob : https://github.com/michael0432/leetcode/tree/master/practice/prob/p2
-Ans : https://github.com/michael0432/leetcode/tree/master/practice/ans/p2
+利用上次練習的Vector實作HugeInteger的+,-,*,/,%
+
+Source code (p2): https://github.com/michael0432/practiceCplusplus
 
 ![](https://i.imgur.com/WhJhVHm.png)
 ![](https://i.imgur.com/DSA5RwQ.png)
@@ -37,8 +37,6 @@ HugeInteger::convert
 
 ## 測試程式是否正確
 
-### 自己測試答案
-
 ```
 g+= -std=c++11 Main.cpp HugeIntegerImpl.cpp VectorImpl.cpp -o p2.exe
 p2.exe
@@ -46,10 +44,10 @@ p2.exe
 答案會存在Result.txt
 ```
 
-### 自動對答案
+這兩個exe會測試Result.txt中的答案是否正確
 
 ```
-直接執行
+執行
 Verification - x64.exe
 或
 Verification - x86.exe

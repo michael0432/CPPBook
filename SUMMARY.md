@@ -66,11 +66,9 @@
   * [Polymorphism](cpp_sec/polymorphism.md)
   * [Template](cpp_sec/template.md)
   * [Exception Handling](cpp_sec/exception.md)
-  * [Practice - Implement STL](cpp_sec/implementSTL.md)
-  * [Practice - Implement BigInt](cpp_sec/ImplementBigInt.md)
   
 * [Practice]
   * [STL Vector](cpp_sec/practice_vector.md)
   * [HugeInt by Vector](cpp_sec/practice_hugeint.md)
-  * [Template]
-  * [Operator]
+  * [Template&Operator](cpp_sec/practice_template.md)
+  * [STL List]

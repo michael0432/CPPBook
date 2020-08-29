@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Practice - Implement STL · GitBook</title>
+        <title>Template&Operator · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="ImplementBigInt.html" />
     
-    
-    <link rel="prev" href="exception.html" />
+    <link rel="prev" href="practice_hugeint.html" />
     
 
     </head>
@@ -1044,32 +1042,6 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.7.8" data-path="implementSTL.html">
-            
-                <a href="implementSTL.html">
-            
-                    
-                    Practice - Implement STL
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.7.9" data-path="ImplementBigInt.html">
-            
-                <a href="ImplementBigInt.html">
-            
-                    
-                    Practice - Implement BigInt
-            
-                </a>
-            
-
-            
-        </li>
-    
 
             </ul>
             
@@ -1115,14 +1087,14 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8.3" >
+        <li class="chapter active" data-level="1.8.3" data-path="practice_template.html">
             
-                <span>
+                <a href="practice_template.html">
             
                     
-                    [Template]
+                    Template&Operator
             
-                </span>
+                </a>
             
 
             
@@ -1133,7 +1105,7 @@
                 <span>
             
                     
-                    [Operator]
+                    [STL List]
             
                 </span>
             
@@ -1176,7 +1148,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Practice - Implement STL</a>
+        <a href=".." >Template&Operator</a>
     </h1>
 </div>
 
@@ -1191,50 +1163,45 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="implement-stl">Implement STL</h1>
-<h2 id="vector">Vector</h2>
-<p>Implement&#x4E00;&#x500B;Vector&#x7684;class&#xFF0C;&#x529F;&#x80FD;&#x5305;&#x542B;:</p>
-<ul>
-<li>size(): &#x56DE;&#x50B3;vector&#x7684;&#x5927;&#x5C0F;</li>
-<li>empty(): &#x56DE;&#x50B3;vector&#x662F;&#x5426;&#x70BA;&#x7A7A;</li>
-<li>push_back(): &#x5C07;&#x4E00;&#x500B;element&#x653E;&#x5165;vector&#x7684;&#x5C3E;&#x7AEF;</li>
-<li>pop(): &#x5C07;&#x4E00;&#x500B;element&#x5F9E;vector&#x7684;&#x5C3E;&#x7AEF;&#x62FF;&#x51FA;</li>
-<li>find(): &#x56DE;&#x50B3;&#x7279;&#x5B9A;element&#x662F;&#x5426;&#x5728;vector&#x4E2D;</li>
-<li>getElement(int i): &#x56DE;&#x50B3;&#x7279;&#x5B9A;index&#x7684;&#x503C;&#xFF0C;&#x82E5;i&#x8D85;&#x904E;&#x7BC4;&#x570D;&#xFF0C;&#x5247;&#x56DE;&#x50B3;-1</li>
-</ul>
-<p>vector&#x6709;&#x5169;&#x7A2E;&#xFF0C;&#x4E00;&#x7A2E;&#x70BA;&#x5B58;int&#xFF0C;&#x53E6;&#x4E00;&#x7A2E;&#x70BA;&#x5B58;char&#x3002;</p>
-<pre><code class="lang-cpp=1">class myVector{
-public:
-    int size(){
-
-    }
-    bool empty(){
-
-    }
-    bool push_back(int a){
-
-    }
-    bool push_back(char a){
-
-    }
-    bool pop(){
-
-    }
-    bool find(int i){
-
-    }
-    bool find(char i){
-
-    }
-    int getElement(int i){
-
-    }
-    char getElement(int i){
-
-    }
-};
+                                <h1 id="practice---template--operator-p3">Practice - Template &amp; Operator (p3)</h1>
+<p>&#x5C07;&#x4E0A;&#x6B21;&#x7DF4;&#x7FD2;&#x7684;Huge Integer&#x6539;&#x6210;&#x4F7F;&#x7528;Template&#x53CA;Operator&#x7684;&#x5BEB;&#x6CD5;&#xFF0C;&#x9019;&#x6B21;&#x7DF4;&#x7FD2;&#x5206;&#x6210;&#x5169;&#x500B;&#x90E8;&#x5206;&#xFF0C;&#x7B2C;&#x4E00;&#x500B;&#x90E8;&#x5206;&#x662F;&#x5C07;vector&#x5167;&#x5B58;&#x7684;&#x8CC7;&#x6599;&#x578B;&#x614B;&#x8A2D;&#x70BA;template T&#xFF1B;&#x7B2C;&#x4E8C;&#x500B;&#x90E8;&#x5206;&#x662F;&#x5C07;HugeInteger&#x5167;&#x5B58;&#x7684;&#x8CC7;&#x6599;&#x578B;&#x614B;&#x8A2D;&#x70BA;template T&#x3002;</p>
+<p>Source code (p3): <a href="https://github.com/michael0432/practiceCplusplus" target="_blank">https://github.com/michael0432/practiceCplusplus</a></p>
+<h2 id="main1cpp-hugeinteger1h">Main_1.cpp, HugeInteger_1.h</h2>
+<pre><code class="lang-cpp=1">template&lt; typename T &gt;
+class HugeInteger
+{
+private:
+   vector&lt; T &gt; integer;
+   //&#x9019;&#x88E1;&#x7684;T&#x70BA;int, unsigned int...&#x7B49;
+}
 </code></pre>
-
+<h2 id="main2cpp-hugeinteger1h">Main_2.cpp, HugeInteger_1.h</h2>
+<pre><code class="lang-cpp=1">template&lt; typename T &gt;
+class HugeInteger
+{
+private:
+   T integer;
+   //&#x9019;&#x88E1;&#x7684;T&#x70BA;vector&lt;int&gt;, vector&lt;unsigned int&gt;...&#x7B49;
+}
+</code></pre>
+<p>&#x5176;&#x4ED6;&#x7684;&#x8981;&#x6C42;&#x8207;&#x4E0A;&#x6B21;&#x7684;&#x7DF4;&#x7FD2;&#x5B8C;&#x5168;&#x76F8;&#x540C;&#xFF0C;&#x6B64;&#x6B21;&#x7684;HugeInteger&#x5404;&#x500B;method&#x7684;&#x7A0B;&#x5F0F;&#x78BC;&#x76F4;&#x63A5;&#x5BEB;&#x5728;.h&#x6A94;&#x5167;&#x5373;&#x53EF;&#x3002;</p>
+<h2 id="&#x6E2C;&#x8A66;&#x7A0B;&#x5F0F;&#x662F;&#x5426;&#x6B63;&#x78BA;">&#x6E2C;&#x8A66;&#x7A0B;&#x5F0F;&#x662F;&#x5426;&#x6B63;&#x78BA;</h2>
+<p>&#x6E2C;&#x8A66;Main_1.cpp, HugeInteger_1.h:</p>
+<pre><code>g+= -std=c++11 Main_1.cpp -o p3.exe
+p3.exe
+&#x6E2C;&#x8CC7;&#x70BA;Test cases.txt
+&#x7B54;&#x6848;&#x6703;&#x5B58;&#x5728;Result.txt
+</code></pre><p>&#x6E2C;&#x8A66;Main_2.cpp, HugeInteger_2.h:</p>
+<pre><code>g+= -std=c++11 Main_2.cpp -o p3_2.exe
+p3_2.exe
+&#x6E2C;&#x8CC7;&#x70BA;Test cases.txt
+&#x7B54;&#x6848;&#x6703;&#x5B58;&#x5728;Result.txt
+</code></pre><p>&#x9019;&#x5169;&#x500B;exe&#x6703;&#x6E2C;&#x8A66;Result.txt&#x4E2D;&#x7684;&#x7B54;&#x6848;&#x662F;&#x5426;&#x6B63;&#x78BA;</p>
+<pre><code>&#x57F7;&#x884C;
+Verification - x64.exe
+&#x6216;
+Verification - x86.exe
+</code></pre>
                                 
                                 </section>
                             
@@ -1261,14 +1228,10 @@ public:
 
             
                 
-                <a href="exception.html" class="navigation navigation-prev " aria-label="Previous page: Exception Handling">
+                <a href="practice_hugeint.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: HugeInt by Vector">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
-                
-                <a href="ImplementBigInt.html" class="navigation navigation-next " aria-label="Next page: Practice - Implement BigInt">
-                    <i class="fa fa-angle-right"></i>
-                </a>
                 
             
         
@@ -1277,7 +1240,7 @@ public:
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Practice - Implement STL","level":"1.7.8","depth":2,"next":{"title":"Practice - Implement BigInt","level":"1.7.9","depth":2,"path":"cpp_sec/ImplementBigInt.md","ref":"cpp_sec/ImplementBigInt.md","articles":[]},"previous":{"title":"Exception Handling","level":"1.7.7","depth":2,"path":"cpp_sec/exception.md","ref":"cpp_sec/exception.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cpp_sec/implementSTL.md","mtime":"2020-08-13T05:26:43.175Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-08-27T04:05:36.403Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Template&Operator","level":"1.8.3","depth":2,"next":{"title":"[STL List]","level":"1.8.4","depth":2,"ref":"","articles":[]},"previous":{"title":"HugeInt by Vector","level":"1.8.2","depth":2,"path":"cpp_sec/practice_hugeint.md","ref":"cpp_sec/practice_hugeint.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cpp_sec/practice_template.md","mtime":"2020-08-29T07:10:04.373Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-08-29T07:11:08.937Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -1285,6 +1248,10 @@ public:
         
     <script src="../gitbook/gitbook.js"></script>
     <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
     
         
         <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
