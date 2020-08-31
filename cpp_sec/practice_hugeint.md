@@ -38,7 +38,7 @@ HugeInteger::convert
 ## 測試程式是否正確
 
 ```
-g+= -std=c++11 Main.cpp HugeIntegerImpl.cpp VectorImpl.cpp -o p2.exe
+g++ -std=c++11 Main.cpp HugeIntegerImpl.cpp VectorImpl.cpp -o p2.exe
 p2.exe
 測資為Test cases.txt
 答案會存在Result.txt

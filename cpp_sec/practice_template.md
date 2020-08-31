@@ -35,7 +35,7 @@ private:
 測試Main_1.cpp, HugeInteger_1.h:
 
 ```
-g+= -std=c++11 Main_1.cpp -o p3.exe
+g++ -std=c++11 Main_1.cpp -o p3.exe
 p3.exe
 測資為Test cases.txt
 答案會存在Result.txt
@@ -44,7 +44,7 @@ p3.exe
 測試Main_2.cpp, HugeInteger_2.h:
 
 ```
-g+= -std=c++11 Main_2.cpp -o p3_2.exe
+g++ -std=c++11 Main_2.cpp -o p3_2.exe
 p3_2.exe
 測資為Test cases.txt
 答案會存在Result.txt

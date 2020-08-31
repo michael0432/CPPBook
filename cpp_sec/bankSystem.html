@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Divide and Conquer · GitBook</title>
+        <title>Bank System · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,8 +57,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="dp.html" />
     
+    <link rel="prev" href="practice_list.html" />
     
 
     </head>
@@ -623,7 +623,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter active" data-level="1.5.1" data-path="dc.html">
+        <li class="chapter " data-level="1.5.1" data-path="dc.html">
             
                 <a href="dc.html">
             
@@ -1113,7 +1113,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8.5" data-path="bankSystem.html">
+        <li class="chapter active" data-level="1.8.5" data-path="bankSystem.html">
             
                 <a href="bankSystem.html">
             
@@ -1161,7 +1161,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Divide and Conquer</a>
+        <a href=".." >Bank System</a>
     </h1>
 </div>
 
@@ -1176,61 +1176,207 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="divide-and-conquer">Divide and Conquer</h1>
-<h6 id="tags--algorithm">tags = <code>Algorithm</code></h6>
+                                <h1 id="practice---bank-system">Practice - Bank System</h1>
+<h2 id="&#x5EFA;&#x8B70;&#x5169;&#x500B;&#x4EBA;&#x4E00;&#x8D77;&#x5BEB;">!!!!&#x5EFA;&#x8B70;&#x5169;&#x500B;&#x4EBA;&#x4E00;&#x8D77;&#x5BEB;</h2>
+<p>&#x8A2D;&#x8A08;&#x4E00;&#x500B;&#x9280;&#x884C;&#x7CFB;&#x7D71;&#xFF0C;&#x7CFB;&#x7D71;&#x7684;&#x529F;&#x80FD;&#x5305;&#x542B;:</p>
 <ul>
-<li>Divide : &#x628A;&#x5927;&#x554F;&#x984C;&#x5207;&#x6210;&#x5C0F;&#x554F;&#x984C;</li>
-<li>Conquer : &#x628A;&#x5C0F;&#x554F;&#x984C;&#x7684;&#x89E3;&#x5408;&#x4F75;&#x6210;&#x5927;&#x554F;&#x984C;&#x7684;&#x89E3;</li>
+<li>login: &#x6839;&#x64DA;&#x4F7F;&#x7528;&#x8005;ID&#x53CA;&#x5BC6;&#x78BC;&#xFF0C;&#x78BA;&#x8A8D;&#x4F7F;&#x7528;&#x8005;&#x662F;&#x5426;&#x80FD;&#x767B;&#x5165;&#xFF0C;&#x7CFB;&#x7D71;&#x4E2D;&#x4E0D;&#x80FD;&#x76F4;&#x63A5;&#x5B58;&#x4F7F;&#x7528;&#x8005;&#x7684;&#x5BC6;&#x78BC;</li>
+<li>create: &#x5EFA;&#x7ACB;&#x4E00;&#x500B;&#x5E33;&#x6236;&#xFF0C;&#x82E5;&#x8F38;&#x5165;&#x7684;&#x5E33;&#x865F;&#x5B58;&#x5728;&#xFF0C;&#x7CFB;&#x7D71;&#x9700;&#x5EFA;&#x8B70;&#x5E7E;&#x500B;&#x76F8;&#x8FD1;&#x7684;&#x5E33;&#x6236;</li>
+<li>delete: &#x522A;&#x9664;&#x4E00;&#x500B;&#x5E33;&#x6236;</li>
+<li>deposit: &#x5C07;&#x9322;&#x5B58;&#x5165;&#x4E00;&#x500B;&#x5E33;&#x6236;</li>
+<li>withdraw: &#x5C07;&#x9322;&#x5F9E;&#x4E00;&#x500B;&#x5E33;&#x6236;&#x4E2D;&#x63D0;&#x9818;</li>
+<li>transfer: &#x5C07;&#x9322;&#x5F9E;&#x4E00;&#x500B;&#x5E33;&#x6236;&#x8F49;&#x5230;&#x53E6;&#x4E00;&#x500B;&#x5E33;&#x6236;</li>
+<li>merge: &#x5C07;&#x5169;&#x500B;&#x5E33;&#x6236;&#x5408;&#x4F75;&#x6210;&#x4E00;&#x500B;&#x5E33;&#x6236;</li>
+<li>search: &#x5C0B;&#x627E;&#x6240;&#x6709;transfer&#x7684;&#x7D00;&#x9304;</li>
+<li>find: &#x6839;&#x64DA;&#x641C;&#x5C0B;&#x689D;&#x4EF6;&#xFF0C;&#x627E;&#x51FA;&#x6240;&#x6709;&#x7B26;&#x5408;&#x641C;&#x5C0B;&#x689D;&#x4EF6;&#x7684;&#x5E33;&#x6236;ID</li>
 </ul>
-<p>&#x5176;&#x5BE6;&#x5C31;&#x662F;dfs&#x7684;&#x6982;&#x5FF5;</p>
-<h3 id="binary-search">Binary Search</h3>
+<h2 id="spec">Spec</h2>
 <ul>
-<li><p><a href="https://leetcode.com/problems/binary-search/" target="_blank">https://leetcode.com/problems/binary-search/</a></p>
+<li><p>Data Type</p>
+<ul>
+<li>ID, Password: &#x53EA;&#x5305;&#x542B;&#x6578;&#x5B57;&#x53CA;&#x82F1;&#x6587;&#x5B57;&#x6BCD;&#x5927;&#x5C0F;&#x5BEB;</li>
+<li>moneny: integer&#x7BC4;&#x570D;&#x7684;&#x6B63;&#x6574;&#x6578;(0~2^31-1)</li>
+</ul>
 </li>
-<li><p>Divide : &#x628A;Array&#x5207;&#x6210;&#x5169;&#x6BB5;&#xFF0C;&#x6C7A;&#x5B9A;&#x8981;&#x5F80;&#x5DE6;&#x627E;&#x9084;&#x662F;&#x5F80;&#x53F3;&#x627E;</p>
+<li><p>Password Encoding</p>
+<ul>
+<li>md5: <a href="https://en.wikipedia.org/wiki/Password" target="_blank">https://en.wikipedia.org/wiki/Password</a></li>
+<li>&#x4F7F;&#x7528;md5&#x52A0;&#x5BC6;&#x5BC6;&#x78BC;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;C++&#x7684;&#x5957;&#x4EF6; (<a href="http://www.zedwood.com/article/cpp-md5-function" target="_blank">http://www.zedwood.com/article/cpp-md5-function</a>)</li>
+</ul>
 </li>
-<li>Conquer : &#x56DE;&#x50B3;&#x5DE6;&#x908A;&#x6216;&#x53F3;&#x908A;&#x7684;&#x89E3;</li>
-<li>&#x6642;&#x9593;&#x8907;&#x96DC;&#x5EA6;: ?</li>
-</ul>
-<p><img src="https://i.imgur.com/W8tlCUz.png" alt=""></p>
-<h3 id="merge-sort">Merge Sort</h3>
+<li><p>&#x5E33;&#x865F;&#x5B58;&#x5728;&#x6642;&#xFF0C;&#x63A8;&#x85A6;&#x5176;&#x4ED6;&#x5E33;&#x865F;&#x7684;&#x65B9;&#x5F0F;</p>
 <ul>
-<li>Divide : &#x628A;Array&#x5207;&#x6210;&#x5169;&#x6BB5;&#xFF0C;&#x5DE6;&#x53F3;&#x5404;&#x81EA;&#x6392;&#x5E8F;</li>
-<li>Conquer : &#x5C07;&#x5DE6;&#x53F3;&#x5169;&#x500B;Array&#x5408;&#x4F75;</li>
-<li>&#x6642;&#x9593;&#x8907;&#x96DC;&#x5EA6;: ?</li>
+<li>&#x7CFB;&#x7D71;&#x8981;&#x63A8;&#x85A6;&#x5341;&#x500B;&#x6C92;&#x4EBA;&#x4F7F;&#x7528;&#x7684;&#x5E33;&#x865F;</li>
+<li>&#x6839;&#x64DA;&#x4F7F;&#x7528;&#x8005;&#x8F38;&#x5165;&#x7684;&#x5E33;&#x865F;&#xFF0C;&#x7B97;&#x51FA;&#x5341;&#x500B;&#x5206;&#x6578;&#x6700;&#x4F4E;&#x4E14;&#x6C92;&#x4EBA;&#x4F7F;&#x7528;&#x7684;&#x5E33;&#x865F;</li>
+<li>&#x5206;&#x6578;&#x7684;&#x8A08;&#x7B97;&#x65B9;&#x5F0F;&#xFF0C;u&#x3001;v&#x70BA;&#x5169;&#x500B;&#x5E33;&#x865F;:<ul>
+<li>$\Delta{L} = |u.size() - v.size()|$&#xFF0C;&#x5169;&#x500B;&#x5B57;&#x4E32;&#x7684;&#x9577;&#x5EA6;&#x5DEE;&#x8DDD;</li>
+<li>$L = min(u.size(), v.size())$&#xFF0C;&#x5169;&#x500B;&#x5B57;&#x4E32;&#x4E2D;&#x6BD4;&#x8F03;&#x77ED;&#x7684;&#x9577;&#x5EA6;</li>
+<li>$score(u,v) = \Sigma<em>{i=1}^{\Delta{L}} i + \Sigma</em>{i=0}^{L-1} (u[i]!=v[i]?(L-i):0)$</li>
+<li>$\Sigma_{i=1}^{\Delta{L}} i$ : &#x9019;&#x6BB5;&#x7684;&#x610F;&#x601D;&#x70BA;&#x7D2F;&#x52A0;&#x9577;&#x5EA6;&#x5DEE;&#x8DDD;(&#x4F8B;&#x5982;$\Delta{L}$=2&#x6642;&#xFF0C;&#x9019;&#x6BB5;&#x7D2F;&#x52A0;&#x7684;&#x7D50;&#x679C;&#x70BA;3)</li>
+<li>$\Sigma_{i=0}^{L-1} (u[i]!=v[i]?(L-i):0)$ : &#x9019;&#x6BB5;&#x7684;&#x610F;&#x601D;&#x70BA;&#xFF0C;&#x5F9E;&#x982D;&#x5230;&#x5C3E;&#x6BD4;&#x5B57;&#x4E32;&#xFF0C;&#x82E5;&#x5B57;&#x5143;&#x4E0D;&#x540C;&#xFF0C;&#x5206;&#x6578;&#x52A0;L-i&#xFF0C;&#x5373;&#x8D8A;&#x524D;&#x9762;&#x7684;&#x5B57;&#x5143;&#x4E0D;&#x540C;&#xFF0C;&#x5206;&#x6578;&#x8D8A;&#x9AD8;</li>
+<li>Example:<ul>
+<li>score(&quot;abc&quot;, &quot;abcd&quot;) = 1 + 0 = 1 </li>
+<li>score(&quot;abce&quot;, &quot;abcd&quot;) = 0 + 1 = 1</li>
+<li>score(&quot;abed&quot;, &quot;abcd&quot;) = 0 + 2 = 2</li>
+<li>score(&quot;abde&quot;, &quot;abcd&quot;) = 0 + (2 + 1) = 3</li>
+<li>score(&quot;abcefg&quot;, &quot;abcd&quot;) = (1 + 2) + 1 = 4</li>
 </ul>
-<p><img src="https://i.imgur.com/7bZs2tn.png" alt=""></p>
-<h3 id="quick-sort">Quick Sort</h3>
+</li>
+</ul>
+</li>
+<li>&#x8F38;&#x51FA;&#x5341;&#x500B;&#x5E33;&#x865F;&#x6642;&#xFF0C;&#x5206;&#x6578;&#x5F9E;&#x4F4E;&#x6392;&#x5230;&#x9AD8;&#xFF0C;&#x5206;&#x6578;&#x4E00;&#x6A23;&#x6642;&#xFF0C;&#x76F4;&#x63A5;&#x6839;&#x64DA;C++&#x5167;&#x7684;&#x5B57;&#x4E32;&#x6BD4;&#x5927;&#x5C0F;&#x6392;&#x5E8F;&#xFF0C;&#x5F9E;&#x5C0F;&#x6392;&#x5230;&#x5927;</li>
+</ul>
+</li>
+<li><p>&#x5404;&#x6307;&#x4EE4;&#x7684;&#x7D30;&#x7BC0;</p>
 <ul>
-<li>Divide : &#x5728;&#x6578;&#x5217;&#x4E2D;&#x4EFB;&#x610F;&#x9078;&#x4E00;&#x500B;&#x6578;&#xFF0C;&#x7136;&#x5F8C;&#x8ABF;&#x6574;&#x6578;&#x5217;&#xFF0C;&#x8B93;&#x8A72;&#x6578;&#x5B57;&#x5DE6;&#x908A;&#x7684;&#x6578;&#x90FD;&#x6BD4;&#x4ED6;&#x5C0F;&#xFF0C;&#x53F3;&#x908A;&#x7684;&#x6578;&#x90FD;&#x6BD4;&#x4ED6;&#x5927;&#xFF0C;&#x4E26;&#x5C0D;&#x5DE6;&#x53F3;&#x6578;&#x5217;&#x505A;quick sort</li>
-<li>Conquer : X</li>
-<li>&#x6642;&#x9593;&#x8907;&#x96DC;&#x5EA6;: ?</li>
+<li>&#x82E5;Output&#x7B26;&#x5408;&#x5217;&#x51FA;&#x7684;&#x597D;&#x5E7E;&#x500B;&#x72C0;&#x6CC1;&#xFF0C;&#x8F38;&#x51FA;&#x512A;&#x5148;&#x9806;&#x5E8F;&#x70BA;&#x7531;&#x4E0A;&#x5230;&#x4E0B;&#xFF0C;&#x53EA;&#x6703;&#x8F38;&#x51FA;&#x512A;&#x5148;&#x9806;&#x5E8F;&#x6700;&#x9AD8;&#x7684;output
+*</li>
+<li><p>&#x4EE5;&#x4E0B;&#x6307;&#x4EE4;&#x4E0D;&#x9700;&#x8981;&#x767B;&#x5165;</p>
+<ul>
+<li>login<ul>
+<li>Input: login [ID] [password]</li>
+<li>Output:<ul>
+<li>ID [ID] not found </li>
+<li>wrong password</li>
+<li>success</li>
 </ul>
-<p><img src="https://i.imgur.com/Ay9aoQc.png" alt=""></p>
-<h3 id="c-sort">C++ Sort</h3>
-<pre><code class="lang-cpp=1">#include&lt;algorithm&gt;
-
-vector&lt;int&gt; v;
-sort(v.begin(), v.end(), greater&lt;int&gt;);
+</li>
+<li></li>
+</ul>
+</li>
+<li>create<ul>
+<li>Input: create [ID] [password]</li>
+<li>Output:<ul>
+<li>ID [ID] exists, [best 10 unused IDs (separated by &quot;,&quot;)]</li>
+<li>success</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>delete<ul>
+<li>Input: delete [ID] [password]</li>
+<li>Output:<ul>
+<li>ID [ID] not found</li>
+<li>wrong password</li>
+<li>success</li>
+</ul>
+</li>
+<li>[ID]&#x4E0D;&#x6703;&#x7B49;&#x65BC;&#x76EE;&#x524D;&#x767B;&#x5165;&#x7684;ID</li>
+</ul>
+</li>
+<li>merge<ul>
+<li>Input: merge [ID1] [password1] [ID2] [password2]</li>
+<li>Output:<ul>
+<li>ID [ID1] not found</li>
+<li>ID [ID2] not found</li>
+<li>wrong password1</li>
+<li>wrong password2</li>
+<li>success, [ID1] has [X] dollars</li>
+</ul>
+</li>
+<li>[ID1]&#x4E0D;&#x6703;&#x7B49;&#x65BC;[ID2]</li>
+<li>&#x82E5;[ID1]&#x8DDF;[ID2]&#x6709;&#x4EA4;&#x6613;&#x7D00;&#x9304;(&#x9019;&#x7B46;&#x4EA4;&#x6613;&#x7D00;&#x9304;&#x5728;&#x5169;&#x500B;&#x5E33;&#x6236;&#x7684;&#x7D00;&#x9304;&#x6642;&#x9593;&#x6703;&#x540C;&#x6642;)&#xFF0C;&#x5408;&#x4F75;&#x5F8C;[ID1]&#x7684;&#x4EA4;&#x6613;&#x7D00;&#x9304;&#x5728;&#x524D;&#xFF0C;&#x53E6;&#x4E00;&#x7B46;&#x5728;&#x5F8C;</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>&#x4EE5;&#x4E0B;&#x6307;&#x4EE4;&#x9700;&#x8981;&#x767B;&#x5165;</p>
+<ul>
+<li>deposit<ul>
+<li>Input: deposit [num]</li>
+<li>Output:<ul>
+<li>success, [X] dollars in current account</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>withdraw<ul>
+<li>Input: withdraw [num]</li>
+<li>Output<ul>
+<li>fail, [X] dollars only in current account //&#x9322;&#x4E0D;&#x5920;</li>
+<li>success, [X] dollars left in current account</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>transfer<ul>
+<li>Input: transfer [ID] [num]</li>
+<li>Output<ul>
+<li>ID [ID] not found</li>
+<li>fail, [X] dollars only in current account //&#x9322;&#x4E0D;&#x5920;</li>
+<li>success, [X] dollars left in current account</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>search<ul>
+<li>Input: search [ID]</li>
+<li>Output<ul>
+<li>no record //&#x5305;&#x542B;[ID]&#x4E0D;&#x5B58;&#x5728;</li>
+<li>[transfer history from/to ID, line by line]<ul>
+<li>&#x683C;&#x5F0F;: From/To [ID] [dollars]</li>
+<li>Example<ul>
+<li>From Frank 10000</li>
+<li>To Franl 200</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>find<ul>
+<li>[wildcard ID]&#x662F;&#x4E00;&#x500B;&#x5305;&#x542B;<em>&#x8DDF;?&#x7684;&#x5B57;&#x4E32;&#xFF0C;</em>&#x8868;&#x793A;0&#x5230;n&#x500B;&#x4EFB;&#x610F;&#x7684;char&#xFF0C;?&#x8868;&#x793A;&#x525B;&#x597D;1&#x500B;&#x4EFB;&#x610F;&#x7684;char&#xFF0C;<em>&#x4E0D;&#x6703;&#x9023;&#x7E8C;&#x51FA;&#x73FE;(**)&#xFF0C;?&#x8DDF;</em>&#x4E5F;&#x4E0D;&#x6703;&#x9023;&#x7E8C;&#x51FA;&#x73FE;(<em>?&#x6216;?</em>)</li>
+<li>Input: find [wildcard ID]</li>
+<li>Output<ul>
+<li>[all satisfying IDs (separated by &quot;,&quot;) in ascending dictionary order]</li>
+</ul>
+</li>
+<li>Example<ul>
+<li>a*b?:  ab0,a0b1,a00b2,abbbbb ...</li>
+<li>a??b*: abbb,a01bbbb,a01bacb ...</li>
+<li>a<em>b</em>: ab,abb,abbbb,acccbccab ...</li>
+<li><em>a?b</em>: aab,cccasbbb,twaiblwe ...</li>
+</ul>
+</li>
+<li></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="sample-input--output">Sample Input / Output</h2>
+<h3 id="sample-input">Sample Input</h3>
+<pre><code>create g1 123
+create ab0 456
+create aabb 789
+create g1 1234
+login g1 123
+deposit 5000
+transfer aabb 2499
+search aabb
+login aabb 789
+search g1
+</code></pre><h3 id="sample-output">Sample Output</h3>
+<pre><code>success
+success
+success
+ID g1 exists, g,g0,g10,g11,g12,g13,g14,g15,g16,g17
+success
+success, 5000 dollars in current account
+success, 2501 dollars left in current account
+To aabb 2499
+success
+From g1 2499
+</code></pre><h2 id="&#x88FD;&#x4F5C;test-case">&#x88FD;&#x4F5C;Test Case</h2>
+<p>&#x88FD;&#x4F5C;&#x4E00;&#x500B;100&#x7B46;&#x7684;&#x6E2C;&#x8A66;&#x8CC7;&#x6599;&#xFF0C;&#x4E26;&#x6E2C;&#x8A66;&#x81EA;&#x5DF1;&#x5BEB;&#x7684;&#x7A0B;&#x5F0F;&#x662F;&#x5426;&#x6B63;&#x78BA;</p>
+<h2 id="&#x6BD4;&#x8F03;&#x5169;&#x500B;&#x6A94;&#x6848;&#x662F;&#x5426;&#x76F8;&#x540C;">&#x6BD4;&#x8F03;&#x5169;&#x500B;&#x6A94;&#x6848;&#x662F;&#x5426;&#x76F8;&#x540C;</h2>
+<p>&#x5728;cmd&#x4E2D;:</p>
+<pre><code>dc file1.txt file2.txt
 </code></pre>
-<pre><code class="lang-cpp=1">class CustomClass{
-public:
-    int x;
-    int y;
-};
-
-vector&lt;CustomClass&gt; v;
-sort(v.begin(), v.end(), [](const CustomClass&amp; a, const CustomClass&amp; b){
-    return a.x &lt; b.x;
-});
-</code></pre>
-<h3 id="&#x5C0F;&#x7DF4;&#x7FD2;">&#x5C0F;&#x7DF4;&#x7FD2;</h3>
-<ul>
-<li><a href="https://leetcode.com/problems/first-bad-version/" target="_blank">https://leetcode.com/problems/first-bad-version/</a></li>
-<li><a href="https://leetcode.com/problems/search-insert-position/" target="_blank">https://leetcode.com/problems/search-insert-position/</a></li>
-<li><a href="https://leetcode.com/problems/search-a-2d-matrix-ii/" target="_blank">https://leetcode.com/problems/search-a-2d-matrix-ii/</a></li>
-</ul>
-
                                 
                                 </section>
                             
@@ -1257,10 +1403,10 @@ sort(v.begin(), v.end(), [](const CustomClass&amp; a, const CustomClass&amp; b){
 
             
                 
-                
-                <a href="dp.html" class="navigation navigation-next navigation-unique" aria-label="Next page: Dynammic Programming">
-                    <i class="fa fa-angle-right"></i>
+                <a href="practice_list.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: STL List">
+                    <i class="fa fa-angle-left"></i>
                 </a>
+                
                 
             
         
@@ -1269,7 +1415,7 @@ sort(v.begin(), v.end(), [](const CustomClass&amp; a, const CustomClass&amp; b){
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Divide and Conquer","level":"1.5.1","depth":2,"next":{"title":"Dynammic Programming","level":"1.5.2","depth":2,"path":"cpp_sec/dp.md","ref":"cpp_sec/dp.md","articles":[]},"previous":{"title":"Algorithm","level":"1.5","depth":1,"ref":"","articles":[{"title":"Divide and Conquer","level":"1.5.1","depth":2,"path":"cpp_sec/dc.md","ref":"cpp_sec/dc.md","articles":[]},{"title":"Dynammic Programming","level":"1.5.2","depth":2,"path":"cpp_sec/dp.md","ref":"cpp_sec/dp.md","articles":[]},{"title":"Greedy","level":"1.5.3","depth":2,"path":"cpp_sec/greedy.md","ref":"cpp_sec/greedy.md","articles":[]},{"title":"Graph","level":"1.5.4","depth":2,"path":"cpp_sec/graph.md","ref":"cpp_sec/graph.md","articles":[{"title":"Shortest Path","level":"1.5.4.1","depth":3,"path":"cpp_sec/shortest_path.md","ref":"cpp_sec/shortest_path.md","articles":[{"title":"Bellmen-Ford Algorithm","level":"1.5.4.1.1","depth":4,"path":"cpp_sec/bf.md","ref":"cpp_sec/bf.md","articles":[]},{"title":"[Shortest Path on DAG]","level":"1.5.4.1.2","depth":4,"ref":"","articles":[]},{"title":"Dijkstra's Algorithm","level":"1.5.4.1.3","depth":4,"path":"cpp_sec/Dijkstra.md","ref":"cpp_sec/Dijkstra.md","articles":[]},{"title":"Floyd-Warshall Algorithm","level":"1.5.4.1.4","depth":4,"path":"cpp_sec/fw.md","ref":"cpp_sec/fw.md","articles":[]}]},{"title":"Minumum Spanning Tree","level":"1.5.4.2","depth":3,"path":"cpp_sec/mst.md","ref":"cpp_sec/mst.md","articles":[{"title":"Kruskal's Algorithm","level":"1.5.4.2.1","depth":4,"path":"cpp_sec/kruskal.md","ref":"cpp_sec/kruskal.md","articles":[]},{"title":"Prim's Algorithm","level":"1.5.4.2.2","depth":4,"path":"cpp_sec/prim.md","ref":"cpp_sec/prim.md","articles":[]}]},{"title":"Maximum Flow","level":"1.5.4.3","depth":3,"path":"cpp_sec/maximum_flow.md","ref":"cpp_sec/maximum_flow.md","articles":[{"title":"Ford-Fulkerson Algorithm","level":"1.5.4.3.1","depth":4,"path":"cpp_sec/ff.md","ref":"cpp_sec/ff.md","articles":[]}]}]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cpp_sec/dc.md","mtime":"2020-08-29T07:11:55.142Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-08-31T05:36:01.004Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Bank System","level":"1.8.5","depth":2,"previous":{"title":"STL List","level":"1.8.4","depth":2,"path":"cpp_sec/practice_list.md","ref":"cpp_sec/practice_list.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cpp_sec/bankSystem.md","mtime":"2020-08-31T05:34:57.216Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-08-31T05:36:01.004Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

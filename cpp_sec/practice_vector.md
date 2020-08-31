@@ -43,7 +43,7 @@ Capacity為Vector目前容量的大小，Capacity擴大後便不會再變小。
 ## 測試程式是否正確
 
 ```
-g+= -std=c++11 Main.cpp VectorImp.cpp  -o p1.exe
+g++ -std=c++11 Main.cpp VectorImp.cpp  -o p1.exe
 p1.exe
 
 ```
