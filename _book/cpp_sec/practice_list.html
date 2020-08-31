@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Divide and Conquer · GitBook</title>
+        <title>STL List · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,8 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="dp.html" />
+    <link rel="next" href="bankSystem.html" />
     
+    
+    <link rel="prev" href="practice_template.html" />
     
 
     </head>
@@ -623,7 +625,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter active" data-level="1.5.1" data-path="dc.html">
+        <li class="chapter " data-level="1.5.1" data-path="dc.html">
             
                 <a href="dc.html">
             
@@ -1100,7 +1102,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8.4" data-path="practice_list.html">
+        <li class="chapter active" data-level="1.8.4" data-path="practice_list.html">
             
                 <a href="practice_list.html">
             
@@ -1161,7 +1163,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Divide and Conquer</a>
+        <a href=".." >STL List</a>
     </h1>
 </div>
 
@@ -1176,61 +1178,69 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="divide-and-conquer">Divide and Conquer</h1>
-<h6 id="tags--algorithm">tags = <code>Algorithm</code></h6>
+                                <h1 id="practice---stl-list-p4">Practice - STL List (p4)</h1>
+<p>&#x5BE6;&#x4F5C;&#x4E00;&#x500B;STL List&#xFF0C;List&#x7531;node&#x6240;&#x7D44;&#x6210;&#xFF0C;&#x8981;&#x5BE6;&#x4F5C;&#x7684;method&#x6709;:</p>
 <ul>
-<li>Divide : &#x628A;&#x5927;&#x554F;&#x984C;&#x5207;&#x6210;&#x5C0F;&#x554F;&#x984C;</li>
-<li>Conquer : &#x628A;&#x5C0F;&#x554F;&#x984C;&#x7684;&#x89E3;&#x5408;&#x4F75;&#x6210;&#x5927;&#x554F;&#x984C;&#x7684;&#x89E3;</li>
+<li>push_front()</li>
+<li>push_back()</li>
+<li>pop_front()</li>
+<li>pop_back()</li>
+<li>operator=()</li>
+<li>clear()</li>
+<li>operator==()</li>
 </ul>
-<p>&#x5176;&#x5BE6;&#x5C31;&#x662F;dfs&#x7684;&#x6982;&#x5FF5;</p>
-<h3 id="binary-search">Binary Search</h3>
-<ul>
-<li><p><a href="https://leetcode.com/problems/binary-search/" target="_blank">https://leetcode.com/problems/binary-search/</a></p>
-</li>
-<li><p>Divide : &#x628A;Array&#x5207;&#x6210;&#x5169;&#x6BB5;&#xFF0C;&#x6C7A;&#x5B9A;&#x8981;&#x5F80;&#x5DE6;&#x627E;&#x9084;&#x662F;&#x5F80;&#x53F3;&#x627E;</p>
-</li>
-<li>Conquer : &#x56DE;&#x50B3;&#x5DE6;&#x908A;&#x6216;&#x53F3;&#x908A;&#x7684;&#x89E3;</li>
-<li>&#x6642;&#x9593;&#x8907;&#x96DC;&#x5EA6;: ?</li>
-</ul>
-<p><img src="https://i.imgur.com/W8tlCUz.png" alt=""></p>
-<h3 id="merge-sort">Merge Sort</h3>
-<ul>
-<li>Divide : &#x628A;Array&#x5207;&#x6210;&#x5169;&#x6BB5;&#xFF0C;&#x5DE6;&#x53F3;&#x5404;&#x81EA;&#x6392;&#x5E8F;</li>
-<li>Conquer : &#x5C07;&#x5DE6;&#x53F3;&#x5169;&#x500B;Array&#x5408;&#x4F75;</li>
-<li>&#x6642;&#x9593;&#x8907;&#x96DC;&#x5EA6;: ?</li>
-</ul>
-<p><img src="https://i.imgur.com/7bZs2tn.png" alt=""></p>
-<h3 id="quick-sort">Quick Sort</h3>
-<ul>
-<li>Divide : &#x5728;&#x6578;&#x5217;&#x4E2D;&#x4EFB;&#x610F;&#x9078;&#x4E00;&#x500B;&#x6578;&#xFF0C;&#x7136;&#x5F8C;&#x8ABF;&#x6574;&#x6578;&#x5217;&#xFF0C;&#x8B93;&#x8A72;&#x6578;&#x5B57;&#x5DE6;&#x908A;&#x7684;&#x6578;&#x90FD;&#x6BD4;&#x4ED6;&#x5C0F;&#xFF0C;&#x53F3;&#x908A;&#x7684;&#x6578;&#x90FD;&#x6BD4;&#x4ED6;&#x5927;&#xFF0C;&#x4E26;&#x5C0D;&#x5DE6;&#x53F3;&#x6578;&#x5217;&#x505A;quick sort</li>
-<li>Conquer : X</li>
-<li>&#x6642;&#x9593;&#x8907;&#x96DC;&#x5EA6;: ?</li>
-</ul>
-<p><img src="https://i.imgur.com/Ay9aoQc.png" alt=""></p>
-<h3 id="c-sort">C++ Sort</h3>
-<pre><code class="lang-cpp=1">#include&lt;algorithm&gt;
-
-vector&lt;int&gt; v;
-sort(v.begin(), v.end(), greater&lt;int&gt;);
+<p>Source code (p4): <a href="https://github.com/michael0432/practiceCplusplus" target="_blank">https://github.com/michael0432/practiceCplusplus</a></p>
+<p>node&#x4E2D;&#x5305;&#x542B;next, prev, myVal:</p>
+<pre><code class="lang-cpp=1">template&lt; typename ValueType &gt;
+struct ListNode // list node
+{
+   ListNode *next;  // successor node, or first element if head
+   ListNode *prev;  // predecessor node, or last element if head
+   ValueType myVal; // the stored value, unused if head
+};
 </code></pre>
-<pre><code class="lang-cpp=1">class CustomClass{
+<p>next&#x5B58;&#x4E0B;&#x4E00;&#x500B;node&#x7684;pointer&#xFF0C;prev&#x5B58;&#x4E0A;&#x4E00;&#x500B;node&#x7684;pointer&#xFF0C;myVal&#x5B58;&#x503C;&#x3002;</p>
+<p>List&#x7531;&#x8A31;&#x591A;node&#x6240;&#x7D44;&#x6210;&#xFF0C;&#x5176;&#x4E2D;&#xFF0C;&#x7576;list&#x70BA;&#x7A7A;&#x6642;&#xFF0C;&#x88E1;&#x9762;&#x4ECD;&#x7136;&#x6703;&#x6709;&#x4E00;&#x500B;node myHead&#xFF0C;myHead&#x4E2D;&#x4E0D;&#x6703;&#x5B58;&#x503C;&#xFF0C;&#x4E14;&#x4E0D;&#x8A08;&#x5165;list&#x7684;&#x5927;&#x5C0F;&#x8A08;&#x7B97;&#xFF0C;&#x7528;&#x9014;&#x70BA;&#x78BA;&#x4FDD;&#x6B64;list&#x70BA;&#x7A7A;&#x6642;&#x4E5F;&#x80FD;&#x627E;&#x5230;&#x958B;&#x982D;&#x7684;node&#x505A;&#x64CD;&#x4F5C;&#x3002;</p>
+<pre><code class="lang-cpp=1">
+template&lt; typename Ty &gt;
+class ListVal
+{
 public:
-    int x;
-    int y;
+   ListVal() // initialize data
+      : myHead(),
+        mySize( 0 )
+   {
+   }
+   node* myHead; // pointer to head node
+   size_type mySize; // number of elements
 };
 
-vector&lt;CustomClass&gt; v;
-sort(v.begin(), v.end(), [](const CustomClass&amp; a, const CustomClass&amp; b){
-    return a.x &lt; b.x;
-});
+template&lt; typename Ty &gt;
+class list{ // bidirectional linked list
+private:
+   ListVal&lt;Ty&gt; myData;
+};
 </code></pre>
-<h3 id="&#x5C0F;&#x7DF4;&#x7FD2;">&#x5C0F;&#x7DF4;&#x7FD2;</h3>
-<ul>
-<li><a href="https://leetcode.com/problems/first-bad-version/" target="_blank">https://leetcode.com/problems/first-bad-version/</a></li>
-<li><a href="https://leetcode.com/problems/search-insert-position/" target="_blank">https://leetcode.com/problems/search-insert-position/</a></li>
-<li><a href="https://leetcode.com/problems/search-a-2d-matrix-ii/" target="_blank">https://leetcode.com/problems/search-a-2d-matrix-ii/</a></li>
-</ul>
-
+<h2 id="example">Example</h2>
+<h3 id="empty-list">Empty List</h3>
+<p>List&#x70BA;&#x7A7A;&#x6642;&#xFF0C;&#x53EA;&#x6709;myHead&#x4E00;&#x500B;node&#xFF0C;mySize = 0</p>
+<p><img src="https://i.imgur.com/J7DnKbi.png" alt=""></p>
+<h3 id="pushbackn1">Push_back(n1)</h3>
+<p>&#x5C07;n1&#x653E;&#x5230;list&#x7684;&#x6700;&#x5F8C;&#x65B9;&#xFF0C;mySize = 1&#xFF0C;&#x6B64;&#x6642;list&#x7684;front&#x70BA;n1 (myHead-&gt;next)&#xFF1B;list&#x7684;back&#x70BA;n1 (myHead-&gt;prev)</p>
+<p><img src="https://i.imgur.com/2H8Ew9a.png" alt=""></p>
+<h3 id="pushbackn2">Push_back(n2)</h3>
+<p>&#x5C07;n2&#x653E;&#x5230;list&#x7684;&#x6700;&#x5F8C;&#x65B9;&#xFF0C;mySize = 2&#xFF0C;&#x6B64;&#x6642;list&#x7684;front&#x70BA;n1 (myHead-&gt;next)&#xFF1B;list&#x7684;back&#x70BA;n2 (myHead-&gt;prev)</p>
+<p><img src="https://i.imgur.com/pQfZt71.png" alt=""></p>
+<h3 id="pushfrontn3">Push_front(n3)</h3>
+<p>&#x5C07;n3&#x653E;&#x5230;list&#x7684;&#x6700;&#x524D;&#x65B9;&#xFF0C;mySize = 3&#xFF0C;&#x6B64;&#x6642;list&#x7684;front&#x70BA;n3 (myHead-&gt;next)&#xFF1B;list&#x7684;back&#x70BA;n2 (myHead-&gt;prev)</p>
+<p><img src="https://i.imgur.com/zOANeZi.png" alt=""></p>
+<h3 id="popback">pop_back()</h3>
+<p>&#x5C07;list&#x7684;&#x6700;&#x5F8C;&#x65B9;&#x7684;node&#x79FB;&#x9664;&#xFF0C;mySize = 2&#xFF0C;&#x6B64;&#x6642;list&#x7684;front&#x70BA;n3 (myHead-&gt;next)&#xFF1B;list&#x7684;back&#x70BA;n1 (myHead-&gt;prev)
+<img src="https://i.imgur.com/VSQTj00.png" alt=""></p>
+<h2 id="&#x6E2C;&#x8A66;&#x7A0B;&#x5F0F;&#x662F;&#x5426;&#x6B63;&#x78BA;">&#x6E2C;&#x8A66;&#x7A0B;&#x5F0F;&#x662F;&#x5426;&#x6B63;&#x78BA;</h2>
+<pre><code>g++ -std=c++11 Main.cpp -o p4.exe
+p4.exe
+</code></pre>
                                 
                                 </section>
                             
@@ -1257,8 +1267,12 @@ sort(v.begin(), v.end(), [](const CustomClass&amp; a, const CustomClass&amp; b){
 
             
                 
+                <a href="practice_template.html" class="navigation navigation-prev " aria-label="Previous page: Template&Operator">
+                    <i class="fa fa-angle-left"></i>
+                </a>
                 
-                <a href="dp.html" class="navigation navigation-next navigation-unique" aria-label="Next page: Dynammic Programming">
+                
+                <a href="bankSystem.html" class="navigation navigation-next " aria-label="Next page: Bank System">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1269,7 +1283,7 @@ sort(v.begin(), v.end(), [](const CustomClass&amp; a, const CustomClass&amp; b){
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Divide and Conquer","level":"1.5.1","depth":2,"next":{"title":"Dynammic Programming","level":"1.5.2","depth":2,"path":"cpp_sec/dp.md","ref":"cpp_sec/dp.md","articles":[]},"previous":{"title":"Algorithm","level":"1.5","depth":1,"ref":"","articles":[{"title":"Divide and Conquer","level":"1.5.1","depth":2,"path":"cpp_sec/dc.md","ref":"cpp_sec/dc.md","articles":[]},{"title":"Dynammic Programming","level":"1.5.2","depth":2,"path":"cpp_sec/dp.md","ref":"cpp_sec/dp.md","articles":[]},{"title":"Greedy","level":"1.5.3","depth":2,"path":"cpp_sec/greedy.md","ref":"cpp_sec/greedy.md","articles":[]},{"title":"Graph","level":"1.5.4","depth":2,"path":"cpp_sec/graph.md","ref":"cpp_sec/graph.md","articles":[{"title":"Shortest Path","level":"1.5.4.1","depth":3,"path":"cpp_sec/shortest_path.md","ref":"cpp_sec/shortest_path.md","articles":[{"title":"Bellmen-Ford Algorithm","level":"1.5.4.1.1","depth":4,"path":"cpp_sec/bf.md","ref":"cpp_sec/bf.md","articles":[]},{"title":"[Shortest Path on DAG]","level":"1.5.4.1.2","depth":4,"ref":"","articles":[]},{"title":"Dijkstra's Algorithm","level":"1.5.4.1.3","depth":4,"path":"cpp_sec/Dijkstra.md","ref":"cpp_sec/Dijkstra.md","articles":[]},{"title":"Floyd-Warshall Algorithm","level":"1.5.4.1.4","depth":4,"path":"cpp_sec/fw.md","ref":"cpp_sec/fw.md","articles":[]}]},{"title":"Minumum Spanning Tree","level":"1.5.4.2","depth":3,"path":"cpp_sec/mst.md","ref":"cpp_sec/mst.md","articles":[{"title":"Kruskal's Algorithm","level":"1.5.4.2.1","depth":4,"path":"cpp_sec/kruskal.md","ref":"cpp_sec/kruskal.md","articles":[]},{"title":"Prim's Algorithm","level":"1.5.4.2.2","depth":4,"path":"cpp_sec/prim.md","ref":"cpp_sec/prim.md","articles":[]}]},{"title":"Maximum Flow","level":"1.5.4.3","depth":3,"path":"cpp_sec/maximum_flow.md","ref":"cpp_sec/maximum_flow.md","articles":[{"title":"Ford-Fulkerson Algorithm","level":"1.5.4.3.1","depth":4,"path":"cpp_sec/ff.md","ref":"cpp_sec/ff.md","articles":[]}]}]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cpp_sec/dc.md","mtime":"2020-08-29T07:11:55.142Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-08-31T05:36:01.004Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"STL List","level":"1.8.4","depth":2,"next":{"title":"Bank System","level":"1.8.5","depth":2,"path":"cpp_sec/bankSystem.md","ref":"cpp_sec/bankSystem.md","articles":[]},"previous":{"title":"Template&Operator","level":"1.8.3","depth":2,"path":"cpp_sec/practice_template.md","ref":"cpp_sec/practice_template.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cpp_sec/practice_list.md","mtime":"2020-08-30T05:23:47.449Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-08-31T05:36:01.004Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
