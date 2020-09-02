@@ -1231,8 +1231,7 @@
 <ul>
 <li>&#x82E5;Output&#x7B26;&#x5408;&#x5217;&#x51FA;&#x7684;&#x597D;&#x5E7E;&#x500B;&#x72C0;&#x6CC1;&#xFF0C;&#x8F38;&#x51FA;&#x512A;&#x5148;&#x9806;&#x5E8F;&#x70BA;&#x7531;&#x4E0A;&#x5230;&#x4E0B;&#xFF0C;&#x53EA;&#x6703;&#x8F38;&#x51FA;&#x512A;&#x5148;&#x9806;&#x5E8F;&#x6700;&#x9AD8;&#x7684;output
 *</li>
-<li><p>&#x4EE5;&#x4E0B;&#x6307;&#x4EE4;&#x4E0D;&#x9700;&#x8981;&#x767B;&#x5165;</p>
-<ul>
+<li>&#x4EE5;&#x4E0B;&#x6307;&#x4EE4;&#x4E0D;&#x9700;&#x8981;&#x767B;&#x5165;<ul>
 <li>login<ul>
 <li>Input: login [ID] [password]</li>
 <li>Output:<ul>
@@ -1278,54 +1277,6 @@
 <li>&#x82E5;[ID1]&#x8DDF;[ID2]&#x6709;&#x4EA4;&#x6613;&#x7D00;&#x9304;(&#x9019;&#x7B46;&#x4EA4;&#x6613;&#x7D00;&#x9304;&#x5728;&#x5169;&#x500B;&#x5E33;&#x6236;&#x7684;&#x7D00;&#x9304;&#x6642;&#x9593;&#x6703;&#x540C;&#x6642;)&#xFF0C;&#x5408;&#x4F75;&#x5F8C;[ID1]&#x7684;&#x4EA4;&#x6613;&#x7D00;&#x9304;&#x5728;&#x524D;&#xFF0C;&#x53E6;&#x4E00;&#x7B46;&#x5728;&#x5F8C;</li>
 </ul>
 </li>
-</ul>
-</li>
-<li><p>&#x4EE5;&#x4E0B;&#x6307;&#x4EE4;&#x9700;&#x8981;&#x767B;&#x5165;</p>
-<ul>
-<li>deposit<ul>
-<li>Input: deposit [num]</li>
-<li>Output:<ul>
-<li>success, [X] dollars in current account</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>withdraw<ul>
-<li>Input: withdraw [num]</li>
-<li>Output<ul>
-<li>fail, [X] dollars only in current account //&#x9322;&#x4E0D;&#x5920;</li>
-<li>success, [X] dollars left in current account</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>transfer<ul>
-<li>Input: transfer [ID] [num]</li>
-<li>Output<ul>
-<li>ID [ID] not found</li>
-<li>fail, [X] dollars only in current account //&#x9322;&#x4E0D;&#x5920;</li>
-<li>success, [X] dollars left in current account</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>search<ul>
-<li>Input: search [ID]</li>
-<li>Output<ul>
-<li>no record //&#x5305;&#x542B;[ID]&#x4E0D;&#x5B58;&#x5728;</li>
-<li>[transfer history from/to ID, line by line]<ul>
-<li>&#x683C;&#x5F0F;: From/To [ID] [dollars]</li>
-<li>Example<ul>
-<li>From Frank 10000</li>
-<li>To Franl 200</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
 <li>find<ul>
 <li>[wildcard ID]&#x662F;&#x4E00;&#x500B;&#x5305;&#x542B;<em>&#x8DDF;?&#x7684;&#x5B57;&#x4E32;&#xFF0C;</em>&#x8868;&#x793A;0&#x5230;n&#x500B;&#x4EFB;&#x610F;&#x7684;char&#xFF0C;?&#x8868;&#x793A;&#x525B;&#x597D;1&#x500B;&#x4EFB;&#x610F;&#x7684;char&#xFF0C;<em>&#x4E0D;&#x6703;&#x9023;&#x7E8C;&#x51FA;&#x73FE;(**)&#xFF0C;?&#x8DDF;</em>&#x4E5F;&#x4E0D;&#x6703;&#x9023;&#x7E8C;&#x51FA;&#x73FE;(<em>?&#x6216;?</em>)</li>
 <li>Input: find [wildcard ID]</li>
@@ -1340,7 +1291,6 @@
 <li><em>a?b</em>: aab,cccasbbb,twaiblwe ...</li>
 </ul>
 </li>
-<li></li>
 </ul>
 </li>
 </ul>
@@ -1348,7 +1298,32 @@
 </ul>
 </li>
 </ul>
-<h2 id="sample-input--output">Sample Input / Output</h2>
+<pre><code>* &#x4EE5;&#x4E0B;&#x6307;&#x4EE4;&#x9700;&#x8981;&#x767B;&#x5165;
+    * deposit
+        * Input: deposit [num]
+        * Output:
+            * success, [X] dollars in current account
+    * withdraw
+        * Input: withdraw [num]
+        * Output
+            * fail, [X] dollars only in current account //&#x9322;&#x4E0D;&#x5920;
+            * success, [X] dollars left in current account
+    * transfer
+        * Input: transfer [ID] [num]
+        * Output
+            * ID [ID] not found
+            * fail, [X] dollars only in current account //&#x9322;&#x4E0D;&#x5920;
+            * success, [X] dollars left in current account
+    * search
+        * Input: search [ID]
+        * Output
+            * no record //&#x5305;&#x542B;[ID]&#x4E0D;&#x5B58;&#x5728;
+            * [transfer history from/to ID, line by line]
+                * &#x683C;&#x5F0F;: From/To [ID] [dollars]
+                * Example
+                    * From Frank 10000
+                    * To Franl 200
+</code></pre><h2 id="sample-input--output">Sample Input / Output</h2>
 <h3 id="sample-input">Sample Input</h3>
 <pre><code>create g1 123
 create ab0 456
@@ -1415,7 +1390,7 @@ From g1 2499
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Bank System","level":"1.8.5","depth":2,"previous":{"title":"STL List","level":"1.8.4","depth":2,"path":"cpp_sec/practice_list.md","ref":"cpp_sec/practice_list.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cpp_sec/bankSystem.md","mtime":"2020-08-31T05:34:57.216Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-08-31T05:36:01.004Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Bank System","level":"1.8.5","depth":2,"previous":{"title":"STL List","level":"1.8.4","depth":2,"path":"cpp_sec/practice_list.md","ref":"cpp_sec/practice_list.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cpp_sec/bankSystem.md","mtime":"2020-09-02T06:57:42.968Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-09-02T06:58:44.141Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
