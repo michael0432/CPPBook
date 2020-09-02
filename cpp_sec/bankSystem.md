@@ -72,6 +72,17 @@
                 * success, [ID1] has [X] dollars
             * [ID1]不會等於[ID2]
             * 若[ID1]跟[ID2]有交易紀錄(這筆交易紀錄在兩個帳戶的紀錄時間會同時)，合併後[ID1]的交易紀錄在前，另一筆在後
+        * find
+            * [wildcard ID]是一個包含*跟?的字串，*表示0到n個任意的char，?表示剛好1個任意的char，*不會連續出現(**)，?跟*也不會連續出現(*?或?*)
+            * Input: find [wildcard ID]
+            * Output
+                * [all satisfying IDs (separated by ",") in ascending dictionary order]
+            * Example
+                * a*b?:  ab0,a0b1,a00b2,abbbbb ...
+                * a??b*: abbb,a01bbbb,a01bacb ...
+                * a*b*: ab,abb,abbbb,acccbccab ...
+                * *a?b*: aab,cccasbbb,twaiblwe ...
+            
             
     * 以下指令需要登入
         * deposit
@@ -98,17 +109,7 @@
                     * Example
                         * From Frank 10000
                         * To Franl 200
-        * find
-            * [wildcard ID]是一個包含*跟?的字串，*表示0到n個任意的char，?表示剛好1個任意的char，*不會連續出現(**)，?跟*也不會連續出現(*?或?*)
-            * Input: find [wildcard ID]
-            * Output
-                * [all satisfying IDs (separated by ",") in ascending dictionary order]
-            * Example
-                * a*b?:  ab0,a0b1,a00b2,abbbbb ...
-                * a??b*: abbb,a01bbbb,a01bacb ...
-                * a*b*: ab,abb,abbbb,acccbccab ...
-                * *a?b*: aab,cccasbbb,twaiblwe ...
-            * 
+        
 
 ## Sample Input / Output
 
