@@ -23,7 +23,7 @@ Capacity為Vector目前容量的大小，Capacity擴大後便不會再變小。
 
 * Capacity擴增的規則:
     * 原vector的size為n，新的size為n'，原capacity為c
-        * 若n'<=n，size及capacity都不變
+        * 若n'<=n，size改成n'，capacity不變
         * 若n'>n且n'<=c，size改成n'，capacity不變
         * 若n'>c
             * 若n'>2*n，新的capacity為n'
