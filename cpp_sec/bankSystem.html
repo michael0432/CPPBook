@@ -1208,27 +1208,26 @@
 <ul>
 <li>&#x7CFB;&#x7D71;&#x8981;&#x63A8;&#x85A6;&#x5341;&#x500B;&#x6C92;&#x4EBA;&#x4F7F;&#x7528;&#x7684;&#x5E33;&#x865F;</li>
 <li>&#x6839;&#x64DA;&#x4F7F;&#x7528;&#x8005;&#x8F38;&#x5165;&#x7684;&#x5E33;&#x865F;&#xFF0C;&#x7B97;&#x51FA;&#x5341;&#x500B;&#x5206;&#x6578;&#x6700;&#x4F4E;&#x4E14;&#x6C92;&#x4EBA;&#x4F7F;&#x7528;&#x7684;&#x5E33;&#x865F;</li>
-<li>&#x5206;&#x6578;&#x7684;&#x8A08;&#x7B97;&#x65B9;&#x5F0F;&#xFF0C;u&#x3001;v&#x70BA;&#x5169;&#x500B;&#x5E33;&#x865F;:<ul>
-<li>$\Delta{L} = |u.size() - v.size()|$&#xFF0C;&#x5169;&#x500B;&#x5B57;&#x4E32;&#x7684;&#x9577;&#x5EA6;&#x5DEE;&#x8DDD;</li>
-<li>$L = min(u.size(), v.size())$&#xFF0C;&#x5169;&#x500B;&#x5B57;&#x4E32;&#x4E2D;&#x6BD4;&#x8F03;&#x77ED;&#x7684;&#x9577;&#x5EA6;</li>
-<li>$score(u,v) = \Sigma<em>{i=1}^{\Delta{L}} i + \Sigma</em>{i=0}^{L-1} (u[i]!=v[i]?(L-i):0)$</li>
-<li>$\Sigma_{i=1}^{\Delta{L}} i$ : &#x9019;&#x6BB5;&#x7684;&#x610F;&#x601D;&#x70BA;&#x7D2F;&#x52A0;&#x9577;&#x5EA6;&#x5DEE;&#x8DDD;(&#x4F8B;&#x5982;$\Delta{L}$=2&#x6642;&#xFF0C;&#x9019;&#x6BB5;&#x7D2F;&#x52A0;&#x7684;&#x7D50;&#x679C;&#x70BA;3)</li>
-<li>$\Sigma_{i=0}^{L-1} (u[i]!=v[i]?(L-i):0)$ : &#x9019;&#x6BB5;&#x7684;&#x610F;&#x601D;&#x70BA;&#xFF0C;&#x5F9E;&#x982D;&#x5230;&#x5C3E;&#x6BD4;&#x5B57;&#x4E32;&#xFF0C;&#x82E5;&#x5B57;&#x5143;&#x4E0D;&#x540C;&#xFF0C;&#x5206;&#x6578;&#x52A0;L-i&#xFF0C;&#x5373;&#x8D8A;&#x524D;&#x9762;&#x7684;&#x5B57;&#x5143;&#x4E0D;&#x540C;&#xFF0C;&#x5206;&#x6578;&#x8D8A;&#x9AD8;</li>
-<li>Example:<ul>
-<li>score(&quot;abc&quot;, &quot;abcd&quot;) = 1 + 0 = 1 </li>
-<li>score(&quot;abce&quot;, &quot;abcd&quot;) = 0 + 1 = 1</li>
-<li>score(&quot;abed&quot;, &quot;abcd&quot;) = 0 + 2 = 2</li>
-<li>score(&quot;abde&quot;, &quot;abcd&quot;) = 0 + (2 + 1) = 3</li>
-<li>score(&quot;abcefg&quot;, &quot;abcd&quot;) = (1 + 2) + 1 = 4</li>
-</ul>
+<li><p>&#x5206;&#x6578;&#x7684;&#x8A08;&#x7B97;&#x65B9;&#x5F0F;&#xFF0C;u&#x3001;v&#x70BA;&#x5169;&#x500B;&#x5E33;&#x865F;:</p>
+<p>  <img src="https://i.imgur.com/mvUWRKm.png" alt=""></p>
 </li>
 </ul>
 </li>
-<li>&#x8F38;&#x51FA;&#x5341;&#x500B;&#x5E33;&#x865F;&#x6642;&#xFF0C;&#x5206;&#x6578;&#x5F9E;&#x4F4E;&#x6392;&#x5230;&#x9AD8;&#xFF0C;&#x5206;&#x6578;&#x4E00;&#x6A23;&#x6642;&#xFF0C;&#x76F4;&#x63A5;&#x6839;&#x64DA;C++&#x5167;&#x7684;&#x5B57;&#x4E32;&#x6BD4;&#x5927;&#x5C0F;&#x6392;&#x5E8F;&#xFF0C;&#x5F9E;&#x5C0F;&#x6392;&#x5230;&#x5927;</li>
 </ul>
-</li>
-<li><p>&#x5404;&#x6307;&#x4EE4;&#x7684;&#x7D30;&#x7BC0;</p>
-<ul>
+<!--         * $\Delta{L} = |u.size() - v.size()|$，兩個字串的長度差距
+        * $L = min(u.size(), v.size())$，兩個字串中比較短的長度
+        * $score(u,v) = \Sigma_{i=1}^{\Delta{L}} i + \Sigma_{i=0}^{L-1} (u[i]!=v[i]?(L-i):0)$
+        * $\Sigma_{i=1}^{\Delta{L}} i$ : 這段的意思為累加長度差距(例如$\Delta{L}$=2時，這段累加的結果為3)
+        * $\Sigma_{i=0}^{L-1} (u[i]!=v[i]?(L-i):0)$ : 這段的意思為，從頭到尾比字串，若字元不同，分數加L-i，即越前面的字元不同，分數越高 -->
+<pre><code>    * Example:
+        * score(&quot;abc&quot;, &quot;abcd&quot;) = 1 + 0 = 1 
+        * score(&quot;abce&quot;, &quot;abcd&quot;) = 0 + 1 = 1
+        * score(&quot;abed&quot;, &quot;abcd&quot;) = 0 + 2 = 2
+        * score(&quot;abde&quot;, &quot;abcd&quot;) = 0 + (2 + 1) = 3
+        * score(&quot;abcefg&quot;, &quot;abcd&quot;) = (1 + 2) + 1 = 4
+* &#x8F38;&#x51FA;&#x5341;&#x500B;&#x5E33;&#x865F;&#x6642;&#xFF0C;&#x5206;&#x6578;&#x5F9E;&#x4F4E;&#x6392;&#x5230;&#x9AD8;&#xFF0C;&#x5206;&#x6578;&#x4E00;&#x6A23;&#x6642;&#xFF0C;&#x76F4;&#x63A5;&#x6839;&#x64DA;C++&#x5167;&#x7684;&#x5B57;&#x4E32;&#x6BD4;&#x5927;&#x5C0F;&#x6392;&#x5E8F;&#xFF0C;&#x5F9E;&#x5C0F;&#x6392;&#x5230;&#x5927;
+</code></pre><ul>
+<li>&#x5404;&#x6307;&#x4EE4;&#x7684;&#x7D30;&#x7BC0;<ul>
 <li>&#x82E5;Output&#x7B26;&#x5408;&#x5217;&#x51FA;&#x7684;&#x597D;&#x5E7E;&#x500B;&#x72C0;&#x6CC1;&#xFF0C;&#x8F38;&#x51FA;&#x512A;&#x5148;&#x9806;&#x5E8F;&#x70BA;&#x7531;&#x4E0A;&#x5230;&#x4E0B;&#xFF0C;&#x53EA;&#x6703;&#x8F38;&#x51FA;&#x512A;&#x5148;&#x9806;&#x5E8F;&#x6700;&#x9AD8;&#x7684;output
 *</li>
 <li>&#x4EE5;&#x4E0B;&#x6307;&#x4EE4;&#x4E0D;&#x9700;&#x8981;&#x767B;&#x5165;<ul>
@@ -1390,7 +1389,7 @@ From g1 2499
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Bank System","level":"1.8.5","depth":2,"previous":{"title":"STL List","level":"1.8.4","depth":2,"path":"cpp_sec/practice_list.md","ref":"cpp_sec/practice_list.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cpp_sec/bankSystem.md","mtime":"2020-09-03T11:57:58.250Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-09-03T12:00:28.588Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Bank System","level":"1.8.5","depth":2,"previous":{"title":"STL List","level":"1.8.4","depth":2,"path":"cpp_sec/practice_list.md","ref":"cpp_sec/practice_list.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cpp_sec/bankSystem.md","mtime":"2020-09-06T02:04:03.967Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-09-06T02:06:04.789Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
