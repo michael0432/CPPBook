@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>DFS · GitBook</title>
+        <title>Linux Environment · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="hashmap.html" />
     
-    
-    <link rel="prev" href="bfs.html" />
+    <link rel="prev" href="apcs.html" />
     
 
     </head>
@@ -291,7 +289,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.4.1" data-path="linux_env.html">
+        <li class="chapter active" data-level="1.4.1" data-path="linux_env.html">
             
                 <a href="linux_env.html">
             
@@ -569,7 +567,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.5.7.3" data-path="dfs.html">
+        <li class="chapter " data-level="1.5.7.3" data-path="dfs.html">
             
                 <a href="dfs.html">
             
@@ -1234,7 +1232,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >DFS</a>
+        <a href=".." >Linux Environment</a>
     </h1>
 </div>
 
@@ -1249,64 +1247,50 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="dfs">DFS</h1>
-<h6 id="tags--data-structure">tags = <code>Data Structure</code></h6>
-<p>&#x7D66;&#x4E00;&#x5F35;Graph&#xFF0C;&#x8981;&#x600E;&#x9EBC;&#x904D;&#x6B77;&#x9019;&#x5F35;&#x5716;&#xFF1F;&#xFF08;&#x8B80;&#x5230;&#x5716;&#x4E2D;&#x7684;&#x6BCF;&#x500B;Node&#xFF09;</p>
-<p><img src="https://i.imgur.com/OqbqQjQ.png" alt=""></p>
+                                <h1 id="linux-environment">Linux Environment</h1>
+<h2 id="install-virtualbox">Install VirtualBox</h2>
+<p>VirtualBox&#x662F;&#x4E00;&#x500B;&#x57F7;&#x884C;&#x865B;&#x64EC;&#x6A5F;(Virtual Machine)&#x7684;&#x8EDF;&#x9AD4;&#xFF0C;&#x5728;Windows&#x96FB;&#x8166;&#x4E0A;&#x67B6;&#x8A2D;&#x53E6;&#x4E00;&#x500B;&#x865B;&#x64EC;&#x7684;&#x74B0;&#x5883;&#xFF0C;&#x7528;&#x65BC;&#x57F7;&#x884C;&#x4E0D;&#x540C;&#x7684;&#x4F5C;&#x696D;&#x7CFB;&#x7D71;&#x3002;&#x9019;&#x908A;&#x4F7F;&#x7528;VirtualBox&#x5B89;&#x88DD;Linux&#x7684;&#x74B0;&#x5883;&#x3002;</p>
 <ul>
-<li>DFS(Depth-first Search)<ul>
-<li>&#x5F9E;&#x5176;&#x4E2D;&#x4E00;&#x500B;vertex&#x51FA;&#x767C;</li>
-<li>&#x627E;&#x4E00;&#x689D;&#x8DEF;&#x4E00;&#x76F4;&#x8D70;&#x8D70;&#x5230;&#x6C92;&#x8DEF;&#x8D70;&#x70BA;&#x6B62;(&#x5148;&#x9047;&#x5230;&#x7684;vertex&#x5148;&#x641C;&#x5C0B;)</li>
-<li>&#x518D;&#x56DE;&#x5230;&#x6709;&#x8DEF;&#x8D70;&#x7684;node&#x7E7C;&#x7E8C;&#x8D70;</li>
+<li>download page: <a href="https://www.virtualbox.org/wiki/Downloads" target="_blank">https://www.virtualbox.org/wiki/Downloads</a></li>
 </ul>
-</li>
-<li>Tree&#x7684;Inorder, Preorder, Postorder&#x90FD;&#x662F;DFS</li>
-<li>&#x4EE5;&#x4E0A;&#x5716;&#x4F86;&#x8AAA;&#xFF0C;&#x6709;&#x5F88;&#x591A;&#x7A2E;dfs&#x7684;&#x8D70;&#x6CD5;<ul>
-<li>Example: 1-&gt;2-&gt;5-&gt;9-&gt;10-&gt;6-&gt;3-&gt;4-&gt;7-&gt;11-&gt;8-&gt;12</li>
-</ul>
-</li>
-<li>&#x4EE5;DFS&#x904D;&#x6B77;&#x901A;&#x5E38;&#x90FD;&#x662F;&#x7528;&#x905E;&#x8FF4;</li>
-</ul>
-<h3 id="traverse-tree">Traverse Tree</h3>
+<p><img src="https://i.imgur.com/m7dyEZH.png" alt=""></p>
+<h2 id="install-linux-ubuntu">Install Linux Ubuntu</h2>
+<p>Linux&#x662F;&#x4E00;&#x500B;&#x958B;&#x6E90;&#x78BC;(Open source)&#x7684;&#x4F5C;&#x696D;&#x7CFB;&#x7D71;&#xFF0C;&#x6709;&#x5F88;&#x591A;&#x4E0D;&#x540C;&#x7684;&#x7248;&#x672C;&#x7528;&#x65BC;&#x4E0D;&#x540C;&#x7684;&#x60C5;&#x5883;&#xFF0C;&#x5176;&#x4E2D;&#xFF0C;Ubuntu&#x5176;&#x4E2D;&#x4E00;&#x500B;&#x6709;&#x4F7F;&#x7528;&#x8005;&#x4ECB;&#x9762;(GUI, Graphic User Interface)&#x7684;Linux&#x7248;&#x672C;&#x3002;</p>
 <ul>
-<li>Preorder</li>
-<li>Inorder</li>
-<li>Postorder</li>
+<li>download page (18.04, 64bit): <a href="https://www.ubuntu-tw.org/modules/tinyd0/" target="_blank">https://www.ubuntu-tw.org/modules/tinyd0/</a></li>
 </ul>
-<h3 id="traverse-graph">Traverse Graph</h3>
-<p>&#x7528;DFS&#x904D;&#x6B77;Graph&#x7684;&#x6642;&#x5019;&#x4E00;&#x6A23;&#x6703;&#x78B0;&#x5230;&#x600E;&#x9EBC;&#x8655;&#x7406;Cycle&#x7684;&#x554F;&#x984C;&#xFF0C;&#x6211;&#x5011;&#x4E00;&#x6A23;&#x4F7F;&#x7528;&#x767D;&#x7070;&#x9ED1;&#x4E09;&#x7A2E;&#x72C0;&#x614B;&#x4F86;&#x8868;&#x793A;Node&#x7684;&#x72C0;&#x614B;&#x3002;</p>
+<h4 id="&#x4E0B;&#x8F09;&#x5B8C;&#x6210;&#x5F8C;&#x6253;&#x958B;virtualbox&#xFF0C;&#x9078;&#x64C7;machine-new&#xFF0C;&#x8F38;&#x5165;&#x4F7F;&#x7528;&#x8005;&#x540D;&#x7A31;&#x8DDF;&#x8981;&#x5B89;&#x88DD;&#x7684;&#x8CC7;&#x6599;&#x593E;&#x4F4D;&#x7F6E;">&#x4E0B;&#x8F09;&#x5B8C;&#x6210;&#x5F8C;&#x6253;&#x958B;VirtualBox&#xFF0C;&#x9078;&#x64C7;Machine-&gt;New&#xFF0C;&#x8F38;&#x5165;&#x4F7F;&#x7528;&#x8005;&#x540D;&#x7A31;&#x8DDF;&#x8981;&#x5B89;&#x88DD;&#x7684;&#x8CC7;&#x6599;&#x593E;&#x4F4D;&#x7F6E;</h4>
 <ul>
-<li>&#x767D;&#xFF1A;&#x9084;&#x672A;&#x904D;&#x6B77;&#x5230;&#x6B64;Node</li>
-<li>&#x7070;&#xFF1A;&#x904D;&#x6B77;&#x5230;&#x6B64;Node&#xFF0C;&#x4F46;&#x4ED6;&#x7684;child&#x9084;&#x6C92;&#x904D;&#x6B77;&#x5B8C;</li>
-<li>&#x9ED1;&#xFF1A;&#x5DF2;&#x7D93;&#x904D;&#x6B77;&#x5B8C;&#x6B64;Node</li>
+<li>Type&#x9078;&#x64C7;Linux</li>
+<li>Version&#x9078;&#x64C7;Ubuntu(64bit)</li>
 </ul>
-<p>&#x7576;&#x4F5C;dfs&#x6642;&#xFF0C;&#x82E5;&#x662F;&#x8D70;&#x5230;&#x8A72;Node&#x70BA;&#x7070;&#x8272;&#x6216;&#x9ED1;&#x8272;&#xFF0C;&#x5247;&#x6709;Cycle</p>
-<pre><code class="lang-cpp=1">struct Node{
-    int data;
-    int status; //&#x767D;:0, &#x7070;:1, &#x9ED1;:2
-    vector&lt;*Node&gt; neigh; 
-}; 
-
-void dfs(Node* first){
-    first-&gt;status = 1;
-    first-&gt;data; // use data
-    for(int i=0 ; i&lt;first-&gt;neigh.size() ; i++){
-        if(first-&gt;neigh[i]-&gt;status == 0) 
-            dfs(first-&gt;neigh[i]);
-        else
-            // cycle
-    }
-    return;
-}
-</code></pre>
-<h3 id="&#x5C0F;&#x7DF4;&#x7FD2;">&#x5C0F;&#x7DF4;&#x7FD2;</h3>
+<p><img src="https://i.imgur.com/PrjogLg.png" alt=""></p>
+<h4 id="&#x9078;&#x64C7;&#x9069;&#x5408;&#x5927;&#x5C0F;&#x7684;memory-&#x96FB;&#x8166;&#x8A31;&#x53EF;&#x7684;&#x8A71;&#x5EFA;&#x8B70;&#x9078;2g&#x4EE5;&#x4E0A;">&#x9078;&#x64C7;&#x9069;&#x5408;&#x5927;&#x5C0F;&#x7684;Memory (&#x96FB;&#x8166;&#x8A31;&#x53EF;&#x7684;&#x8A71;&#x5EFA;&#x8B70;&#x9078;2G&#x4EE5;&#x4E0A;)</h4>
+<p><img src="https://i.imgur.com/YQctRk4.png" alt=""></p>
+<h4 id="&#x9078;&#x64C7;virtual-hard-disk">&#x9078;&#x64C7;Virtual Hard Disk</h4>
+<p><img src="https://i.imgur.com/0HVs2Za.png" alt=""></p>
+<h4 id="&#x9078;&#x64C7;vdi">&#x9078;&#x64C7;VDI</h4>
+<p><img src="https://i.imgur.com/GiC6eEe.png" alt=""></p>
+<h4 id="&#x9078;&#x64C7;dynamically-allocate">&#x9078;&#x64C7;Dynamically Allocate</h4>
+<p><img src="https://i.imgur.com/HukAvUU.png" alt=""></p>
+<h4 id="&#x9078;&#x64C7;&#x521D;&#x59CB;&#x786C;&#x789F;&#x5927;&#x5C0F;">&#x9078;&#x64C7;&#x521D;&#x59CB;&#x786C;&#x789F;&#x5927;&#x5C0F;</h4>
+<p><img src="https://i.imgur.com/jX3Tg3N.png" alt=""></p>
+<h4 id="&#x5B8C;&#x6210;&#x5F8C;&#xFF0C;&#x9078;&#x64C7;start&#x958B;&#x555F;&#x865B;&#x64EC;&#x6A5F;&#xFF0C;&#x9078;&#x64C7;&#x4E0B;&#x8F09;&#x597D;&#x7684;ubuntu-image">&#x5B8C;&#x6210;&#x5F8C;&#xFF0C;&#x9078;&#x64C7;start&#x958B;&#x555F;&#x865B;&#x64EC;&#x6A5F;&#xFF0C;&#x9078;&#x64C7;&#x4E0B;&#x8F09;&#x597D;&#x7684;Ubuntu Image</h4>
+<p><img src="https://i.imgur.com/AWOMvXP.png" alt=""></p>
+<h4 id="&#x4F9D;&#x7167;&#x8AAA;&#x660E;&#x5B89;&#x88DD;ubuntu&#xFF0C;&#x5230;&#x4E0B;&#x9762;&#x7684;&#x756B;&#x9762;&#x8981;&#x9078;&#x64C7;&#x6E05;&#x9664;&#x78C1;&#x789F;&#x4E26;&#x5B89;&#x88DD;&#x9019;&#x88E1;&#x7684;&#x6E05;&#x9664;&#x78C1;&#x789F;&#x6307;&#x7684;&#x662F;&#x865B;&#x64EC;&#x6A5F;&#x7684;&#x78C1;&#x789F;&#xFF0C;&#x4E0D;&#x6703;&#x5F71;&#x97FF;&#x5230;windows&#x7684;&#x90E8;&#x5206;">&#x4F9D;&#x7167;&#x8AAA;&#x660E;&#x5B89;&#x88DD;Ubuntu&#xFF0C;&#x5230;&#x4E0B;&#x9762;&#x7684;&#x756B;&#x9762;&#x8981;&#x9078;&#x64C7;&#x6E05;&#x9664;&#x78C1;&#x789F;&#x4E26;&#x5B89;&#x88DD;(&#x9019;&#x88E1;&#x7684;&#x6E05;&#x9664;&#x78C1;&#x789F;&#x6307;&#x7684;&#x662F;&#x865B;&#x64EC;&#x6A5F;&#x7684;&#x78C1;&#x789F;&#xFF0C;&#x4E0D;&#x6703;&#x5F71;&#x97FF;&#x5230;Windows&#x7684;&#x90E8;&#x5206;)</h4>
+<p><img src="https://i.imgur.com/6kiDaAQ.png" alt=""></p>
+<h4 id="&#x5B89;&#x88DD;&#x5B8C;&#x6210;&#x4E26;&#x91CD;&#x65B0;&#x958B;&#x6A5F;&#x5F8C;&#xFF0C;&#x9078;&#x64C7;device-insert-guest-additions-cd-image&#xFF0C;&#x5B8C;&#x6210;&#x5F8C;&#x91CD;&#x958B;&#x6A5F;&#x5C31;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x5168;&#x87A2;&#x5E55;">&#x5B89;&#x88DD;&#x5B8C;&#x6210;&#x4E26;&#x91CD;&#x65B0;&#x958B;&#x6A5F;&#x5F8C;&#xFF0C;&#x9078;&#x64C7;Device-&gt;Insert Guest Additions CD Image&#xFF0C;&#x5B8C;&#x6210;&#x5F8C;&#x91CD;&#x958B;&#x6A5F;&#x5C31;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x5168;&#x87A2;&#x5E55;</h4>
 <ul>
-<li><a href="https://leetcode.com/problems/maximum-depth-of-n-ary-tree/" target="_blank">https://leetcode.com/problems/maximum-depth-of-n-ary-tree/</a></li>
-<li><a href="https://leetcode.com/problems/same-tree/" target="_blank">https://leetcode.com/problems/same-tree/</a></li>
-<li><a href="https://leetcode.com/problems/path-sum/" target="_blank">https://leetcode.com/problems/path-sum/</a></li>
-<li><a href="https://leetcode.com/problems/flood-fill/" target="_blank">https://leetcode.com/problems/flood-fill/</a></li>
-<li><a href="https://leetcode.com/problems/number-of-closed-islands/" target="_blank">https://leetcode.com/problems/number-of-closed-islands/</a></li>
+<li>&#x53F3;Ctrl+F: &#x5168;&#x87A2;&#x5E55;</li>
+<li>&#x53F3;Ctrl+C: &#x8996;&#x7A97;&#x6A21;&#x5F0F;</li>
 </ul>
+<h2 id="install-codeblock">Install CodeBlock</h2>
+<p>&#x5728;terminal&#x4E2D;&#x8F38;&#x5165;:</p>
+<pre><code>sudo apt install codebloacks
+</code></pre><h2 id="install-cc-compile">Install C/C++ Compile</h2>
+<p>&#x5728;terminal&#x4E2D;&#x8F38;&#x5165;:</p>
+<pre><code>sudo apt install g++
+</code></pre><p>sudo&#x7684;&#x610F;&#x601D;&#x70BA;&quot;&#x4EE5;&#x7CFB;&#x7D71;&#x7BA1;&#x7406;&#x54E1;&#x8EAB;&#x5206;&#x57F7;&#x884C;&#x5F8C;&#x9762;&#x9019;&#x6BB5;&#x6307;&#x4EE4;&quot;</p>
 
                                 
                                 </section>
@@ -1334,14 +1318,10 @@ void dfs(Node* first){
 
             
                 
-                <a href="bfs.html" class="navigation navigation-prev " aria-label="Previous page: BFS">
+                <a href="apcs.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: APCS">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
-                
-                <a href="hashmap.html" class="navigation navigation-next " aria-label="Next page: Hash Table / Maps">
-                    <i class="fa fa-angle-right"></i>
-                </a>
                 
             
         
@@ -1350,7 +1330,7 @@ void dfs(Node* first){
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"DFS","level":"1.5.7.3","depth":3,"next":{"title":"Hash Table / Maps","level":"1.5.8","depth":2,"path":"cpp_sec/hashmap.md","ref":"cpp_sec/hashmap.md","articles":[{"title":"常用Method","level":"1.5.8.1","depth":3,"path":"cpp_sec/hashmap_method.md","ref":"cpp_sec/hashmap_method.md","articles":[]}]},"previous":{"title":"BFS","level":"1.5.7.2","depth":3,"path":"cpp_sec/bfs.md","ref":"cpp_sec/bfs.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cpp_sec/dfs.md","mtime":"2021-04-02T05:26:03.189Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-04-02T07:34:52.963Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Linux Environment","level":"1.4.1","depth":2,"next":{"title":"[Compile]","level":"1.4.2","depth":2,"ref":"","articles":[]},"previous":{"title":"APCS","level":"1.4","depth":1,"path":"cpp_sec/apcs.md","ref":"cpp_sec/apcs.md","articles":[{"title":"Linux Environment","level":"1.4.1","depth":2,"path":"cpp_sec/linux_env.md","ref":"cpp_sec/linux_env.md","articles":[]},{"title":"[Compile]","level":"1.4.2","depth":2,"ref":"","articles":[]},{"title":"[I/O in C]","level":"1.4.3","depth":2,"ref":"","articles":[]},{"title":"[Practice]","level":"1.4.4","depth":2,"ref":"","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cpp_sec/linux_env.md","mtime":"2021-04-02T07:33:20.988Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-04-02T07:34:52.963Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

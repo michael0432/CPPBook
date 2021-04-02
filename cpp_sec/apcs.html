@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>DFS · GitBook</title>
+        <title>APCS · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="hashmap.html" />
+    <link rel="next" href="linux_env.html" />
     
     
-    <link rel="prev" href="bfs.html" />
+    <link rel="prev" href="bitwise.html" />
     
 
     </head>
@@ -277,7 +277,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4" data-path="apcs.html">
+        <li class="chapter active" data-level="1.4" data-path="apcs.html">
             
                 <a href="apcs.html">
             
@@ -569,7 +569,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.5.7.3" data-path="dfs.html">
+        <li class="chapter " data-level="1.5.7.3" data-path="dfs.html">
             
                 <a href="dfs.html">
             
@@ -1234,7 +1234,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >DFS</a>
+        <a href=".." >APCS</a>
     </h1>
 </div>
 
@@ -1249,63 +1249,30 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="dfs">DFS</h1>
-<h6 id="tags--data-structure">tags = <code>Data Structure</code></h6>
-<p>&#x7D66;&#x4E00;&#x5F35;Graph&#xFF0C;&#x8981;&#x600E;&#x9EBC;&#x904D;&#x6B77;&#x9019;&#x5F35;&#x5716;&#xFF1F;&#xFF08;&#x8B80;&#x5230;&#x5716;&#x4E2D;&#x7684;&#x6BCF;&#x500B;Node&#xFF09;</p>
-<p><img src="https://i.imgur.com/OqbqQjQ.png" alt=""></p>
+                                <h1 id="apcs">APCS</h1>
 <ul>
-<li>DFS(Depth-first Search)<ul>
-<li>&#x5F9E;&#x5176;&#x4E2D;&#x4E00;&#x500B;vertex&#x51FA;&#x767C;</li>
-<li>&#x627E;&#x4E00;&#x689D;&#x8DEF;&#x4E00;&#x76F4;&#x8D70;&#x8D70;&#x5230;&#x6C92;&#x8DEF;&#x8D70;&#x70BA;&#x6B62;(&#x5148;&#x9047;&#x5230;&#x7684;vertex&#x5148;&#x641C;&#x5C0B;)</li>
-<li>&#x518D;&#x56DE;&#x5230;&#x6709;&#x8DEF;&#x8D70;&#x7684;node&#x7E7C;&#x7E8C;&#x8D70;</li>
+<li><a href="https://apcs.csie.ntnu.edu.tw/" target="_blank">https://apcs.csie.ntnu.edu.tw/</a></li>
+</ul>
+<h2 id="&#x7A0B;&#x5F0F;&#x8A2D;&#x8A08;&#x89C0;&#x5FF5;&#x984C;">&#x7A0B;&#x5F0F;&#x8A2D;&#x8A08;&#x89C0;&#x5FF5;&#x984C;</h2>
+<ul>
+<li>&#x55AE;&#x9078;&#x984C; 25 &#x984C;<ul>
+<li>code tracing, code completion, code debugging, code performance analysis, basic concepts understanding</li>
 </ul>
 </li>
-<li>Tree&#x7684;Inorder, Preorder, Postorder&#x90FD;&#x662F;DFS</li>
-<li>&#x4EE5;&#x4E0A;&#x5716;&#x4F86;&#x8AAA;&#xFF0C;&#x6709;&#x5F88;&#x591A;&#x7A2E;dfs&#x7684;&#x8D70;&#x6CD5;<ul>
-<li>Example: 1-&gt;2-&gt;5-&gt;9-&gt;10-&gt;6-&gt;3-&gt;4-&gt;7-&gt;11-&gt;8-&gt;12</li>
+</ul>
+<h2 id="&#x7A0B;&#x5F0F;&#x8A2D;&#x8A08;&#x5BE6;&#x4F5C;&#x984C;">&#x7A0B;&#x5F0F;&#x8A2D;&#x8A08;&#x5BE6;&#x4F5C;&#x984C;</h2>
+<ul>
+<li>C, C++, Java, Python&#x64C7;&#x4E00;</li>
+<li>&#x56DB;&#x984C;</li>
+<li>&#x7CFB;&#x7D71;&#x74B0;&#x5883;<ul>
+<li>Linux Ubuntu 18.04</li>
+<li>Language: C++ Ubuntu 7.3.0 &#x2013; 27ubuntu1<ul>
+<li>Compiler: g++ -g -O2 -std=gnu++11 -static -lm -o</li>
 </ul>
 </li>
-<li>&#x4EE5;DFS&#x904D;&#x6B77;&#x901A;&#x5E38;&#x90FD;&#x662F;&#x7528;&#x905E;&#x8FF4;</li>
+<li>IDE - Eclipse, Code::Blocks</li>
 </ul>
-<h3 id="traverse-tree">Traverse Tree</h3>
-<ul>
-<li>Preorder</li>
-<li>Inorder</li>
-<li>Postorder</li>
-</ul>
-<h3 id="traverse-graph">Traverse Graph</h3>
-<p>&#x7528;DFS&#x904D;&#x6B77;Graph&#x7684;&#x6642;&#x5019;&#x4E00;&#x6A23;&#x6703;&#x78B0;&#x5230;&#x600E;&#x9EBC;&#x8655;&#x7406;Cycle&#x7684;&#x554F;&#x984C;&#xFF0C;&#x6211;&#x5011;&#x4E00;&#x6A23;&#x4F7F;&#x7528;&#x767D;&#x7070;&#x9ED1;&#x4E09;&#x7A2E;&#x72C0;&#x614B;&#x4F86;&#x8868;&#x793A;Node&#x7684;&#x72C0;&#x614B;&#x3002;</p>
-<ul>
-<li>&#x767D;&#xFF1A;&#x9084;&#x672A;&#x904D;&#x6B77;&#x5230;&#x6B64;Node</li>
-<li>&#x7070;&#xFF1A;&#x904D;&#x6B77;&#x5230;&#x6B64;Node&#xFF0C;&#x4F46;&#x4ED6;&#x7684;child&#x9084;&#x6C92;&#x904D;&#x6B77;&#x5B8C;</li>
-<li>&#x9ED1;&#xFF1A;&#x5DF2;&#x7D93;&#x904D;&#x6B77;&#x5B8C;&#x6B64;Node</li>
-</ul>
-<p>&#x7576;&#x4F5C;dfs&#x6642;&#xFF0C;&#x82E5;&#x662F;&#x8D70;&#x5230;&#x8A72;Node&#x70BA;&#x7070;&#x8272;&#x6216;&#x9ED1;&#x8272;&#xFF0C;&#x5247;&#x6709;Cycle</p>
-<pre><code class="lang-cpp=1">struct Node{
-    int data;
-    int status; //&#x767D;:0, &#x7070;:1, &#x9ED1;:2
-    vector&lt;*Node&gt; neigh; 
-}; 
-
-void dfs(Node* first){
-    first-&gt;status = 1;
-    first-&gt;data; // use data
-    for(int i=0 ; i&lt;first-&gt;neigh.size() ; i++){
-        if(first-&gt;neigh[i]-&gt;status == 0) 
-            dfs(first-&gt;neigh[i]);
-        else
-            // cycle
-    }
-    return;
-}
-</code></pre>
-<h3 id="&#x5C0F;&#x7DF4;&#x7FD2;">&#x5C0F;&#x7DF4;&#x7FD2;</h3>
-<ul>
-<li><a href="https://leetcode.com/problems/maximum-depth-of-n-ary-tree/" target="_blank">https://leetcode.com/problems/maximum-depth-of-n-ary-tree/</a></li>
-<li><a href="https://leetcode.com/problems/same-tree/" target="_blank">https://leetcode.com/problems/same-tree/</a></li>
-<li><a href="https://leetcode.com/problems/path-sum/" target="_blank">https://leetcode.com/problems/path-sum/</a></li>
-<li><a href="https://leetcode.com/problems/flood-fill/" target="_blank">https://leetcode.com/problems/flood-fill/</a></li>
-<li><a href="https://leetcode.com/problems/number-of-closed-islands/" target="_blank">https://leetcode.com/problems/number-of-closed-islands/</a></li>
+</li>
 </ul>
 
                                 
@@ -1334,12 +1301,12 @@ void dfs(Node* first){
 
             
                 
-                <a href="bfs.html" class="navigation navigation-prev " aria-label="Previous page: BFS">
+                <a href="bitwise.html" class="navigation navigation-prev " aria-label="Previous page: 位元運算">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="hashmap.html" class="navigation navigation-next " aria-label="Next page: Hash Table / Maps">
+                <a href="linux_env.html" class="navigation navigation-next " aria-label="Next page: Linux Environment">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1350,7 +1317,7 @@ void dfs(Node* first){
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"DFS","level":"1.5.7.3","depth":3,"next":{"title":"Hash Table / Maps","level":"1.5.8","depth":2,"path":"cpp_sec/hashmap.md","ref":"cpp_sec/hashmap.md","articles":[{"title":"常用Method","level":"1.5.8.1","depth":3,"path":"cpp_sec/hashmap_method.md","ref":"cpp_sec/hashmap_method.md","articles":[]}]},"previous":{"title":"BFS","level":"1.5.7.2","depth":3,"path":"cpp_sec/bfs.md","ref":"cpp_sec/bfs.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cpp_sec/dfs.md","mtime":"2021-04-02T05:26:03.189Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-04-02T07:34:52.963Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"APCS","level":"1.4","depth":1,"next":{"title":"Linux Environment","level":"1.4.1","depth":2,"path":"cpp_sec/linux_env.md","ref":"cpp_sec/linux_env.md","articles":[]},"previous":{"title":"位元運算","level":"1.3.11","depth":2,"path":"cpp_sec/bitwise.md","ref":"cpp_sec/bitwise.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cpp_sec/apcs.md","mtime":"2021-04-02T06:47:16.044Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-04-02T07:34:52.963Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
