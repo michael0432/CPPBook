@@ -1,11 +1,12 @@
 # Summary
 * [Practice](cpp_sec/practice.md)
 
-* [C++](cpp_sec/cpp.md)
+* [C/C++](cpp_sec/cpp.md)
   * [安裝環境](cpp_sec/install.md)
   * [編譯、輸入、輸出](cpp_sec/compile_io.md)
   * [資料型態&宣告](cpp_sec/Variable.md)
   * [If/Else](cpp_sec/if_else.md)
+  * [Switch](cpp_sec/switch.md)
   * [Loop](cpp_sec/loop.md)
   * [Array](cpp_sec/array.md)
   * [String](cpp_sec/string.md)
@@ -13,7 +14,11 @@
   * [Pointer](cpp_sec/pointer.md)
   * [Struct/Object](cpp_sec/class.md)
   * [位元運算](cpp_sec/bitwise.md)
-
+  * [Sort]
+* [APCS](cpp_sec/apcs.md)
+  * [Linux Environment](cpp_sec/linux_env.md)
+  * [Problem - 觀念題](cpp_sec/problem_concept.md)
+  * [Problem - 實作題](cpp_sec/problem_coding.md)
 * Data Structure
   * 時間複雜度
   * [Linked-List](cpp_sec/list.md)

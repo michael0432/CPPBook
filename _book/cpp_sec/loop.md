@@ -9,9 +9,20 @@ while(condition){
 }
 ```
 
-### For
+### Do-While
+do while會先執行一次 do{}中的程式碼，再執行條件判斷，用於至少要執行一次while迴圈的時候。
 ```cpp=1
-for(起始值;　終止條件;　每次迴圈更新的值){
+do{
+    // loop
+}
+while(condition);
+```
+
+### For
+
+當終止條件為true時，進入下一次迴圈，false時終止迴圈
+```cpp=1
+for(起始狀態;　終止條件;　每次迴圈更新的值){
     
 }
 
