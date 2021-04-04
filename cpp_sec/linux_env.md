@@ -1,4 +1,5 @@
 # Linux Environment
+###### tags = `APCS`
 
 ## Install VirtualBox
 VirtualBox是一個執行虛擬機(Virtual Machine)的軟體，在Windows電腦上架設另一個虛擬的環境，用於執行不同的作業系統。這邊使用VirtualBox安裝Linux的環境。
@@ -56,3 +57,15 @@ Linux是一個開源碼(Open source)的作業系統，有很多不同的版本�
     sudo apt install g++
     
 sudo的意思為"以系統管理員身分執行後面這段指令"
+
+## Linux常用指令
+
+    pwd - 顯示當前目錄
+    mkdir - 建立資料夾
+    ls - 列出當前目錄下的資料夾跟檔案
+    cd - 切換目錄
+    rm - 刪除檔案
+    cp - 複製檔案
+    mv - 移動檔案
+    cat - 顯示檔案內容
+    
