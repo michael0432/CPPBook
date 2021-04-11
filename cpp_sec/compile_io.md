@@ -50,11 +50,13 @@ int main(){
 
 ## 輸入輸出 (C++)
 ### 常用function / 指令:
+
 * cin : input
     * 使用>>隔開每個變數
 * cout : output
     * 使用<<隔開每個變數
 * endl : 換行符號
+
 ```cpp
 // 輸入輸出的Library
 #include <iostream>
@@ -71,7 +73,7 @@ int main(){
 
 若不使用namespace std
 
-```cpp=
+```cpp=1
 int x;
 string y;
 std::cin >> x >> y;
@@ -100,6 +102,7 @@ C語言在輸入或輸出時，需要指定資料型態:
     * printf(control string, arguments);
     * control string: 包含資料型態符號的字串，用於定義輸出的格式
     * arguments: 要輸出的變數"變數名稱"
+    
 ```cpp=1
 #include <cstdio>
 
@@ -112,6 +115,7 @@ int main(){
     printf("x: %d\ny: %f\nc: %c\ns: %s\n", x, y, c, s); // 輸出
 }
 ```
+
 #### 從檔案Input / Output到檔案
 
 在執行程式時，可以使用 < 輸入檔案 > 輸出檔案
