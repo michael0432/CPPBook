@@ -120,3 +120,18 @@
 * 455 : https://leetcode.com/problems/assign-cookies/
 * https://leetcode.com/problems/sort-the-matrix-diagonally/submissions/
 * https://leetcode.com/problems/bulb-switcher-iii/
+
+#### Binary Search
+* 704: https://leetcode.com/problems/binary-search/
+* 287: https://leetcode.com/problems/find-the-duplicate-number/
+* 540: https://leetcode.com/problems/single-element-in-a-sorted-array/
+* 718: https://leetcode.com/problems/maximum-length-of-repeated-subarray/
+
+#### DFS
+* 1302: https://leetcode.com/problems/deepest-leaves-sum/
+* 1315: https://leetcode.com/problems/sum-of-nodes-with-even-valued-grandparent/
+* 1110: https://leetcode.com/problems/delete-nodes-and-return-forest/
+* 841: https://leetcode.com/problems/keys-and-rooms/
+* 1254: https://leetcode.com/problems/number-of-closed-islands/
+* 1306: https://leetcode.com/problems/jump-game-iii/
+* 547: https://leetcode.com/problems/number-of-provinces/
