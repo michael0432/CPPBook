@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Hash Table / Maps · GitBook</title>
+        <title>Process · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="hashmap_method.html" />
+    <link rel="next" href="process_schedule.html" />
     
-    
-    <link rel="prev" href="dfs.html" />
     
 
     </head>
@@ -613,7 +611,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.5.8" data-path="hashmap.html">
+        <li class="chapter " data-level="1.5.8" data-path="hashmap.html">
             
                 <a href="hashmap.html">
             
@@ -1005,7 +1003,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7.3" data-path="process.html">
+        <li class="chapter active" data-level="1.7.3" data-path="process.html">
             
                 <a href="process.html">
             
@@ -1415,7 +1413,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Hash Table / Maps</a>
+        <a href=".." >Process</a>
     </h1>
 </div>
 
@@ -1430,56 +1428,46 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="hashmap">HashMap</h1>
-<h6 id="tags--data-structure">tags = <code>Data Structure</code></h6>
-<p>HashMap&#x662F;&#x5132;&#x5B58;Key-Value&#x5C0D;&#x61C9;&#x7684;&#x8CC7;&#x6599;&#x7D50;&#x69CB;&#xFF0C;&#x5229;&#x7528;Hash function&#x5C07;key&#x5C0D;&#x61C9;&#x5230;value&#xFF0C;&#x627E;&#x5230;&#x7279;&#x5B9A;&#x8CC7;&#x6599;&#x7684;&#x6642;&#x9593;&#x8907;&#x96DC;&#x5EA6;&#x70BA;O(1)&#x3002;</p>
-<p><img src="https://i.imgur.com/uQqyzME.png" alt=""></p>
-<h3 id="&#x7528;array&#x5BE6;&#x4F5C;hash-map">&#x7528;array&#x5BE6;&#x4F5C;hash map</h3>
-<p>&#x6211;&#x5011;&#x7684;&#x76EE;&#x7684;&#x662F;&#x5728;O(1)&#x7684;&#x6642;&#x9593;&#x5167;&#x5C0D;&#x8CC7;&#x6599;&#x9032;&#x884C;:</p>
+                                <h1 id="process">Process</h1>
+<h6 id="tags--operating-system">tags = <code>Operating System</code></h6>
+<h2 id="process">Process</h2>
+<p>Process&#x70BA;&#x4E00;&#x500B;&#x57F7;&#x884C;&#x4E2D;&#x7684;&#x7A0B;&#x5F0F;&#xFF0C;&#x662F;&#x4F5C;&#x696D;&#x7CFB;&#x7D71;&#x57FA;&#x672C;&#x7684;&#x5DE5;&#x4F5C;&#x55AE;&#x5143;&#xFF0C;CPU&#x6703;&#x6839;&#x64DA;&#x6392;&#x7A0B;&#x6F14;&#x7B97;&#x6CD5;&#x9078;&#x64C7;&#x8981;&#x57F7;&#x884C;&#x54EA;&#x4E00;&#x500B;Process&#xFF0C;CPU&#x7684;&#x4E00;&#x500B;core&#xFF0C;&#x53EA;&#x80FD;&#x57F7;&#x884C;&#x4E00;&#x500B;process&#x3002;Process&#x8981;&#x5B8C;&#x6210;&#x5DE5;&#x4F5C;&#x9700;&#x8981;&#x8A31;&#x591A;&#x7A2E;&#x985E;&#x7684;&#x8CC7;&#x6E90;:CPU&#x8A08;&#x7B97;&#x3001;&#x8A18;&#x61B6;&#x9AD4;&#x5132;&#x5B58;&#x6240;&#x9700;&#x7684;&#x8CC7;&#x6599;&#x3001;I/O&#x88DD;&#x7F6E;&#x3001;&#x6A94;&#x6848;&#x7B49;&#x7B49;&#x3002;</p>
+<p>&#x5728;Linux&#x7CFB;&#x7D71;&#x4E2D;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;top&#x53CA;ps&#x4F86;&#x986F;&#x793A;&#x76EE;&#x524D;&#x5404;Process&#x7684;&#x72C0;&#x614B;&#x3002;</p>
+<pre><code>top
+ps
+ps aux
+</code></pre><h3 id="process-state">Process State</h3>
+<p>&#x7576;Process&#x57F7;&#x884C;&#x6642;&#xFF0C;&#x5B83;&#x6703;&#x6539;&#x8B8A;&#x5176;&#x72C0;&#x614B;&#xFF0C;&#x53EF;&#x4EE5;&#x5206;&#x70BA;&#x4E0B;&#x5217;&#x5E7E;&#x7A2E;&#x72C0;&#x614B;:</p>
 <ul>
-<li>&#x65B0;&#x589E;</li>
-<li>&#x522A;&#x9664;</li>
-<li>&#x67E5;&#x8A62;</li>
+<li>new : Process&#x6B63;&#x5728;&#x88AB;&#x7522;&#x751F;</li>
+<li>running : Process&#x6B63;&#x5728;&#x57F7;&#x884C;</li>
+<li>waiting : &#x6B63;&#x5728;&#x7B49;&#x5F85;&#x67D0;&#x4E8B;&#x4EF6;&#x767C;&#x751F;(&#x4F8B;&#x5982;I/O)</li>
+<li>ready : &#x6B63;&#x5728;&#x7B49;&#x5F85;CPU&#x8CC7;&#x6E90;</li>
+<li>terminated : &#x5B8C;&#x6210;&#x57F7;&#x884C;&#xFF0C;&#x6B63;&#x5728;&#x88AB;&#x7D50;&#x675F;</li>
 </ul>
-<p>&#x6700;&#x76F4;&#x89BA;&#x7684;&#x505A;&#x6CD5;&#x5C31;&#x662F;&#x7528;&#x4E00;&#x500B;&#x5F88;&#x5927;&#x7684;Array&#xFF0C;Index&#x70BA;key&#x88E1;&#x9762;&#x5B58;&#x7684;&#x503C;&#x70BA;value
-| Key | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 |
-| -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- |
-| Value     | 4 |  |  |  | 3 |  | 6 |  | 4 |  | 4 | </p>
-<p>&#x9019;&#x6A23;&#x505A;&#x6709;&#x5E7E;&#x500B;&#x7F3A;&#x9EDE;:</p>
+<p><img src="https://i.imgur.com/ShhrsGS.png" alt=""></p>
+<h3 id="process-control-block">Process Control Block</h3>
+<p>&#x6BCF;&#x4E00;&#x500B;Process&#x5728;&#x4F5C;&#x696D;&#x7CFB;&#x7D71;&#x4E2D;&#xFF0C;&#x90FD;&#x6709;&#x5C0D;&#x7528;&#x7684;Process Control Block(PCB)&#xFF0C;&#x7528;&#x65BC;&#x7D00;&#x9304;Process&#x7684;&#x8CC7;&#x8A0A;&#xFF0C;&#x8CC7;&#x8A0A;&#x5305;&#x542B;:</p>
 <ul>
-<li>&#x6D6A;&#x8CBB;&#x8A18;&#x61B6;&#x9AD4;&#x7A7A;&#x9593;</li>
-<li>Key&#x4E00;&#x5B9A;&#x8981;&#x662F;&#x975E;&#x8CA0;&#x7684;&#x6574;&#x6578;</li>
+<li>Process state: New, Ready, Waiting, Running, Terminated</li>
+<li>Process number: Process id, &#x7528;&#x4F86;&#x8B58;&#x5225;Process&#xFF0C;&#x6BCF;&#x500B;Process id&#x5C0D;&#x61C9;&#x5230;&#x4E00;&#x500B;PCB</li>
+<li>Program counter: &#x7D00;&#x9304;CPU&#x4E0B;&#x4E00;&#x884C;&#x8981;&#x57F7;&#x884C;&#x7684;&#x6307;&#x4EE4;&#x4F4D;&#x7F6E;</li>
+<li>Register: &#x5B58;process&#x76F8;&#x95DC;&#x7684;&#x5176;&#x4ED6;&#x8CC7;&#x8A0A;(&#x4F8B;&#x5982;priority)</li>
+<li>Memory Limits: Memory&#x7BA1;&#x7406;&#x76F8;&#x95DC;</li>
+<li>List of open files: File Descriptor</li>
 </ul>
-<h3 id="hash-table">Hash Table</h3>
-<p>Hash Table&#x70BA;&#x4E86;&#x89E3;&#x6C7A;&#x4E0A;&#x8FF0;&#x7684;&#x554F;&#x984C;&#xFF0C;&#x53EA;&#x5132;&#x5B58;&#x6709;&#x7528;&#x5230;&#x7684;Key&#xFF0C;&#x56E0;&#x6B64;&#x9700;&#x8981;&#x4F7F;&#x7528;hash function
-<img src="https://i.imgur.com/RDW0Q7V.png" alt=""></p>
-<h4 id="hash-function">Hash Function</h4>
-<p>Hash function&#x7684;&#x529F;&#x80FD;&#x70BA;&#x5C07;&#x6BCF;&#x500B;&#x4E0D;&#x540C;&#x7684;key&#x503C;&#x5C0D;&#x61C9;&#x5230;&#x4E0D;&#x540C;&#x7684;value&#xFF0C;&#x4E26;&#x4E14;&#x5C07;&#x5197;&#x9577;&#x7684;key&#x7C21;&#x5316;&#xFF0C;&#x8209;&#x4F8B;&#x4F86;&#x8AAA;:</p>
-<pre><code>HashFunction(&quot;12345&quot;) = 1 -&gt; &#x7528;hashsum&#x53BB;&#x627E;&#x5C0D;&#x61C9;&#x7684;value
-HashFunction(&quot;sdgasdg&quot;) = 2
-HashFunction(&quot;agasd&quot;) = 3
-HashFunction(&quot;akvnkaagafdfgar&quot;) = 4
-</code></pre><p>&#x5229;&#x7528;hash function&#x5C31;&#x53EF;&#x4EE5;&#x6BD4;&#x8F03;&#x7C21;&#x55AE;&#x7684;&#x5C07;&#x8907;&#x96DC;&#x7684;key&#x5FEB;&#x901F;&#x627E;&#x5230;&#x5C0D;&#x61C9;&#x7684;value&#x3002;&#x4F46;&#x662F;&#x4ECD;&#x7136;&#x6703;&#x767C;&#x751F;&#x4E00;&#x500B;&#x56B4;&#x91CD;&#x7684;&#x554F;&#x984C;:</p>
+<p><img src="https://i.imgur.com/IApBnFW.png" alt=""></p>
+<p>In register:</p>
+<p><img src="https://i.imgur.com/Pn2SlqM.png" alt=""></p>
+<h3 id="special-process">Special Process</h3>
+<p>&#x5728;Linux&#x7CFB;&#x7D71;&#x4E2D;&#xFF0C;&#x6709;&#x4E00;&#x4E9B;&#x7279;&#x5225;&#x7684;Process id&#x662F;&#x7CFB;&#x7D71;&#x6240;&#x4F7F;&#x7528;&#x7684;&#x3002;</p>
 <ul>
-<li>|U| &gt; m<ul>
-<li>Collision : &#x5169;&#x500B;&#x4E0D;&#x540C;&#x7684;key k1, k2, HashFunction(k1) = HashFunction(k2)</li>
-<li>&#x89E3;&#x6C7A;&#x65B9;&#x6CD5;:<ul>
-<li>&#x7528;link-list&#x628A;hash&#x5230;&#x540C;&#x4E00;&#x500B;&#x503C;&#x7684;key&#x4E32;&#x8D77;&#x4F86;</li>
-<li>&#x7528;probing method&#x4F86;&#x627E;&#x7A7A;&#x7684;&#x5730;&#x65B9;&#x653E;&#x8CC7;&#x6599;</li>
+<li>pid = 0 : Swapper(Schedulre)&#xFF0C;&#x8CA0;&#x8CAC;&#x7BA1;&#x7406;CPU&#x6392;&#x7A0B;&#x7684;Process</li>
+<li>pid = 1 : Init&#xFF0C;&#x6240;&#x6709;&#x7684;process&#x900F;&#x904E;&#x9019;&#x500B;process&#x88AB;&#x5EFA;&#x7ACB;&#x53CA;&#x56DE;&#x6536;</li>
 </ul>
-</li>
-</ul>
-</li>
-</ul>
-<p><img src="https://i.imgur.com/GsNE9hW.png" alt=""></p>
-<h3 id="&#x5C0F;&#x7DF4;&#x7FD2;">&#x5C0F;&#x7DF4;&#x7FD2;</h3>
-<ul>
-<li><a href="https://leetcode.com/problems/jewels-and-stones/" target="_blank">https://leetcode.com/problems/jewels-and-stones/</a></li>
-<li><a href="https://leetcode.com/problems/contains-duplicate/" target="_blank">https://leetcode.com/problems/contains-duplicate/</a></li>
-<li><a href="https://leetcode.com/problems/happy-number/" target="_blank">https://leetcode.com/problems/happy-number/</a></li>
-<li><a href="https://leetcode.com/problems/two-sum/" target="_blank">https://leetcode.com/problems/two-sum/</a></li>
-<li><a href="https://leetcode.com/problems/flip-columns-for-maximum-number-of-equal-rows/" target="_blank">https://leetcode.com/problems/flip-columns-for-maximum-number-of-equal-rows/</a></li>
-</ul>
+<h3 id="context-switch">Context Switch</h3>
+<p>&#x7576;CPU&#x6536;&#x5230;interrupt&#x4FE1;&#x865F;&#x6642;&#xFF0C;&#x6703;&#x5148;&#x5C07;&#x76EE;&#x524D;&#x5728;&#x505A;&#x7684;process&#x72C0;&#x614B;&#x5B58;&#x5728;&#x8A72;process&#x7684;PCB&#x5167;&#xFF0C;&#x4E26;&#x4E14;&#x6839;&#x64DA;&#x4E0B;&#x4E00;&#x500B;process&#x7684;PCB&#x8CC7;&#x8A0A;&#xFF0C;&#x56DE;&#x5FA9;&#x4E0B;&#x4E00;&#x500B;process&#x5230;&#x4E0A;&#x6B21;&#x57F7;&#x884C;&#x5B8C;&#x7684;&#x72C0;&#x614B;&#x3002;&#x9019;&#x6574;&#x500B;&#x904E;&#x7A0B;&#x88AB;&#x7A31;&#x70BA;Context Switch&#x3002;</p>
+<p><img src="https://i.imgur.com/t29Dhon.png" alt=""></p>
 
                                 
                                 </section>
@@ -1507,12 +1495,8 @@ HashFunction(&quot;akvnkaagafdfgar&quot;) = 4
 
             
                 
-                <a href="dfs.html" class="navigation navigation-prev " aria-label="Previous page: DFS">
-                    <i class="fa fa-angle-left"></i>
-                </a>
                 
-                
-                <a href="hashmap_method.html" class="navigation navigation-next " aria-label="Next page: 常用Method">
+                <a href="process_schedule.html" class="navigation navigation-next navigation-unique" aria-label="Next page: Process Schedule">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1523,7 +1507,7 @@ HashFunction(&quot;akvnkaagafdfgar&quot;) = 4
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Hash Table / Maps","level":"1.5.8","depth":2,"next":{"title":"常用Method","level":"1.5.8.1","depth":3,"path":"cpp_sec/hashmap_method.md","ref":"cpp_sec/hashmap_method.md","articles":[]},"previous":{"title":"DFS","level":"1.5.7.3","depth":3,"path":"cpp_sec/dfs.md","ref":"cpp_sec/dfs.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cpp_sec/hashmap.md","mtime":"2021-05-23T16:00:23.512Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-05-29T14:53:51.731Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Process","level":"1.7.3","depth":2,"next":{"title":"Process Schedule","level":"1.7.3.1","depth":3,"path":"cpp_sec/process_schedule.md","ref":"cpp_sec/process_schedule.md","articles":[]},"previous":{"title":"[Standard I/O]","level":"1.7.2.2","depth":3,"ref":"","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cpp_sec/process.md","mtime":"2021-05-29T14:50:10.243Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-05-29T14:53:51.731Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
