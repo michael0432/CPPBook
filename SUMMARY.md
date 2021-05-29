@@ -62,15 +62,15 @@
   * I/O
     * [File I/O](cpp_sec/fileio.md)
     * [Standard I/O]
-  * [Process]
-    * [Process Lifecycle]
+  * [Process](cpp_sec/process.md)
+    * [Process Schedule](cpp_sec/process_schedule.md)
+    * [Process Lifecycle](cpp_sec/process_lifecycle.md)
     * [Process Communication]
-    * [Process Schedule]
+  * [Deadlock]
   * [Signal]
   * [Thread]
     * [Thread Controls]
   * [Syncornize]
-  * [Deadlock]
   * [Memory]
   * [Virtual Memory]
   * [File System]
