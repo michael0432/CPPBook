@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Process Schedule · GitBook</title>
+        <title>Pipe · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="process_lifecycle.html" />
     
-    
-    <link rel="prev" href="process.html" />
+    <link rel="prev" href="process_communiation.html" />
     
 
     </head>
@@ -1019,7 +1017,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter active" data-level="1.7.3.1" data-path="process_schedule.html">
+        <li class="chapter " data-level="1.7.3.1" data-path="process_schedule.html">
             
                 <a href="process_schedule.html">
             
@@ -1059,7 +1057,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.7.3.3.1" data-path="pipe.html">
+        <li class="chapter active" data-level="1.7.3.3.1" data-path="pipe.html">
             
                 <a href="pipe.html">
             
@@ -1460,7 +1458,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Process Schedule</a>
+        <a href=".." >Pipe</a>
     </h1>
 </div>
 
@@ -1475,28 +1473,141 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="procss-schedule">Procss Schedule</h1>
+                                <h1 id="pipe">Pipe</h1>
 <h6 id="tags--operating-system">tags = <code>Operating System</code></h6>
-<p>&#x4F5C;&#x696D;&#x7CFB;&#x7D71;&#x4E2D;&#xFF0C;&#x901A;&#x5E38;&#x6703;&#x6709;&#x4EE5;&#x4E0B;&#x4E09;&#x7A2E;queue&#x5B58;&#x653E;process&#x3002;</p>
+<p>Pipe&#x662F;&#x4E00;&#x7A2E;&#x55AE;&#x5411;&#x50B3;&#x8F38;&#x8CC7;&#x6599;&#x7684;&#x65B9;&#x5F0F;&#xFF0C;&#x5176;&#x4E2D;&#x4E00;&#x500B;process&#x70BA;&#x5BEB;&#x5165;&#x8CC7;&#x6599;&#x8005;(Producer)&#xFF1B;&#x53E6;&#x4E00;&#x500B;process&#x70BA;&#x8B80;&#x51FA;&#x8CC7;&#x6599;&#x8005;(consumer)&#xFF0C;&#x5169;&#x500B;process&#x5404;&#x7528;&#x4E00;&#x500B;fd&#x6307;&#x5411;&#x9019;&#x500B;pipe&#x3002;</p>
+<p><img src="https://i.imgur.com/t17KANh.png" alt=""></p>
+<h2 id="open-pipe">Open pipe</h2>
+<p>&#x7531;&#x65BC;pipe&#x662F;&#x85C9;&#x7531;fd&#x6E9D;&#x901A;&#xFF0C;&#x56E0;&#x6B64;&#x4F7F;&#x7528;pipe&#x6E9D;&#x901A;&#x7684;&#x5169;&#x500B;process&#xFF0C;&#x901A;&#x5E38;&#x4E92;&#x70BA;parent/child process&#xFF0C;&#x5F7C;&#x6B64;&#x624D;&#x80FD;&#x4E92;&#x76F8;&#x77E5;&#x9053;&#x662F;&#x900F;&#x904E;&#x54EA;&#x500B;fd&#x6E9D;&#x901A;&#x3002;</p>
+<h3 id="step-1">Step 1</h3>
+<p>Parent process&#x5148;&#x958B;&#x597D;&#x4E00;&#x500B;pipe&#xFF0C;&#x6307;&#x5B9A;&#x5169;&#x500B;fd&#x4F5C;&#x70BA;reading&#x7AEF;&#x8DDF;writing&#x7AEF;
+<img src="https://i.imgur.com/WtkPbqc.png" alt="">
+<img src="https://i.imgur.com/WG1MJTs.png" alt=""></p>
+<h3 id="step-2">Step 2</h3>
+<p>Parent process fork&#x51FA;child process&#xFF0C;&#x6B64;&#x6642;&#xFF0C;child process&#x8DDF;parent process&#x6703;&#x5171;&#x7528;&#x540C;&#x4E00;&#x6A23;&#x7684;fd&#x3002;
+<img src="https://i.imgur.com/xWOBR92.png" alt=""></p>
+<h3 id="step-3">Step 3</h3>
+<p>&#x5C07;&#x4E0D;&#x9700;&#x8981;&#x7684;fd&#x95DC;&#x6389;&#x3002;
+<img src="https://i.imgur.com/At83eNg.png" alt=""></p>
+<h2 id="read-from-pipe--write-to-pipe">Read from pipe / Write to pipe</h2>
 <ul>
-<li>Job queue : &#x5B58;&#x653E;&#x6240;&#x6709;&#x7684;process</li>
-<li>Ready queue : &#x5B58;&#x653E;&#x72C0;&#x614B;&#x70BA;ready&#x4E14;&#x5DF2;&#x7D93;&#x88AB;&#x653E;&#x9032;memory&#x4E2D;&#x7B49;&#x5F85;&#x57F7;&#x884C;&#x7684;process</li>
-<li>Device queue : &#x5B58;&#x653E;&#x6B63;&#x5728;&#x7B49;&#x5F85;I/O&#x7684;process</li>
+<li>&#x7576;pipe&#x7684;write end&#x5168;&#x90E8;&#x90FD;&#x88AB;close&#x4E14;&#x6240;&#x6709;pipe&#x4E2D;&#x7684;&#x8CC7;&#x6599;&#x90FD;&#x88AB;&#x8B80;&#x53D6;&#x5F8C;&#xFF0C;&#x6703;&#x5F9E;pipe&#x4E2D;&#x8B80;&#x5230;EOF&#xFF0C;&#x7576;read end&#x6536;&#x5230;EOF&#x5F8C;&#xFF0C;read end&#x6703;&#x88AB;close&#x3002;</li>
+<li>&#x7576;pipe&#x7684;read end&#x5168;&#x90E8;&#x90FD;&#x88AB;close&#x6642;&#xFF0C;write end&#x6703;&#x6536;&#x5230;&#x4E00;&#x500B;SIGPIPE&#x7684;signal&#x3002;</li>
+<li>Kernel&#x6703;&#x7D66;pipe&#x4E00;&#x500B;&#x56FA;&#x5B9A;&#x5927;&#x5C0F;&#x7684;buffer&#x4F7F;&#x7528;&#x3002; (PIPE_BUF)</li>
+<li>&#x518D;&#x4E5F;&#x4E0D;&#x6703;&#x4F7F;&#x7528;&#x5230;&#x7684;read end&#x8DDF;write end&#x90FD;&#x8981;&#x95DC;&#x9589;&#xFF0C;process&#x624D;&#x80FD;&#x6B63;&#x5E38;&#x7D50;&#x675F;&#x3002;</li>
 </ul>
-<p>&#x9019;&#x4E9B;queue&#x4E00;&#x822C;&#x90FD;&#x662F;&#x7528;linked list&#x5132;&#x5B58;&#xFF0C;&#x6BCF;&#x500B;PCB&#x4E2D;&#x6703;&#x5305;&#x542B;&#x6307;&#x5411;&#x4E0B;&#x4E00;&#x500B;PCB&#x7684;Pointer&#x3002;</p>
-<h2 id="process-scheduler">Process scheduler</h2>
-<p>&#x4E00;&#x500B;process&#x5728;&#x751F;&#x547D;&#x9031;&#x671F;&#x4E2D;&#xFF0C;&#x6703;&#x5728;&#x5404;&#x500B;&#x4E0D;&#x540C;&#x7684;queue&#x4E2D;&#x79FB;&#x52D5;&#xFF0C;&#x4F5C;&#x696D;&#x7CFB;&#x7D71;&#x70BA;&#x4E86;&#x6392;&#x73ED;&#x7684;&#x76EE;&#x7684;&#xFF0C;&#x9700;&#x8981;&#x6709;&#x4E00;&#x5957;&#x6A5F;&#x5236;&#x4EE5;&#x67D0;&#x4E9B;&#x6B21;&#x5E8F;&#x5F9E;&#x9019;&#x4E9B;queue&#x4E2D;&#x9078;&#x53D6;process&#xFF0C;&#x9019;&#x5957;&#x6A5F;&#x5236;&#x7A31;&#x70BA;scheduler&#x3002;
-Scheduler&#x901A;&#x5E38;&#x88AB;&#x5206;&#x70BA;Long-term scheduler&#x53CA;Short-term scheduler&#xFF0C;&#x5169;&#x8005;&#x7684;&#x5340;&#x5206;&#x70BA;&#x5B83;&#x5011;&#x7684;&#x57F7;&#x884C;&#x6B21;&#x6578;&#x3002;</p>
-<h3 id="short-term-scheduler">Short-term scheduler</h3>
-<p>Short term scheduler&#x4E5F;&#x88AB;&#x7A31;&#x70BA;CPU scheduler&#xFF0C;&#x529F;&#x80FD;&#x70BA;&#x5F9E;ready queue&#x4E2D;&#x9078;&#x51FA;&#x4E00;&#x500B;process&#xFF0C;&#x4E26;&#x5C07;CPU&#x7684;&#x904B;&#x7B97;&#x8CC7;&#x6E90;&#x5206;&#x914D;&#x7D66;&#x5B83;&#x3002;Short term scheduler&#x9700;&#x8981;&#x5728;&#x76E1;&#x91CF;&#x77ED;&#x7684;&#x6642;&#x9593;&#x5167;&#x6C7A;&#x5B9A;&#x4E0B;&#x4E00;&#x500B;process&#xFF0C;&#x907F;&#x514D;&#x6D6A;&#x8CBB;CPU&#x7684;&#x8CC7;&#x6E90;&#xFF0C;&#x4E14;&#x6703;&#x983B;&#x7E41;&#x7684;&#x88AB;&#x57F7;&#x884C;(&#x81F3;&#x5C11;&#x6BCF;100&#x6BEB;&#x79D2;&#x6703;&#x57F7;&#x884C;&#x4E00;&#x6B21;)&#x3002;</p>
-<h3 id="long-term-scheduler">Long-term scheduler</h3>
-<p>Long term Scheduler&#x4E5F;&#x88AB;&#x7A31;&#x70BA;Job Scheduler&#xFF0C;&#x5F9E;Job queue&#x4E2D;&#x627E;&#x51FA;&#x9069;&#x5408;&#x7684;process&#xFF0C;&#x5C07;&#x5176;&#x9700;&#x8981;&#x7684;&#x8CC7;&#x8A0A;&#x653E;&#x5165;memory&#x4E2D;&#xFF0C;&#x4E26;&#x5C07;&#x6B64;process&#x653E;&#x5165;ready queue&#x3002;Long term scheduler&#x53EA;&#x6709;&#x5728;&#x6709;process&#x65B0;&#x589E;&#x6216;&#x522A;&#x9664;&#x6642;&#x624D;&#x6703;&#x57F7;&#x884C;&#xFF0C;&#x56E0;&#x6B64;&#x76F8;&#x8F03;&#x65BC;Short-term scheduler&#x6709;&#x76F8;&#x7576;&#x9577;&#x7684;&#x6642;&#x9593;&#x53EF;&#x4EE5;&#x6C7A;&#x5B9A;&#x9069;&#x5408;&#x7684;process&#x3002;</p>
-<p>&#x4E00;&#x822C;&#x4F86;&#x8AAA;&#xFF0C;&#x591A;&#x6578;&#x7684;Process&#x90FD;&#x53EF;&#x4EE5;&#x88AB;&#x5206;&#x6210;IO-Bound&#x6216;&#x662F;CPU-Bound&#x3002;</p>
+<h2 id="dup2">dup2</h2>
+<p>dup2&#x53EF;&#x4EE5;&quot;&#x8907;&#x88FD;&quot;&#x4E00;&#x500B;fd&#xFF0C;&#x4F7F;&#x5F97;&#x5169;&#x500B;fd&#x6307;&#x5230;&#x540C;&#x4E00;&#x500B;&#x6587;&#x4EF6;&#x3002;
+<img src="https://i.imgur.com/5oUQTW0.png" alt=""></p>
+<pre><code class="lang-cpp=1">#include &lt;unistd.h&gt;
+int dup2(int oldfd, int newfd);
+</code></pre>
 <ul>
-<li>I/O Bound : &#x505A;I/O&#x7684;&#x6642;&#x9593;&#x8F03;&#x591A;</li>
-<li>CPU Bound : &#x505A;&#x904B;&#x7B97;&#x7684;&#x6642;&#x9593;&#x8F03;&#x591A;</li>
+<li>oldfd: &#x8981;&#x88AB;&#x8907;&#x88FD;&#x7684;fd</li>
+<li>newdf: &#x65B0;&#x7684;fd&#xFF0C;&#x53EF;&#x4EE5;&#x6307;&#x5B9A;&#x70BA;&#x4E00;&#x500B;&#x5408;&#x6CD5;&#x7684;&#x6578;&#x5B57;(0~1023)&#xFF0C;&#x5982;&#x679C;&#x6B64;fd&#x5DF2;&#x88AB;&#x5360;&#x7528;&#xFF0C;&#x7CFB;&#x7D71;&#x6703;&#x81EA;&#x52D5;close&#x8A72;fd&#xFF0C;&#x518D;&#x505A;&#x8907;&#x88FD;&#x7684;&#x52D5;&#x4F5C;&#x3002;</li>
+<li>return value<ul>
+<li>&#x6210;&#x529F;&#x56DE;&#x50B3;newfd</li>
+<li>&#x5931;&#x6557;&#x56DE;&#x50B3;-1</li>
 </ul>
-<p>Long-term scheduler&#x6703;&#x50BE;&#x5411;&#x8B93;Ready queue&#x4E2D;&#x7684;I/O Bound Process&#x53CA;CPU Bound Process&#x6BD4;&#x4F8B;&#x5408;&#x9069;&#x3002;&#x5982;&#x679C;&#x5E7E;&#x4E4E;&#x6240;&#x6709;process&#x90FD;&#x662F;I/O Bound&#xFF0C;&#x6703;&#x5C0E;&#x81F4;Ready queue&#x4E2D;&#x7684;process&#x592A;&#x5C11;&#xFF1B;&#x5982;&#x679C;&#x5E7E;&#x4E4E;&#x6240;&#x6709;process&#x90FD;&#x662F;CPU Bound&#xFF0C;&#x6703;&#x5C0E;&#x81F4;Device queue&#x4E2D;&#x7684;process&#x592A;&#x5C11;&#x3002;&#x9019;&#x5169;&#x7A2E;&#x72C0;&#x6CC1;&#x6703;&#x5C0E;&#x81F4;&#x7CFB;&#x7D71;&#x7684;&#x6548;&#x80FD;&#x6C92;&#x6709;&#x6700;&#x5927;&#x5316;&#x3002;</p>
+</li>
+</ul>
+<h2 id="pipe">pipe</h2>
+<p>pipe&#x662F;linux&#x7684;system call&#xFF0C;&#x7528;&#x4F86;&#x5EFA;&#x7ACB;process&#x9593;&#x7684;IPC&#x3002;</p>
+<pre><code class="lang-cpp=1">#include &lt;unistd.h&gt;
+int pipe(int pipefd[2]);
+</code></pre>
+<ul>
+<li>pipefd[0]&#x70BA;read end</li>
+<li>pipefd[1]&#x70BA;write end</li>
+<li><p>return value:</p>
+<ul>
+<li>&#x5EFA;&#x7ACB;&#x6210;&#x529F;&#x56DE;&#x50B3;0</li>
+<li>&#x5EFA;&#x7ACB;&#x5931;&#x6557;&#x56DE;&#x50B3;-1</li>
+</ul>
+</li>
+<li><p>example</p>
+</li>
+</ul>
+<pre><code class="lang-cpp=1">#define MAXLINE 100
+
+int main()
+{
+    int n;
+    int fd[2];
+    pid_t pid;
+    char line[MAXLINE];
+
+    if (pipe(fd) &lt; 0)
+    {
+        // pipe error
+    }
+    pid = fork();
+    if (pid &lt; 0)
+    {
+        // fork error
+    }
+    else if (pid &gt; 0)
+    {
+        // parent
+        close(fd[0]); // close read end
+        write(fd[1], &quot;hi\n&quot;, 3);
+        wait(nullptr);
+    }
+    else
+    {
+        // child
+        close(fd[1]);
+        n = read(fd[0], line, MAXLINE);
+        for(int i=0; i&lt;n; i++)
+        {
+            std::cout &lt;&lt; line[i];
+        }
+        exit(0);
+    }
+}
+</code></pre>
+<h2 id="&#x5C0F;&#x7DF4;&#x7FD2;">&#x5C0F;&#x7DF4;&#x7FD2;</h2>
+<ul>
+<li>&#x5728;&#x958B;&#x59CB;&#x5C0F;&#x7DF4;&#x7FD2;&#x4E4B;&#x524D;&#xFF0C;&#x5EFA;&#x8B70;&#x5148;&#x81EA;&#x5DF1;&#x5BEB;&#x4E00;&#x6BB5;&#x985E;&#x4F3C;&#x4E0A;&#x9762;&#x7BC4;&#x4F8B;&#x7684;&#x7A0B;&#x5F0F;&#xFF0C;&#x78BA;&#x8A8D;&#x5169;&#x500B;process&#x53EF;&#x4EE5;&#x85C9;&#x7531;pipe&#x6B63;&#x5E38;&#x6E9D;&#x901A;&#x3002;</li>
+</ul>
+<p>&#x5BEB;&#x4E00;&#x652F;&#x7A0B;&#x5F0F;&#x78BC;&#xFF0C;&#x6B64;&#x7A0B;&#x5F0F;&#x78BC;&#x5305;&#x542B;&#x4E00;&#x500B;Sysem&#x53CA;&#x4E94;&#x500B;Player&#xFF0C;&#x5171;&#x516D;&#x500B;process&#x3002;&#x5176;&#x4E2D;&#xFF0C;System&#x70BA;parent process&#xFF0C;&#x4E94;&#x500B;Player&#x70BA;child process&#x3002;</p>
+<p>&#x4E94;&#x500B;Player&#x6703;&#x4E00;&#x8D77;&#x53C3;&#x52A0;&#x4E00;&#x500B;&#x4E0B;&#x6CE8;&#x7684;&#x5C0F;&#x904A;&#x6232;&#xFF0C;&#x9019;&#x500B;&#x904A;&#x6232;&#x6709;&#x5341;&#x8F2A;&#xFF0C;&#x6BCF;&#x8F2A;&#x6BCF;&#x500B;Player&#x6703;&#x96A8;&#x6A5F;&#x9078;&#x64C7;0~9&#x4E4B;&#x9593;&#x7684;&#x4E00;&#x500B;&#x6578;&#x5B57;&#x4E0B;&#x6CE8;&#xFF0C;&#x4E26;&#x5C07;&#x5404;&#x81EA;&#x4E0B;&#x6CE8;&#x7684;&#x6578;&#x5B57;&#x50B3;&#x7D66;System&#xFF0C;System&#x6703;&#x5224;&#x65B7;&#x4E0B;&#x6CE8;&#x6700;&#x9AD8;&#x7684;Player&#x8D0F;&#x5F97;&#x6B64;&#x8F2A;&#xFF0C;&#x4E26;&#x5370;&#x51FA;&#x6B64;&#x8F2A;&#x7684;&#x7D50;&#x679C;&#xFF0C;&#x82E5;&#x6709;&#x591A;&#x500B;Player&#x4E0B;&#x6CE8;&#x6700;&#x9AD8;&#xFF0C;&#x5247;&#x9019;&#x4E9B;Player&#x5171;&#x540C;&#x8D0F;&#x5F97;&#x6B64;&#x8F2A;&#xFF0C;System&#x8981;&#x901A;&#x77E5;&#x6240;&#x6709;Player&#x6B64;&#x8F2A;&#x6BD4;&#x8CFD;&#x7684;&#x7D50;&#x679C;&#x3002;
+&#x5728;&#x5341;&#x8F2A;&#x904A;&#x6232;&#x7D50;&#x675F;&#x5F8C;&#xFF0C;System&#x8981;&#x5370;&#x51FA;&#x6BD4;&#x8CFD;&#x7D50;&#x679C;&#x4E26;&#x6392;&#x540D;&#xFF0C;System&#x78BA;&#x8A8D;&#x6240;&#x6709;Player&#x90FD;&#x7D50;&#x675F;Process&#x5F8C;&#xFF0C;&#x5370;&#x51FA;Gameover&#x4E26;&#x7D50;&#x675F;Process&#x3002;</p>
+<h3 id="input">Input</h3>
+<p>&#x7121;input</p>
+<h3 id="ouput">Ouput</h3>
+<h4 id="system">System</h4>
+<p>System&#x5728;&#x6BCF;&#x8F2A;&#x7D50;&#x675F;&#x6642;&#x8981;&#x5370;&#x51FA;&#x5982;&#x4E0B;&#x4F8B;&#x5B50;&#x7684;&#x6B64;&#x8F2A;&#x7D50;&#x679C;</p>
+<pre><code>Round1 :
+Player0 : 3
+Player1 : 7
+Player2 : 4
+Player3 : 4
+Player4 : 5
+Player1 wins round 1.
+</code></pre><p>&#x5728;&#x5341;&#x8F2A;&#x6BD4;&#x8CFD;&#x7D50;&#x675F;&#x5F8C;&#xFF0C;System&#x8981;&#x5370;&#x51FA;&#x6BD4;&#x8CFD;&#x7D50;&#x679C;&#xFF0C;&#x4F9D;&#x7167;&#x6392;&#x540D;&#x9806;&#x5E8F;&#x5370;&#x51FA;Player&#x7DE8;&#x865F;&#x53CA;&#x8D0F;&#x7684;&#x6B21;&#x6578;&#xFF0C;&#x82E5;&#x6392;&#x540D;&#x76F8;&#x540C;&#x5148;&#x5370;&#x51FA;&#x7DE8;&#x865F;&#x5C0F;&#x7684;Player&#xFF0C;&#x4E26;&#x5370;&#x51FA;Gameover&#x3002;</p>
+<pre><code>Result:
+Player3, win 3 times.
+Player0, win 2 times.
+Player1, win 2 times.
+Player2, win 2 times.
+Player4, win 1 times.
+Gameover
+</code></pre><h4 id="player">Player</h4>
+<p>&#x5404;&#x500B;Player&#x5728;&#x6BCF;&#x8F2A;&#x7D50;&#x675F;&#x6642;&#x5370;&#x51FA;&#x76EE;&#x524D;&#x81EA;&#x5DF1;&#x8D0F;&#x904E;&#x5E7E;&#x6B21;&#x3002;</p>
+<pre><code>Player0 wins 0 times
+
+Player1 wins 1 times
+
+Player2 wins 0 times
+
+Player3 wins 0 times
+
+Player4 wins 0 times
+</code></pre><h3 id="other-requirement">Other requirement</h3>
+<ul>
+<li>&#x7D50;&#x675F;&#x5F8C;&#x4E0D;&#x53EF;&#x4EE5;&#x7559;&#x4E0B;zombie process&#x53CA;orphan process&#x3002;</li>
+</ul>
 
                                 
                                 </section>
@@ -1524,14 +1635,10 @@ Scheduler&#x901A;&#x5E38;&#x88AB;&#x5206;&#x70BA;Long-term scheduler&#x53CA;Shor
 
             
                 
-                <a href="process.html" class="navigation navigation-prev " aria-label="Previous page: Process">
+                <a href="process_communiation.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Process Communication">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
-                
-                <a href="process_lifecycle.html" class="navigation navigation-next " aria-label="Next page: Process Lifecycle">
-                    <i class="fa fa-angle-right"></i>
-                </a>
                 
             
         
@@ -1540,7 +1647,7 @@ Scheduler&#x901A;&#x5E38;&#x88AB;&#x5206;&#x70BA;Long-term scheduler&#x53CA;Shor
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Process Schedule","level":"1.7.3.1","depth":3,"next":{"title":"Process Lifecycle","level":"1.7.3.2","depth":3,"path":"cpp_sec/process_lifecycle.md","ref":"cpp_sec/process_lifecycle.md","articles":[]},"previous":{"title":"Process","level":"1.7.3","depth":2,"path":"cpp_sec/process.md","ref":"cpp_sec/process.md","articles":[{"title":"Process Schedule","level":"1.7.3.1","depth":3,"path":"cpp_sec/process_schedule.md","ref":"cpp_sec/process_schedule.md","articles":[]},{"title":"Process Lifecycle","level":"1.7.3.2","depth":3,"path":"cpp_sec/process_lifecycle.md","ref":"cpp_sec/process_lifecycle.md","articles":[]},{"title":"Process Communication","level":"1.7.3.3","depth":3,"path":"cpp_sec/process_communiation.md","ref":"cpp_sec/process_communiation.md","articles":[{"title":"Pipe","level":"1.7.3.3.1","depth":4,"path":"cpp_sec/pipe.md","ref":"cpp_sec/pipe.md","articles":[]},{"title":"[FIFO]","level":"1.7.3.3.2","depth":4,"ref":"","articles":[]},{"title":"[Socket]","level":"1.7.3.3.3","depth":4,"ref":"","articles":[]}]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cpp_sec/process_schedule.md","mtime":"2021-05-29T14:53:53.385Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-06-06T06:56:30.492Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Pipe","level":"1.7.3.3.1","depth":4,"next":{"title":"[FIFO]","level":"1.7.3.3.2","depth":4,"ref":"","articles":[]},"previous":{"title":"Process Communication","level":"1.7.3.3","depth":3,"path":"cpp_sec/process_communiation.md","ref":"cpp_sec/process_communiation.md","articles":[{"title":"Pipe","level":"1.7.3.3.1","depth":4,"path":"cpp_sec/pipe.md","ref":"cpp_sec/pipe.md","articles":[]},{"title":"[FIFO]","level":"1.7.3.3.2","depth":4,"ref":"","articles":[]},{"title":"[Socket]","level":"1.7.3.3.3","depth":4,"ref":"","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cpp_sec/pipe.md","mtime":"2021-06-06T06:53:33.263Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-06-06T06:56:30.492Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
