@@ -65,7 +65,10 @@
   * [Process](cpp_sec/process.md)
     * [Process Schedule](cpp_sec/process_schedule.md)
     * [Process Lifecycle](cpp_sec/process_lifecycle.md)
-    * [Process Communication]
+    * [Process Communication](cpp_sec/process_communiation.md)
+      * [Pipe](cpp_sec/pipe.md)
+      * [FIFO]
+      * [Socket]
   * [Deadlock]
   * [Signal]
   * [Thread]
