@@ -62,12 +62,13 @@
   * I/O
     * [File I/O](cpp_sec/fileio.md)
     * [Standard I/O]
+    * [Advanced I/O]
   * [Process](cpp_sec/process.md)
     * [Process Schedule](cpp_sec/process_schedule.md)
     * [Process Lifecycle](cpp_sec/process_lifecycle.md)
     * [Process Communication](cpp_sec/process_communiation.md)
       * [Pipe](cpp_sec/pipe.md)
-      * [FIFO]
+      * [FIFO](cpp_sec/fifo.md)
       * [Socket]
   * [Deadlock]
   * [Signal]

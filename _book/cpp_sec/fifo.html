@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Heap · GitBook</title>
+        <title>FIFO · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="priority_queue.html" />
     
-    
-    <link rel="prev" href="hashmap_method.html" />
+    <link rel="prev" href="pipe.html" />
     
 
     </head>
@@ -645,7 +643,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.5.9" data-path="heap.html">
+        <li class="chapter " data-level="1.5.9" data-path="heap.html">
             
                 <a href="heap.html">
             
@@ -1085,7 +1083,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7.3.3.2" data-path="fifo.html">
+        <li class="chapter active" data-level="1.7.3.3.2" data-path="fifo.html">
             
                 <a href="fifo.html">
             
@@ -1473,7 +1471,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Heap</a>
+        <a href=".." >FIFO</a>
     </h1>
 </div>
 
@@ -1488,85 +1486,146 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="heap">Heap</h1>
-<h6 id="tags--data-structure">tags = <code>Data Structure</code></h6>
-<p>Heap&#x662F;&#x4E00;&#x500B;&#x300C;&#x5806;&#x300D;&#x7684;&#x8CC7;&#x6599;&#x7D50;&#x69CB;&#xFF0C;&#x662F;&#x4E00;&#x7A2E;&#x7279;&#x5225;&#x7684;&#x6A39;&#x72C0;&#x7D50;&#x69CB;&#xFF0C;&#x5728;C++&#x4E4B;&#x4E2D;&#x4E26;&#x4E0D;&#x662F;&#x4E00;&#x500B;&#x5167;&#x5EFA;&#x7684;STL&#x3002;</p>
-<p>&#x4EE5;&#x4E0B;&#x4EE5;&#x6700;&#x57FA;&#x672C;&#x7684;Binary heap&#x7576;&#x505A;&#x4F8B;&#x5B50;&#xFF0C;Binary heap&#x6709;&#x4EE5;&#x4E0B;&#x7684;&#x7279;&#x6027;&#xFF1A;</p>
+                                <h1 id="fifo">FIFO</h1>
+<h6 id="tags--operating-system">tags = <code>Operating System</code></h6>
+<p>Pipe&#x6709;&#x5E7E;&#x500B;&#x4E0D;&#x65B9;&#x4FBF;&#x4F7F;&#x7528;&#x7684;&#x7F3A;&#x9EDE;:</p>
 <ul>
-<li>&#x6BCF;&#x500B;node&#x6709;&#x5169;&#x500B;Children</li>
-<li>&#x70BA;complete binary tree(&#x6BCF;&#x4E00;&#x5C64;&#x5F9E;&#x5DE6;&#x5230;&#x53F3;&#x4E0D;&#x53EF;&#x4EE5;&#x6709;&#x8DF3;&#x904E;&#x7684;Node)<ul>
-<li>&#x539F;&#x56E0;&#xFF1A;&#x5BB9;&#x6613;&#x627E;parent-child&#x7684;&#x95DC;&#x4FC2;</li>
-<li>&#x5047;&#x8A2D;&#x5C07;&#x9019;&#x500B;tree&#x7528;vector&#x8868;&#x793A;&#xFF0C;&#x5247;index&#x70BA;i&#x7684;node&#xFF1A;<ul>
-<li>&#x5176;left child&#x5FC5;&#x5B9A;&#x4F4D;&#x5728;index(2i)&#xFF1B;</li>
-<li>&#x5176;right child&#x5FC5;&#x5B9A;&#x4F4D;&#x5728;index(2i+1)&#xFF1B;</li>
-<li>&#x5176;parent&#x5FC5;&#x5B9A;&#x4F4D;&#x5728;index(&#x230A;i/2&#x230B;)&#x3002;</li>
+<li>&#x53EA;&#x80FD;&#x63D0;&#x4F9B;&#x55AE;&#x5411;&#x50B3;&#x8F38;</li>
+<li>&#x53EA;&#x80FD;&#x7528;&#x5728;child-parent process&#x4E4B;&#x9593;</li>
+<li>&#x6C92;&#x6709;&#x540D;&#x5B57;</li>
 </ul>
-</li>
-</ul>
-</li>
-</ul>
-<p><img src="https://i.imgur.com/NSZWlu9.png" alt=""></p>
+<p>FIFO(named pipe)&#x53EF;&#x4EE5;&#x89E3;&#x6C7A;&#x9019;&#x500B;&#x554F;&#x984C;&#xFF0C;FIFO&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x500B;&#x8DEF;&#x5F91;&#x540D;&#x5B57;&#xFF0C;&#x50CF;&#x662F;&#x4E00;&#x500B;&#x6A94;&#x6848;&#x4E00;&#x6A23;&#xFF0C;&#x8B93;&#x5176;&#x4ED6;&#x7684;process&#x4E5F;&#x53EF;&#x4EE5;&#x627E;&#x5230;&#x9019;&#x500B;FIFO&#x3002;FIFO&#x9075;&#x5FAA;First-in-first-out&#x7684;&#x539F;&#x5247;&#xFF0C;&#x5148;&#x9032;&#x5230;FIFO&#x7684;&#x8CC7;&#x6599;&#x4E00;&#x5B9A;&#x6703;&#x5148;&#x88AB;&#x8B80;&#x51FA;&#xFF0C;&#x4E00;&#x65E6;&#x8CC7;&#x6599;&#x88AB;&#x8B80;&#x53D6;&#xFF0C;&#x5C31;&#x6703;&#x5F9E;FIFO&#x4E2D;&#x88AB;&#x79FB;&#x9664;&#xFF0C;&#x6240;&#x4EE5;FIFO&#x4E0D;&#x652F;&#x63F4;lseek&#x3002;</p>
+<h2 id="create">Create</h2>
+<p>FIFO&#x53EF;&#x4EE5;&#x900F;&#x904E;terminal&#x8F38;&#x5165;&#x6307;&#x4EE4;&#x5EFA;&#x7ACB;:</p>
+<pre><code>mkfifo filename
+</code></pre><p>&#x4E5F;&#x53EF;&#x4EE5;&#x5728;&#x7A0B;&#x5F0F;&#x57F7;&#x884C;&#x6642;&#x5EFA;&#x7ACB;:</p>
+<pre><code class="lang-cpp=1">#include &lt;sys/types.h&gt;
+#include &lt;sys/stat.h&gt;
+
+int mkfifo(const char *pathname, mode_t mode);
+</code></pre>
 <ul>
-<li>Max Heap : <ul>
-<li>Max Heap&#x7684;&#x9650;&#x5236;&#x70BA;&#xFF1A;&#x6BCF;&#x500B;Node&#x90FD;&#x8981;&#x6BD4;&#x81EA;&#x5DF1;&#x7684;child&#x5927;&#xFF0C;&#x4E0A;&#x5716;&#x5373;&#x70BA;Max Heap</li>
+<li>pathname: &#x6B64;FIFO&#x7684;&#x6A94;&#x6848;&#x8DEF;&#x5F91;&#x53CA;&#x540D;&#x7A31;</li>
+<li>mode: &#x8207;open()&#x4E2D;&#x7684;mode&#x76F8;&#x540C;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x6A94;&#x6848;&#x7684;&#x6B0A;&#x9650;</li>
+<li>return value:<ul>
+<li>&#x6210;&#x529F;return 0</li>
+<li>&#x5931;&#x6557;return -1</li>
 </ul>
 </li>
+<li>example</li>
 </ul>
+<pre><code class="lang-cpp=1">// read.cpp
+int main()
+{
+    if(mkfifo(&quot;fifo1&quot;, 0777) &lt; 0)
+    {
+        // error
+    }
+    else
+    {
+        int fd;
+        fd = open(&quot;fifo1&quot;, O_RDONLY);
+        if(fd &lt; 0)
+        {
+            // error
+        }
+        else
+        {
+            int l;
+            char buf[1024];
+            while(l = read(fd, buf, 1024) &gt; 0)
+            {
+                // &#x5982;&#x679C;fifo&#x88E1;&#x6709;&#x8CC7;&#x6599;&#x5C31;&#x8B80;&#x51FA;&#x4F86;
+                printf(&quot;%s&quot;, buf);
+            }
+            close(fd);
+            return 0;
+        }
+    }
+}
+</code></pre>
+<pre><code class="lang-cpp=1">// write.cpp
+int main()
+{
+    int fd = open(&quot;fifo1&quot;, O_WRONLY);
+    if(fd &lt; 0)
+    {
+        // error
+    }
+    else
+    {
+        for(int i=0; i&lt;10; i++)
+        {
+            char buf[1024];
+            int n = sprintf(buf, &quot;Write: %d\n&quot;, i);
+            if(write(fd, buf, n) &lt; 0)
+            {
+                // error
+                exit(0);
+            }
+            sleep(1);
+        }
+    }
+}
+</code></pre>
+<h2 id="blocknonblock">BLOCK/NONBLOCK</h2>
+<p>&#x8B80;&#x53D6;&#x7684;&#x65B9;&#x5F0F;&#x53EF;&#x4EE5;&#x5206;&#x70BA;block&#x53CA;non-block&#x5169;&#x7A2E;:</p>
 <ul>
-<li>Min Heap<ul>
-<li>Min Heap&#x7684;&#x9650;&#x5236;&#x70BA;&#xFF1A;&#x6BCF;&#x500B;Node&#x90FD;&#x8981;&#x6BD4;&#x81EA;&#x5DF1;&#x7684;child&#x5C0F;&#x3002;</li>
+<li>Block (&#x9810;&#x8A2D;): <ul>
+<li>open&#x70BA;O_RDONLY&#x6642;&#xFF0C;&#x6703;&#x5361;&#x5728;open&#x76F4;&#x5230;&#x67D0;&#x500B;process&#x4F7F;&#x7528;write&#x76F8;&#x95DC;&#x7684;&#x6A21;&#x5F0F;&#x958B;&#x555F;fifo</li>
+<li>open&#x70BA;O_WRONLY&#x6642;&#xFF0C;&#x6703;&#x5361;&#x5728;open&#x76F4;&#x5230;&#x67D0;&#x500B;process&#x4F7F;&#x7528;read&#x76F8;&#x95DC;&#x7684;&#x6A21;&#x5F0F;&#x958B;&#x555F;fifo</li>
+<li>open&#x70BA;O_RDWR&#x6642;&#xFF0C;&#x6703;&#x5361;&#x5728;call read function&#x6642;&#xFF0C;&#x76F4;&#x5230;read&#x7684;&#x5230;&#x8CC7;&#x6599;&#x624D;&#x6703;&#x7E7C;&#x7E8C;</li>
+<li>call write &#x6642;&#xFF0C;&#x5982;&#x679C;buffer&#x6EFF;&#x4E86;&#xFF0C;&#x6703;&#x5361;&#x5728;write&#x76F4;&#x5230;buffer&#x8DB3;&#x5920;</li>
+</ul>
+</li>
+<li>Non-block (&#x85C9;&#x7531;O_NONBLOCK&#x8A2D;&#x5B9A;&#x70BA;non-block&#x6A21;&#x5F0F;)<ul>
+<li>open&#x70BA;O_RDONLY&#x6642;&#xFF0C;&#x5982;&#x679C;&#x6C92;&#x6709;process&#x4F7F;&#x7528;write&#x76F8;&#x95DC;&#x6A21;&#x5F0F;&#x958B;&#x555F;fifo&#xFF0C;open&#x6703;&#x56DE;&#x50B3;&#x6210;&#x529F;</li>
+<li>open&#x70BA;O_WRONLY&#x6642;&#xFF0C;&#x5982;&#x679C;&#x6C92;&#x6709;process&#x4F7F;&#x7528;read&#x76F8;&#x95DC;&#x7684;&#x6A21;&#x5F0F;&#x958B;&#x555F;fifo&#xFF0C;open&#x56DE;&#x50B3;-1(&#x5931;&#x6557;)</li>
+<li>open&#x70BA;O_RDWR&#x6642;&#xFF0C;&#x5373;&#x4F7F;&#x8B80;&#x4E0D;&#x5230;&#x8CC7;&#x6599;&#x4E5F;&#x4E0D;&#x6703;&#x5361;&#x5728;read</li>
+<li>call write &#x6642;&#xFF0C;&#x5982;&#x679C;buffer&#x6EFF;&#x4E86;&#xFF0C;write&#x6703;&#x56DE;&#x50B3;-1(&#x5931;&#x6557;)</li>
 </ul>
 </li>
 </ul>
-<h3 id="heap&#x7684;&#x57FA;&#x672C;&#x64CD;&#x4F5C;">Heap&#x7684;&#x57FA;&#x672C;&#x64CD;&#x4F5C;</h3>
-<p>&#x4EE5;Max heap&#x70BA;&#x4F8B;&#xFF0C;heap&#x6703;&#x9700;&#x8981;&#x5E7E;&#x500B;&#x57FA;&#x672C;&#x7684;&#x64CD;&#x4F5C;&#xFF1A;</p>
+<p>&#x5C31;&#x8EDF;&#x9AD4;&#x8A2D;&#x8A08;&#x5C64;&#x9762;&#x800C;&#x8A00;&#xFF0C;&#x4E0D;&#x8AD6;&#x4F7F;&#x7528;block&#x6216;non-block&#x4F5C;&#x70BA;&#x901A;&#x8A0A;&#x65B9;&#x5F0F;&#xFF0C;&#x90FD;&#x61C9;&#x8A72;&#x8981;&#x78BA;&#x8A8D;write&#x9032;fifo&#x7684;&#x8CC7;&#x6599;&#x53EF;&#x4EE5;&#x76E1;&#x5FEB;&#x88AB;read&#x8B80;&#x51FA;&#x3002;</p>
+<h2 id="&#x5C0F;&#x7DF4;&#x7FD2;">&#x5C0F;&#x7DF4;&#x7FD2;</h2>
+<p>&#x53C3;&#x8003;pipe&#x7684;&#x5C0F;&#x7DF4;&#x7FD2;&#xFF0C;&#x5BEB;&#x4E00;&#x500B;&#x985E;&#x4F3C;&#x7684;&#x4E0B;&#x6CE8;&#x5C0F;&#x904A;&#x6232;&#xFF0C;&#x4E0D;&#x540C;&#x7684;&#x662F;&#xFF0C;&#x6539;&#x6210;&#x4F7F;&#x7528;5&#x500B;FIFO&#x4F86;&#x5BE6;&#x4F5C;&#xFF0C;&#x4E14;Sysem&#x53CA;&#x4E94;&#x500B;Player&#x9019;&#x516D;&#x500B;process&#x6C92;&#x6709;parent-child&#x7684;&#x95DC;&#x4FC2;&#x3002;</p>
+<p>System&#x6703;&#x5148;&#x57F7;&#x884C;&#x4E26;&#x958B;&#x555F;&#x4E94;&#x500B;FIFO&#xFF0C;&#x7B49;&#x5F85;&#x4E94;&#x500B;FIFO&#x7684;input&#xFF0C;&#x4E94;&#x500B;player&#x8981;&#x6839;&#x64DA;&#x81EA;&#x5DF1;&#x662F;&#x5E7E;&#x865F;player&#xFF0C;&#x8F38;&#x5165;&#x81EA;&#x5DF1;&#x6BCF;&#x8F2A;&#x7684;&#x4E0B;&#x6CE8;&#x3002;</p>
+<h3 id="input">Input</h3>
+<p>&#x7121;input</p>
+<h3 id="ouput">Ouput</h3>
+<h4 id="system">System</h4>
+<p>System&#x5728;&#x6BCF;&#x8F2A;&#x7D50;&#x675F;&#x6642;&#x8981;&#x5370;&#x51FA;&#x5982;&#x4E0B;&#x4F8B;&#x5B50;&#x7684;&#x6B64;&#x8F2A;&#x7D50;&#x679C;</p>
+<pre><code>Round1 :
+Player0 : 3
+Player1 : 7
+Player2 : 4
+Player3 : 4
+Player4 : 5
+Player1 wins round 1.
+</code></pre><p>&#x5728;&#x5341;&#x8F2A;&#x6BD4;&#x8CFD;&#x7D50;&#x675F;&#x5F8C;&#xFF0C;System&#x8981;&#x5370;&#x51FA;&#x6BD4;&#x8CFD;&#x7D50;&#x679C;&#xFF0C;&#x4F9D;&#x7167;&#x6392;&#x540D;&#x9806;&#x5E8F;&#x5370;&#x51FA;Player&#x7DE8;&#x865F;&#x53CA;&#x8D0F;&#x7684;&#x6B21;&#x6578;&#xFF0C;&#x82E5;&#x6392;&#x540D;&#x76F8;&#x540C;&#x5148;&#x5370;&#x51FA;&#x7DE8;&#x865F;&#x5C0F;&#x7684;Player&#xFF0C;&#x4E26;&#x5370;&#x51FA;Gameover&#x3002;</p>
+<pre><code>Result:
+Player3, win 3 times.
+Player0, win 2 times.
+Player1, win 2 times.
+Player2, win 2 times.
+Player4, win 1 times.
+Gameover
+</code></pre><h4 id="player">Player</h4>
+<p>&#x5404;&#x500B;Player&#x5728;&#x6BCF;&#x8F2A;&#x7D50;&#x675F;&#x6642;&#x5370;&#x51FA;&#x76EE;&#x524D;&#x81EA;&#x5DF1;&#x8D0F;&#x904E;&#x5E7E;&#x6B21;&#x3002;</p>
+<pre><code>Player0 wins 0 times
+
+Player1 wins 1 times
+
+Player2 wins 0 times
+
+Player3 wins 0 times
+
+Player4 wins 0 times
+</code></pre><h3 id="other-requirement">Other requirement</h3>
 <ul>
-<li><p>Heapify:</p>
-<ul>
-<li>&#x76EE;&#x7684;&#xFF1A;&#x78BA;&#x4FDD;&#x4E00;&#x500B;node&#x7B26;&#x5408;max heap&#x7684;&#x689D;&#x4EF6;</li>
-<li>&#x6BD4;&#x8F03;&#x6B64;node&#x8207;&#x5176;child&#xFF0C;&#x5C07;&#x6700;&#x5C0F;&#x7684;node&#x8B8A;&#x70BA;root</li>
+<li>&#x5C0D;&#x6BCF;&#x500B;player&#x53EA;&#x80FD;&#x4F7F;&#x7528;&#x4E00;&#x500B;FIFO&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x6B64;FIFO&#x9700;&#x8981;&#x96D9;&#x5411;&#x7684;&#x50B3;&#x905E;&#x8CC7;&#x6599;(&#x56E0;&#x70BA;Player&#x9700;&#x8981;&#x5728;&#x6BCF;&#x8F2A;&#x7D50;&#x675F;&#x6536;&#x5230;&#x81EA;&#x5DF1;&#x662F;&#x5426;&#x7372;&#x52DD;)</li>
+<li>&#x6839;&#x64DA;&#x4E0A;&#x4E00;&#x9EDE;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x8AAA;player&#x53EA;&#x80FD;&#x4E00;&#x6B21;&#x5BEB;&#x9032;&#x4E00;&#x8F2A;&#x7684;&#x4E0B;&#x6CE8;&#xFF0C;&#x4E0D;&#x80FD;&#x4E00;&#x6B21;&#x5BEB;&#x9032;&#x5341;&#x8F2A;</li>
 </ul>
-</li>
-<li><p>Build heap:</p>
-<ul>
-<li>&#x76EE;&#x7684;&#xFF1A;&#x78BA;&#x4FDD;heap&#x70BA;&#x4E00;&#x500B;max heap(&#x6216;min heap)</li>
-<li>&#x5C0D;&#x6240;&#x6709;&#x6709;child&#x7684;node&#x505A;heapify</li>
-</ul>
-</li>
-</ul>
-<h3 id="heap-sort">Heap sort</h3>
-<p>Heap&#x88AB;&#x767C;&#x660E;&#x51FA;&#x4F86;&#x7684;&#x76EE;&#x7684;&#x4E4B;&#x4E00;&#x662F;&#x7528;&#x4F86;&#x4F5C;sort&#x4F7F;&#x7528;&#xFF0C;&#x5047;&#x8A2D;&#x76EE;&#x524D;&#x7684;heap&#x5982;&#x4E0B;&#x5716;&#xFF1A;</p>
-<p><img src="https://i.imgur.com/wA3EJy5.png" alt=""></p>
-<p>Heap Sort&#x7684;&#x6B65;&#x9A5F;&#xFF1A;</p>
-<pre><code>1. &#x5148;&#x5C07;&#x6700;&#x5C0F;&#x7684;node&#x53D6;&#x51FA;
-2. &#x91CD;&#x5EFA;Heap
-3. &#x91CD;&#x8907;&#x4EE5;&#x4E0A;&#x6B65;&#x9A5F;
-</code></pre><p>Example:</p>
-<ol>
-<li><p>&#x5148;&#x5C07;&#x6700;&#x5C0F;&#x7684;node&#x53D6;&#x51FA;
-<img src="https://i.imgur.com/fHv9OON.png" alt=""></p>
-</li>
-<li><p>&#x91CD;&#x5EFA;heap:</p>
-<ul>
-<li>&#x5C07;&#x6700;&#x5F8C;&#x4E00;&#x500B;node&#x653E;&#x5230;&#x7B2C;&#x4E00;&#x500B;</li>
-<li>&#x505A;heapify:<ul>
-<li>&#x6BD4;&#x8F03;root&#x8207;&#x81EA;&#x5DF1;&#x7684;&#x5169;&#x500B;child&#xFF0C;&#x627E;&#x51FA;&#x6700;&#x5C0F;&#x503C;&#x8207;root&#x4EA4;&#x63DB;</li>
-<li>&#x5C0D;&#x4EA4;&#x63DB;&#x904E;&#x7684;subtree&#x505A;heapify
-<img src="https://i.imgur.com/nmEsFvp.png" alt="">
-<img src="https://i.imgur.com/VVbChDh.png" alt=""></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>&#x91CD;&#x8907;1. 2.&#x5169;&#x500B;&#x6B65;&#x9A5F;&#x76F4;&#x5230;heap&#x70BA;&#x7A7A;</p>
-</li>
-</ol>
-<h4 id="&#x6642;&#x9593;&#x8907;&#x96DC;&#x5EA6;&#xFF1F;">&#x6642;&#x9593;&#x8907;&#x96DC;&#x5EA6;&#xFF1F;</h4>
-<ul>
-<li>&#x6BCF;&#x6B21;Heapify : O(logn)</li>
-<li>&#x8981;&#x505A;n&#x6B21;heapify : O(n)</li>
-</ul>
-<p>&#x6642;&#x9593;&#x8907;&#x96DC;&#x5EA6;&#x70BA;O(nlogn)</p>
 
                                 
                                 </section>
@@ -1594,14 +1653,10 @@
 
             
                 
-                <a href="hashmap_method.html" class="navigation navigation-prev " aria-label="Previous page: 常用Method">
+                <a href="pipe.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Pipe">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
-                
-                <a href="priority_queue.html" class="navigation navigation-next " aria-label="Next page: Priority Queue">
-                    <i class="fa fa-angle-right"></i>
-                </a>
                 
             
         
@@ -1610,7 +1665,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Heap","level":"1.5.9","depth":2,"next":{"title":"Priority Queue","level":"1.5.10","depth":2,"path":"cpp_sec/priority_queue.md","ref":"cpp_sec/priority_queue.md","articles":[{"title":"常用Method","level":"1.5.10.1","depth":3,"path":"cpp_sec/priority_queue_method.md","ref":"cpp_sec/priority_queue_method.md","articles":[]}]},"previous":{"title":"常用Method","level":"1.5.8.1","depth":3,"path":"cpp_sec/hashmap_method.md","ref":"cpp_sec/hashmap_method.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cpp_sec/heap.md","mtime":"2021-06-06T06:59:08.167Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-06-14T03:39:54.469Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"FIFO","level":"1.7.3.3.2","depth":4,"next":{"title":"[Socket]","level":"1.7.3.3.3","depth":4,"ref":"","articles":[]},"previous":{"title":"Pipe","level":"1.7.3.3.1","depth":4,"path":"cpp_sec/pipe.md","ref":"cpp_sec/pipe.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cpp_sec/fifo.md","mtime":"2021-06-14T03:38:38.482Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-06-14T03:39:54.469Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
