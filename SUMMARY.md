@@ -65,6 +65,7 @@
     * [Advanced I/O]
   * [Process](cpp_sec/process.md)
     * [Process Schedule](cpp_sec/process_schedule.md)
+      * [Process Schedule Algorithm](cpp_sec/process_schedule_algo.md)
     * [Process Lifecycle](cpp_sec/process_lifecycle.md)
     * [Process Communication](cpp_sec/process_communiation.md)
       * [Pipe](cpp_sec/pipe.md)
