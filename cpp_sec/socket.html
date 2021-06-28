@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Problem - 觀念題2 · GitBook</title>
+        <title>Socket · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="problem_coding.html" />
     
-    
-    <link rel="prev" href="problem_concept.html" />
+    <link rel="prev" href="fifo.html" />
     
 
     </head>
@@ -343,7 +341,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.4.3" data-path="problem_concept2.html">
+        <li class="chapter " data-level="1.4.3" data-path="problem_concept2.html">
             
                 <a href="problem_concept2.html">
             
@@ -1117,7 +1115,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7.3.3.3" data-path="socket.html">
+        <li class="chapter active" data-level="1.7.3.3.3" data-path="socket.html">
             
                 <a href="socket.html">
             
@@ -1492,7 +1490,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Problem - 觀念題2</a>
+        <a href=".." >Socket</a>
     </h1>
 </div>
 
@@ -1507,138 +1505,247 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="problem---&#x89C0;&#x5FF5;&#x984C;2">Problem - &#x89C0;&#x5FF5;&#x984C;2</h1>
-<h6 id="tags--apcs">tags = <code>APCS</code></h6>
-<h2 id="&#x905E;&#x8FF4;">&#x905E;&#x8FF4;</h2>
-<h3 id="q1-&#x8ACB;&#x554F;&#x4E0B;&#x5217;&#x7A0B;&#x5F0F;&#x78BC;&#x4E2D;&#x6703;&#x8F38;&#x51FA;&#x5E7E;&#x500B;">Q1: &#x8ACB;&#x554F;&#x4E0B;&#x5217;&#x7A0B;&#x5F0F;&#x78BC;&#x4E2D;&#x6703;&#x8F38;&#x51FA;&#x5E7E;&#x500B;*?</h3>
-<pre><code class="lang-cpp=1">int func(int n)
+                                <h1 id="socket">Socket</h1>
+<h6 id="tags--operating-system">tags = <code>Operating System</code></h6>
+<h2 id="network-protocols">Network Protocols</h2>
+<p><img src="https://i.imgur.com/rkEdx4n.png" alt=""></p>
+<p>Socket&#x662F;&#x4E00;&#x500B;&#x7DB2;&#x8DEF;&#x901A;&#x8A0A;&#x4E0A;&#x7684;End point&#xFF0C;&#x53EA;&#x8981;&#x77E5;&#x9053;IP Address&#x8DDF;port&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x627E;&#x5230;&#x5C0D;&#x61C9;&#x7684;socket&#x900F;&#x904E;&#x7DB2;&#x8DEF;&#x9032;&#x884C;I/O&#xFF0C;&#x5728;linux&#x7CFB;&#x7D71;&#x4E0A;&#xFF0C;socket&#x4E5F;&#x53EF;&#x4EE5;&#x88AB;&#x8996;&#x70BA;&#x4E00;&#x500B;&#x985E;&#x4F3C;&#x6A94;&#x6848;&#x7684;&#x5B58;&#x5728;&#xFF0C;&#x4E00;&#x500B;socket&#x6703;&#x5C0D;&#x61C9;&#x5230;&#x4E00;&#x500B;file descriptor&#x3002;</p>
+<p>Socket&#x7531;IP Address&#x53CA;port&#x7D44;&#x6210;&#xFF0C;&#x901A;&#x5E38;&#x8868;&#x793A;&#x6210;:</p>
+<ul>
+<li>123.456.789.012:3456</li>
+<li>:&#x524D;&#x70BA;IP Address&#xFF0C;:&#x5F8C;&#x70BA;port</li>
+</ul>
+<p><img src="https://i.imgur.com/cwBJSRN.png" alt=""></p>
+<h3 id="ip-address">IP Address</h3>
+<p>IP Address&#x7528;&#x65BC;&#x8FA8;&#x8A8D;&#x6A5F;&#x5668;&#xFF0C;&#x5206;&#x70BA;IPv4&#x53CA;IPv6&#x3002;</p>
+<h3 id="port">Port</h3>
+<p>Port&#x5728;&#x540C;&#x4E00;&#x53F0;&#x6A5F;&#x5668;&#x4E0A;&#x4E0D;&#x6703;&#x91CD;&#x8907;&#xFF0C;&#x70BA;&#x4E00;&#x500B;16bit int&#xFF0C;&#x7528;&#x65BC;&#x63A5;&#x6536;/&#x50B3;&#x905E;&#x4E0D;&#x540C;&#x5730;&#x65B9;&#x4F86;&#x7684;&#x5C01;&#x5305;&#xFF0C;&#x901A;&#x5E38;&#x4E00;&#x500B;process&#x6703;&#x8CA0;&#x8CAC;&#x8655;&#x7406;&#x4E00;&#x500B;port&#x6216;&#x591A;&#x500B;port&#x7684;&#x8CC7;&#x6599;&#x3002;</p>
+<h2 id="tcp--udp">TCP &amp; UDP</h2>
+<p>TCP&#x8DDF;UDP&#x662F;&#x5728;Transport Layer&#x4E2D;&#x6700;&#x5E38;&#x898B;&#x7684;&#x5169;&#x7A2E;&#x50B3;&#x8F38;&#x5354;&#x5B9A;&#xFF0C;&#x9019;&#x5169;&#x7A2E;&#x50B3;&#x8F38;&#x5354;&#x5B9A;&#x5B9A;&#x7FA9;&#x4E86;&#x5728;&#x7CFB;&#x7D71;&#x4E4B;&#x9593;&#x50B3;&#x8F38;&#x8CC7;&#x6599;&#x7684;&#x5F62;&#x5F0F;&#xFF0C;&#x5305;&#x542B;&#x5982;&#x4F55;&#x5EFA;&#x7ACB;&#x9023;&#x7DDA;&#x3001;&#x5982;&#x4F55;&#x50B3;&#x905E;&#x5C01;&#x5305;&#x3001;&#x5C01;&#x5305;&#x7684;&#x683C;&#x5F0F;&#x3001;&#x932F;&#x8AA4;&#x8655;&#x7406;&#x7B49;&#x7B49;&#x3002;</p>
+<h3 id="tcp-transmission-control-protocol">TCP (Transmission Control Protocol)</h3>
+<p>TCP&#x662F;&#x4E00;&#x7A2E;&#x78BA;&#x4FDD;&#x5C01;&#x5305;&#x53EF;&#x4EE5;&#x9023;&#x7E8C;&#x6027;&#x50B3;&#x905E;&#x7684;&#x5354;&#x5B9A;&#xFF0C;TCP&#x6703;&#x5C07;&#x8CC7;&#x6599;&#x5206;&#x6210;&#x8F03;&#x5C0F;&#x7684;&#x5C01;&#x5305;&#xFF0C;&#x4E26;&#x6839;&#x64DA;&#x5176;&#x9806;&#x5E8F;&#x4F9D;&#x5E8F;&#x7DE8;&#x865F;&#xFF0C;&#x78BA;&#x4FDD;&#x5C01;&#x5305;&#x6392;&#x5217;&#x7684;&#x9806;&#x5E8F;&#x3002;&#x70BA;&#x4E86;&#x78BA;&#x4FDD;&#x8CC7;&#x6599;&#x6B63;&#x78BA;&#x7121;&#x8AA4;&#x7684;&#x50B3;&#x8F38;&#xFF0C;Client&#x8207;Server&#x7AEF;&#x6703;&#x4F7F;&#x7528;handshake&#x7684;&#x6A5F;&#x5236;&#x8B93;&#x96D9;&#x65B9;&#x78BA;&#x8A8D;&#x6709;&#x6536;&#x5230;&#x6B63;&#x78BA;&#x7684;&#x8CC7;&#x6599;&#x3002;
+&#x5728;&#x6BCF;&#x500B;&#x5C01;&#x5305;&#x50B3;&#x905E;&#x6642;&#xFF0C;&#x6B65;&#x9A5F;&#x5982;&#x4E0B;:</p>
+<ul>
+<li>Client&#x50B3;&#x9001;&#x5C01;&#x5305;&#x7D66;Server</li>
+<li>Server&#x6536;&#x5230;&#x5C01;&#x5305;&#x5F8C;&#xFF0C;&#x56DE;&#x50B3;ACK</li>
+<li>Client&#x6536;&#x5230;ACK&#xFF0C;&#x8868;&#x793A;Server&#x6709;&#x6536;&#x5230;&#x5C01;&#x5305;</li>
+<li>Client&#x50B3;&#x9001;ACK&#x7D66;Server&#xFF0C;&#x8868;&#x793A;&#x6709;&#x6536;&#x5230;Server&#x7684;ACK&#xFF0C;&#x6B64;&#x6642;Client&#x53EF;&#x4EE5;&#x78BA;&#x5B9A;&#x6B64;&#x6B21;&#x50B3;&#x8F38;&#x7121;&#x8AA4;</li>
+<li>Server&#x6536;&#x5230;ACK&#xFF0C;&#x6B64;&#x6642;Server&#x53EF;&#x4EE5;&#x78BA;&#x8A8D;&#x6B64;&#x6B21;&#x50B3;&#x8F38;&#x7121;&#x8AA4;</li>
+</ul>
+<p>&#x82E5;&#x4E0A;&#x8FF0;&#x50B3;&#x905E;&#x904E;&#x7A0B;&#x6709;&#x8AA4;&#xFF0C;&#x767C;&#x73FE;&#x932F;&#x8AA4;&#x7684;&#x4E00;&#x65B9;&#x6703;&#x901A;&#x77E5;&#x53E6;&#x4E00;&#x65B9;&#xFF0C;&#x4E26;&#x91CD;&#x65B0;&#x50B3;&#x8F38;&#x8CC7;&#x6599;&#xFF0C;&#x56E0;&#x6B64;TCP&#x662F;&#x4E00;&#x7A2E;&#x53EF;&#x4EE5;&#x78BA;&#x4FDD;&#x8CC7;&#x6599;&#x6B63;&#x78BA;&#x50B3;&#x8F38;&#x7684;&#x50B3;&#x8F38;&#x5354;&#x5B9A;&#x3002;</p>
+<p><img src="https://i.imgur.com/ihK3pfb.png" alt=""></p>
+<h3 id="udp-user-datagram-protocol">UDP (User Datagram Protocol)</h3>
+<p>&#x76F8;&#x8F03;&#x65BC;TCP&#xFF0C;UDP&#x662F;&#x4E00;&#x7A2E;&#x8F03;&#x4E0D;&#x53EF;&#x9760;(&#x8F03;&#x4E0D;&#x78BA;&#x8A8D;&#x8CC7;&#x6599;&#x6B63;&#x78BA;&#x50B3;&#x8F38;)&#x7684;&#x50B3;&#x8F38;&#x5354;&#x5B9A;&#xFF0C;&#x7531;&#x65BC;UDP&#x5354;&#x5B9A;&#x672C;&#x8EAB;&#x4E0D;&#x9700;&#x8981;&#x78BA;&#x4FDD;&#x8CC7;&#x6599;&#x7684;&#x5B8C;&#x6574;&#x6027;&#x53CA;&#x6B63;&#x78BA;&#x6027;&#xFF0C;&#x56E0;&#x6B64;&#x50B3;&#x8F38;&#x8CA0;&#x64D4;&#x8F03;&#x8F15;(&#x82B1;&#x8F03;&#x5C11;&#x8CC7;&#x6E90;&#x50B3;&#x905E;&#x5354;&#x5B9A;&#x76F8;&#x95DC;&#x7684;&#x8CC7;&#x6599;)&#x3002;
+UDP&#x4E0D;&#x6703;&#x4F7F;&#x7528;&#x78BA;&#x8A8D;&#x7684;&#x6A5F;&#x5236;&#x78BA;&#x4FDD;&#x8CC7;&#x6599;&#x6B63;&#x78BA;&#x3001;&#x7167;&#x9806;&#x5E8F;&#x50B3;&#x8F38;&#xFF0C;&#x63A5;&#x6536;&#x8CC7;&#x6599;&#x6642;&#x4E5F;&#x4E0D;&#x4E00;&#x5B9A;&#x8981;&#x7167;&#x9806;&#x5E8F;&#x63A5;&#x6536;&#x8CC7;&#x6599;&#xFF0C;&#x7576;&#x8CC7;&#x6599;&#x6709;&#x907A;&#x6F0F;&#x6642;&#xFF0C;&#x4E0D;&#x6703;&#x91CD;&#x65B0;&#x50B3;&#x905E;&#x8CC7;&#x6599;&#x3002;</p>
+<p><img src="https://i.imgur.com/5AjDlyF.png" alt=""></p>
+<h3 id="tcp-vs-udp">TCP v.s. UDP</h3>
+<p><img src="https://i.imgur.com/gIidEe2.png" alt=""></p>
+<h3 id="tcp-programming-in-linux">TCP programming in Linux</h3>
+<p><img src="https://i.imgur.com/sanmfyU.png" alt=""></p>
+<h3 id="udp-programming-in-linux">UDP programming in Linux</h3>
+<p><img src="https://i.imgur.com/95ysD5X.png" alt=""></p>
+<h2 id="socket-&#x7528;&#x6CD5;">Socket &#x7528;&#x6CD5;</h2>
+<h3 id="socket">Socket</h3>
+<p>&#x5EFA;&#x7ACB;&#x4E00;&#x500B;Socket</p>
+<pre><code class="lang-cpp=1">#include &lt;sys/socket.h&gt;
+int socket(int domain, int type, int protocol);
+</code></pre>
+<ul>
+<li>domain: &#x5B9A;&#x7FA9;socket&#x6E9D;&#x901A;&#x7684;protocal<ul>
+<li>AF_INET : IPv4</li>
+<li>AF_INET6 : IPv6</li>
+<li>AF_UNIX  : &#x672C;&#x6A5F;Process&#x9593;&#x7684;&#x6E9D;&#x901A;</li>
+</ul>
+</li>
+<li>type: &#x9078;&#x64C7;&#x6B64;socket&#x4F7F;&#x7528;TCP&#x9084;&#x662F;UDP&#x50B3;&#x8F38;<ul>
+<li>SOCK_STREAM: TCP&#xFF0C;&#x8CC7;&#x6599;&#x6703;&#x5E8F;&#x5217;&#x5316;&#x7684;&#x50B3;&#x9001;</li>
+<li>SOCK_DGRAM: UDP&#xFF0C;&#x8CC7;&#x6599;&#x70BA;&#x4E00;&#x500B;&#x4E00;&#x500B;datagram&#x50B3;&#x9001;</li>
+</ul>
+</li>
+<li>protocol: &#x901A;&#x5E38;&#x8A2D;&#x5B9A;&#x70BA;0&#xFF0C;kernel&#x6703;&#x6839;&#x64DA;type&#x9078;&#x64C7;&#x9069;&#x5408;&#x7684;protocal</li>
+<li>return value:<ul>
+<li>&#x6210;&#x529F;&#x6642;&#x56DE;&#x50B3;fd</li>
+<li>&#x5931;&#x6557;&#x6642;&#x70BA;&#x50B3;-1</li>
+</ul>
+</li>
+</ul>
+<h3 id="bind">Bind</h3>
+<p>Bind&#x5C07;socket fd&#x8DDF;socket address&#x7D44;&#x5408;&#x8D77;&#x4F86;&#xFF0C;socket address&#x6703;&#x5305;&#x542B;socket&#x6240;&#x9700;&#x7684;&#x6240;&#x6709;&#x8CC7;&#x8A0A;&#x3002;</p>
+<pre><code class="lang-cpp=1">#include &lt;sys/socket.h&gt;
+#include &lt;metinet/in.h&gt;
+
+int bind(int socketfd, struct sockaddr *address, socklen_t address_len);
+
+struct sockaddr 
 {
-    if(n &gt; 0)
+    unsigned short sa_family; // domain, eg. AF_INET
+    char sa_data[14];         // 14 bytes address
+}
+
+struct sockaddr_in 
+{
+    short sin_family; // domain
+    // &#x4E0B;&#x9762;&#x4E09;&#x500B;&#x8B8A;&#x6578;&#x6703;&#x7D44;&#x5408;&#x6210; sockaddr.sa_data
+    unsigned_short sin_port; // htons, 2 bytes
+    struct in_addr sin_addr; // &#x7528;&#x65BC;&#x586B;&#x5BEB;IP Address, 4 bytes
+    char sin_zero[8];        // &#x4E0D;&#x6703;&#x7528;&#x5230;
+}
+</code></pre>
+<ul>
+<li>socketfd : socket fd</li>
+<li>address : &#x586B;&#x5BEB;IP Address&#x3001;domain<ul>
+<li>&#x7531;&#x65BC;sa_data&#x5F88;&#x96E3;&#x586B;&#x5BEB;&#xFF0C;&#x586B;&#x5BEB;&#x6642;&#x901A;&#x5E38;&#x4F7F;&#x7528;sockaddr_in&#x9019;&#x500B;&#x7D50;&#x69CB;&#x9AD4;&#x586B;&#x5BEB;&#x5F8C;&#xFF0C;&#x518D;&#x8F49;&#x578B;&#x6210;sockaddr</li>
+</ul>
+</li>
+<li>address_len : address&#x9019;&#x500B;&#x7D50;&#x69CB;&#x9AD4;&#x7684;&#x5927;&#x5C0F;&#xFF0C;&#x586B;sizeof(address)&#x5373;&#x53EF;</li>
+<li>return value:<ul>
+<li>&#x6210;&#x529F;&#x56DE;&#x50B3;0</li>
+<li>&#x5931;&#x6557;&#x56DE;&#x50B3;-1</li>
+</ul>
+</li>
+</ul>
+<h3 id="listen">Listen</h3>
+<p>Server&#x4F7F;&#x7528;listen&#x4F86;&#x78BA;&#x8A8D;&#x662F;&#x5426;&#x6709;&#x65B0;&#x7684;client&#xFF0C;&#x6703;&#x53CD;&#x8986;&#x53BB;&#x67E5;&#x770B;&#x662F;&#x5426;&#x6709;&#x65B0;&#x7684;client&#x9023;&#x7DDA;&#x3002;</p>
+<pre><code class="lang-cpp=1">#include &lt;sys/socket.h&gt;
+int listen(int socketfd, int backlog);
+</code></pre>
+<ul>
+<li>socketfd : socket fd</li>
+<li>backlog : &#x6307;&#x5B9A;&#x53EF;&#x4EE5;&#x6709;&#x5E7E;&#x500B;client&#x9023;&#x5230;&#x6B64;socket&#xFF0C;&#x82E5;&#x8D85;&#x904E;&#x4E00;&#x500B;client&#x9023;&#x5165;&#xFF0C;&#x6703;&#x4F9D;&#x5E8F;&#x6392;&#x968A;</li>
+<li>return value:<ul>
+<li>&#x6210;&#x529F;&#x56DE;&#x50B3;0</li>
+<li>&#x5931;&#x6557;&#x56DE;&#x50B3;-1</li>
+</ul>
+</li>
+</ul>
+<h3 id="accept">Accept</h3>
+<p>&#x7576;&#x6709;Client&#x9023;&#x7DDA;&#x5F8C;&#xFF0C;&#x4F7F;&#x7528;accept&#x63A5;&#x53D7;&#x6B64;&#x9023;&#x7DDA;&#xFF0C;&#x82E5;&#x6210;&#x529F;&#x63A5;&#x6536;&#x9023;&#x7DDA;&#xFF0C;&#x6703;&#x70BA;&#x6B64;&#x9023;&#x7DDA;&#x65B0;&#x589E;&#x4E00;&#x500B;&#x65B0;&#x7684;socket&#x3002;</p>
+<pre><code class="lang-cpp=1">#include &lt;sys/socket.h&gt;
+int accept(int socketfd, struct sockaddr *address, socklen_t address_len);
+</code></pre>
+<ul>
+<li>socketfd : socket fd</li>
+<li>address : &#x653E;&#x9032;accpet&#x524D;&#x70BA;&#x7A7A;&#xFF0C;&#x7528;&#x65BC;&#x5132;&#x5B58;Client&#x7AEF;&#x7684;address&#x8CC7;&#x8A0A;(port&#x53CA;IP)</li>
+<li>address&#x9019;&#x500B;&#x7D50;&#x69CB;&#x9AD4;&#x7684;&#x5927;&#x5C0F;&#xFF0C;&#x586B;sizeof(address)&#x5373;&#x53EF;</li>
+<li>return value:<ul>
+<li>&#x6210;&#x529F;&#x56DE;&#x50B3;&#x63A5;&#x53D7;&#x9023;&#x7DDA;&#x7684;Socket fd</li>
+<li>&#x5931;&#x6557;&#x56DE;&#x50B3;-1</li>
+</ul>
+</li>
+</ul>
+<h3 id="connect">Connect</h3>
+<p>Client&#x9023;&#x5411;Server&#x6642;&#xFF0C;&#x9700;&#x8981;&#x5148;&#x77E5;&#x9053;Server&#x7684;IP&#x8DDF;port&#xFF0C;&#x4E26;&#x4F7F;&#x7528;Connect&#x8ACB;&#x6C42;&#x9023;&#x7DDA;&#x3002;</p>
+<pre><code class="lang-cpp=1">#include &lt;sys/socket.h&gt;
+int connect(int socketfd, struct sockaddr *address, socklen_t address_len);
+</code></pre>
+<ul>
+<li>socketfd : socket fd</li>
+<li>address : server&#x7684;IP&#x53CA;Port&#x7B49;&#x8CC7;&#x8A0A;</li>
+<li>address_len : address&#x9019;&#x500B;&#x7D50;&#x69CB;&#x9AD4;&#x7684;&#x5927;&#x5C0F;&#xFF0C;&#x586B;sizeof(address)&#x5373;&#x53EF;</li>
+</ul>
+<h3 id="recv">Recv</h3>
+<p>Server&#x63A5;&#x6536;&#x8CC7;&#x6599;&#x6642;&#xFF0C;&#x5C31;&#x662F;&#x5F9E;socket fd&#x8B80;&#x53D6;&#x8CC7;&#x6599;&#xFF0C;&#x7528;&#x6700;&#x57FA;&#x672C;&#x7684;read&#x5C31;&#x53EF;&#x4EE5;&#x8B80;&#x8CC7;&#x6599;&#x4E86;&#xFF0C;&#x9019;&#x908A;&#x4ECB;&#x7D39;&#x53E6;&#x4E00;&#x7A2E;&#x8B80;&#x53D6;&#x65B9;&#x5F0F;recv&#xFF0C;recv&#x53EA;&#x6709;&#x5728;fd&#x70BA;socket&#x6642;&#x624D;&#x80FD;&#x4F7F;&#x7528;&#x3002;</p>
+<pre><code class="lang-cpp=1">#include &lt;sys/socket.h&gt;
+ssize_t recv(int socketfd, void* buf, size_t len, int flags);
+</code></pre>
+<ul>
+<li>socketfd : socket fd</li>
+<li>buf : &#x4E00;&#x584A;buffer&#xFF0C;&#x7528;&#x65BC;&#x8B80;&#x53D6;socket&#x4E2D;&#x62FF;&#x5230;&#x7684;&#x8CC7;&#x6599;</li>
+<li>len : buffer&#x7684;&#x5927;&#x5C0F;</li>
+<li>flags : &#x901A;&#x5E38;&#x8A2D;&#x5B9A;&#x70BA;0&#xFF0C;&#x7528;&#x4F86;&#x505A;&#x5176;&#x4ED6;&#x8B80;&#x53D6;&#x76F8;&#x95DC;&#x7684;&#x8A2D;&#x5B9A;&#xFF0C;&#x4F8B;&#x5982;&#x8A2D;&#x5B9A;Nonblock&#x7B49;&#x7B49;&#x3002;</li>
+<li>return value:<ul>
+<li>&#x56DE;&#x50B3;&#x6536;&#x5230;&#x4E86;&#x5E7E;&#x500B;bytes&#x7684;&#x8CC7;&#x6599;</li>
+<li>&#x5982;&#x679C;&#x5C0D;&#x65B9;&#x7D50;&#x675F;&#x9023;&#x7DDA;&#xFF0C;&#x6703;&#x6536;&#x5230;0</li>
+<li>&#x5931;&#x6557;&#x56DE;&#x50B3;-1</li>
+</ul>
+</li>
+</ul>
+<h3 id="send">Send</h3>
+<p>Send&#x5C07;&#x8CC7;&#x6599;&#x5BEB;&#x5230;&#x7279;&#x5B9A;&#x7684;socket fd&#xFF0C;&#x8DDF;write&#x7684;&#x7528;&#x6CD5;&#x985E;&#x4F3C;&#xFF0C;&#x4F46;&#x4E00;&#x6A23;&#x53EA;&#x80FD;&#x4F7F;&#x7528;&#x5728;fd&#x70BA;socket&#x7684;&#x60C5;&#x6CC1;&#x4E0B;&#x3002;</p>
+<pre><code class="lang-cpp=1">#include &lt;sys/socket.h&gt;
+ssize_t send(int socketfd, const void* buf, size_t len, int flags);
+</code></pre>
+<ul>
+<li>socketfd : socket fd</li>
+<li>buf : &#x4E00;&#x584A;buffer&#xFF0C;&#x653E;&#x8981;&#x5BEB;&#x5165;&#x7684;&#x8CC7;&#x6599;</li>
+<li>len : buf&#x7684;&#x5927;&#x5C0F;</li>
+<li>flags : &#x901A;&#x5E38;&#x8A2D;&#x5B9A;&#x70BA;0&#xFF0C;&#x7528;&#x4F86;&#x505A;&#x5176;&#x4ED6;&#x5BEB;&#x5165;&#x76F8;&#x95DC;&#x7684;&#x8A2D;&#x5B9A;&#xFF0C;&#x4F8B;&#x5982;&#x8A2D;&#x5B9A;Nonblock&#x7B49;&#x7B49;&#x3002;</li>
+<li>return value:<ul>
+<li>&#x56DE;&#x50B3;&#x9001;&#x51FA;&#x4E86;&#x5E7E;&#x500B;bytes&#x7684;&#x8CC7;&#x6599;</li>
+<li>&#x5931;&#x6557;&#x56DE;&#x50B3;-1</li>
+</ul>
+</li>
+</ul>
+<h2 id="example">Example</h2>
+<h3 id="server">Server</h3>
+<pre><code class="lang-cpp=1">// server.cpp
+# include &lt;stdio.h&gt;
+# include &lt;stdlib.h&gt;
+# include &lt;unistd.h&gt;
+# include &lt;sys/types.h&gt;
+# include &lt;sys/socket.h&gt;
+# include &lt;arpa/inet.h&gt;
+# include &lt;netinet/in.h&gt;
+
+int main()
+{
+    int sockfd = socket(AF_INET, SOCK_STREAM, 0);
+    if(sockfd &lt; 0) printf(&quot;Socket Create Error\n&quot;);
+
+    struct sockaddr_in info;
+    struct sockaddr_in client_info;
+    socklen_t client_addr_len;
+    info.sin_family = AF_INET;
+    info.sin_addr.s_addr = INADDR_ANY; // Local IP Address
+    info.sin_port = htons(8080); // Port 8080
+
+    int bind_result = bind(sockfd, (struct sockaddr*)&amp;info, sizeof(info));
+    if(bind_result &lt; 0) printf(&quot;Bind Error\n&quot;);
+
+    listen(sockfd, 1); // block until listen a client
+
+    int client_fd;
+    while(1)
     {
-        printf(&quot;*\n&quot;);
+        client_fd = accept(sockfd, (struct sockaddr*)&amp;client_info, &amp;client_addr_len);
+        printf(&quot;Accept client, client port: %d\n&quot;, client_info.sin_port);
     }
-    else
-    {
-        return 1;
-    }
-    return func(n-1);
+    return 0;
 }
+</code></pre>
+<h3 id="client">Client</h3>
+<pre><code class="lang-cpp=1">//client.cpp
+
+# include &lt;stdio.h&gt;
+# include &lt;stdlib.h&gt;
+# include &lt;unistd.h&gt;
+# include &lt;sys/types.h&gt;
+# include &lt;sys/socket.h&gt;
+# include &lt;arpa/inet.h&gt;
+# include &lt;netinet/in.h&gt;
 
 int main()
 {
-    func(5);
+    int sockfd = socket(AF_INET, SOCK_STREAM, 0);
+    if(sockfd &lt; 0) printf(&quot;Socket Create Error\n&quot;);
+
+    struct sockaddr_in info;
+    info.sin_family = AF_INET;
+    info.sin_addr.s_addr = inet_addr(&quot;127.0.0.1&quot;); // Local IP Address
+    info.sin_port = htons(8080); // Port 8080
+
+    int connect_result = connect(sockfd, (struct sockaddr*)&amp;info, sizeof(info));
+    if(connect_result) printf(&quot;Connect Error\n&quot;);
+
 }
 </code></pre>
-<h3 id="q2-&#x8ACB;&#x554F;&#x4E0B;&#x5217;&#x7A0B;&#x5F0F;&#x78BC;&#x4E2D;&#x6703;&#x8F38;&#x51FA;&#x5E7E;&#x500B;">Q2: &#x8ACB;&#x554F;&#x4E0B;&#x5217;&#x7A0B;&#x5F0F;&#x78BC;&#x4E2D;&#x6703;&#x8F38;&#x51FA;&#x5E7E;&#x500B;*?</h3>
-<pre><code class="lang-cpp=1">int func(int n, int k)
-{
-    if(n &gt; 0 &amp;&amp; k &lt; 5)
-    {
-        printf(&quot;*\n&quot;);
-    }
-    else
-    {
-        return 1;
-    }
-    return func(n-1, k+1);
-}
-
-int main()
-{
-    func(4, 3);
-}
-</code></pre>
-<h3 id="q3-&#x8ACB;&#x554F;&#x4E0B;&#x5217;&#x7A0B;&#x5F0F;&#x78BC;&#x4E2D;&#x6703;&#x8F38;&#x51FA;&#x5E7E;&#x500B;">Q3: &#x8ACB;&#x554F;&#x4E0B;&#x5217;&#x7A0B;&#x5F0F;&#x78BC;&#x4E2D;&#x6703;&#x8F38;&#x51FA;&#x5E7E;&#x500B;*?</h3>
-<pre><code class="lang-cpp=1">int func(int n, int k)
-{
-    if(n &gt; 0 &amp;&amp; k &lt; 5)
-    {
-        printf(&quot;*\n&quot;);
-    }
-    else
-    {
-        return 1;
-    }
-    return func(n-1, k) + func(n, k+1);
-}
-
-int main()
-{
-    func(2, 3);
-}
-</code></pre>
-<h3 id="q4-&#x4E0B;&#x5217;&#x7A0B;&#x5F0F;&#x7684;&#x8F38;&#x51FA;&#x70BA;&#x4F55;">Q4: &#x4E0B;&#x5217;&#x7A0B;&#x5F0F;&#x7684;&#x8F38;&#x51FA;&#x70BA;&#x4F55;</h3>
-<pre><code class="lang-cpp=1">void func(int n)
-{
-    printf(&quot;%d\n&quot;, n);
-    if(n &lt;= 2) 
-        return;
-    if(n % 2 == 1)
-        return func(n + 1);
-    else
-        return func(n / 2);
-}
-
-int main()
-{
-    func(13);
-}
-</code></pre>
-<h3 id="q5-&#x4E0B;&#x5217;&#x7A0B;&#x5F0F;&#x7684;&#x8F38;&#x51FA;&#x70BA;&#x4F55;">Q5: &#x4E0B;&#x5217;&#x7A0B;&#x5F0F;&#x7684;&#x8F38;&#x51FA;&#x70BA;&#x4F55;</h3>
-<pre><code class="lang-cpp=1">int func(int n)
-{
-    if(n &lt;= 0) return 0;
-    if(n % 2 == 0)
-        return 1;
-    else
-        return func(n-1) + func(n-2);
-}
-
-int main()
-{
-    printf(&quot;%d\n&quot;, func(5));
-}
-</code></pre>
-<h2 id="&#x8B8A;&#x6578;">&#x8B8A;&#x6578;</h2>
-<h3 id="q6-&#x4E0B;&#x5217;&#x7A0B;&#x5F0F;&#x7684;&#x8F38;&#x51FA;&#x70BA;&#x4F55;">Q6: &#x4E0B;&#x5217;&#x7A0B;&#x5F0F;&#x7684;&#x8F38;&#x51FA;&#x70BA;&#x4F55;</h3>
-<pre><code class="lang-cpp=1">int a = 2;
-int b = 3;
-
-void func()
-{
-    b = 4;
-}
-
-int main()
-{
-    printf(&quot;%d\n&quot;, a + b);
-    func();
-    printf(&quot;%d\n&quot;, a + b);
-}
-</code></pre>
-<h3 id="q7-&#x4E0B;&#x5217;&#x7A0B;&#x5F0F;&#x7684;&#x8F38;&#x51FA;&#x70BA;&#x4F55;">Q7: &#x4E0B;&#x5217;&#x7A0B;&#x5F0F;&#x7684;&#x8F38;&#x51FA;&#x70BA;&#x4F55;</h3>
-<pre><code class="lang-cpp=1">int a = 20, b = 30;
-
-int func(int x)
-{
-    int a = 10;
-    return x + a;
-}
-
-int main()
-{
-    b = func(b);
-    printf(&quot;%d\n&quot;, func(b));
-}
-</code></pre>
-<h2 id="ans">ANS</h2>
-<h3 id="q1-5">Q1: 5</h3>
-<h3 id="q2-2">Q2: 2</h3>
-<h3 id="q3-5">Q3: 5</h3>
-<h3 id="q4-13-14-7-8-4-2">Q4: 13 14 7 8 4 2</h3>
-<h3 id="q5-2">Q5: 2</h3>
-<h3 id="q6-5-6">Q6: 5 6</h3>
-<h3 id="q7-50">Q7: 50</h3>
+<h2 id="&#x5C0F;&#x7DF4;&#x7FD2;">&#x5C0F;&#x7DF4;&#x7FD2;</h2>
+<p>&#x5BEB;&#x5169;&#x500B;&#x7A0B;&#x5F0F;&#x78BC;: server.cpp, client.cpp&#xFF0C;&#x8B93;&#x5169;&#x8005;&#x53EF;&#x4EE5;&#x9023;&#x7DDA;&#x4E26;&#x50B3;&#x8F38;&#x8CC7;&#x6599;&#x3002;</p>
+<ul>
+<li>Server&#x5148;&#x63A5;&#x6536;&#x5230;&#x9023;&#x7DDA;&#x5F8C;&#xFF0C;&#x6536;&#x5230;client&#x50B3;&#x4F86;&#x7684;&#x8CC7;&#x6599;&#xFF0C;&#x5728;server&#x5370;&#x51FA;&#x6536;&#x5230;&#x7684;&#x8CC7;&#x6599;</li>
+<li>Server&#x56DE;&#x50B3;&#x8CC7;&#x6599;&#x7D66;client&#xFF0C;&#x5728;client&#x5370;&#x51FA;&#x6536;&#x5230;&#x7684;&#x8CC7;&#x6599;</li>
+<li>&#x8CC7;&#x6599;&#x683C;&#x5F0F;&#x4E0D;&#x9650;&#x5236; </li>
+</ul>
 
                                 
                                 </section>
@@ -1666,14 +1773,10 @@ int main()
 
             
                 
-                <a href="problem_concept.html" class="navigation navigation-prev " aria-label="Previous page: Problem - 觀念題">
+                <a href="fifo.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: FIFO">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
-                
-                <a href="problem_coding.html" class="navigation navigation-next " aria-label="Next page: Problem - 實作題">
-                    <i class="fa fa-angle-right"></i>
-                </a>
                 
             
         
@@ -1682,7 +1785,7 @@ int main()
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Problem - 觀念題2","level":"1.4.3","depth":2,"next":{"title":"Problem - 實作題","level":"1.4.4","depth":2,"path":"cpp_sec/problem_coding.md","ref":"cpp_sec/problem_coding.md","articles":[]},"previous":{"title":"Problem - 觀念題","level":"1.4.2","depth":2,"path":"cpp_sec/problem_concept.md","ref":"cpp_sec/problem_concept.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cpp_sec/problem_concept2.md","mtime":"2021-06-20T11:59:15.386Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-06-28T11:29:26.780Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Socket","level":"1.7.3.3.3","depth":4,"next":{"title":"[Deadlock]","level":"1.7.4","depth":2,"ref":"","articles":[]},"previous":{"title":"FIFO","level":"1.7.3.3.2","depth":4,"path":"cpp_sec/fifo.md","ref":"cpp_sec/fifo.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cpp_sec/socket.md","mtime":"2021-06-28T11:28:49.196Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-06-28T11:29:26.780Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

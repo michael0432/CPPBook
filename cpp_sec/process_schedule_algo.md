@@ -42,6 +42,7 @@ FIFO(First-in-first-out)，CPU優先運算Ready Queue中的第一個Process，�
 | P1     | P2    | P3     |
 
 平均等待時間為 (0+24+27)/3 = 17:
+
 | Process | CPU Time | Wait Time 
 | -------- | -------- | -------- |
 | P1     | 24     | 0 |
@@ -55,6 +56,7 @@ FIFO(First-in-first-out)，CPU優先運算Ready Queue中的第一個Process，�
 | P2     | P3    | P1     |
 
 平均等待時間變成 (0+3+6)/3 = 3:
+
 | Process | CPU Time | Wait Time 
 | -------- | -------- | -------- |
 | P1     | 24     | 6 |
@@ -82,6 +84,7 @@ Shortest-Job-First(SJF)，優先執行CPU Time最短的Process。
 | P4     | P1    | P3     | P2|
 
 平均等待時間: (0+3+9+16)/4 = 7
+
 | Process | CPU Time | Wait Time |
 | -------- | -------- | -------- | 
 | P1     | 6     | 3 |
