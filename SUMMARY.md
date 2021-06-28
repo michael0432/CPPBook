@@ -70,7 +70,7 @@
     * [Process Communication](cpp_sec/process_communiation.md)
       * [Pipe](cpp_sec/pipe.md)
       * [FIFO](cpp_sec/fifo.md)
-      * [Socket]
+      * [Socket](cpp_sec/socket.md)
   * [Deadlock]
   * [Signal]
   * [Thread]

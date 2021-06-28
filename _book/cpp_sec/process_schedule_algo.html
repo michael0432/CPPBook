@@ -1117,14 +1117,14 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7.3.3.3" >
+        <li class="chapter " data-level="1.7.3.3.3" data-path="socket.html">
             
-                <span>
+                <a href="socket.html">
             
                     
-                    [Socket]
+                    Socket
             
-                </span>
+                </a>
             
 
             
@@ -1575,12 +1575,33 @@
 </tr>
 </tbody>
 </table>
-<p>&#x5E73;&#x5747;&#x7B49;&#x5F85;&#x6642;&#x9593;&#x70BA; (0+24+27)/3 = 17:
-| Process | CPU Time | Wait Time 
-| -------- | -------- | -------- |
-| P1     | 24     | 0 |
-| P2     | 3     | 24 |
-| P3     | 3     | 27 |</p>
+<p>&#x5E73;&#x5747;&#x7B49;&#x5F85;&#x6642;&#x9593;&#x70BA; (0+24+27)/3 = 17:</p>
+<table>
+<thead>
+<tr>
+<th>Process</th>
+<th>CPU Time</th>
+<th>Wait Time </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P1</td>
+<td>24</td>
+<td>0</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>3</td>
+<td>24</td>
+</tr>
+<tr>
+<td>P3</td>
+<td>3</td>
+<td>27</td>
+</tr>
+</tbody>
+</table>
 <p>&#x4F46;&#x662F;&#xFF0C;&#x82E5;Process&#x5230;&#x9054;Ready Queue&#x7684;&#x9806;&#x5E8F;&#x8B8A;&#x6210;P2, P3, P1&#xFF0C;&#x65B0;&#x7684;CPU&#x4F7F;&#x7528;&#x72C0;&#x6CC1;&#x8B8A;&#x6210;:</p>
 <table>
 <thead>
@@ -1598,12 +1619,33 @@
 </tr>
 </tbody>
 </table>
-<p>&#x5E73;&#x5747;&#x7B49;&#x5F85;&#x6642;&#x9593;&#x8B8A;&#x6210; (0+3+6)/3 = 3:
-| Process | CPU Time | Wait Time 
-| -------- | -------- | -------- |
-| P1     | 24     | 6 |
-| P2     | 3     | 0 |
-| P3     | 3     | 3 |</p>
+<p>&#x5E73;&#x5747;&#x7B49;&#x5F85;&#x6642;&#x9593;&#x8B8A;&#x6210; (0+3+6)/3 = 3:</p>
+<table>
+<thead>
+<tr>
+<th>Process</th>
+<th>CPU Time</th>
+<th>Wait Time </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P1</td>
+<td>24</td>
+<td>6</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>3</td>
+<td>0</td>
+</tr>
+<tr>
+<td>P3</td>
+<td>3</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
 <p>&#x7531;&#x4E0A;&#x8FF0;&#x4F8B;&#x5B50;&#x53EF;&#x4EE5;&#x77E5;&#x9053;&#xFF0C;FIFO&#x6F14;&#x7BF9;&#x6CD5;&#x4E0D;&#x4E00;&#x5B9A;&#x662F;&#x6700;&#x5DEE;&#x7684;&#x6F14;&#x7B97;&#x6CD5;&#xFF0C;&#x4F46;&#x5E73;&#x5747;&#x7B49;&#x5F85;&#x6642;&#x9593;&#x53EF;&#x80FD;&#x6703;&#x56E0;&#x70BA;Ready Queue&#x4E2D;Process&#x7684;&#x6392;&#x5217;&#x9806;&#x5E8F;&#x6709;&#x5F88;&#x5927;&#x7684;&#x5DEE;&#x7570;&#xFF0C;&#x662F;&#x4E00;&#x500B;&#x4E0D;&#x592A;&#x7A69;&#x5B9A;&#x7684;&#x6F14;&#x7B97;&#x6CD5;&#xFF0C;&#x7576;&#x6709;&#x4E00;&#x500B;&#x57F7;&#x884C;&#x6642;&#x9593;&#x904E;&#x9577;&#x7684;Process&#x5B58;&#x5728;&#xFF0C;&#x4FBF;&#x5BB9;&#x6613;&#x5C0E;&#x81F4;&#x5F8C;&#x65B9;&#x6240;&#x6709;&#x7684;Process&#x90FD;&#x56E0;&#x5176;&#x5F88;&#x7B49;&#x5F85;&#x6642;&#x9593;&#x62C9;&#x9577;&#x3002;</p>
 <h2 id="sjf">SJF</h2>
 <p>Shortest-Job-First(SJF)&#xFF0C;&#x512A;&#x5148;&#x57F7;&#x884C;CPU Time&#x6700;&#x77ED;&#x7684;Process&#x3002;</p>
@@ -1653,13 +1695,38 @@
 </tr>
 </tbody>
 </table>
-<p>&#x5E73;&#x5747;&#x7B49;&#x5F85;&#x6642;&#x9593;: (0+3+9+16)/4 = 7
-| Process | CPU Time | Wait Time |
-| -------- | -------- | -------- | 
-| P1     | 6     | 3 |
-| P2     | 8     | 16 |
-| P3     | 7     | 9 |
-| P4     | 3     | 0 |</p>
+<p>&#x5E73;&#x5747;&#x7B49;&#x5F85;&#x6642;&#x9593;: (0+3+9+16)/4 = 7</p>
+<table>
+<thead>
+<tr>
+<th>Process</th>
+<th>CPU Time</th>
+<th>Wait Time</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P1</td>
+<td>6</td>
+<td>3</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>8</td>
+<td>16</td>
+</tr>
+<tr>
+<td>P3</td>
+<td>7</td>
+<td>9</td>
+</tr>
+<tr>
+<td>P4</td>
+<td>3</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
 <p>&#x6839;&#x64DA;Greedy&#x6F14;&#x7B97;&#x6CD5;&#xFF0C;&#x53EF;&#x4EE5;&#x5F97;&#x77E5;SJF&#x662F;&#x6700;&#x7406;&#x60F3;&#x7684;&#x6F14;&#x7B97;&#x6CD5;&#xFF0C;&#x53EF;&#x4EE5;&#x5F97;&#x5230;&#x4E00;&#x7D44;&#x5E73;&#x5747;&#x7B49;&#x5F85;&#x6642;&#x9593;&#x6700;&#x77ED;&#x7684;&#x6392;&#x5E8F;&#x6CD5;&#xFF0C;&#x7136;&#x800C;&#xFF0C;SJF&#x6F14;&#x7B97;&#x6CD5;&#x56F0;&#x96E3;&#x7684;&#x90E8;&#x5206;&#x5728;&#x65BC;&#x5982;&#x4F55;&#x5F97;&#x77E5;&#x6BCF;&#x4E00;&#x500B;Process&#x6240;&#x9700;&#x8981;&#x7684;CPU&#x6642;&#x9593;&#x3002;</p>
 <p>&#x82E5;&#x5C07;SJF&#x6F14;&#x7B97;&#x6CD5;&#x6539;&#x70BA;preemtive&#xFF0C;&#x53EF;&#x4EE5;&#x5C07;&#x5224;&#x65B7;&#x7684;&#x689D;&#x4EF6;&#x6539;&#x6210;&#x5269;&#x9918;&#x6642;&#x9593;&#x6700;&#x77ED;&#x7684;Process&#x6700;&#x5148;&#x505A;&#x3002;</p>
 <table>
@@ -1893,7 +1960,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Process Schedule Algorithm","level":"1.7.3.1.1","depth":4,"next":{"title":"Process Lifecycle","level":"1.7.3.2","depth":3,"path":"cpp_sec/process_lifecycle.md","ref":"cpp_sec/process_lifecycle.md","articles":[]},"previous":{"title":"Process Schedule","level":"1.7.3.1","depth":3,"path":"cpp_sec/process_schedule.md","ref":"cpp_sec/process_schedule.md","articles":[{"title":"Process Schedule Algorithm","level":"1.7.3.1.1","depth":4,"path":"cpp_sec/process_schedule_algo.md","ref":"cpp_sec/process_schedule_algo.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cpp_sec/process_schedule_algo.md","mtime":"2021-06-20T11:58:02.783Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-06-20T11:59:13.526Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Process Schedule Algorithm","level":"1.7.3.1.1","depth":4,"next":{"title":"Process Lifecycle","level":"1.7.3.2","depth":3,"path":"cpp_sec/process_lifecycle.md","ref":"cpp_sec/process_lifecycle.md","articles":[]},"previous":{"title":"Process Schedule","level":"1.7.3.1","depth":3,"path":"cpp_sec/process_schedule.md","ref":"cpp_sec/process_schedule.md","articles":[{"title":"Process Schedule Algorithm","level":"1.7.3.1.1","depth":4,"path":"cpp_sec/process_schedule_algo.md","ref":"cpp_sec/process_schedule_algo.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cpp_sec/process_schedule_algo.md","mtime":"2021-06-24T14:37:46.587Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-06-28T11:29:26.780Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
