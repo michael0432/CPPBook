@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>BFS · GitBook</title>
+        <title>Advanced I/O · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="dfs.html" />
+    <link rel="next" href="process.html" />
     
-    
-    <link rel="prev" href="avl.html" />
     
 
     </head>
@@ -582,7 +580,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.5.7.2" data-path="bfs.html">
+        <li class="chapter " data-level="1.5.7.2" data-path="bfs.html">
             
                 <a href="bfs.html">
             
@@ -1000,7 +998,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7.2.3" data-path="advanceio.html">
+        <li class="chapter active" data-level="1.7.2.3" data-path="advanceio.html">
             
                 <a href="advanceio.html">
             
@@ -1492,7 +1490,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >BFS</a>
+        <a href=".." >Advanced I/O</a>
     </h1>
 </div>
 
@@ -1507,98 +1505,96 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="bfs">BFS</h1>
-<h6 id="tags--data-structure">tags = <code>Data Structure</code></h6>
-<p>&#x7D66;&#x4E00;&#x5F35;Graph&#xFF0C;&#x8981;&#x600E;&#x9EBC;&#x904D;&#x6B77;&#x9019;&#x5F35;&#x5716;&#xFF1F;&#xFF08;&#x8B80;&#x5230;&#x5716;&#x4E2D;&#x7684;&#x6BCF;&#x500B;Node&#xFF09;</p>
+                                <h1 id="advance-io">Advance I/O</h1>
+<h6 id="tags--operating-system">tags = <code>Operating System</code></h6>
+<h2 id="io-multiplexing">I/O Multiplexing</h2>
+<p>&#x6709;&#x6642;&#xFF0C;&#x6211;&#x5011;&#x7684;&#x61C9;&#x7528;&#x9700;&#x8981;&#x540C;&#x6642;&#x807D;/&#x5BEB;&#x591A;&#x500B;&#x4E0D;&#x540C;&#x7684;fd&#xFF0C;&#x4F8B;&#x5982;&#xFF0C;&#x7576;&#x6211;&#x5011;&#x4F7F;&#x7528;socket&#x6642;&#xFF0C;&#x53EF;&#x80FD;&#x6703;&#x9700;&#x8981;&#x540C;&#x6642;listen&#x591A;&#x500B;client&#x3002;
+&#x9019;&#x7A2E;&#x60C5;&#x6CC1;&#x6211;&#x5011;&#x7A31;&#x70BA;I/O Multiplexing&#xFF0C;&#x6211;&#x5011;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;select&#x9019;&#x500B;system call&#x4F86;&#x89E3;&#x6C7A;&#x9700;&#x8981;&#x540C;&#x6642;&#x76E3;&#x63A7;&#x591A;&#x500B;fd&#x7684;&#x554F;&#x984C;&#x3002;</p>
+<p><img src="https://i.imgur.com/lkxFZJh.png" alt=""></p>
+<h3 id="select">Select</h3>
+<p><img src="https://i.imgur.com/hmF1R92.png" alt=""></p>
+<p>Select&#x6703;&#x76E3;&#x63A7;&#x653E;&#x9032;&#x5404;fd set&#xFF0C;&#x82E5;&#x5728;set&#x4E2D;&#x4EFB;&#x4E00;&#x500B;fd&#x6709;&#x8B8A;&#x5316;(&#x6709;&#x65B0;&#x7684;&#x8CC7;&#x6599;&#x53EF;&#x8B80;&#x5BEB;)&#xFF0C;&#x5247;&#x6703;&#x5C07;fd set&#x6E05;&#x7A7A;&#xFF0C;&#x53EA;&#x7559;&#x4E0B;&#x6709;&#x8B8A;&#x5316;&#x7684;fd&#x3002;</p>
+<pre><code class="lang-cpp=1">#include &lt;sys/select.h&gt;
+
+int select(int nfds,fd_set* readfds,fd_set* writefds,fd_set* exceptfds,struct timeval* timeout);
+
+
+struct timeval {
+    long    tv_sec;        /* seconds */
+    long    tv_usec;        /* microseconds */
+};
+</code></pre>
 <ul>
-<li>BFS(Breadth-fisrt Search)<ul>
-<li>&#x5F9E;&#x5716;&#x7684;&#x4E00;&#x500B;Vertex&#x51FA;&#x767C;</li>
-<li>&#x5148;&#x8D70;&#x96E2;&#x8A72;Vertex&#x76F8;&#x9130;&#x7684;Vertex(&#x8DDD;&#x96E2;&#x70BA;1)</li>
-<li>&#x518D;&#x8D70;&#x5230;&#x8DDD;&#x96E2;&#x70BA;2&#x7684;Vertex</li>
-<li>&#x76F4;&#x5230;&#x8D70;&#x5230;&#x6700;&#x9060;&#x7684;&#x9EDE;&#xFF08;&#x8D70;&#x5B8C;&#x6240;&#x6709;&#x9EDE;&#xFF09;</li>
+<li>nfds: listen&#x7684;file descriptor&#x7BC4;&#x570D;&#xFF0C;listen&#x7684;&#x7BC4;&#x570D;&#x70BA;0~nfds-1</li>
+<li>readfds: &#x653E;read file descriptor&#x7684;&#x96C6;&#x5408;&#xFF0C;&#x5224;&#x65B7;&#x662F;&#x5426;&#x53EF;&#x4EE5;&#x5F9E;&#x9019;&#x4E9B;&#x6A94;&#x6848;&#x4E2D;&#x8B80;&#x53D6;&#x8CC7;&#x6599;&#x4E86;&#xFF0C;&#x5982;&#x679C;&#x9019;&#x500B;&#x96C6;&#x5408;&#x4E2D;&#x6709;&#x4E00;&#x500B;&#x6A94;&#x6848;&#x53EF;&#x8B80;&#xFF0C;select&#x5C31;&#x6703;&#x8FD4;&#x56DE;&#x4E00;&#x500B;&#x5927;&#x65BC;0&#x7684;&#x503C;&#xFF0C;&#x8868;&#x793A;&#x6709;&#x6A94;&#x6848;&#x53EF;&#x8B80;&#x3002;</li>
+<li>writefds: &#x653E;write file descriptor&#x7684;&#x96C6;&#x5408;&#xFF0C;&#x662F;&#x5426;&#x53EF;&#x4EE5;&#x5411;&#x9019;&#x4E9B;&#x6A94;&#x6848;&#x4E2D;&#x5BEB;&#x5165;&#x8CC7;&#x6599;&#x4E86;&#xFF0C;&#x5982;&#x679C;&#x9019;&#x500B;&#x96C6;&#x5408;&#x4E2D;&#x6709;&#x4E00;&#x500B;&#x6A94;&#x6848;&#x53EF;&#x5BEB;&#xFF0C;select&#x5C31;&#x6703;&#x8FD4;&#x56DE;&#x4E00;&#x500B;&#x5927;&#x65BC;0&#x7684;&#x503C;&#xFF0C;&#x8868;&#x793A;&#x6709;&#x6A94;&#x6848;&#x53EF;&#x5BEB;&#x3002;</li>
+<li>exceptfds: &#x7528;&#x65BC;&#x76E3;&#x8996;&#x6A94;&#x6848;&#x662F;&#x5426;&#x6709;&#x932F;&#x8AA4;</li>
+<li>timeout: select&#x662F;&#x5426;&#x8D85;&#x6642;&#xFF0C;&#x82E5;&#x8D85;&#x904E;&#x7279;&#x5B9A;&#x6642;&#x9593;&#x90FD;&#x6C92;&#x6709;ready&#x7684;fd&#xFF0C;&#x5247;&#x56DE;&#x50B3;0&#x8868;&#x793A;timeout&#xFF0C;&#x82E5;input&#x6642;&#x5C07;timeout&#x8A2D;&#x70BA;NULL&#xFF0C;&#x8868;&#x793A;&#x5C07;select&#x8A2D;&#x70BA;blocking&#x3002;</li>
+<li>return value:<ul>
+<li>&#x56DE;&#x50B3;&#x503C;&gt;0 : &#x56DE;&#x50B3;&#x76EE;&#x524D;ready&#x7684;fd&#x6578;&#x91CF;</li>
+<li>&#x56DE;&#x50B3;&#x503C;==0 : timeout</li>
+<li>&#x56DE;&#x50B3;&#x503C;&lt;0 : error</li>
 </ul>
 </li>
 </ul>
-<p><img src="https://i.imgur.com/OqbqQjQ.png" alt=""></p>
+<h3 id="fdset">fd_set</h3>
 <ul>
-<li>DFS(Depth-first Search)</li>
+<li>void FD_ZERO(fd_set* fs); &#x6E05;&#x7A7A;&#x96C6;&#x5408;</li>
+<li>void FD_SET(int fd, fd_set* fs); &#x5C07;&#x4E00;&#x500B;&#x7D66;&#x5B9A;&#x7684;&#x6A94;&#x6848;&#x63CF;&#x8FF0;&#x7B26;&#x52A0;&#x5165;&#x96C6;&#x5408;&#x4E4B;&#x4E2D;</li>
+<li>void FD_CLR(int fd, fd_set* fs); &#x5C07;&#x4E00;&#x500B;&#x7D66;&#x5B9A;&#x7684;&#x6A94;&#x6848;&#x63CF;&#x8FF0;&#x7B26;&#x5F9E;&#x96C6;&#x5408;&#x4E2D;&#x522A;&#x9664;</li>
+<li><p>int FD_ISSET(int fd, fd_set* fs); &#x78BA;&#x8A8D;fd&#x662F;&#x5426;&#x5728;&#x6B64;fd set&#x4E2D;</p>
+<ul>
+<li>return value: &#x5982;&#x679C;fd&#x5728;&#x6B64;set&#x4E2D;&#xFF0C;&#x56DE;&#x50B3;&gt;0&#xFF0C;&#x4E0D;&#x5728;&#x5247;&#x56DE;&#x50B3;0</li>
 </ul>
-<p>&#x60F3;&#x8981;&#x4F9D;&#x7167;BFS&#x7684;&#x9806;&#x5E8F;&#x8D70;&#x5B8C;&#x6240;&#x6709;&#x9EDE;&#xFF0C;&#x53EF;&#x4EE5;&#x60F3;&#x6210;&#x627E;&#x51FA;&#x5C1A;&#x672A;&#x904D;&#x6B77;&#x7684;&#x9EDE;&#x7576;&#x505A;&#x8D77;&#x9EDE;&#xFF1A;</p>
-<ol>
-<li>&#x628A;&#x8D77;&#x9EDE;&#x653E;&#x5165;queue</li>
-<li>&#x62FF;&#x51FA;queue&#x7684;front</li>
-<li>&#x627E;&#x51FA;&#x8207;queue.front()&#x76F8;&#x9130;&#x7684;&#x9EDE;&#x653E;&#x5165;queue</li>
-<li>queue.pop()</li>
-<li>&#x91CD;&#x8907;2~4&#x76F4;&#x5230;queue&#x70BA;&#x7A7A;</li>
-</ol>
-<p><img src="https://i.imgur.com/kFEzg9G.png" alt=""></p>
-<h3 id="traverse-tree">Traverse Tree</h3>
-<pre><code class="lang-cpp=1">struct Node{
-    int data;
-    vector&lt;*Node&gt; neigh; 
-}; 
+</li>
+<li><p>example</p>
+</li>
+</ul>
+<pre><code class="lang-cpp=1">struct fdset readset;
+FD_ZERO(&amp;readset);
 
-void bfs(Node* first){
-    queue&lt;Node*&gt; q;
-    q.push(first);
-    while(!q.empty()){
-        // do what u want
-        q.front()-&gt;val;
-        //
-        for(int i=0 ; i&lt;q.front()-&gt;neigh.size() ; i++){
-            q.push(q.front()-&gt;neigh[i]);
-        }
-        q.pop();
-    }
-}
+FD_SET(0, &amp;readset);
 </code></pre>
-<h3 id="traverse-graph">Traverse Graph</h3>
-<p>&#x4E0A;&#x9762;&#x7684;&#x4F8B;&#x5B50;&#x53EA;&#x80FD;&#x904D;&#x6B77;&#x6574;&#x500B;Tree&#xFF0C;&#x4F46;&#x82E5;&#x60F3;&#x904D;&#x6B77;Graph&#xFF0C;&#x6703;&#x78B0;&#x5230;&#x4E00;&#x554F;&#x984C;&#xFF1A;&#x6703;&#x904D;&#x6B77;&#x5230;&#x91CD;&#x8907;&#x7684;&#x9EDE;&#x5C0E;&#x81F4;&#x904D;&#x6B77;&#x7684;&#x9806;&#x5E8F;&#x6DF7;&#x4E82;&#xFF0C;&#x56E0;&#x6B64;&#x6211;&#x5011;&#x9700;&#x8981;&#x5728;Node&#x4E2D;&#x52A0;&#x5165;&#x4E00;&#x500B;&#x8B8A;&#x6578;&#x5132;&#x5B58;Node&#x7684;&#x72C0;&#x614B;&#xFF0C;&#x5728;&#x4E0A;&#x5716;&#x4E2D;&#x7528;&#x767D;&#x3001;&#x7070;&#x3001;&#x9ED1;&#x8868;&#x793A;&#x3002;</p>
-<ul>
-<li>&#x767D;&#xFF1A;&#x9084;&#x672A;&#x904D;&#x6B77;&#x5230;&#x6B64;Node&#xFF08;&#x672A;&#x653E;&#x9032;Queue&#xFF09;</li>
-<li>&#x7070;&#xFF1A;&#x904D;&#x6B77;&#x5230;&#x6B64;Node&#xFF0C;&#x4F46;&#x5C1A;&#x672A;&#x96E2;&#x958B;Queue</li>
-<li>&#x9ED1;&#xFF1A;&#x5DF2;&#x7D93;&#x904D;&#x6B77;&#x5B8C;&#x6B64;Node&#xFF08;&#x5DF2;pop&#x6389;&#xFF09;</li>
-</ul>
-<pre><code class="lang-cpp=1">struct Node{
-    int data;
-    int status; //&#x767D;:0, &#x7070;:1, &#x9ED1;:2
-    vector&lt;*Node&gt; neigh; 
-}; 
+<h2 id="example">Example</h2>
+<pre><code class="lang-cpp=1">int main()
+{
+    struct fd_set readset, workset;
+    struct timeval timeout;
+    FD_ZERO(&amp;readset);
+    FD_SET(0, &amp;readset);
+    timeout.tv_sec = 3;
+    timeout.tv_usec = 0;
 
-void bfs(Node* first){
-    queue&lt;Node*&gt; q;
-    q.push(first);
-    while(!q.empty()){
-        q.front()-&gt;status = 1;
-        // do what u want
-        q.front()-&gt;val;
-        //
-        int size = q.size();
-        for(int d=0 ; d&lt;size ; d++){
-            // &#x4E00;&#x5C64;
-            for(int i=0 ; i&lt;q.front()-&gt;neigh.size() ; i++){
-                // &#x4E00;&#x500B;&#x9130;&#x5C45;&#xFF0C;&#x767D;&#x8272;&#x624D;&#x653E;&#x9032;queue
-                if(q.front()-&gt;neigh[i]-&gt;status == 0){
-                    q.push(q.front()-&gt;neigh[i]);
-                }
-            }
-            q.front()-&gt;status = 2;
-            q.pop();
+    while(1)
+    {
+        memcpy(&amp;readset, &amp;workset, sizeof(readset)); // workset = readset
+        select(1, &amp;workset, NULL, NULL, &amp;timeout);
+        if(FD_ISSET(0, &amp;workset))
+        {
+            // 0&#x9019;&#x500B;fd&#x9084;&#x5728;set&#x4E2D;&#xFF0C;&#x8868;&#x793A;&#x6B64;fd&#x6709;&#x65B0;&#x7684;&#x8CC7;&#x6599;&#x53EF;&#x8B80;
+            // read
         }
     }
 }
 </code></pre>
-<ul>
-<li>Follow up: &#x662F;&#x4E0D;&#x662F;&#x4E0D;&#x9700;&#x8981;&#x5B58;&#x767D;&#x7070;&#x9ED1;&#x4E09;&#x7A2E;&#x72C0;&#x614B;?</li>
-</ul>
-<h3 id="&#x5C0F;&#x7DF4;&#x7FD2;">&#x5C0F;&#x7DF4;&#x7FD2;</h3>
-<ul>
-<li><a href="https://leetcode.com/problems/binary-tree-right-side-view/" target="_blank">https://leetcode.com/problems/binary-tree-right-side-view/</a></li>
-<li><a href="https://leetcode.com/problems/maximum-level-sum-of-a-binary-tree/" target="_blank">https://leetcode.com/problems/maximum-level-sum-of-a-binary-tree/</a></li>
-<li><a href="https://leetcode.com/problems/cousins-in-binary-tree/" target="_blank">https://leetcode.com/problems/cousins-in-binary-tree/</a></li>
-<li><a href="https://leetcode.com/problems/jump-game-iii/" target="_blank">https://leetcode.com/problems/jump-game-iii/</a></li>
-<li><a href="https://www.hackerrank.com/challenges/bfsshortreach/problem" target="_blank">https://www.hackerrank.com/challenges/bfsshortreach/problem</a></li>
-</ul>
+<h2 id="&#x5C0F;&#x7DF4;&#x7FD2;">&#x5C0F;&#x7DF4;&#x7FD2;</h2>
+<p>&#x5BEB;&#x5169;&#x500B;&#x7A0B;&#x5F0F;: shop.cpp &#x53CA; customer.cpp&#x3002;</p>
+<h3 id="shop">Shop</h3>
+<p>Shop&#x63D0;&#x4F9B;&#x4E09;&#x7A2E;&#x5546;&#x54C1;: Apple, Banana, Orange&#xFF0C;&#x5206;&#x5225;&#x5404;&#x6709;5&#x500B;&#xFF0C;shop&#x5229;&#x7528;select&#x76E3;&#x807D;&#x4E09;&#x500B;fifo&#xFF0C;&#x5206;&#x5225;&#x5C0D;&#x61C9;&#x5230;&#x4E09;&#x500B;customer&#xFF0C;&#x78BA;&#x8A8D;&#x662F;&#x5426;&#x6709;customer&#x8981;&#x8CFC;&#x8CB7;&#x5546;&#x54C1;&#xFF0C;&#x6BCF;&#x7576;&#x6709;customer&#x8CFC;&#x8CB7;&#x5546;&#x54C1;&#xFF0C;Shop&#x6703;&#x78BA;&#x8A8D;&#x6B64;&#x5546;&#x54C1;&#x662F;&#x5426;&#x9084;&#x6709;&#x5EAB;&#x5B58;&#xFF0C;&#x82E5;&#x9084;&#x6709;&#x5EAB;&#x5B58;&#xFF0C;&#x5247;&#x56DE;&#x50B3;&#x8CFC;&#x8CB7;&#x6210;&#x529F;&#xFF0C;&#x4E26;&#x5C07;&#x5EAB;&#x5B58;-1&#xFF1B;&#x82E5;&#x6C92;&#x6709;&#x5EAB;&#x5B58;&#xFF0C;&#x5247;&#x56DE;&#x50B3;&#x8CFC;&#x8CB7;&#x5931;&#x6557;&#x3002;</p>
+<p>&#x7576;&#x6240;&#x6709;&#x5EAB;&#x5B58;&#x8CE3;&#x5B8C;&#x5F8C;&#xFF0C;&#x5370;&#x51FA;&#x8CE3;&#x51FA;&#x7684;&#x9806;&#x5E8F;&#x53CA;&#x8CE3;&#x7D66;&#x54EA;&#x500B;Customer&#x3002;</p>
+<h4 id="output">Output</h4>
+<pre><code>Sell Apple to customer 1
+Sell Oragne to customer 0
+Sell Oragne to customer 1
+...
+</code></pre><h3 id="customer">Customer</h3>
+<p>Customer&#x6703;&#x900F;&#x904E;fifo&#x8DDF;shop&#x8CFC;&#x8CB7;&#x5546;&#x54C1;&#xFF0C;&#x6BCF;&#x6B21;&#x8CFC;&#x8CB7;&#x5546;&#x54C1;&#x53EA;&#x80FD;&#x96A8;&#x6A5F;&#x9078;&#x64C7;&#x4E00;&#x6A23;&#x5546;&#x54C1;&#x4E26;&#x8CFC;&#x8CB7;&#x4E00;&#x500B;&#xFF0C;&#x6BCF;&#x500B;customer&#x518D;&#x8CFC;&#x8CB7;&#x5546;&#x54C1;&#x5B8C;&#x6210;&#x5F8C;&#x6703;&#x96A8;&#x6A5F;sleep 0.1&#x5230;1&#x79D2;&#x3002;</p>
+<p>&#x7576;&#x6BCF;&#x6B21;&#x6536;&#x5230;Shop&#x7684;&#x56DE;&#x61C9;&#xFF0C;Customer&#x5370;&#x51FA;&#x662F;&#x5426;&#x8CFC;&#x8CB7;&#x6210;&#x529F;&#x53CA;&#x8CFC;&#x8CB7;&#x7684;&#x5546;&#x54C1;&#x70BA;&#x4F55;&#x3002;</p>
+<h4 id="output">Output</h4>
+<pre><code>Customer 0 buys 1 orange
+Customer 0 buys 0 orange
+...
+</code></pre><h2 id="recordbyte-range-locking">Record/Byte-range Locking</h2>
 
                                 
                                 </section>
@@ -1626,12 +1622,8 @@ void bfs(Node* first){
 
             
                 
-                <a href="avl.html" class="navigation navigation-prev " aria-label="Previous page: AVL Tree">
-                    <i class="fa fa-angle-left"></i>
-                </a>
                 
-                
-                <a href="dfs.html" class="navigation navigation-next " aria-label="Next page: DFS">
+                <a href="process.html" class="navigation navigation-next navigation-unique" aria-label="Next page: Process">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1642,7 +1634,7 @@ void bfs(Node* first){
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"BFS","level":"1.5.7.2","depth":3,"next":{"title":"DFS","level":"1.5.7.3","depth":3,"path":"cpp_sec/dfs.md","ref":"cpp_sec/dfs.md","articles":[]},"previous":{"title":"AVL Tree","level":"1.5.7.1.2","depth":4,"path":"cpp_sec/avl.md","ref":"cpp_sec/avl.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cpp_sec/bfs.md","mtime":"2021-06-28T11:29:29.651Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-07-04T07:27:48.615Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Advanced I/O","level":"1.7.2.3","depth":3,"next":{"title":"Process","level":"1.7.3","depth":2,"path":"cpp_sec/process.md","ref":"cpp_sec/process.md","articles":[{"title":"Process Schedule","level":"1.7.3.1","depth":3,"path":"cpp_sec/process_schedule.md","ref":"cpp_sec/process_schedule.md","articles":[{"title":"Process Schedule Algorithm","level":"1.7.3.1.1","depth":4,"path":"cpp_sec/process_schedule_algo.md","ref":"cpp_sec/process_schedule_algo.md","articles":[]}]},{"title":"Process Lifecycle","level":"1.7.3.2","depth":3,"path":"cpp_sec/process_lifecycle.md","ref":"cpp_sec/process_lifecycle.md","articles":[]},{"title":"Process Communication","level":"1.7.3.3","depth":3,"path":"cpp_sec/process_communiation.md","ref":"cpp_sec/process_communiation.md","articles":[{"title":"Pipe","level":"1.7.3.3.1","depth":4,"path":"cpp_sec/pipe.md","ref":"cpp_sec/pipe.md","articles":[]},{"title":"FIFO","level":"1.7.3.3.2","depth":4,"path":"cpp_sec/fifo.md","ref":"cpp_sec/fifo.md","articles":[]},{"title":"Socket","level":"1.7.3.3.3","depth":4,"path":"cpp_sec/socket.md","ref":"cpp_sec/socket.md","articles":[]}]}]},"previous":{"title":"[Standard I/O]","level":"1.7.2.2","depth":3,"ref":"","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cpp_sec/advanceio.md","mtime":"2021-07-04T07:26:26.603Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-07-04T07:27:48.615Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
