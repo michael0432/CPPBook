@@ -62,7 +62,7 @@
   * I/O
     * [File I/O](cpp_sec/fileio.md)
     * [Standard I/O]
-    * [Advanced I/O]
+    * [Advanced I/O](cpp_sec/advanceio.md)
   * [Process](cpp_sec/process.md)
     * [Process Schedule](cpp_sec/process_schedule.md)
       * [Process Schedule Algorithm](cpp_sec/process_schedule_algo.md)
