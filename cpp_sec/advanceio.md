@@ -70,7 +70,7 @@ int main()
     {
         memcpy(&readset, &workset, sizeof(readset)); // workset = readset
         select(1, &workset, NULL, NULL, &timeout);
-        if(FD_ISSET(0, &workset))
+        if(FD_ISSET(0, &workset) != 0)
         {
             // 0這個fd還在set中，表示此fd有新的資料可讀
             // read
