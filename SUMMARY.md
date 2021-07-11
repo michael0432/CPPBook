@@ -61,7 +61,7 @@
   * [Install Linux](cpp_sec/installLinux.md)
   * I/O
     * [File I/O](cpp_sec/fileio.md)
-    * [Standard I/O]
+    * [Standard I/O](cpp_sec/stdio.md)
     * [Advanced I/O](cpp_sec/advanceio.md)
   * [Process](cpp_sec/process.md)
     * [Process Schedule](cpp_sec/process_schedule.md)
