@@ -1596,7 +1596,111 @@ Sell Oragne to customer 1
 <pre><code>Customer 0 buys 1 orange
 Customer 0 buys 0 orange
 ...
-</code></pre><h2 id="recordbyte-range-locking">Record/Byte-range Locking</h2>
+</code></pre><p><img src="https://i.imgur.com/s2pC38o.png" alt=""></p>
+<h2 id="recordbyte-range-locking">Record/Byte-range Locking</h2>
+<p>&#x7576;&#x591A;&#x500B;process&#x8981;&#x5C0D;&#x540C;&#x4E00;&#x500B;&#x6A94;&#x6848;read&#x6216;write&#x6642;&#xFF0C;&#x6703;&#x5C0E;&#x81F4;&#x6A94;&#x6848;&#x7684;&#x5167;&#x5BB9;&#x4E0D;&#x7A69;&#x5B9A;(&#x4E0D;&#x7B26;&#x5408;&#x9810;&#x671F;)&#x3002;
+&#x4F8B;&#x5982;:</p>
+<pre><code class="lang-cpp=1">// process 1
+lseek (fd, 100, SEEK_SET);
+read(fd, &amp;buf, 4);
+
+
+// process 2
+lseek(fd, 100, SEEK_SET);
+read(fd, &amp;buf, 4);
+buf -= 10;
+lseek(fd, 100, SEEK_SET);
+write(fd, &amp;buf, SEEK_SET);
+
+// process 1
+buf -= 10;
+lseek(fd, 100, SEEK_SET);
+write(fd, &amp;buf, SEEK_SET);
+</code></pre>
+<p>&#x70BA;&#x4E86;&#x89E3;&#x6C7A;&#x9019;&#x500B;&#x554F;&#x984C;&#xFF0C;&#x5728;process&#x5C0D;&#x6A94;&#x6848;&#x505A;&#x6539;&#x52D5;&#x6642;&#xFF0C;&#x82E5;&#x6B64;&#x6A94;&#x6848;&#x6709;&#x53EF;&#x80FD;&#x4E5F;&#x6703;&#x88AB;&#x5176;&#x4ED6;&#x7684;process&#x6539;&#x52D5;&#x5230;&#xFF0C;&#x9700;&#x8981;&#x4F7F;&#x7528;lock&#x5C07;&#x6A94;&#x6848;&#x9396;&#x4F4F;&#x3002;</p>
+<p>&#x6839;&#x64DA;lock&#x9396;&#x5B9A;&#x7684;&#x7BC4;&#x570D;&#x5206;&#x6210;&#x5169;&#x7A2E;:</p>
+<ul>
+<li>&#x9396;&#x4F4F;&#x6574;&#x500B;&#x6A94;&#x6848;</li>
+<li>&#x9396;&#x4F4F;&#x6A94;&#x6848;&#x7684;&#x90E8;&#x5206;bytes</li>
+</ul>
+<p>&#x6839;&#x64DA;lock&#x9396;&#x7684;&#x985E;&#x578B;&#x5206;&#x70BA;&#x5169;&#x7A2E;:</p>
+<ul>
+<li>write lock: &#x7576;&#x8981;&#x5C0D;&#x6A94;&#x6848;&#x505A;write&#x6642;&#xFF0C;&#x9700;&#x8981;&#x7528;write lock&#xFF0C;&#x7576;&#x6709;&#x4E00;&#x500B;process&#x5C0D;&#x6A94;&#x6848;&#x4F7F;&#x7528;&#x4E86;write lock&#xFF0C;&#x5247;&#x7279;&#x5B9A;&#x7BC4;&#x570D;&#x6216;&#x6574;&#x500B;&#x6A94;&#x6848;&#x4E0D;&#x80FD;&#x505A;read/write&#x3002;</li>
+<li>read lock: &#x7576;&#x8981;&#x5C0D;&#x6A94;&#x6848;&#x505A;read&#x6642;&#xFF0C;&#x9700;&#x8981;&#x7528;read lock&#xFF0C;&#x7576;&#x6709;&#x4E00;&#x500B;process&#x5C0D;&#x6A94;&#x6848;&#x4F7F;&#x7528;&#x4E86;read lock&#xFF0C;&#x5247;&#x7279;&#x5B9A;&#x7BC4;&#x570D;&#x6216;&#x6574;&#x500B;&#x6A94;&#x6848;&#x4E0D;&#x80FD;&#x505A;write&#xFF0C;&#x4F46;&#x662F;&#x53EF;&#x4EE5;read&#x3002;</li>
+</ul>
+<p><img src="https://i.imgur.com/bLh32bB.png" alt=""></p>
+<h2 id="fcntl">fcntl</h2>
+<p>fcntl&#x9019;&#x500B;function&#x6709;&#x591A;&#x7A2E;&#x529F;&#x80FD;&#xFF0C;&#x9019;&#x908A;&#x4ECB;&#x7D39;&#x8A2D;&#x7F6E;lock&#x76F8;&#x95DC;&#x7684;&#x529F;&#x80FD;&#x3002;</p>
+<pre><code class="lang-cpp=1">#include &lt;unistd.h&gt;
+#include &lt;fcntl.h&gt;
+int fcntl(int fd, int cmd, struct flock *lock);
+
+struct flock
+{
+    short int l_type;
+    short int l_whence;
+    off_t l_start;
+    off_t l_len;
+
+    pid_t l_pid;
+}
+</code></pre>
+<ul>
+<li>fd: &#x6A94;&#x6848;&#x7684;fd</li>
+<li>cmd:<ul>
+<li>F_GETLK: &#x62FF;&#x76EE;&#x524D;&#x9396;&#x7684;&#x72C0;&#x614B;</li>
+<li>F_SETLK: &#x4E0A;&#x9396;(non-blocking)</li>
+<li>F_SETLKW: &#x4E0A;&#x9396;(blocking)</li>
+</ul>
+</li>
+<li>l_type: <ul>
+<li>F_RDLCK: read lock</li>
+<li>F_WRLCK: write lock</li>
+<li>F_UNLCK: &#x89E3;&#x9396;</li>
+</ul>
+</li>
+<li>l_whence: &#x8A2D;&#x5B9A;&#x9396;&#x7684;l_start&#x57FA;&#x6E96;<ul>
+<li>SEEK_SET: offset 0</li>
+<li>SEEK_CUR: &#x76EE;&#x524D;offset&#x4F4D;&#x7F6E;</li>
+<li>SEEK_END: &#x6700;&#x5F8C;&#x4E00;&#x500B;offset</li>
+</ul>
+</li>
+<li>l_start: l_whence+&#x5E7E;&#x500B;offset&#x958B;&#x59CB;&#x9396;</li>
+<li><p>l_len: &#x9396;&#x5E7E;&#x500B;bytes&#xFF0C;&#x8A2D;&#x70BA;0&#x8868;&#x793A;&#x9396;&#x5230;&#x6700;&#x5F8C;&#x4E00;&#x500B;bytes</p>
+</li>
+<li><p>Example</p>
+</li>
+</ul>
+<pre><code class="lang-cpp=1">
+int main()
+{
+    int fd;
+    if(fd = open(&quot;tmp.txt&quot;, O_RDONLY | O_CREAT, 0777) &lt; 0)
+    {
+        // error
+    }
+
+    // &#x9396;&#x6574;&#x500B;&#x6A94;&#x6848;
+    struct flock lock;
+    lock.l_type = F_RDLCK;
+    lock.l_whence = SEEK_SET;
+    lock.l_start = 0;
+    lock.l_len = 0;
+    lock.l_pid = getpid();
+
+    if(fcntl(fd, F_SETLKW, &amp;lock) &lt; 0)
+    {
+        // error
+    }
+    // read here
+
+    // unlock
+    if(fcntl(fd, F_SETLKW, &amp;lock) &lt; 0)
+    {
+        // error
+    }
+}
+</code></pre>
 
                                 
                                 </section>
@@ -1640,7 +1744,7 @@ Customer 0 buys 0 orange
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Advanced I/O","level":"1.7.2.3","depth":3,"next":{"title":"Process","level":"1.7.3","depth":2,"path":"cpp_sec/process.md","ref":"cpp_sec/process.md","articles":[{"title":"Process Schedule","level":"1.7.3.1","depth":3,"path":"cpp_sec/process_schedule.md","ref":"cpp_sec/process_schedule.md","articles":[{"title":"Process Schedule Algorithm","level":"1.7.3.1.1","depth":4,"path":"cpp_sec/process_schedule_algo.md","ref":"cpp_sec/process_schedule_algo.md","articles":[]}]},{"title":"Process Lifecycle","level":"1.7.3.2","depth":3,"path":"cpp_sec/process_lifecycle.md","ref":"cpp_sec/process_lifecycle.md","articles":[]},{"title":"Process Communication","level":"1.7.3.3","depth":3,"path":"cpp_sec/process_communiation.md","ref":"cpp_sec/process_communiation.md","articles":[{"title":"Pipe","level":"1.7.3.3.1","depth":4,"path":"cpp_sec/pipe.md","ref":"cpp_sec/pipe.md","articles":[]},{"title":"FIFO","level":"1.7.3.3.2","depth":4,"path":"cpp_sec/fifo.md","ref":"cpp_sec/fifo.md","articles":[]},{"title":"Socket","level":"1.7.3.3.3","depth":4,"path":"cpp_sec/socket.md","ref":"cpp_sec/socket.md","articles":[]}]}]},"previous":{"title":"Standard I/O","level":"1.7.2.2","depth":3,"path":"cpp_sec/stdio.md","ref":"cpp_sec/stdio.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cpp_sec/advanceio.md","mtime":"2021-07-05T12:49:22.786Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-07-11T02:21:19.188Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Advanced I/O","level":"1.7.2.3","depth":3,"next":{"title":"Process","level":"1.7.3","depth":2,"path":"cpp_sec/process.md","ref":"cpp_sec/process.md","articles":[{"title":"Process Schedule","level":"1.7.3.1","depth":3,"path":"cpp_sec/process_schedule.md","ref":"cpp_sec/process_schedule.md","articles":[{"title":"Process Schedule Algorithm","level":"1.7.3.1.1","depth":4,"path":"cpp_sec/process_schedule_algo.md","ref":"cpp_sec/process_schedule_algo.md","articles":[]}]},{"title":"Process Lifecycle","level":"1.7.3.2","depth":3,"path":"cpp_sec/process_lifecycle.md","ref":"cpp_sec/process_lifecycle.md","articles":[]},{"title":"Process Communication","level":"1.7.3.3","depth":3,"path":"cpp_sec/process_communiation.md","ref":"cpp_sec/process_communiation.md","articles":[{"title":"Pipe","level":"1.7.3.3.1","depth":4,"path":"cpp_sec/pipe.md","ref":"cpp_sec/pipe.md","articles":[]},{"title":"FIFO","level":"1.7.3.3.2","depth":4,"path":"cpp_sec/fifo.md","ref":"cpp_sec/fifo.md","articles":[]},{"title":"Socket","level":"1.7.3.3.3","depth":4,"path":"cpp_sec/socket.md","ref":"cpp_sec/socket.md","articles":[]}]}]},"previous":{"title":"Standard I/O","level":"1.7.2.2","depth":3,"path":"cpp_sec/stdio.md","ref":"cpp_sec/stdio.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cpp_sec/advanceio.md","mtime":"2021-07-11T14:00:47.872Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-07-11T14:01:04.001Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

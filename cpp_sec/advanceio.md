@@ -105,4 +105,115 @@ Customer會透過fifo跟shop購買商品，每次購買商品只能隨機選擇�
     Customer 0 buys 0 orange
     ...
 
+![](https://i.imgur.com/s2pC38o.png)
+
+
 ## Record/Byte-range Locking
+
+當多個process要對同一個檔案read或write時，會導致檔案的內容不穩定(不符合預期)。
+例如:
+
+```cpp=1
+// process 1
+lseek (fd, 100, SEEK_SET);
+read(fd, &buf, 4);
+
+
+// process 2
+lseek(fd, 100, SEEK_SET);
+read(fd, &buf, 4);
+buf -= 10;
+lseek(fd, 100, SEEK_SET);
+write(fd, &buf, SEEK_SET);
+
+// process 1
+buf -= 10;
+lseek(fd, 100, SEEK_SET);
+write(fd, &buf, SEEK_SET);
+```
+
+為了解決這個問題，在process對檔案做改動時，若此檔案有可能也會被其他的process改動到，需要使用lock將檔案鎖住。
+
+根據lock鎖定的範圍分成兩種:
+* 鎖住整個檔案
+* 鎖住檔案的部分bytes
+
+根據lock鎖的類型分為兩種:
+* write lock: 當要對檔案做write時，需要用write lock，當有一個process對檔案使用了write lock，則特定範圍或整個檔案不能做read/write。
+* read lock: 當要對檔案做read時，需要用read lock，當有一個process對檔案使用了read lock，則特定範圍或整個檔案不能做write，但是可以read。
+
+![](https://i.imgur.com/bLh32bB.png)
+
+
+## fcntl
+
+fcntl這個function有多種功能，這邊介紹設置lock相關的功能。
+
+```cpp=1
+#include <unistd.h>
+#include <fcntl.h>
+int fcntl(int fd, int cmd, struct flock *lock);
+
+struct flock
+{
+    short int l_type;
+    short int l_whence;
+    off_t l_start;
+    off_t l_len;
+    
+    pid_t l_pid;
+}
+```
+
+* fd: 檔案的fd
+* cmd:
+    * F_GETLK: 拿目前鎖的狀態
+    * F_SETLK: 上鎖(non-blocking)
+    * F_SETLKW: 上鎖(blocking)
+* l_type: 
+    * F_RDLCK: read lock
+    * F_WRLCK: write lock
+    * F_UNLCK: 解鎖
+* l_whence: 設定鎖的l_start基準
+    * SEEK_SET: offset 0
+    * SEEK_CUR: 目前offset位置
+    * SEEK_END: 最後一個offset
+* l_start: l_whence+幾個offset開始鎖
+* l_len: 鎖幾個bytes，設為0表示鎖到最後一個bytes
+
+* Example
+
+```cpp=1
+
+int main()
+{
+    int fd;
+    if(fd = open("tmp.txt", O_RDONLY | O_CREAT, 0777) < 0)
+    {
+        // error
+    }
+    
+    // 鎖整個檔案
+    struct flock lock;
+    lock.l_type = F_RDLCK;
+    lock.l_whence = SEEK_SET;
+    lock.l_start = 0;
+    lock.l_len = 0;
+    lock.l_pid = getpid();
+    
+    if(fcntl(fd, F_SETLKW, &lock) < 0)
+    {
+        // error
+    }
+    // read here
+    
+    // unlock
+    if(fcntl(fd, F_SETLKW, &lock) < 0)
+    {
+        // error
+    }
+}
+
+```
+
+
