@@ -82,7 +82,7 @@ typedef struct myStruct
 {
     int a;
     float b;
-}myStruct
+}myStruct;
 
 //其實意思相等於
 

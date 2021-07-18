@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>If/Else · GitBook</title>
+        <title>Thread Programming · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="switch.md" />
     
-    
-    <link rel="prev" href="Variable.html" />
+    <link rel="prev" href="fp.html" />
     
 
     </head>
@@ -168,7 +166,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.3.4" data-path="if_else.html">
+        <li class="chapter " data-level="1.3.4" data-path="if_else.html">
             
                 <a href="if_else.html">
             
@@ -1167,7 +1165,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7.4.2" data-path="thread_programming.html">
+        <li class="chapter active" data-level="1.7.4.2" data-path="thread_programming.html">
             
                 <a href="thread_programming.html">
             
@@ -1505,7 +1503,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >If/Else</a>
+        <a href=".." >Thread Programming</a>
     </h1>
 </div>
 
@@ -1520,67 +1518,141 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="&#x908F;&#x8F2F;&#x5224;&#x65B7;">&#x908F;&#x8F2F;&#x5224;&#x65B7;</h1>
-<h6 id="tags--c">tags = <code>C++</code></h6>
-<p>C++&#x4E2D;&#x5E38;&#x7528;&#x7684;&#x908F;&#x8F2F;&#x5224;&#x65B7;&#x4E3B;&#x8981;&#x6709;&#x4E09;&#x7A2E;&#xFF1A;if/else, ?, switch</p>
-<h3 id="ifelse">IF/ELSE</h3>
-<pre><code class="lang-cpp=1">if(condition){
-    ...
-}
-else if(condition){
-    ...
-}
-else if(condition){
-    ...
-}
-else{
-    ...
-}
+                                <h1 id="thread-programming">Thread programming</h1>
+<h2 id="pthreadcreate">pthread_create</h2>
+<p><img src="https://i.imgur.com/55S7qTV.png" alt="">
+<img src="https://i.imgur.com/zerjEen.png" alt=""></p>
+<pre><code class="lang-cpp=1">#include &lt;pthread.h&gt;
+int pthread_create(pthread_t* threadid,
+                          pthread_attr_t* attr,
+                          void*(*start_rtn)(void *),
+                          void* arg);
 </code></pre>
-<h3 id="">?</h3>
-<p>?&#x7528;&#x4F86;&#x66FF;&#x4EE3;&#x7C21;&#x55AE;&#x7684;if/else&#x5224;&#x65B7;&#xFF0C;&#x8B93;&#x7A0B;&#x5F0F;&#x78BC;&#x770B;&#x8D77;&#x4F86;&#x6BD4;&#x8F03;&#x7C21;&#x6F54;&#x3002;</p>
-<pre><code class="lang-cpp=1">if(condition1){
-    cout &lt;&lt; 1 &lt;&lt; endl;
-}
-else{
-    cout &lt;&lt; 2 &lt;&lt; endl;
+<ul>
+<li>threadid: &#x5275;&#x5EFA;thread&#x6210;&#x529F;&#x5F8C;&#xFF0C;&#x9019;&#x500B;pointer&#x6307;&#x5230;&#x7684;&#x4F4D;&#x7F6E;&#x6703;&#x5B58;thread id</li>
+<li>attr: Thread&#x7684;&#x8A2D;&#x5B9A;&#xFF0C;&#x5305;&#x542B;&#x512A;&#x5148;&#x5EA6;&#x3001;&#x540C;&#x6B65;&#x8A2D;&#x5B9A;&#x7B49;&#x7B49;&#xFF0C;&#x4F7F;&#x7528;NULL&#x70BA;&#x9810;&#x8A2D;&#x8A2D;&#x5B9A;</li>
+<li>start_rtn: &#x7D66;thread&#x4F7F;&#x7528;&#x7684;function pointer&#xFF0C;&#x5373;&#x6307;&#x5B9A;thread&#x8981;&#x57F7;&#x884C;&#x54EA;&#x500B;function</li>
+<li>arg: function&#x7684;input</li>
+</ul>
+<h3 id="passint-arg">Passint arg</h3>
+<p>pthread_create&#x6642;&#xFF0C;function&#x7684;arg&#x662F;&#x7528;void*&#x7576;&#x4F5C;input&#xFF0C;&#x4E26;&#x4E14;&#x5728;function&#x5167;&#x90E8;&#x518D;&#x5C07;input&#x8F49;&#x56DE;&#x9700;&#x8981;&#x7684;&#x683C;&#x5F0F;&#x3002;&#x8209;&#x4F8B;&#x4F86;&#x8AAA;:</p>
+<pre><code class="lang-cpp=1">// intput&#x4E00;&#x500B;int
+void* funcForThread(void* arg)
+{
+    int input = *((int*)arg);
 }
 
-(condition1) ? cout &lt;&lt; 1 &lt;&lt; endl : cout &lt;&lt; 2 &lt;&lt; endl;
-</code></pre>
-<h3 id="switch">Switch</h3>
-<p>Switch&#x8207;if/else if/else&#x7684;&#x5DEE;&#x5225;&#x5728;&#x65BC;switch&#x6839;&#x64DA;&#x689D;&#x4EF6;&#x7684;&#x7D50;&#x679C;&#x57F7;&#x884C;&#x4E0D;&#x540C;&#x5340;&#x6BB5;&#x7684;&#x7A0B;&#x5F0F;&#x3002;</p>
-<pre><code class="lang-cpp=1">switch(condition){
-    case &#x7D50;&#x679C;1:
-        ...
-        break;
-    case &#x7D50;&#x679C;2:
-        ...
-        break;
-    case &#x7D50;&#x679C;3:
-        ...
-        break;
-    default: // &#x985E;&#x4F3C;else&#x7684;&#x529F;&#x80FD;&#xFF0C;&#x4E0D;&#x53EF;&#x7701;&#x7565;
-        ...
+int main()
+{
+    int functionInput = 3;
+    pthread_create(tid, NULL, funcForThread, (void*) &amp;functionInput);
+}
+
+// intput&#x4E00;&#x500B;string
+void* funcForThread(void* arg)
+{
+    char* input = (char*)arg;
+}
+
+int main()
+{
+    char functionInput[10] = &quot;Hi!&quot;;
+    pthread_create(tid, NULL, funcForThread, (void*) functionInput);
+}
+
+// intput&#x4E00;&#x500B;vector
+void* funcForThread(void* arg)
+{
+    vector&lt;int&gt;* input_vector = reinterpret_cast&lt;vector&lt;int&gt;*&gt;(arg);
+    // or
+    vector&lt;int&gt;&amp; input_vector = reinterpret_cast&lt;vector&lt;int&gt;*&gt;(arg);
+}
+
+int main()
+{
+    vector&lt;int&gt; v(3,3);
+    pthread_create(tid, NULL, funcForThread, (void*) v);
 }
 </code></pre>
-<p>Example:</p>
-<pre><code class="lang-cpp=1">char c;
-switch(c){
-    case &apos;a&apos;:
-        ...
-        cout &lt;&lt; &quot;is a&quot; &lt;&lt; endl;
-        break;
-    case &apos;b&apos;:
-        cout &lt;&lt; &quot;is b&quot; &lt;&lt; endl;
-        break;
-    case &apos;c&apos;:
-        cout &lt;&lt; &quot;is c&quot; &lt;&lt; endl;
-        break;
-    default: // &#x985E;&#x4F3C;else&#x7684;&#x529F;&#x80FD;&#xFF0C;&#x4E0D;&#x53EF;&#x7701;&#x7565;
-        cout &lt;&lt; &quot;not abc&quot; &lt;&lt; endl;
+<h2 id="pthreadjoin">pthread_join</h2>
+<p>&#x529F;&#x80FD;&#x8DDF;wait()&#x985E;&#x4F3C;&#xFF0C;&#x7528;&#x65BC;&#x7B49;&#x5F85;thread&#x7D50;&#x675F;&#x4E26;&#x56DE;&#x6536;&#x3002;</p>
+<pre><code class="lang-cpp=1">#include &lt;pthread.h&gt;
+pthread_join(pthread_t tid, void** retunrvalue);
+</code></pre>
+<ul>
+<li>tid: &#x8981;wait&#x7684;thread id</li>
+<li>return value: &#x63A5;&#x6536;exit&#x6642;returnvalue&#x7684;&#x503C;&#xFF0C;&#x4E0D;&#x5728;&#x610F;&#x7684;&#x8A71;&#x53EF;&#x4EE5;&#x586B;NULL</li>
+</ul>
+<h2 id="pthreadexit">pthread_exit</h2>
+<p>&#x529F;&#x80FD;&#x8DDF;exit()&#x985E;&#x4F3C;&#xFF0C;&#x7528;&#x65BC;&#x7D50;&#x675F;&#x4E00;&#x500B;thread&#x3002;</p>
+<pre><code class="lang-cpp=1">void pthread_exit(void* returnvalue);
+</code></pre>
+<ul>
+<li>returnvalue: &#x50B3;&#x7D66;join()&#x7684;thread &#x6B64;thread&#x7D50;&#x675F;&#x7684;&#x72C0;&#x614B;&#xFF0C;&#x4E0D;&#x9700;&#x8981;&#x7684;&#x8A71;&#x53EF;&#x4EE5;&#x586B;NULL&#x3002;</li>
+</ul>
+<h3 id="example">Example</h3>
+<p><strong>&#x91CD;&#x8981;: compile&#x6642;&#x8981;&#x4E0B;-lpthread&#x624D;&#x80FD;&#x6B63;&#x5E38;compile !</strong></p>
+<pre><code>g++ -std=c++11 tmp.cpp -lpthread -o outputname
+</code></pre><pre><code class="lang-cpp=1">
+#include &lt;stdio.h&gt;
+#include &lt;pthread.h&gt;
+#include &lt;unistd.h&gt;
+
+typedef struct inputdata
+{
+    int a;
+    int b;
+    int res;
+}inputdata;
+
+void *func(void *arg)
+{
+    inputdata* input = (inputdata*)arg;
+    input-&gt;res = input-&gt;a + input-&gt;b;
+    pthread_exit(NULL);
+}
+
+
+int main()
+{
+    pthread_t t;
+    inputdata input;
+    input.a = 3;
+    input.b = 4;
+
+    pthread_create(&amp;t, NULL, func, (void*) &amp;input);
+    pthread_join(t, NULL);
+    printf(&quot;%d\n&quot;, input.res);
 }
 </code></pre>
+<h2 id="pthreadself">pthread_self</h2>
+<p>&#x62FF;&#x5230;&#x81EA;&#x5DF1;&#x7684;thread id</p>
+<pre><code class="lang-cpp=1">pthread_t pthread_self();
+</code></pre>
+<h2 id="pthreadequal">pthread_equal</h2>
+<p>&#x6BD4;&#x8F03;&#x5169;&#x500B;tid&#x662F;&#x5426;&#x76F8;&#x540C;</p>
+<pre><code class="lang-cpp=1">int pthread_equal(pthread_t tid1, pthread_t tid2);
+</code></pre>
+<ul>
+<li>return value<ul>
+<li>0&#x8868;&#x793A;&#x4E0D;&#x540C;</li>
+<li>&#x5176;&#x4ED6;&#x503C;&#x8868;&#x793A;&#x76F8;&#x540C;</li>
+</ul>
+</li>
+</ul>
+<h2 id="&#x5C0F;&#x7DF4;&#x7FD2;">&#x5C0F;&#x7DF4;&#x7FD2;</h2>
+<p>&#x5BEB;&#x4E00;&#x96BB;&#x7A0B;&#x5F0F;&#x78BC;&#xFF0C;&#x7528;for loop&#x5F9E;1+.....+10000000&#x3002;&#x4E26;&#x5E73;&#x5747;&#x5C07;&#x8A08;&#x7B97;&#x91CF;&#x5206;&#x914D;&#x7D66;&#x4E0D;&#x540C;&#x7684;thread
+&#x4F8B;&#x5982;&#xFF0C;&#x5206;&#x6210;10&#x500B;thread&#x6642;:</p>
+<ul>
+<li>thread0: &#x8A08;&#x7B97;1~1000000</li>
+<li>thread1: &#x8A08;&#x7B97;1000001~2000000</li>
+</ul>
+<p>...
+&#x4EE5;&#x6B64;&#x985E;&#x63A8;</p>
+<h3 id="input">input</h3>
+<p>input&#x53EF;&#x4EE5;&#x6307;&#x5B9A;&#x4F7F;&#x7528;&#x5E7E;&#x500B;thread&#x505A;&#x8A08;&#x7B97; (1 ~ 100&#x500B;thread)</p>
+<h3 id="output">output</h3>
+<p>output&#x8A08;&#x7B97;&#x5B8C;&#x5F8C;&#x7684;&#x7D50;&#x679C;</p>
 
                                 
                                 </section>
@@ -1608,14 +1680,10 @@ switch(c){
 
             
                 
-                <a href="Variable.html" class="navigation navigation-prev " aria-label="Previous page: 資料型態&宣告">
+                <a href="fp.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Function pointer">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
-                
-                <a href="switch.md" class="navigation navigation-next " aria-label="Next page: Switch">
-                    <i class="fa fa-angle-right"></i>
-                </a>
                 
             
         
@@ -1624,7 +1692,7 @@ switch(c){
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"If/Else","level":"1.3.4","depth":2,"next":{"title":"Switch","level":"1.3.5","depth":2,"path":"cpp_sec/switch.md","ref":"cpp_sec/switch.md","articles":[]},"previous":{"title":"資料型態&宣告","level":"1.3.3","depth":2,"path":"cpp_sec/Variable.md","ref":"cpp_sec/Variable.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cpp_sec/if_else.md","mtime":"2021-07-11T14:01:06.408Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-07-18T06:29:07.525Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Thread Programming","level":"1.7.4.2","depth":3,"next":{"title":"[Deadlock]","level":"1.7.5","depth":2,"ref":"","articles":[]},"previous":{"title":"Function pointer","level":"1.7.4.1","depth":3,"path":"cpp_sec/fp.md","ref":"cpp_sec/fp.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cpp_sec/thread_programming.md","mtime":"2021-07-18T06:27:47.516Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-07-18T06:29:07.525Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
