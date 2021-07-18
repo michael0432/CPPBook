@@ -71,10 +71,12 @@
       * [Pipe](cpp_sec/pipe.md)
       * [FIFO](cpp_sec/fifo.md)
       * [Socket](cpp_sec/socket.md)
+  * [Thread](cpp_sec/thread.md)
+    * [Function pointer](cpp_sec/fp.md)
+    * [Thread Programming](cpp_sec/thread_programming.md)
   * [Deadlock]
   * [Signal]
-  * [Thread]
-    * [Thread Controls]
+  
   * [Syncornize]
   * [Memory]
   * [Virtual Memory]
