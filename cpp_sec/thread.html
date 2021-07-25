@@ -1185,7 +1185,52 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7.5" >
+        <li class="chapter " data-level="1.7.5" data-path="synchronization.html">
+            
+                <a href="synchronization.html">
+            
+                    
+                    Synchronization
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.5.1" >
+            
+                <span>
+            
+                    
+                    [Peterson Solution]
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5.2" >
+            
+                <span>
+            
+                    
+                    [Mutex & Semaphore]
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6" >
             
                 <span>
             
@@ -1198,25 +1243,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7.6" >
-            
-                <span>
-            
-                    
-                    [Signal]
-            
-                </span>
-            
-
-            
-        </li>
-    
         <li class="chapter " data-level="1.7.7" >
             
                 <span>
             
                     
-                    [Syncornize]
+                    [Signal]
             
                 </span>
             
@@ -1565,6 +1597,33 @@
 </ul>
 </li>
 </ul>
+<h2 id="thread-priority-in-linux">Thread Priority in Linux</h2>
+<p>Linux&#x7684;Thread Priority&#x5206;&#x6210;&#x5169;&#x500B;&#x90E8;&#x5206;&#xFF1A;Policy&#x8DDF;Piorirty&#x3002;</p>
+<ul>
+<li>Policy: Policy&#x4E3B;&#x8981;&#x5206;&#x70BA;Normal&#x53CA;Realtime&#x5169;&#x500B;&#x7B49;&#x7D1A;&#xFF0C;Realtime&#x7B49;&#x7D1A;&#x512A;&#x5148;&#x5EA6;&#x8F03;Normal&#x5927;&#x3002;<ul>
+<li>Normal:<ul>
+<li>SCHED_OTHER : &#x9810;&#x8A2D;&#x7684;Policy&#xFF0C;&#x53C3;&#x8003;nice value&#x6C7A;&#x5B9A;CPU&#x7684;&#x5206;&#x914D;&#x6642;&#x9593;</li>
+</ul>
+</li>
+<li>Realtime:<ul>
+<li>SCHED_FIFO : First-in-first-out&#xFF0C;&#x7167;&#x6B21;&#x5E8F;&#x5148;&#x5F8C;&#x57F7;&#x884C;</li>
+<li>SCHED_RR : &#x4E00;&#x6A23;&#x7167;&#x6B21;&#x5E8F;&#x5148;&#x5F8C;&#x57F7;&#x884C;&#xFF0C;&#x4F46;&#x6BCF;&#x500B;time slice&#x7684;&#x898F;&#x5B9A;</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Piority: &#x5728;Realtime schedule&#x4E2D;&#xFF0C;&#x53EF;&#x4EE5;&#x53E6;&#x5916;&#x8A2D;&#x5B9A;Priority&#xFF0C;&#x8868;&#x793A;&#x5728;Policy&#x76F8;&#x540C;&#x6642;&#xFF0C;&#x512A;&#x5148;&#x5EA6;&#x7684;&#x9806;&#x5E8F;&#xFF0C;Priority&#x7684;&#x7BC4;&#x570D;&#x70BA;1~99&#xFF0C;&#x6578;&#x503C;&#x8D8A;&#x5927;&#x8D8A;&#x512A;&#x5148;&#x3002;</p>
+</li>
+<li><p>Nice&#x503C;: &#x901A;&#x5E38;&#x7BC4;&#x570D;&#x70BA;-20~19&#xFF0C;&#x9810;&#x8A2D;&#x70BA;0&#xFF0C;&#x6578;&#x503C;&#x8D8A;&#x5927;&#x5206;&#x914D;&#x5230;&#x7684;CPU&#x8CC7;&#x6E90;&#x8D8A;&#x5C11;&#x3002;</p>
+</li>
+</ul>
+<h2 id="why-thread">Why thread?</h2>
+<ul>
+<li>&#x5728;Multi-core&#x7684;CPU&#x4E2D;&#xFF0C;Multi-thread&#x7684;process&#x53EF;&#x4EE5;&#x540C;&#x6642;&#x4F7F;&#x7528;&#x591A;&#x500B;&#x6838;&#x5FC3;&#x8A08;&#x7B97;&#xFF0C;&#x7BC0;&#x7701;&#x904B;&#x7B97;&#x6642;&#x9593;&#x3002;</li>
+<li>&#x5728;Process&#x6709;I/O bound&#x7684;&#x90E8;&#x5206;&#x6642;&#xFF0C;&#x53EF;&#x4EE5;&#x5207;&#x51FA;&#x53E6;&#x4E00;&#x500B;thread&#x505A;I/O&#x3002;</li>
+<li>&#x5728;Process&#x9700;&#x8981;&#x7B49;callback&#x6642;&#xFF0C;&#x53EF;&#x4EE5;&#x5207;&#x51FA;&#x4E00;&#x500B;thread&#x7B49;callback&#xFF0C;&#x907F;&#x514D;&#x5F71;&#x97FF;main thread&#x8981;&#x57F7;&#x884C;&#x7684;&#x529F;&#x80FD;&#x3002;</li>
+<li>&#x7C21;&#x5316;process&#x7684;&#x6578;&#x91CF;&#xFF0C;&#x82E5;&#x4E00;&#x500B;process&#x9700;&#x8981;&#x6709;&#x591A;&#x500B;&#x4E0D;&#x76F8;&#x5E72;&#x7684;&#x529F;&#x80FD;&#x540C;&#x6642;&#x57F7;&#x884C;&#xFF0C;&#x4F7F;&#x7528;thread&#x53EF;&#x4EE5;&#x907F;&#x514D;fork&#x51FA;&#x592A;&#x591A;process&#xFF0C;&#x63D0;&#x5347;&#x7BA1;&#x7406;&#x7684;&#x8907;&#x96DC;&#x5EA6;&#x3002;</li>
+</ul>
 
                                 
                                 </section>
@@ -1608,7 +1667,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Thread","level":"1.7.4","depth":2,"next":{"title":"Function pointer","level":"1.7.4.1","depth":3,"path":"cpp_sec/fp.md","ref":"cpp_sec/fp.md","articles":[]},"previous":{"title":"Socket","level":"1.7.3.3.3","depth":4,"path":"cpp_sec/socket.md","ref":"cpp_sec/socket.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cpp_sec/thread.md","mtime":"2021-07-18T06:27:53.978Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-07-18T06:29:07.525Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Thread","level":"1.7.4","depth":2,"next":{"title":"Function pointer","level":"1.7.4.1","depth":3,"path":"cpp_sec/fp.md","ref":"cpp_sec/fp.md","articles":[]},"previous":{"title":"Socket","level":"1.7.3.3.3","depth":4,"path":"cpp_sec/socket.md","ref":"cpp_sec/socket.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cpp_sec/thread.md","mtime":"2021-07-25T09:12:10.861Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-07-25T09:12:44.545Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
