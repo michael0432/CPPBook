@@ -74,10 +74,11 @@
   * [Thread](cpp_sec/thread.md)
     * [Function pointer](cpp_sec/fp.md)
     * [Thread Programming](cpp_sec/thread_programming.md)
+  * [Synchronization](cpp_sec/synchronization.md)
+    * [Peterson Solution]
+    * [Mutex & Semaphore]
   * [Deadlock]
   * [Signal]
-  
-  * [Syncornize]
   * [Memory]
   * [Virtual Memory]
   * [File System]

@@ -40,8 +40,25 @@ User level thread跟Kernel level thread彼此之間有對應的關係，根據�
     * 缺點: 花較多的效能做thread mapping
 
 
+## Thread Priority in Linux
 
+Linux的Thread Priority分成兩個部分：Policy跟Piorirty。
+* Policy: Policy主要分為Normal及Realtime兩個等級，Realtime等級優先度較Normal大。
+    * Normal:
+        * SCHED_OTHER : 預設的Policy，參考nice value決定CPU的分配時間
+    * Realtime:
+        * SCHED_FIFO : First-in-first-out，照次序先後執行
+        * SCHED_RR : 一樣照次序先後執行，但每個time slice的規定
+* Piority: 在Realtime schedule中，可以另外設定Priority，表示在Policy相同時，優先度的順序，Priority的範圍為1~99，數值越大越優先。
 
+* Nice值: 通常範圍為-20~19，預設為0，數值越大分配到的CPU資源越少。
+
+## Why thread?
+
+* 在Multi-core的CPU中，Multi-thread的process可以同時使用多個核心計算，節省運算時間。
+* 在Process有I/O bound的部分時，可以切出另一個thread做I/O。
+* 在Process需要等callback時，可以切出一個thread等callback，避免影響main thread要執行的功能。
+* 簡化process的數量，若一個process需要有多個不相干的功能同時執行，使用thread可以避免fork出太多process，提升管理的複雜度。
 
 
 

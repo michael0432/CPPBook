@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>位元運算 · GitBook</title>
+        <title>Synchronization · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -58,7 +58,7 @@
 
     
     
-    <link rel="prev" href="class.html" />
+    <link rel="prev" href="thread_programming.html" />
     
 
     </head>
@@ -270,7 +270,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.3.12" data-path="bitwise.html">
+        <li class="chapter " data-level="1.3.12" data-path="bitwise.html">
             
                 <a href="bitwise.html">
             
@@ -1183,7 +1183,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7.5" data-path="synchronization.html">
+        <li class="chapter active" data-level="1.7.5" data-path="synchronization.html">
             
                 <a href="synchronization.html">
             
@@ -1535,7 +1535,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >位元運算</a>
+        <a href=".." >Synchronization</a>
     </h1>
 </div>
 
@@ -1550,62 +1550,80 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="&#x4F4D;&#x5143;&#x904B;&#x7B97;">&#x4F4D;&#x5143;&#x904B;&#x7B97;</h1>
-<h6 id="tags--c">tags = <code>C++</code></h6>
-<h3 id="bitwise-operator">Bitwise operator</h3>
-<p>&#x4F4D;&#x5143;&#x904B;&#x7B97;&#x5B50;&#x7528;&#x65BC;&#x8868;&#x793A;bit&#x904B;&#x7B97;&#x7684;&#x908F;&#x8F2F;&#x95DC;&#x4FC2;</p>
-<ul>
-<li>&amp; : and</li>
-<li>| : or</li>
-<li>^ : xor</li>
-<li>| : not</li>
-</ul>
-<pre><code class="lang-cpp=1">#include &lt;iostream&gt;
-using namespace std;
+                                <h1 id="synchronization">Synchronization</h1>
+<h6 id="tags--operating-system">tags = <code>Operating System</code></h6>
+<p>&#x85C9;&#x7531;CPU&#x6392;&#x73ED;&#xFF0C;Process&#x53CA;thread&#x53EF;&#x4EE5;(&#x4E4D;&#x770B;&#x4E4B;&#x4E0B;)&#x5E73;&#x884C;&#x5316;&#x5730;&#x57F7;&#x884C;&#xFF0C;&#x7531;&#x65BC;Context switch&#xFF0C;Process(Thread)&#x6709;&#x53EF;&#x80FD;&#x5728;&#x4EFB;&#x4F55;&#x7684;&#x6642;&#x9593;&#x9EDE;&#x88AB;&#x4E2D;&#x65B7;&#xFF0C;&#x628A;CPU&#x8CC7;&#x6E90;&#x8B93;&#x51FA;&#x7D66;&#x5176;&#x4ED6;&#x7684;Process(Thread)&#x57F7;&#x884C;&#x3002;</p>
+<p>&#x8003;&#x616E;&#x4E00;&#x500B;Producer-Consumer&#x7684;&#x7BC4;&#x4F8B;&#xFF0C;&#x9019;&#x662F;&#x4E00;&#x500B;&#x8EDF;&#x9AD4;&#x5DE5;&#x7A0B;&#x8A2D;&#x8A08;&#x4E0A;&#x5F88;&#x5E38;&#x898B;&#x7684;&#x7BC4;&#x4F8B;&#xFF0C;Producer&#x7684;&#x89D2;&#x8272;&#x70BA;&#x8CC7;&#x6599;&#x7684;&#x63D0;&#x4F9B;&#x8005;&#xFF0C;&#x901A;&#x5E38;&#x6703;&#x5C07;&#x8CC7;&#x6599;&#x5BEB;&#x9032;&#x4E00;&#x584A;Consumer&#x53EF;&#x4EE5;&#x8B80;&#x53D6;&#x7684;Buffer&#x4E2D;(&#x6216;&#x6A94;&#x6848;&#x4E2D;)&#xFF1B;Consumer&#x7684;&#x89D2;&#x8272;&#x70BA;&#x8CC7;&#x6599;&#x7684;&#x4F7F;&#x7528;&#x8005;&#xFF0C;&#x6703;&#x5C07;&#x8CC7;&#x6599;&#x5F9E;&#x4E00;&#x584A;Buffer&#x6216;&#x6A94;&#x6848;&#x4E2D;&#x8B80;&#x53D6;&#x51FA;&#x4F86;&#x4F7F;&#x7528;&#x3002;</p>
+<p>&#x7BC4;&#x4F8B;:
+buffer&#x70BA;&#x5169;&#x8005;&#x5171;&#x6709;&#x7684;Buffer&#xFF0C;Producer&#x4F7F;&#x7528;in&#x7576;&#x4F5C;index&#x8A08;&#x7B97;&#x76EE;&#x524D;buffer&#x5BEB;&#x5230;&#x54EA;&#x500B;&#x4F4D;&#x7F6E;&#xFF1B;Consumer&#x4F7F;&#x7528;out&#x7576;&#x4F5C;index&#x8A08;&#x7B97;&#x76EE;&#x524D;&#x8B80;&#x5230;&#x54EA;&#x500B;&#x4F4D;&#x7F6E;&#xFF0C;&#x5169;&#x8005;&#x4F7F;&#x7528;counter&#x4F86;&#x8A08;&#x7B97;buffer&#x4E2D;&#x76EE;&#x524D;&#x6709;&#x5E7E;&#x7B46;data&#x9084;&#x672A;&#x8B80;&#x53D6;&#x3002;</p>
+<pre><code class="lang-cpp=1">// Producer
+while(true)
+{
+    while(counter == BUFFER_SIZE); // do nothing
+    buffer[in] = next_produced; // next_produced: &#x8981;&#x5BEB;&#x5165;&#x7684;&#x8CC7;&#x6599;
+    in = (in + 1) % BUFFER_SIZE;
+    counter++;
+}
 
-int main() { 
-    cout &lt;&lt; &quot;AND &#xFF1A;&quot; &lt;&lt; endl; 
-    cout &lt;&lt; &quot;0 AND 0\t\t&quot; &lt;&lt; (0 &amp; 0) &lt;&lt; endl; 
-    cout &lt;&lt; &quot;0 AND 1\t\t&quot; &lt;&lt; (0 &amp; 1) &lt;&lt; endl; 
-    cout &lt;&lt; &quot;1 AND 0\t\t&quot; &lt;&lt; (1 &amp; 0) &lt;&lt; endl; 
-    cout &lt;&lt; &quot;1 AND 1\t\t&quot; &lt;&lt; (1 &amp; 1) &lt;&lt; endl; 
-
-    cout &lt;&lt; &quot;OR &#xFF1A;&quot; &lt;&lt; endl; 
-    cout &lt;&lt; &quot;0 OR 0\t\t&quot; &lt;&lt; (0 | 0) &lt;&lt; endl; 
-    cout &lt;&lt; &quot;0 OR 1\t\t&quot; &lt;&lt; (0 | 1) &lt;&lt; endl; 
-    cout &lt;&lt; &quot;1 OR 0\t\t&quot; &lt;&lt; (1 | 0) &lt;&lt; endl; 
-    cout &lt;&lt; &quot;1 OR 1\t\t&quot; &lt;&lt; (1 | 1) &lt;&lt; endl; 
-
-    cout &lt;&lt; &quot;XOR &#xFF1A;&quot; &lt;&lt; endl; 
-    cout &lt;&lt; &quot;0 XOR 0\t\t&quot; &lt;&lt; (0 ^ 0) &lt;&lt; endl; 
-    cout &lt;&lt; &quot;0 XOR 1\t\t&quot; &lt;&lt; (0 ^ 1) &lt;&lt; endl; 
-    cout &lt;&lt; &quot;1 XOR 0\t\t&quot; &lt;&lt; (1 ^ 0) &lt;&lt; endl; 
-    cout &lt;&lt; &quot;1 XOR 1\t\t&quot; &lt;&lt; (1 ^ 1) &lt;&lt; endl; 
-
-    cout &lt;&lt; &quot;NOT &#xFF1A;&quot; &lt;&lt; endl; 
-    cout &lt;&lt; &quot;NOT 0\t\t&quot; &lt;&lt; (!0) &lt;&lt; endl; 
-    cout &lt;&lt; &quot;NOT 1\t\t&quot; &lt;&lt; (!1) &lt;&lt; endl; 
-
-    return 0;
+// Consumer
+while(true)
+{
+    while(counter == 0); // do nothing
+    next_consumed = buffer[out]; // next_consumed: &#x8B80;&#x5230;&#x7684;&#x8CC7;&#x6599;
+    out = (out + 1) % BUFFER_SIZE;
+    counter--;
 }
 </code></pre>
-<p>&#x5728;C/C++&#x4E2D;&#xFF0C;&#x53EF;&#x4EE5;&#x5C0D;&#x4E0D;&#x540C;&#x7684;&#x8CC7;&#x6599;&#x578B;&#x614B;&#x505A;&#x4F4D;&#x5143;&#x904B;&#x7B97;&#xFF1A;</p>
-<pre><code class="lang-cpp=1">int a = 3; // 11
-int b = 2; // 10
-int c = a &amp; b; // 11 &amp; 10 -&gt; 10
-cout &lt;&lt; c &lt;&lt; endl;
-</code></pre>
-<h3 id="&#x5DE6;&#x79FB;&#x8207;&#x53F3;&#x79FB;">&#x5DE6;&#x79FB;&#x8207;&#x53F3;&#x79FB;</h3>
-<h4 id="-&#x5DE6;&#x79FB;&#xFF0C;&#x5C07;&#x6240;&#x6709;bit&#x5F80;&#x5DE6;&#x79FB;">&lt;&lt; : &#x5DE6;&#x79FB;&#xFF0C;&#x5C07;&#x6240;&#x6709;bit&#x5F80;&#x5DE6;&#x79FB;</h4>
-<h4 id="-&#x53F3;&#x79FB;&#xFF0C;&#x5C07;&#x6240;&#x6709;bit&#x5F80;&#x53F3;&#x79FB;">&gt;&gt; : &#x53F3;&#x79FB;&#xFF0C;&#x5C07;&#x6240;&#x6709;bit&#x5F80;&#x53F3;&#x79FB;</h4>
-<pre><code class="lang-cpp=1">int n = 1; // 00...0001
-n = n &lt;&lt; 1; // 00..0010
-n = n &lt;&lt; 2; // 00..1000
-</code></pre>
-<h3 id="&#x5C0F;&#x7DF4;&#x7FD2;">&#x5C0F;&#x7DF4;&#x7FD2;</h3>
 <ul>
-<li><a href="https://leetcode.com/problems/hamming-distance/" target="_blank">https://leetcode.com/problems/hamming-distance/</a></li>
-<li><a href="https://leetcode.com/problems/number-complement/" target="_blank">https://leetcode.com/problems/number-complement/</a></li>
+<li>&#x4E0A;&#x9762;&#x7684;&#x7BC4;&#x4F8B;&#x6703;&#x6709;&#x751A;&#x9EBC;&#x554F;&#x984C;&#x55CE;?</li>
+</ul>
+<h2 id="race-condition">Race Condition</h2>
+<p>&#x7576;&#x5169;&#x500B;process&#x6216;thread&#x540C;&#x6642;&#x5B58;&#x53D6;&#x548C;&#x8655;&#x7406;&#x8CC7;&#x6599;&#x6642;&#xFF0C;&#x6709;&#x53EF;&#x80FD;&#x767C;&#x751F;&#x57F7;&#x884C;&#x7684;&#x7D50;&#x679C;&#x53D6;&#x6C7A;&#x65BC;&#x5B58;&#x53D6;&#x6642;&#x7684;&#x7279;&#x6B8A;&#x9806;&#x5E8F;&#xFF0C;&#x4F7F;&#x5F97;&#x7D50;&#x679C;&#x4E0D;&#x5982;&#x5169;&#x500B;process&#x6216;thread&#x7684;&#x9810;&#x671F;&#xFF0C;&#x9019;&#x7A2E;&#x60C5;&#x6CC1;&#x7A31;&#x70BA;Race Condition&#x3002;&#x70BA;&#x4E86;&#x907F;&#x514D;&#x9019;&#x500B;&#x73FE;&#x8C61;&#xFF0C;&#x6211;&#x5011;&#x5FC5;&#x9808;&#x5C0D;&#x53EF;&#x80FD;&#x767C;&#x751F;Race condition&#x7684;&#x8CC7;&#x6599;&#x505A;&#x51FA;&#x4FDD;&#x8B77;&#xFF0C;&#x4FDD;&#x8B49;&#x540C;&#x6642;&#x53EA;&#x6709;&#x4E00;&#x500B;process&#x6216;thread&#x9032;&#x884C;&#x4FEE;&#x6539;&#xFF0C;&#x9019;&#x500B;&#x9700;&#x8981;&#x505A;&#x4FDD;&#x8B77;&#x7684;&#x7A0B;&#x5F0F;&#x7BC4;&#x570D;&#x7A31;&#x70BA;Critical Section&#x3002;</p>
+<p>&#x4EE5;&#x4E0A;&#x8FF0;&#x7684;&#x4F8B;&#x5B50;&#x4F86;&#x8AAA;&#xFF0C;&#x5728;&#x4E0B;&#x5217;&#x9019;&#x500B;&#x60C5;&#x6CC1;&#x6642;&#x6703;&#x767C;&#x751F;Race Condition:</p>
+<ul>
+<li>&#x5047;&#x8A2D;counter&#x76EE;&#x524D;&#x662F;5</li>
+<li>&#x5047;&#x8A2D;Producer&#x53CA;Customer&#x540C;&#x6642;&#x5404;&#x81EA;&#x57F7;&#x884C;&#x81EA;&#x5DF1;&#x7684;&#x7A0B;&#x5F0F;&#x78BC;<ul>
+<li>&#x4E14;&#x540C;&#x6642;&#x5C0D;counter&#x505A;++&#x6216;--</li>
+</ul>
+</li>
+</ul>
+<pre><code class="lang-cpp=1">// register&#x70BA;&#x5B58;counter&#x503C;&#x7684;CPU&#x66AB;&#x5B58;&#x5668;&#xFF0C;CPU&#x505A;&#x5B8C;&#x904B;&#x7B97;&#x6642;&#x6703;&#x77ED;&#x66AB;&#x7684;&#x5C07;&#x8CC7;&#x6599;&#x5B58;&#x5728;register&#x4E2D;&#xFF0C;&#x4E0D;&#x6703;&#x99AC;&#x4E0A;&#x66F4;&#x65B0;&#x5230;memory
+
+// Producer&#x505A;counter++&#x6642;&#xFF0C;register&#x7684;&#x8B8A;&#x5316;:
+register1 = counter
+register1 = register1 + 1
+counter = register1
+
+// Customer&#x505A;counter--&#x6642;&#xFF0C;register&#x7684;&#x8B8A;&#x5316;:
+register2 = counter
+register2 = register2 - 1
+counter = register2
+</code></pre>
+<p>&#x4E0A;&#x8FF0;&#x7A0B;&#x5F0F;&#x78BC;&#x53EF;&#x4EE5;&#x767C;&#x73FE;&#xFF0C;&#x7576;&#x57F7;&#x884C;&#x9806;&#x5E8F;&#x70BA;&#x4E0B;&#x6642;&#xFF0C;&#x6703;&#x767C;&#x751F;&#x932F;&#x8AA4;:</p>
+<pre><code>Producer&#x57F7;&#x884C;regiset1 = counter                // register1 = 5
+Producer&#x57F7;&#x884C;register1 = register1 + 1         // register1 = 6
+Customer&#x57F7;&#x884C;register2 = counter               // register2 = 5
+Customer&#x57F7;&#x884C;register2 = register2 - 1         // register2 = 4
+Producer&#x57F7;&#x884C;counter = register1               // counter = 6
+Customer&#x57F7;&#x884C;counter = register2               // counter = 4
+</code></pre><p>&#x5F9E;&#x7D50;&#x679C;&#x767C;&#x73FE;&#xFF0C;&#x5169;&#x8005;&#x6700;&#x5F8C;&#x62FF;&#x5230;&#x7684;counter&#x503C;&#x5206;&#x5225;&#x70BA;6&#x8207;4&#xFF0C;&#x4E0D;&#x7B26;&#x5408;&#x9810;&#x671F;&#xFF0C;&#x6B63;&#x78BA;&#x7684;counter&#x503C;&#x61C9;&#x8A72;&#x70BA;5&#x3002;
+&#x4E0A;&#x8FF0;&#x7684;&#x72C0;&#x6CC1;&#x5728;&#x591A;&#x6838;&#x5FC3;&#x7CFB;&#x7D71;&#x53CA;Multithread&#x7684;&#x60C5;&#x6CC1;&#x4E0B;&#x7279;&#x5225;&#x5BB9;&#x6613;&#x767C;&#x751F;&#xFF0C;&#x56E0;&#x6B64;&#xFF0C;&#x6211;&#x5011;&#x9700;&#x8981;&#x8A2D;&#x8A08;&#x6A5F;&#x5236;&#x4F86;&#x907F;&#x514D;Race condition&#x3002;</p>
+<h2 id="critical-section">Critical Section</h2>
+<p>Critical section&#x70BA;process&#x6216;thread&#x4E2D;&#xFF0C;&#x53EF;&#x80FD;&#x6703;&#x767C;&#x751F;race condition&#x7684;&#x7A0B;&#x5F0F;&#x5340;&#x9593;&#xFF0C;&#x4F8B;&#x5982;&#x9019;&#x6BB5;&#x7A0B;&#x5F0F;&#x78BC;&#x6703;&#x5C0D;&#x8207;&#x5176;&#x4ED6;process&#x5171;&#x7528;&#x7684;&#x53C3;&#x6578;&#x6216;&#x8CC7;&#x6599;&#x505A;&#x66F4;&#x65B0;&#x7B49;&#x7B49;&#x3002;&#x7576;&#x4E00;&#x500B;process&#x6216;thread&#x5728;&#x57F7;&#x884C;&#x5176;Critical section&#x6642;&#xFF0C;&#x8981;&#x907F;&#x514D;&#x5176;&#x4ED6;process&#x6216;thread&#x57F7;&#x884C;&#x5B83;&#x5011;&#x7684;critical section&#x3002;</p>
+<p>&#x6240;&#x4EE5;&#x6211;&#x5011;&#x53EF;&#x4EE5;&#x5C07;&#x4E00;&#x500B;process&#x6216;thread&#x5206;&#x6210;&#x4EE5;&#x4E0B;&#x7684;&#x90E8;&#x5206;:</p>
+<pre><code class="lang-cpp=1">while()
+{
+    entry section // &#x8981;&#x6C42;&#x9032;&#x5165;critical secition&#x7684;&#x7A0B;&#x5F0F;&#x78BC;
+    critical section
+    exit section // &#x5BA3;&#x544A;&#x96E2;&#x958B;critical section&#x7684;&#x7A0B;&#x5F0F;&#x78BC;
+    remainder section // &#x4E0D;&#x9808;&#x4FDD;&#x8B77;&#x7684;&#x5340;&#x9593;
+}
+</code></pre>
+<p>&#x5047;&#x8A2D;&#x4E00;&#x500B;&#x7CFB;&#x7D71;&#x542B;&#x6709;n&#x500B;process {P0...Pn-1}&#xFF0C;Critcal section&#x7684;&#x8A2D;&#x8A08;&#x8981;&#x6EFF;&#x8DB3;&#x4E0B;&#x5217;&#x4E09;&#x9EDE;:</p>
+<ul>
+<li>Mutual exclustion: &#x5982;&#x679C;Pi&#x6B63;&#x5728;&#x57F7;&#x884C;&#x5176;critical section&#xFF0C;&#x5176;&#x4ED6;Process&#x4E0D;&#x80FD;&#x57F7;&#x884C;&#x5176;critical section</li>
+<li>Progress: &#x5982;&#x679C;&#x6C92;&#x6709;process&#x6B63;&#x5728;&#x57F7;&#x884C;&#x5176;critical section&#xFF0C;&#x4E14;&#x6709;process&#x60F3;&#x8981;&#x9032;&#x5165;critical section&#xFF0C;&#x53EA;&#x6709;&#x4E0D;&#x5728;remainder section&#x7684;process&#x53EF;&#x4EE5;&#x6C7A;&#x5B9A;&#x8AB0;&#x53EF;&#x4EE5;&#x9032;&#x5165;critical section&#xFF0C;&#x800C;&#x4E14;&#x5FC5;&#x9808;&#x5728;&#x6642;&#x9593;&#x5167;&#x505A;&#x51FA;&#x9078;&#x64C7;&#xFF0C;&#x907F;&#x514D;&#x7121;&#x6B62;&#x5883;&#x7684;&#x4E92;&#x76F8;&#x7B49;&#x5F85;&#x3002;</li>
+<li>Bounded waiting: &#x7576;&#x6709;&#x591A;&#x500B;process&#x5728;&#x7B49;&#x5F85;&#x9032;&#x5165;critical section&#x6642;&#xFF0C;&#x4E0D;&#x80FD;&#x7121;&#x9650;&#x5236;&#x5730;&#x7B49;&#x5F85;&#xFF0C;&#x8981;&#x6709;&#x4E00;&#x500B;&#x6A5F;&#x5236;&#x78BA;&#x8A8D;&#x5176;&#x4ED6;process&#x9032;&#x5165;critical section&#x7684;&#x6B21;&#x6578;&#x662F;&#x6709;&#x9650;&#x7684;&#x3002;</li>
 </ul>
 
                                 
@@ -1634,7 +1652,7 @@ n = n &lt;&lt; 2; // 00..1000
 
             
                 
-                <a href="class.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Struct/Object">
+                <a href="thread_programming.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Thread Programming">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
@@ -1646,7 +1664,7 @@ n = n &lt;&lt; 2; // 00..1000
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"位元運算","level":"1.3.12","depth":2,"next":{"title":"[Sort]","level":"1.3.13","depth":2,"ref":"","articles":[]},"previous":{"title":"Struct/Object","level":"1.3.11","depth":2,"path":"cpp_sec/class.md","ref":"cpp_sec/class.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cpp_sec/bitwise.md","mtime":"2021-07-18T06:29:09.205Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-07-25T09:12:44.545Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Synchronization","level":"1.7.5","depth":2,"next":{"title":"[Peterson Solution]","level":"1.7.5.1","depth":3,"ref":"","articles":[]},"previous":{"title":"Thread Programming","level":"1.7.4.2","depth":3,"path":"cpp_sec/thread_programming.md","ref":"cpp_sec/thread_programming.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cpp_sec/synchronization.md","mtime":"2021-07-25T09:11:56.679Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-07-25T09:12:44.545Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
