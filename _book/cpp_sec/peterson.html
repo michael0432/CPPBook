@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>BFS · GitBook</title>
+        <title>Peterson Solution · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="dfs.html" />
+    <link rel="next" href="mutex.html" />
     
     
-    <link rel="prev" href="avl.html" />
+    <link rel="prev" href="synchronization.html" />
     
 
     </head>
@@ -582,7 +582,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.5.7.2" data-path="bfs.html">
+        <li class="chapter " data-level="1.5.7.2" data-path="bfs.html">
             
                 <a href="bfs.html">
             
@@ -1199,7 +1199,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.7.5.1" data-path="peterson.html">
+        <li class="chapter active" data-level="1.7.5.1" data-path="peterson.html">
             
                 <a href="peterson.html">
             
@@ -1537,7 +1537,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >BFS</a>
+        <a href=".." >Peterson Solution</a>
     </h1>
 </div>
 
@@ -1552,98 +1552,48 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="bfs">BFS</h1>
-<h6 id="tags--data-structure">tags = <code>Data Structure</code></h6>
-<p>&#x7D66;&#x4E00;&#x5F35;Graph&#xFF0C;&#x8981;&#x600E;&#x9EBC;&#x904D;&#x6B77;&#x9019;&#x5F35;&#x5716;&#xFF1F;&#xFF08;&#x8B80;&#x5230;&#x5716;&#x4E2D;&#x7684;&#x6BCF;&#x500B;Node&#xFF09;</p>
-<ul>
-<li>BFS(Breadth-fisrt Search)<ul>
-<li>&#x5F9E;&#x5716;&#x7684;&#x4E00;&#x500B;Vertex&#x51FA;&#x767C;</li>
-<li>&#x5148;&#x8D70;&#x96E2;&#x8A72;Vertex&#x76F8;&#x9130;&#x7684;Vertex(&#x8DDD;&#x96E2;&#x70BA;1)</li>
-<li>&#x518D;&#x8D70;&#x5230;&#x8DDD;&#x96E2;&#x70BA;2&#x7684;Vertex</li>
-<li>&#x76F4;&#x5230;&#x8D70;&#x5230;&#x6700;&#x9060;&#x7684;&#x9EDE;&#xFF08;&#x8D70;&#x5B8C;&#x6240;&#x6709;&#x9EDE;&#xFF09;</li>
+                                <h1 id="peterson-solution">Peterson Solution</h1>
+<h6 id="tags--operating-system">tags = <code>Operating System</code></h6>
+<p>Peterson Solution&#x4E00;&#x500B;&#x4EE5;software&#x70BA;&#x57FA;&#x790E;&#x89E3;&#x6C7A;Critical Section&#x554F;&#x984C;&#x7684;&#x65B9;&#x6CD5;&#x3002;Peterson solution&#x7528;&#x65BC;&#x89E3;&#x6C7A;&#x5169;&#x500B;Process&#x5728;critical section&#x8DDF;reminder section&#x4EA4;&#x66FF;&#x57F7;&#x884C;&#x6642;&#xFF0C;&#x907F;&#x514D;Race condition&#x7684;&#x65B9;&#x6CD5;&#x3002;</p>
+<p>&#x9700;&#x8981;&#x6709;&#x5169;&#x500B;&#x8B8A;&#x6578;&#x8B93;&#x5169;&#x500B;Process Pi, Pj&#x5171;&#x7528;:</p>
+<pre><code>int turn;
+boolean flag[2];
+</code></pre><ul>
+<li>turn: &#x8868;&#x793A;&#x8F2A;&#x5230;&#x8AB0;&#x9032;&#x5165;critical section&#x3002;turn = i&#x8868;&#x793A;Pi&#x9032;&#x5165;critical section&#x3002;</li>
+<li>flag&#x8868;&#x793A;&#x4E00;&#x500B;process&#x662F;&#x5426;&#x6E96;&#x5099;&#x597D;&#x53EF;&#x4EE5;&#x9032;&#x5165;critical section<ul>
+<li>flag[i] == true&#x8868;&#x793A;Pi&#x6E96;&#x5099;&#x597D;&#x9032;&#x5165;critical section</li>
 </ul>
 </li>
 </ul>
-<p><img src="https://i.imgur.com/OqbqQjQ.png" alt=""></p>
-<ul>
-<li>DFS(Depth-first Search)</li>
-</ul>
-<p>&#x60F3;&#x8981;&#x4F9D;&#x7167;BFS&#x7684;&#x9806;&#x5E8F;&#x8D70;&#x5B8C;&#x6240;&#x6709;&#x9EDE;&#xFF0C;&#x53EF;&#x4EE5;&#x60F3;&#x6210;&#x627E;&#x51FA;&#x5C1A;&#x672A;&#x904D;&#x6B77;&#x7684;&#x9EDE;&#x7576;&#x505A;&#x8D77;&#x9EDE;&#xFF1A;</p>
-<ol>
-<li>&#x628A;&#x8D77;&#x9EDE;&#x653E;&#x5165;queue</li>
-<li>&#x62FF;&#x51FA;queue&#x7684;front</li>
-<li>&#x627E;&#x51FA;&#x8207;queue.front()&#x76F8;&#x9130;&#x7684;&#x9EDE;&#x653E;&#x5165;queue</li>
-<li>queue.pop()</li>
-<li>&#x91CD;&#x8907;2~4&#x76F4;&#x5230;queue&#x70BA;&#x7A7A;</li>
-</ol>
-<p><img src="https://i.imgur.com/kFEzg9G.png" alt=""></p>
-<h3 id="traverse-tree">Traverse Tree</h3>
-<pre><code class="lang-cpp=1">struct Node{
-    int data;
-    vector&lt;*Node&gt; neigh; 
-}; 
-
-void bfs(Node* first){
-    queue&lt;Node*&gt; q;
-    q.push(first);
-    while(!q.empty()){
-        // do what u want
-        q.front()-&gt;val;
-        //
-        for(int i=0 ; i&lt;q.front()-&gt;neigh.size() ; i++){
-            q.push(q.front()-&gt;neigh[i]);
-        }
-        q.pop();
-    }
+<p>Peterson solution:</p>
+<pre><code class="lang-cpp=1">// Process i
+do
+{
+    flag[i] = true; // Process i &#x6E96;&#x5099;&#x597D;&#x9032;&#x5165;critical section
+    turn = j;  // &#x5148;&#x628A;turn&#x8B93;&#x7D66;j
+    while(flag[j] &amp;&amp; turn == j); // &#x5982;&#x679C;turn&#x662F;j&#x4E14;j&#x6E96;&#x5099;&#x597D;&#x9032;&#x5165;critical section&#xFF0C;&#x5C31;&#x8981;&#x7B49;j&#x505A;&#x5B8C;&#xFF0C;&#x7B49;j&#x505A;&#x5B8C;&#x5F8C;&#xFF0C;&#x6703;&#x628A;flag[j] = false
+        critical section
+    flag[i] = false; // &#x505A;&#x5B8C;critical section&#xFF0C;flag[i] = false
+        remainder section
 }
+while(true);
 </code></pre>
-<h3 id="traverse-graph">Traverse Graph</h3>
-<p>&#x4E0A;&#x9762;&#x7684;&#x4F8B;&#x5B50;&#x53EA;&#x80FD;&#x904D;&#x6B77;&#x6574;&#x500B;Tree&#xFF0C;&#x4F46;&#x82E5;&#x60F3;&#x904D;&#x6B77;Graph&#xFF0C;&#x6703;&#x78B0;&#x5230;&#x4E00;&#x554F;&#x984C;&#xFF1A;&#x6703;&#x904D;&#x6B77;&#x5230;&#x91CD;&#x8907;&#x7684;&#x9EDE;&#x5C0E;&#x81F4;&#x904D;&#x6B77;&#x7684;&#x9806;&#x5E8F;&#x6DF7;&#x4E82;&#xFF0C;&#x56E0;&#x6B64;&#x6211;&#x5011;&#x9700;&#x8981;&#x5728;Node&#x4E2D;&#x52A0;&#x5165;&#x4E00;&#x500B;&#x8B8A;&#x6578;&#x5132;&#x5B58;Node&#x7684;&#x72C0;&#x614B;&#xFF0C;&#x5728;&#x4E0A;&#x5716;&#x4E2D;&#x7528;&#x767D;&#x3001;&#x7070;&#x3001;&#x9ED1;&#x8868;&#x793A;&#x3002;</p>
+<p>&#x70BA;&#x4E86;&#x8B49;&#x660E;&#x4E0A;&#x9762;&#x7684;&#x89E3;&#x6CD5;&#x662F;&#x5C0D;&#x7684;&#xFF0C;&#x6211;&#x5011;&#x8981;&#x78BA;&#x8A8D;&#x9019;&#x500B;&#x89E3;&#x6CD5;&#x7B26;&#x5408;&#x89E3;&#x6C7A;Critical section&#x7684;&#x4E09;&#x500B;&#x689D;&#x4EF6;:</p>
 <ul>
-<li>&#x767D;&#xFF1A;&#x9084;&#x672A;&#x904D;&#x6B77;&#x5230;&#x6B64;Node&#xFF08;&#x672A;&#x653E;&#x9032;Queue&#xFF09;</li>
-<li>&#x7070;&#xFF1A;&#x904D;&#x6B77;&#x5230;&#x6B64;Node&#xFF0C;&#x4F46;&#x5C1A;&#x672A;&#x96E2;&#x958B;Queue</li>
-<li>&#x9ED1;&#xFF1A;&#x5DF2;&#x7D93;&#x904D;&#x6B77;&#x5B8C;&#x6B64;Node&#xFF08;&#x5DF2;pop&#x6389;&#xFF09;</li>
+<li>Mutual exclustion: &#x5982;&#x679C;Pi&#x6B63;&#x5728;&#x57F7;&#x884C;&#x5176;critical section&#xFF0C;&#x5176;&#x4ED6;Process&#x4E0D;&#x80FD;&#x57F7;&#x884C;&#x5176;critical section<ul>
+<li>&#x7576;Pi&#x6B63;&#x5728;&#x8DD1;critical section&#x7684;&#x6642;&#x5019;&#xFF0C;&#x7531;&#x65BC;turn == i&#x4E14;flag[i] == 0&#xFF0C;Pj&#x6703;&#x88AB;&#x5361;&#x5728;while&#xFF0C;&#x4E0D;&#x6703;&#x9032;&#x5165;critical section</li>
 </ul>
-<pre><code class="lang-cpp=1">struct Node{
-    int data;
-    int status; //&#x767D;:0, &#x7070;:1, &#x9ED1;:2
-    vector&lt;*Node&gt; neigh; 
-}; 
-
-void bfs(Node* first){
-    queue&lt;Node*&gt; q;
-    q.push(first);
-    while(!q.empty()){
-        q.front()-&gt;status = 1;
-        // do what u want
-        q.front()-&gt;val;
-        //
-        int size = q.size();
-        for(int d=0 ; d&lt;size ; d++){
-            // &#x4E00;&#x5C64;
-            for(int i=0 ; i&lt;q.front()-&gt;neigh.size() ; i++){
-                // &#x4E00;&#x500B;&#x9130;&#x5C45;&#xFF0C;&#x767D;&#x8272;&#x624D;&#x653E;&#x9032;queue
-                if(q.front()-&gt;neigh[i]-&gt;status == 0){
-                    q.push(q.front()-&gt;neigh[i]);
-                }
-            }
-            q.front()-&gt;status = 2;
-            q.pop();
-        }
-    }
-}
-</code></pre>
-<ul>
-<li>Follow up: &#x662F;&#x4E0D;&#x662F;&#x4E0D;&#x9700;&#x8981;&#x5B58;&#x767D;&#x7070;&#x9ED1;&#x4E09;&#x7A2E;&#x72C0;&#x614B;?</li>
+</li>
+<li>Progress: &#x5982;&#x679C;&#x6C92;&#x6709;process&#x6B63;&#x5728;&#x57F7;&#x884C;&#x5176;critical section&#xFF0C;&#x4E14;&#x6709;process&#x60F3;&#x8981;&#x9032;&#x5165;critical section&#xFF0C;&#x53EA;&#x6709;&#x4E0D;&#x5728;remainder section&#x7684;process&#x53EF;&#x4EE5;&#x6C7A;&#x5B9A;&#x8AB0;&#x53EF;&#x4EE5;&#x9032;&#x5165;critical section&#xFF0C;&#x800C;&#x4E14;&#x5FC5;&#x9808;&#x5728;&#x6642;&#x9593;&#x5167;&#x505A;&#x51FA;&#x9078;&#x64C7;&#xFF0C;&#x907F;&#x514D;&#x7121;&#x6B62;&#x5883;&#x7684;&#x4E92;&#x76F8;&#x7B49;&#x5F85;&#x3002;<ul>
+<li>&#x5982;&#x679C;Pi&#x6C92;&#x6E96;&#x5099;&#x597D;&#x9032;&#x5165;critical section&#xFF0C;&#x8868;&#x793A;flag[i] == false&#xFF0C;&#x6B64;&#x6642;Pj&#x4E00;&#x5B9A;&#x53EF;&#x4EE5;&#x9032;&#x5165;critical section</li>
 </ul>
-<h3 id="&#x5C0F;&#x7DF4;&#x7FD2;">&#x5C0F;&#x7DF4;&#x7FD2;</h3>
-<ul>
-<li><a href="https://leetcode.com/problems/binary-tree-right-side-view/" target="_blank">https://leetcode.com/problems/binary-tree-right-side-view/</a></li>
-<li><a href="https://leetcode.com/problems/maximum-level-sum-of-a-binary-tree/" target="_blank">https://leetcode.com/problems/maximum-level-sum-of-a-binary-tree/</a></li>
-<li><a href="https://leetcode.com/problems/cousins-in-binary-tree/" target="_blank">https://leetcode.com/problems/cousins-in-binary-tree/</a></li>
-<li><a href="https://leetcode.com/problems/jump-game-iii/" target="_blank">https://leetcode.com/problems/jump-game-iii/</a></li>
-<li><a href="https://www.hackerrank.com/challenges/bfsshortreach/problem" target="_blank">https://www.hackerrank.com/challenges/bfsshortreach/problem</a></li>
+</li>
+<li>Bounded waiting: &#x7576;&#x6709;&#x591A;&#x500B;process&#x5728;&#x7B49;&#x5F85;&#x9032;&#x5165;critical section&#x6642;&#xFF0C;&#x4E0D;&#x80FD;&#x7121;&#x9650;&#x5236;&#x5730;&#x7B49;&#x5F85;&#xFF0C;&#x8981;&#x6709;&#x4E00;&#x500B;&#x6A5F;&#x5236;&#x78BA;&#x8A8D;&#x5176;&#x4ED6;process&#x9032;&#x5165;critical section&#x7684;&#x6B21;&#x6578;&#x662F;&#x6709;&#x9650;&#x7684;&#x3002;<ul>
+<li>&#x4E00;&#x65E6;Pi&#x5B8C;&#x6210;&#x5176;critical section&#xFF0C;&#x5361;&#x5728;while&#x7684;Pj&#x4E00;&#x5B9A;&#x53EF;&#x4EE5;&#x5148;&#x9032;&#x5165;critical section&#xFF0C;&#x56E0;&#x70BA;&#x6B64;&#x6642;turn = j&#xFF0C;Pi&#x6703;&#x88AB;&#x5361;&#x5728;while</li>
 </ul>
+</li>
+</ul>
+<h3 id="&#x5982;&#x679C;whileflagj--turn--j&#x5C11;&#x4E86;&#x4EFB;&#x4E00;&#x500B;&#x689D;&#x4EF6;&#xFF0C;&#x9084;&#x6703;&#x7B26;&#x5408;&#x9019;&#x4E09;&#x500B;&#x689D;&#x4EF6;&#x55CE;">&#x5982;&#x679C;while(flag[j] &amp;&amp; turn == j)&#x5C11;&#x4E86;&#x4EFB;&#x4E00;&#x500B;&#x689D;&#x4EF6;&#xFF0C;&#x9084;&#x6703;&#x7B26;&#x5408;&#x9019;&#x4E09;&#x500B;&#x689D;&#x4EF6;&#x55CE;?</h3>
 
                                 
                                 </section>
@@ -1671,12 +1621,12 @@ void bfs(Node* first){
 
             
                 
-                <a href="avl.html" class="navigation navigation-prev " aria-label="Previous page: AVL Tree">
+                <a href="synchronization.html" class="navigation navigation-prev " aria-label="Previous page: Synchronization">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="dfs.html" class="navigation navigation-next " aria-label="Next page: DFS">
+                <a href="mutex.html" class="navigation navigation-next " aria-label="Next page: Mutex & Semaphore">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1687,7 +1637,7 @@ void bfs(Node* first){
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"BFS","level":"1.5.7.2","depth":3,"next":{"title":"DFS","level":"1.5.7.3","depth":3,"path":"cpp_sec/dfs.md","ref":"cpp_sec/dfs.md","articles":[]},"previous":{"title":"AVL Tree","level":"1.5.7.1.2","depth":4,"path":"cpp_sec/avl.md","ref":"cpp_sec/avl.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cpp_sec/bfs.md","mtime":"2021-07-25T09:18:00.937Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-08-01T12:06:19.698Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Peterson Solution","level":"1.7.5.1","depth":3,"next":{"title":"Mutex & Semaphore","level":"1.7.5.2","depth":3,"path":"cpp_sec/mutex.md","ref":"cpp_sec/mutex.md","articles":[]},"previous":{"title":"Synchronization","level":"1.7.5","depth":2,"path":"cpp_sec/synchronization.md","ref":"cpp_sec/synchronization.md","articles":[{"title":"Peterson Solution","level":"1.7.5.1","depth":3,"path":"cpp_sec/peterson.md","ref":"cpp_sec/peterson.md","articles":[]},{"title":"Mutex & Semaphore","level":"1.7.5.2","depth":3,"path":"cpp_sec/mutex.md","ref":"cpp_sec/mutex.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cpp_sec/peterson.md","mtime":"2021-08-01T12:04:37.859Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-08-01T12:06:19.698Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

@@ -75,8 +75,8 @@
     * [Function pointer](cpp_sec/fp.md)
     * [Thread Programming](cpp_sec/thread_programming.md)
   * [Synchronization](cpp_sec/synchronization.md)
-    * [Peterson Solution]
-    * [Mutex & Semaphore]
+    * [Peterson Solution](cpp_sec/peterson.md)
+    * [Mutex & Semaphore](cpp_sec/mutex.md)
   * [Deadlock]
   * [Signal]
   * [Memory]

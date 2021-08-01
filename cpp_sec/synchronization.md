@@ -79,7 +79,7 @@ while()
 }
 ```
 
-假設一個系統含有n個process {P0...Pn-1}，Critcal section的設計要滿足下列三點:
+假設一個系統含有n個process {P0...Pn-1}，解決Critcal section的設計要滿足下列三點:
 * Mutual exclustion: 如果Pi正在執行其critical section，其他Process不能執行其critical section
 * Progress: 如果沒有process正在執行其critical section，且有process想要進入critical section，只有不在remainder section的process可以決定誰可以進入critical section，而且必須在時間內做出選擇，避免無止境的互相等待。
 * Bounded waiting: 當有多個process在等待進入critical section時，不能無限制地等待，要有一個機制確認其他process進入critical section的次數是有限的。
