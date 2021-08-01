@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Thread · GitBook</title>
+        <title>Git · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="fp.html" />
+    <link rel="next" href="cpp.html" />
     
     
-    <link rel="prev" href="socket.html" />
+    <link rel="prev" href="../" />
     
 
     </head>
@@ -102,7 +102,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2" data-path="git_basic.html">
+        <li class="chapter active" data-level="1.2" data-path="git_basic.html">
             
                 <a href="git_basic.html">
             
@@ -1140,7 +1140,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.7.4" data-path="thread.html">
+        <li class="chapter " data-level="1.7.4" data-path="thread.html">
             
                 <a href="thread.html">
             
@@ -1537,7 +1537,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Thread</a>
+        <a href=".." >Git</a>
     </h1>
 </div>
 
@@ -1552,77 +1552,59 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="thread">Thread</h1>
-<h6 id="tags--operating-system">tags = <code>Operating System</code></h6>
-<p>Thread(&#x57F7;&#x884C;&#x7DD2;)&#x662F;&#x4F5C;&#x696D;&#x7CFB;&#x7D71;&#x53EF;&#x4EE5;&#x904B;&#x7B97;&#x6392;&#x7A0B;&#x7684;&#x6700;&#x5C0F;&#x55AE;&#x4F4D;&#xFF0C;&#x4E00;&#x500B;Process&#x53EF;&#x4EE5;&#x64C1;&#x6709;&#x591A;&#x500B;Thread&#xFF0C;&#x6BCF;&#x500B;Thread&#x53EF;&#x4EE5;&#x57F7;&#x884C;&#x4E0D;&#x540C;&#x7684;&#x4EFB;&#x52D9;&#xFF0C;&#x5728;User space&#x7684;&#x89C0;&#x9EDE;&#x4E0B;&#xFF0C;&#x9019;&#x4E9B;thread&#x662F;&#x985E;&#x4F3C;&#x5E73;&#x884C;&#x5316;&#x7684;&#x904B;&#x7B97;(&#x5BE6;&#x969B;&#x4E0A;&#x4E26;&#x4E0D;&#x662F;&#xFF0C;&#x591A;&#x500B;thread&#x6703;&#x6839;&#x64DA;CPU&#x7684;&#x6392;&#x7A0B;&#x5728;&#x4E0D;&#x540C;&#x6642;&#x9593;&#x5167;&#x62FF;&#x5230;CPU&#x7684;&#x904B;&#x7B97;&#x8CC7;&#x6E90;)&#x3002;</p>
-<p><img src="https://i.imgur.com/8peU4uM.png" alt=""></p>
-<p>&#x5728;&#x4E00;&#x500B;process&#x4E2D;&#x7684;&#x5404;&#x500B;thread&#x53EF;&#x4EE5;&#x5171;&#x4EAB;process&#x7684;&#x90E8;&#x4EFD;&#x8CC7;&#x6E90;&#xFF0C;&#x4F8B;&#x5982;&#x958B;&#x555F;&#x7684;&#x6A94;&#x6848;&#x3001;&#x5168;&#x57DF;&#x8B8A;&#x6578;&#x7B49;&#x7B49;&#x3002;&#x4F46;&#x540C;&#x6642;&#xFF0C;&#x5404;&#x500B;thread&#x4E5F;&#x64C1;&#x6709;&#x5404;&#x81EA;&#x7684;register&#x53CA;stack&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x4E0D;&#x88AB;&#x5176;&#x4ED6;thread&#x5E72;&#x64FE;&#x7684;&#x5340;&#x57DF;&#x8B8A;&#x6578;&#x3002;</p>
-<h2 id="multi-thread-vs-multi-process">Multi-Thread V.S. Multi-Process</h2>
+                                <h1 id="git-basic">Git Basic</h1>
+<h6 id="tags--git">tags = <code>Git</code></h6>
+<p>Git&#x662F;&#x4E00;&#x500B;&#x7528;&#x65BC;&#x7248;&#x672C;&#x63A7;&#x5236;&#x7684;&#x7CFB;&#x7D71;&#xFF0C;&#x53EF;&#x4EE5;&#x628A;&#x6A94;&#x6848;&#x66F4;&#x65B0;&#x7684;&#x7D00;&#x9304;&#x4FDD;&#x5B58;&#x4E0B;&#x4F86;&#xFF0C;&#x4E26;&#x4E14;&#x53EF;&#x4EE5;&#x65B9;&#x4FBF;&#x5730;&#x5728;&#x4E0D;&#x540C;&#x7248;&#x672C;&#x7684;&#x6A94;&#x6848;&#x4E2D;&#x505A;&#x5207;&#x63DB;&#xFF0C;&#x628A;&#x7DE8;&#x8F2F;&#x904E;&#x7684;&#x6A94;&#x6848;&#x56DE;&#x5230;&#x4EE5;&#x524D;&#x7684;&#x72C0;&#x614B;&#x3002;</p>
+<p>&#x53EF;&#x4EE5;&#x7C21;&#x55AE;&#x7684;&#x628A;&#x7248;&#x672C;&#x63A7;&#x5236;&#x5206;&#x6210;&#x5169;&#x500B;&#x90E8;&#x5206;&#xFF0C;&#x4E00;&#x500B;&#x662F;&#x73FE;&#x5728;&#x672C;&#x6A5F;&#x7AEF;&#x7684;&#x7A0B;&#x5F0F;&#x78BC;(local)&#xFF1B;&#x53E6;&#x4E00;&#x500B;&#x662F;git server&#x4E0A;&#x7684;&#x7A0B;&#x5F0F;&#x78BC;(remote)&#xFF0C;&#x6BCF;&#x6B21;&#x505A;&#x5B8C;&#x4FEE;&#x6539;&#x5F8C;&#xFF0C;&#x672C;&#x6A5F;&#x7AEF;&#x7684;&#x7A0B;&#x5F0F;&#x78BC;&#x6703;&#x88AB;&#x6539;&#x8B8A;&#xFF0C;&#x53EF;&#x4EE5;&#x5C07;&#x672C;&#x6A5F;&#x7AEF;&#x7684;&#x7A0B;&#x5F0F;&#x78BC;&#x4E0A;&#x50B3;&#x5230;server&#x4E0A;&#xFF0C;server&#x4E0A;&#x4FBF;&#x6703;&#x5B58;&#x4E0B;&#x9019;&#x6B21;&#x7684;&#x6539;&#x8B8A;&#x3002;</p>
+<h2 id="download--install">Download &amp; Install</h2>
+<p>Github : <a href="https://github.com/" target="_blank">https://github.com/</a> 
+Download : <a href="https://desktop.github.com/" target="_blank">https://desktop.github.com/</a>
+Source Tree (&#x5716;&#x50CF;&#x5316;&#x7684;git&#x4ECB;&#x9762;) : <a href="https://www.sourcetreeapp.com/" target="_blank">https://www.sourcetreeapp.com/</a></p>
+<p>&#x5B89;&#x88DD;&#x5B8C;&#x4E4B;&#x5F8C;&#x6703;&#x6709;Git bash&#xFF0C;&#x53EF;&#x4EE5;&#x7528;&#x4F86;&#x57F7;&#x884C;git&#x76F8;&#x95DC;&#x7684;&#x6307;&#x4EE4;</p>
+<h3 id="new-repository">New repository</h3>
+<p>&#x5230;Github&#x7684;&#x9996;&#x9801;(<a href="https://github.com/)&#xFF0C;&#x8FA6;&#x597D;&#x5E33;&#x865F;&#x4E4B;&#x5F8C;&#x9EDE;&#x9078;new" target="_blank">https://github.com/)&#xFF0C;&#x8FA6;&#x597D;&#x5E33;&#x865F;&#x4E4B;&#x5F8C;&#x9EDE;&#x9078;new</a> repository
+<img src="https://i.imgur.com/7jGPAsm.png" alt=""></p>
+<p><img src="https://i.imgur.com/avlDho6.png" alt=""></p>
 <ul>
-<li>Multi-process:<ul>
-<li>Process&#x9593;&#x900F;&#x904E;pipe/fifo/socket&#x6E9D;&#x901A;&#x3001;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x5171;&#x4EAB;&#x7684;&#x8CC7;&#x6E90;&#x4E0D;&#x591A;</li>
-<li>&#x4E0D;&#x540C;&#x7684;Process&#x7684;&#x4F7F;&#x7528;&#x8005;&#x53EF;&#x80FD;&#x4E0D;&#x540C;</li>
-<li>&#x65B0;&#x589E;&#x4E00;&#x500B;process(fork())&#x6D88;&#x8017;&#x7684;&#x8CC7;&#x6E90;&#x8DDF;&#x82B1;&#x8CBB;&#x7684;&#x6642;&#x9593;&#x8F03;&#x5927;</li>
-<li>Context switch&#x82B1;&#x7684;&#x6642;&#x9593;&#x8F03;&#x9577;</li>
+<li>Repository name : Project&#x7684;&#x540D;&#x5B57;</li>
+<li>Public / Private : &#x516C;&#x958B;&#x8207;&#x5426;&#xFF0C;&#x4E00;&#x822C;&#x7684;&#x5E33;&#x865F;&#x53EA;&#x80FD;&#x9078;&#x516C;&#x958B;</li>
 </ul>
-</li>
-<li>Multi-thread:<ul>
-<li>Thread&#x9593;&#x53EF;&#x4EE5;&#x900F;&#x904E;process&#x7684;&#x5167;&#x90E8;&#x8CC7;&#x6E90;&#x6E9D;&#x901A;</li>
-<li>&#x540C;&#x4E00;&#x500B;user&#x4F7F;&#x7528;</li>
-<li>&#x65B0;&#x589E;&#x4E00;&#x500B;thread&#x82B1;&#x8CBB;&#x7684;&#x8CC7;&#x6E90;&#x8F03;&#x5C0F;&#xFF0C;&#x4E14;&#x5728;thread&#x4E4B;&#x9593;&#x5207;&#x63DB;context switch&#x7684;&#x6642;&#x9593;&#x8F03;&#x77ED;</li>
-</ul>
-</li>
-</ul>
-<h2 id="user-level-thread--kernel-level-thread">User level thread / Kernel level thread</h2>
+<p>Create&#x5F8C;&#x6703;&#x8DD1;&#x51FA;&#x9810;&#x8A2D;&#x7684;&#x5C08;&#x6848;&#xFF0C;&#x9019;&#x6642;&#x88E1;&#x9762;&#x6C92;&#x6709;&#x7A0B;&#x5F0F;&#x78BC;&#x3002;
+<img src="https://i.imgur.com/R8pmz3q.png" alt=""></p>
+<p>&#x9019;&#x6642;&#x6253;&#x958B;Source tree&#xFF0C;&#x9EDE;&#x9078;clone&#xFF0C;&#x9019;&#x908A;&#x7684;clone&#x610F;&#x601D;&#x70BA;git clone&#x9019;&#x500B;&#x6307;&#x4EE4;:</p>
 <ul>
-<li>User level thread : &#x5728;User space&#x4F7F;&#x7528;&#x7684;thread&#xFF0C;&#x5728;&#x4F7F;&#x7528;&#x8005;&#x81EA;&#x5DF1;&#x5BEB;&#x7684;process&#x4E2D;&#x4F7F;&#x7528;&#x7684;thread&#x70BA;user level thread</li>
-<li>Kernel level thread : &#x5728;Kernel space&#x4F7F;&#x7528;&#x7684;thread&#xFF0C;&#x7531;&#x4F5C;&#x696D;&#x7CFB;&#x7D71;&#x7BA1;&#x7406;&#xFF0C;CPU&#x6392;&#x73ED;&#x6642;&#x5BE6;&#x969B;&#x4E0A;&#x53C3;&#x8003;&#x7684;&#x8CC7;&#x6E90;&#x3002;</li>
+<li>&#x7B2C;&#x4E00;&#x500B;&#x6B04;&#x4F4D;&#x586B;github&#x9023;&#x7D50;</li>
+<li>&#x7B2C;&#x4E8C;&#x500B;&#x6B04;&#x4F4D;&#x586B;&#x8981;&#x628A;&#x9019;&#x500B;&#x5C08;&#x6848;&#x9023;&#x7D50;&#x5230;&#x672C;&#x6A5F;&#x7684;&#x54EA;&#x500B;&#x8CC7;&#x6599;&#x593E;</li>
+<li>&#x7B2C;&#x4E09;&#x500B;&#x70BA;project&#x540D;</li>
 </ul>
-<p>User level thread&#x8DDF;Kernel level thread&#x5F7C;&#x6B64;&#x4E4B;&#x9593;&#x6709;&#x5C0D;&#x61C9;&#x7684;&#x95DC;&#x4FC2;&#xFF0C;&#x6839;&#x64DA;&#x4F5C;&#x696D;&#x7CFB;&#x7D71;&#x7684;&#x8A2D;&#x8A08;&#x6709;&#x6240;&#x4E0D;&#x540C;&#x3002;</p>
-<p><img src="https://i.imgur.com/ChTXZz8.png" alt=""></p>
+<p><img src="https://i.imgur.com/VoMEGma.png" alt=""></p>
+<p>clone&#x6210;&#x529F;&#x5F8C;&#x6703;&#x770B;&#x5230;&#x9019;&#x500B;&#x756B;&#x9762;:
+<img src="https://i.imgur.com/b6bPvxz.png" alt=""></p>
+<p>&#x70BA;&#x4E86;&#x5B8C;&#x5168;&#x7406;&#x89E3;git&#x7684;&#x904B;&#x4F5C;&#xFF0C;&#x6211;&#x5011;&#x5F8C;&#x9762;&#x7684;&#x64CD;&#x4F5C;&#x4F7F;&#x7528;terminal&#x4F86;&#x505A;&#x64CD;&#x4F5C;&#xFF0C;&#x6703;&#x642D;&#x914D;&#x4F7F;&#x7528;source tree&#x4F86;&#x770B;&#x76EE;&#x524D;git project&#x7684;&#x72C0;&#x614B;&#xFF0C;&#x76F4;&#x63A5;&#x4F7F;&#x7528;source tree&#x4E5F;&#x80FD;&#x64CD;&#x4F5C;&#xFF0C;&#x4F46;&#x56E0;&#x70BA;source tree&#x7701;&#x7565;&#x4E86;&#x5F88;&#x591A;&#x57FA;&#x672C;&#x6B65;&#x9A5F;&#xFF0C;&#x4E0D;&#x6613;&#x5B78;&#x7FD2;&#x6E05;&#x695A;&#xFF0C;&#x6240;&#x4EE5;&#x5148;&#x4F7F;&#x7528;terminal&#x3002;</p>
+<h3 id="&#x4E0A;&#x50B3;&#x7A0B;&#x5F0F;&#x78BC;">&#x4E0A;&#x50B3;&#x7A0B;&#x5F0F;&#x78BC;</h3>
+<p>&#x4E0A;&#x50B3;&#x7A0B;&#x5F0F;&#x78BC;&#x5206;&#x70BA;&#x4E09;&#x500B;&#x6B65;&#x9A5F;:</p>
 <ul>
-<li>&#x591A;&#x5C0D;&#x4E00; : &#x591A;&#x500B;User level thread&#x76F4;&#x63A5;&#x5C0D;&#x61C9;&#x5230;&#x4E00;&#x500B;Kernel level thread<ul>
-<li>&#x512A;&#x9EDE;: &#x6709;&#x6548;&#x7387;&#xFF0C;&#x4E0D;&#x9700;&#x8981;&#x641C;&#x5C0B;&#x53EF;&#x7528;&#x7684;Kernel level thread</li>
-<li>&#x7F3A;&#x9EDE;: &#x5176;&#x4E2D;&#x4E00;&#x500B;user level thread call blocking call&#x6642;&#xFF0C;&#x6703;&#x5361;&#x4F4F;&#x5176;&#x4ED6;&#x7684;thread</li>
+<li>git add : &#x5C07;&#x65B0;&#x589E;&#x7684;&#x6A94;&#x6848;&#x52A0;&#x5165;git&#x7248;&#x672C;&#x63A7;&#x5236;</li>
+<li>git commit : &#x5C07;&#x9019;&#x6B21;&#x7684;&#x4FEE;&#x6539;&#x63D0;&#x4EA4;&#xFF0C;git commit&#x4E4B;&#x5F8C;&#x6703;&#x5F97;&#x5230;&#x4E00;&#x500B;&#x7248;&#x672C;&#x865F;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x6B64;&#x7248;&#x672C;&#x865F;&#x56DE;&#x6714;&#x53CA;&#x8FFD;&#x8E64;</li>
+<li>git push : &#x5C07;local&#x7AEF;&#x7684;commit&#x66F4;&#x65B0;&#x5230;server&#x4E0A;&#xFF0C;&#x4E00;&#x5B9A;&#x8981;&#x6240;&#x6709;&#x6709;&#x4FEE;&#x6539;&#x7684;&#x6A94;&#x6848;&#x90FD;git commit&#x4E4B;&#x5F8C;&#x624D;&#x53EF;&#x4EE5;push</li>
 </ul>
-</li>
-<li>&#x4E00;&#x5C0D;&#x4E00; : &#x4E00;&#x500B;User level thread&#x76F4;&#x63A5;&#x5C0D;&#x61C9;&#x5230;&#x4E00;&#x500B;Kernel level thread<ul>
-<li>&#x512A;&#x9EDE;: user level thread&#x4E4B;&#x9593;&#x4E0D;&#x6703;&#x4E92;&#x76F8;blocking</li>
-<li>&#x7F3A;&#x9EDE;: &#x9700;&#x8981;&#x5927;&#x91CF;&#x7684;Kernel level thread</li>
-</ul>
-</li>
-<li>&#x591A;&#x5C0D;&#x591A; : &#x591A;&#x500B;User level thread&#x76F4;&#x63A5;&#x5C0D;&#x61C9;&#x5230;&#x591A;&#x500B;Kernel level thread<ul>
-<li>&#x512A;&#x9EDE;: &#x4F7F;&#x7528;&#x5F48;&#x6027;&#xFF0C;&#x4F7F;&#x7528;&#x8005;&#x7A0B;&#x5F0F;&#x8A2D;&#x8A08;&#x6642;&#x4E0D;&#x9700;&#x8981;&#x8003;&#x616E;thread&#x5C0D;&#x61C9;&#x7684;&#x554F;&#x984C;</li>
-<li>&#x7F3A;&#x9EDE;: &#x82B1;&#x8F03;&#x591A;&#x7684;&#x6548;&#x80FD;&#x505A;thread mapping</li>
-</ul>
-</li>
-</ul>
-<h2 id="thread-priority-in-linux">Thread Priority in Linux</h2>
-<p>Linux&#x7684;Thread Priority&#x5206;&#x6210;&#x5169;&#x500B;&#x90E8;&#x5206;&#xFF1A;Policy&#x8DDF;Piorirty&#x3002;</p>
+<p>&#x5176;&#x4ED6;&#x5E38;&#x7528;&#x7684;&#x6307;&#x4EE4;</p>
 <ul>
-<li>Policy: Policy&#x4E3B;&#x8981;&#x5206;&#x70BA;Normal&#x53CA;Realtime&#x5169;&#x500B;&#x7B49;&#x7D1A;&#xFF0C;Realtime&#x7B49;&#x7D1A;&#x512A;&#x5148;&#x5EA6;&#x8F03;Normal&#x5927;&#x3002;<ul>
-<li>Normal:<ul>
-<li>SCHED_OTHER : &#x9810;&#x8A2D;&#x7684;Policy&#xFF0C;&#x53C3;&#x8003;nice value&#x6C7A;&#x5B9A;CPU&#x7684;&#x5206;&#x914D;&#x6642;&#x9593;</li>
+<li>git status : &#x67E5;&#x770B;&#x76EE;&#x524D;git&#x7684;&#x72C0;&#x614B;</li>
+<li>git log : &#x67E5;&#x770B;&#x76EE;&#x524D;&#x7684;commit&#x7D00;&#x9304;</li>
+<li>git pull : &#x5C07;git server&#x4E0A;&#x66F4;&#x65B0;&#x7684;&#x7D00;&#x9304;&#x6293;&#x56DE;&#x4F86;(&#x7576;local&#x7AEF;&#x7248;&#x672C;&#x8F03;server&#x7AEF;&#x820A;&#x6642;)</li>
 </ul>
-</li>
-<li>Realtime:<ul>
-<li>SCHED_FIFO : First-in-first-out&#xFF0C;&#x7167;&#x6B21;&#x5E8F;&#x5148;&#x5F8C;&#x57F7;&#x884C;</li>
-<li>SCHED_RR : &#x4E00;&#x6A23;&#x7167;&#x6B21;&#x5E8F;&#x5148;&#x5F8C;&#x57F7;&#x884C;&#xFF0C;&#x4F46;&#x6BCF;&#x500B;time slice&#x7684;&#x898F;&#x5B9A;</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>Piority: &#x5728;Realtime schedule&#x4E2D;&#xFF0C;&#x53EF;&#x4EE5;&#x53E6;&#x5916;&#x8A2D;&#x5B9A;Priority&#xFF0C;&#x8868;&#x793A;&#x5728;Policy&#x76F8;&#x540C;&#x6642;&#xFF0C;&#x512A;&#x5148;&#x5EA6;&#x7684;&#x9806;&#x5E8F;&#xFF0C;Priority&#x7684;&#x7BC4;&#x570D;&#x70BA;1~99&#xFF0C;&#x6578;&#x503C;&#x8D8A;&#x5927;&#x8D8A;&#x512A;&#x5148;&#x3002;</p>
-</li>
-<li><p>Nice&#x503C;: &#x901A;&#x5E38;&#x7BC4;&#x570D;&#x70BA;-20~19&#xFF0C;&#x9810;&#x8A2D;&#x70BA;0&#xFF0C;&#x6578;&#x503C;&#x8D8A;&#x5927;&#x5206;&#x914D;&#x5230;&#x7684;CPU&#x8CC7;&#x6E90;&#x8D8A;&#x5C11;&#x3002;</p>
-</li>
-</ul>
-<h2 id="why-thread">Why thread?</h2>
+<h3 id="&#x5C0F;&#x7DF4;&#x7FD2;">&#x5C0F;&#x7DF4;&#x7FD2;</h3>
+<p>&#x5728;&#x525B;&#x525B;&#x5275;&#x5EFA;&#x7684;git&#x8CC7;&#x6599;&#x593E;&#x4E2D;&#xFF0C;&#x65B0;&#x589E;&#x4E00;&#x500B;.txt&#x6A94;&#x4E26;&#x4E0A;&#x50B3;&#x5230;github&#x3002;</p>
+<h3 id="&#x5C0F;&#x7DF4;&#x7FD2;2">&#x5C0F;&#x7DF4;&#x7FD2;2</h3>
+<p>&#x628A;&#x6700;&#x8FD1;&#x7DF4;&#x7FD2;&#x7684;&#x5C0F;&#x7DF4;&#x7FD2;&#x5728;Virtual Box&#x4E0A;&#x4E0A;&#x50B3;&#x5230;github(&#x6240;&#x6709;&#x5C0F;&#x7DF4;&#x7FD2;&#x7528;&#x4E00;&#x500B;github project)&#xFF0C;&#x4E26;&#x5C07;github&#x9023;&#x7D50;&#x50B3;&#x7D66;&#x6211;&#x3002;</p>
 <ul>
-<li>&#x5728;Multi-core&#x7684;CPU&#x4E2D;&#xFF0C;Multi-thread&#x7684;process&#x53EF;&#x4EE5;&#x540C;&#x6642;&#x4F7F;&#x7528;&#x591A;&#x500B;&#x6838;&#x5FC3;&#x8A08;&#x7B97;&#xFF0C;&#x7BC0;&#x7701;&#x904B;&#x7B97;&#x6642;&#x9593;&#x3002;</li>
-<li>&#x5728;Process&#x6709;I/O bound&#x7684;&#x90E8;&#x5206;&#x6642;&#xFF0C;&#x53EF;&#x4EE5;&#x5207;&#x51FA;&#x53E6;&#x4E00;&#x500B;thread&#x505A;I/O&#x3002;</li>
-<li>&#x5728;Process&#x9700;&#x8981;&#x7B49;callback&#x6642;&#xFF0C;&#x53EF;&#x4EE5;&#x5207;&#x51FA;&#x4E00;&#x500B;thread&#x7B49;callback&#xFF0C;&#x907F;&#x514D;&#x5F71;&#x97FF;main thread&#x8981;&#x57F7;&#x884C;&#x7684;&#x529F;&#x80FD;&#x3002;</li>
-<li>&#x7C21;&#x5316;process&#x7684;&#x6578;&#x91CF;&#xFF0C;&#x82E5;&#x4E00;&#x500B;process&#x9700;&#x8981;&#x6709;&#x591A;&#x500B;&#x4E0D;&#x76F8;&#x5E72;&#x7684;&#x529F;&#x80FD;&#x540C;&#x6642;&#x57F7;&#x884C;&#xFF0C;&#x4F7F;&#x7528;thread&#x53EF;&#x4EE5;&#x907F;&#x514D;fork&#x51FA;&#x592A;&#x591A;process&#xFF0C;&#x63D0;&#x5347;&#x7BA1;&#x7406;&#x7684;&#x8907;&#x96DC;&#x5EA6;&#x3002;</li>
+<li>Linux&#x5B89;&#x88DD;git : <a href="https://git-scm.com/book/zh-tw/v2/%E9%96%8B%E5%A7%8B-Git-%E5%AE%89%E8%A3%9D%E6%95%99%E5%AD%B8" target="_blank">https://git-scm.com/book/zh-tw/v2/%E9%96%8B%E5%A7%8B-Git-%E5%AE%89%E8%A3%9D%E6%95%99%E5%AD%B8</a></li>
+<li>Linux git clone ssh&#x8A2D;&#x5B9A; : <a href="https://blog.jaycetyle.com/2018/02/github-ssh/" target="_blank">https://blog.jaycetyle.com/2018/02/github-ssh/</a></li>
+</ul>
+<h4 id="requirement">Requirement</h4>
+<ul>
+<li>Commit&#x6642;&#x990A;&#x6210;&#x597D;&#x7FD2;&#x6163;&#xFF0C;&#x5C07;commit&#x7684;code&#x505A;&#x4E86;&#x751A;&#x9EBC;&#x4E8B;&#x3001;&#x6539;&#x4E86;&#x751A;&#x9EBC;&#x5BEB;&#x5728;commit message&#x3002;</li>
 </ul>
 
                                 
@@ -1651,12 +1633,12 @@
 
             
                 
-                <a href="socket.html" class="navigation navigation-prev " aria-label="Previous page: Socket">
+                <a href="../" class="navigation navigation-prev " aria-label="Previous page: Introduction">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="fp.html" class="navigation navigation-next " aria-label="Next page: Function pointer">
+                <a href="cpp.html" class="navigation navigation-next " aria-label="Next page: C/C++">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1667,7 +1649,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Thread","level":"1.7.4","depth":2,"next":{"title":"Function pointer","level":"1.7.4.1","depth":3,"path":"cpp_sec/fp.md","ref":"cpp_sec/fp.md","articles":[]},"previous":{"title":"Socket","level":"1.7.3.3.3","depth":4,"path":"cpp_sec/socket.md","ref":"cpp_sec/socket.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cpp_sec/thread.md","mtime":"2021-08-01T12:06:21.720Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-08-01T14:57:53.207Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Git","level":"1.2","depth":1,"next":{"title":"C/C++","level":"1.3","depth":1,"path":"cpp_sec/cpp.md","ref":"cpp_sec/cpp.md","articles":[{"title":"安裝環境","level":"1.3.1","depth":2,"path":"cpp_sec/install.md","ref":"cpp_sec/install.md","articles":[]},{"title":"編譯、輸入、輸出","level":"1.3.2","depth":2,"path":"cpp_sec/compile_io.md","ref":"cpp_sec/compile_io.md","articles":[]},{"title":"資料型態&宣告","level":"1.3.3","depth":2,"path":"cpp_sec/Variable.md","ref":"cpp_sec/Variable.md","articles":[]},{"title":"If/Else","level":"1.3.4","depth":2,"path":"cpp_sec/if_else.md","ref":"cpp_sec/if_else.md","articles":[]},{"title":"Switch","level":"1.3.5","depth":2,"path":"cpp_sec/switch.md","ref":"cpp_sec/switch.md","articles":[]},{"title":"Loop","level":"1.3.6","depth":2,"path":"cpp_sec/loop.md","ref":"cpp_sec/loop.md","articles":[]},{"title":"Array","level":"1.3.7","depth":2,"path":"cpp_sec/array.md","ref":"cpp_sec/array.md","articles":[]},{"title":"String","level":"1.3.8","depth":2,"path":"cpp_sec/string.md","ref":"cpp_sec/string.md","articles":[]},{"title":"Function","level":"1.3.9","depth":2,"path":"cpp_sec/function.md","ref":"cpp_sec/function.md","articles":[]},{"title":"Pointer","level":"1.3.10","depth":2,"path":"cpp_sec/pointer.md","ref":"cpp_sec/pointer.md","articles":[]},{"title":"Struct/Object","level":"1.3.11","depth":2,"path":"cpp_sec/class.md","ref":"cpp_sec/class.md","articles":[]},{"title":"位元運算","level":"1.3.12","depth":2,"path":"cpp_sec/bitwise.md","ref":"cpp_sec/bitwise.md","articles":[]},{"title":"[Sort]","level":"1.3.13","depth":2,"ref":"","articles":[]}]},"previous":{"title":"Introduction","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cpp_sec/git_basic.md","mtime":"2021-08-01T14:57:21.325Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-08-01T14:57:53.207Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
