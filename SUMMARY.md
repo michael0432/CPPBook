@@ -1,5 +1,6 @@
 # Summary
 * [Git](cpp_sec/git_basic.md)
+  * [Git Advanced](cpp_sec/git_advanced.md)
 
 * [C/C++](cpp_sec/cpp.md)
   * [安裝環境](cpp_sec/install.md)

@@ -1,4 +1,5 @@
-# Mutex & Semaphere
+# Mutex
+###### tags = `Operating System`
 
 為了避免兩個或多個process同時進入critical section，作業系統使用了Mutex及Semaphere的設計來保護critical section。
 在process進入critical section前，必須先取得mutex lock；在結束critical section時將釋放mutex lock。
