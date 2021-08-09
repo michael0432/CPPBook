@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Binary Search Tree · GitBook</title>
+        <title>Git Advanced · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="avl.html" />
+    <link rel="next" href="cpp.html" />
     
     
-    <link rel="prev" href="tree.html" />
+    <link rel="prev" href="git_basic.html" />
     
 
     </head>
@@ -116,7 +116,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.2.1" data-path="git_advanced.html">
+        <li class="chapter active" data-level="1.2.1" data-path="git_advanced.html">
             
                 <a href="git_advanced.html">
             
@@ -570,7 +570,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter active" data-level="1.5.7.1.1" data-path="bst.html">
+        <li class="chapter " data-level="1.5.7.1.1" data-path="bst.html">
             
                 <a href="bst.html">
             
@@ -1556,7 +1556,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Binary Search Tree</a>
+        <a href=".." >Git Advanced</a>
     </h1>
 </div>
 
@@ -1571,115 +1571,64 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="binary-search-tree">Binary Search Tree</h1>
-<h6 id="tags--data-structure">tags = <code>Data Structure</code></h6>
-<p>Binary Search Tree&#x7528;Binary Tree&#x7684;&#x7D50;&#x69CB;&#x52A0;&#x901F;&#x641C;&#x5C0B;&#x7684;&#x901F;&#x5EA6;&#xFF0C;&#x5F9E;root&#x51FA;&#x767C;&#xFF0C;&#x85C9;&#x7531;&#x6BCF;&#x500B;node&#x4E0A;&#x7684;&#x8CC7;&#x8A0A;&#x5224;&#x65B7;&#x8981;&#x5F80;&#x5DE6;&#x5B50;&#x6A39;&#x641C;&#x5C0B;&#x9084;&#x662F;&#x53F3;&#x5B50;&#x6A39;&#x641C;&#x5C0B;&#x3002;</p>
-<p><img src="https://i.imgur.com/IodBmcf.png" alt=""></p>
-<p>Binary Search Tree&#x7684;&#x7279;&#x6027;:</p>
+                                <h1 id="git-advanced">Git Advanced</h1>
+<h6 id="tags--git">tags = <code>Git</code></h6>
+<h2 id="branch">Branch</h2>
+<p>&#x5728;&#x958B;&#x767C;&#x6642;&#xFF0C;&#x53EF;&#x80FD;&#x6703;&#x540C;&#x6642;&#x6709;&#x591A;&#x4EBA;&#x5728;&#x958B;&#x767C;&#x540C;&#x4E00;&#x7248;&#x672C;&#x7684;&#x7A0B;&#x5F0F;&#x78BC;&#xFF0C;&#x56E0;&#x6B64;&#xFF0C;&#x540C;&#x4E00;&#x500B;&#x7248;&#x672C;&#x53EF;&#x80FD;&#x6703;&#x5207;&#x5272;&#x6210;&#x4E0D;&#x540C;&#x7684;&#x958B;&#x767C;&#x7248;&#x672C;&#xFF0C;&#x4E26;&#x4E14;&#x9700;&#x8981;&#x5206;&#x958B;&#x9032;&#x884C;&#x7DAD;&#x8B77;&#x3002;
+&#x6B64;&#x6642;&#xFF0C;&#x9700;&#x8981;&#x4F7F;&#x7528;&#x5230;branch(&#x5206;&#x652F;)&#x7684;&#x529F;&#x80FD;&#xFF0C;&#x53EF;&#x4EE5;&#x57FA;&#x65BC;&#x5176;&#x4E2D;&#x4E00;&#x500B;commit&#xFF0C;&#x5EF6;&#x4F38;&#x51FA;&#x5F7C;&#x6B64;&#x7368;&#x7ACB;&#x7684;branch&#xFF0C;&#x4E26;&#x5728;&#x958B;&#x767C;&#x5B8C;&#x6210;&#x5F8C;&#x518D;&#x5408;&#x4F75;&#x3002;</p>
+<p><img src="https://i.imgur.com/EhBpeFf.png" alt=""></p>
+<h3 id="master-branch">Master branch</h3>
+<p>&#x6700;&#x521D;&#x7684;branch(&#x7B2C;&#x4E00;&#x500B;commit&#x7684;branch)&#x6211;&#x5011;&#x7A31;&#x70BA;master branch&#xFF0C;&#x5176;&#x4ED6;&#x6240;&#x6709;&#x4F7F;&#x7528;&#x8005;&#x81EA;&#x5DF1;&#x65B0;&#x589E;&#x7684;branch&#x90FD;&#x662F;&#x5F9E;master branch&#x62C9;&#x51FA;&#x7684;&#xFF0C;&#x901A;&#x5E38;&#xFF0C;&#x70BA;&#x4E86;&#x7248;&#x672C;&#x63A7;&#x5236;&#x7A69;&#x5B9A;&#xFF0C;&#x6211;&#x5011;&#x4E0D;&#x6703;&#x76F4;&#x63A5;&#x5728;master branch&#x4E0A;&#x9032;&#x884C;&#x958B;&#x767C;&#xFF0C;&#x800C;&#x662F;&#x5F9E;master branch&#x62C9;&#x51FA;&#x65B0;&#x7684;branch&#x505A;&#x958B;&#x767C;&#xFF0C;&#x958B;&#x767C;&#x5230;&#x4E00;&#x500B;&#x6BB5;&#x843D;&#x518D;merge(&#x5408;&#x4F75;)&#x56DE;master branch&#x3002;</p>
+<h3 id="branch&#x6307;&#x4EE4;">Branch&#x6307;&#x4EE4;</h3>
 <ul>
-<li>&#x5C0D;&#x65BC;&#x6BCF;&#x500B;&#x5B50;&#x6A39;&#x800C;&#x8A00;&#xFF0C;root&#x7684;&#x503C;&gt;&#x6240;&#x6709;&#x5DE6;&#x5B50;&#x6A39;&#x7684;&#x503C;&#xFF0C;&#x4E14;root&#x7684;&#x503C;&lt;&#x6240;&#x6709;&#x53F3;&#x5B50;&#x6A39;&#x7684;&#x503C;</li>
+<li>&#x65B0;&#x589E;branch<pre><code>git branch &lt;branchname&gt;
+</code></pre></li>
+<li>&#x67E5;&#x770B;branch<pre><code>git branch
+</code></pre></li>
+<li>&#x5207;&#x63DB;branch<pre><code>git checkout &lt;branchname&gt;
+</code></pre></li>
 </ul>
-<p>&#x8981;&#x53EF;&#x4EE5;&#x7DAD;&#x6301;BST&#xFF0C;&#x9700;&#x8981;&#x8A2D;&#x8A08;&#x4E0B;&#x5217;&#x5E7E;&#x500B;&#x64CD;&#x4F5C;:</p>
+<h2 id="merge">Merge</h2>
+<p>Merge&#x70BA;&#x5C07;&#x5169;&#x500B;branch&#x5408;&#x4F75;&#x70BA;&#x4E00;&#x500B;branch&#xFF0C;&#x5728;&#x64CD;&#x4F5C;&#x6642;&#xFF0C;&#x8981;&#x5148;checkout&#x5230;&#x8981;&#x4FDD;&#x7559;&#x7684;branch&#xFF0C;&#x8F38;&#x5165;&#x4E0B;&#x9762;&#x7684;&#x6307;&#x4EE4;&#x6307;&#x5B9A;&#x8981;merge&#x7684;commit id(branch&#x4E0A;&#x7684;&#x67D0;&#x500B;commit)&#x3002;</p>
+<pre><code>git merge &lt;commit id&gt;
+</code></pre><p>Merge&#x6642;&#x53EF;&#x80FD;&#x6703;&#x767C;&#x751F;&#x5169;&#x500B;&#x72C0;&#x6CC1;:</p>
 <ul>
-<li>Search</li>
-<li>Insert</li>
-<li>Delete</li>
+<li>Merge&#x6210;&#x529F;</li>
+<li>Merge conflict : &#x8868;&#x793A;&#x8981;merge&#x7684;&#x5169;&#x500B;&#x7248;&#x672C;&#x6709;&#x885D;&#x7A81;&#xFF0C;&#x610F;&#x601D;&#x662F;&#x9019;&#x5169;&#x500B;branch&#x6539;&#x5230;&#x4E86;&#x76F8;&#x540C;&#x6A94;&#x6848;&#x7684;&#x540C;&#x4E00;&#x884C;&#xFF0C;&#x56E0;&#x6B64;git&#x4E0D;&#x77E5;&#x9053;&#x9019;&#x884C;&#x8981;&#x7528;&#x54EA;&#x500B;&#x7248;&#x672C;&#xFF0C;&#x6B64;&#x6642;&#x9700;&#x8981;&#x4F7F;&#x7528;&#x8005;&#x81EA;&#x884C;&#x4FEE;&#x6B63;&#x3002;</li>
 </ul>
-<pre><code class="lang-cpp=1">class Node{
-    Node* left;
-    Node* right;
-    int value;
-};
-
-bool search(Node* root, int target)
-bool insert(Node* root, Node* newNode)
-</code></pre>
-<h2 id="search">Search</h2>
-<p>&#x5F9E;root&#x958B;&#x59CB;&#x5C0B;&#x627E;&#x9700;&#x8981;&#x7684;&#x8CC7;&#x6599;&#xFF0C;&#x4E26;&#x5224;&#x65B7;&#x8981;&#x5F80;&#x5DE6;&#x5B50;&#x6A39;&#x627E;&#x9084;&#x662F;&#x53F3;&#x5B50;&#x6A39;&#x627E;&#x3002;</p>
-<pre><code class="lang-cpp=1">bool search(Node* root, int target){
-    if(!root) return false;
-    if(root-&gt;value == target){
-        return true;
-    }
-    else if(target &gt; root-value){
-        return search(root-&gt;right, target);
-    }
-    else{
-        return search(root-&gt;left, target);
-    }
-}
-</code></pre>
-<h2 id="insert">Insert</h2>
-<p>&#x4E00;&#x6A23;&#x5F9E;root&#x958B;&#x59CB;&#x5224;&#x65B7;&#xFF0C;&#x5224;&#x65B7;&#x8981;&#x52A0;&#x5165;&#x7684;node&#x8981;&#x88AB;&#x653E;&#x5165;&#x5DE6;&#x5B50;&#x6A39;&#x7684;&#x90E8;&#x5206;&#x9084;&#x662F;&#x53F3;&#x5B50;&#x6A39;&#x7684;&#x90E8;&#x5206;</p>
-<pre><code class="lang-cpp=1">bool insert(Node* root, Node* newNode){
-    if(newNode-&gt;value == root-&gt;value){
-        return false;
-    }
-    else{
-        if(newNode-&gt;value &gt; root-&gt;value){
-            if(root-&gt;right == nullptr){
-                root-&gt;right = newNode;
-                return true;
-            }
-            else
-                return insert(root-&gt;right, newNode);
-        }
-        else{
-            if(root-&gt;left == nullptr){
-                root-&gt;left = newNode;
-                return true;
-            }
-            else
-                return insert(root-&gt;left, newNode);
-        }
-    }
-}
-</code></pre>
-<h2 id="delete">Delete</h2>
-<p>&#x7576;&#x8981;&#x522A;&#x9664;&#x4E00;&#x500B;node&#x6642;&#xFF0C;&#x6703;&#x6709;&#x4E09;&#x7A2E;&#x60C5;&#x6CC1;:</p>
+<h3 id="fix-conflict">Fix conflict</h3>
+<p>&#x7576;conflict&#x767C;&#x751F;&#x6642;&#xFF0C;&#x6253;&#x958B;&#x8A72;&#x6A94;&#x6848;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x985E;&#x4F3C;&#x4E0B;&#x65B9;&#x7684;&#x756B;&#x9762;:</p>
+<p><img src="https://i.imgur.com/Rq3Lt8U.png" alt=""></p>
+<p>&lt;&lt;&lt;&lt; HEAD&#x7684;&#x90E8;&#x5206;&#x662F;&#x6307;&#x76EE;&#x524D;&#x6240;&#x5728;&#x7684;commit (master)
+=====&#x4E0B;&#x65B9;&#x5247;&#x70BA;branch&#x4E0A;&#x7684;&#x7248;&#x672C;</p>
+<p>&#x628A;&#x9019;&#x5169;&#x884C;&#x5408;&#x4F75;&#x6210;&#x60F3;&#x8981;&#x7684;&#x6A23;&#x5B50;&#x5F8C;:
+<img src="https://i.imgur.com/6FFxkYl.png" alt=""></p>
+<p>&#x628A;&#x885D;&#x7A81;&#x7684;&#x5730;&#x65B9;&#x4FEE;&#x6B63;&#x6210;&#x6700;&#x7D42;&#x7248;&#x672C;&#x5F8C;&#xFF0C;&#x4FBF;&#x53EF;&#x4EE5;&#x91CD;&#x65B0;merge&#xFF0C;&#x91CD;&#x65B0;merge&#x524D;&#x5FC5;&#x9808;&#x8981;&#x65B0;&#x589E;&#x4E00;&#x500B;commit&#xFF0C;&#x8868;&#x793A;&#x4EE5;&#x6B64;commit&#x7684;&#x7248;&#x672C;&#x6700;&#x7D42;&#x7248;&#x672C;&#x3002;</p>
+<pre><code>git add &#x4FEE;&#x5B8C;conflict&#x7684;&#x6A94;&#x6848;
+git commit -m &quot;fix commit&quot;
+</code></pre><h2 id="pull">Pull</h2>
+<p>&#x5728;&#x958B;&#x767C;&#x6642;&#xFF0C;&#x53EF;&#x80FD;&#x6703;&#x6709;&#x5176;&#x4ED6;&#x5354;&#x4F5C;&#x4EBA;push&#x4E86;&#x7A0B;&#x5F0F;&#x78BC;&#x5230;git server&#x7AEF;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x76EE;&#x524D;&#x6709;&#x4E00;&#x500B;&#x6BD4;&#x8F03;&#x65B0;&#x7248;&#x672C;&#x7684;&#x7A0B;&#x5F0F;&#x78BC;&#x6BD4;&#x81EA;&#x5DF1;&#x7684;local&#x7AEF;&#x7248;&#x672C;&#x9084;&#x65B0;:</p>
+<p><img src="https://i.imgur.com/a47I8jn.png" alt=""></p>
+<p>&#x6B64;&#x6642;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;git pull&#x628A;Local&#x7AEF;&#x7684;&#x7248;&#x672C;&#x5F9E;remote&#x7AEF;</p>
+<pre><code>git pull
+</code></pre><p><img src="https://i.imgur.com/UxG1t6y.png" alt=""></p>
+<p>pull&#x4E4B;&#x5F8C;&#x5982;&#x679C;&#x6C92;&#x6709;conflict&#xFF0C;&#x5C31;&#x6703;&#x628A;Remote&#x7684;commit C, D&#x5408;&#x4F75;&#x5230;Local&#x7AEF;&#xFF0C;&#x4E26;&#x4E14;&#x8DDF;&#x539F;&#x672C;Local&#x7AEF;&#x7684;&#x4FEE;&#x6539;&#x5408;&#x4F75;&#xFF0C;&#x8B8A;&#x6210;commit C&apos;, D&apos; (&#x8DDF;Merge&#x4E00;&#x6A23;&#xFF0C;&#x4E0D;&#x6703;&#x8986;&#x84CB;&#x6389;&#x81EA;&#x5DF1;&#x7684;&#x4FEE;&#x6539;)&#x3002;</p>
+<p>&#x82E5;&#x662F;&#x767C;&#x751F;conflict&#xFF0C;&#x8DDF;&#x4E0A;&#x65B9;merge branch&#x4E00;&#x6A23;&#xFF0C;&#x9700;&#x8981;&#x4FEE;&#x6B63;conflict&#x5F8C;&#x91CD;&#x65B0;commit&#xFF0C;&#x624D;&#x80FD;&#x6210;&#x529F;pull&#x3002;</p>
+<h2 id="&#x5C0F;&#x7DF4;&#x7FD2;">&#x5C0F;&#x7DF4;&#x7FD2;</h2>
+<p>&#x5728;github&#x4E0A;&#x7DF4;&#x7FD2;&#x7528;&#x7684;&#x5C08;&#x6848;&#x65B0;&#x589E;&#x4E00;&#x500B;&#x5354;&#x4F5C;&#x8005;&#xFF0C;&#x8B93;&#x5169;&#x4EBA;&#x53EF;&#x4EE5;&#x5171;&#x540C;&#x4FEE;&#x6539;&#x4E00;&#x500B;&#x5C08;&#x6848;</p>
+<p><img src="https://i.imgur.com/CPbznkE.png" alt=""></p>
+<p>&#x5728;&#x7B2C;&#x4E00;&#x500B;commit&#x7684;&#x5730;&#x65B9;&#x62C9;&#x51FA;branch(&#x5169;&#x4EBA;&#x4F7F;&#x7528;&#x4E0D;&#x540C;branch)&#xFF0C;&#x5404;&#x81EA;&#x5C0D;&#x4E00;&#x500B;&#x6A94;&#x6848;&#x505A;&#x4FEE;&#x6B63;&#xFF0C;&#x4E26;&#x4E14;&#x5148;&#x5F8C;&#x5C07;&#x81EA;&#x5DF1;&#x7684;branch merge&#x56DE;master&#xFF0C;&#x4E26;&#x8B93;github&#x4E0A;&#x7684;&#x7248;&#x672C;&#x4FDD;&#x7559;&#x4E86;&#x5169;&#x500B;&#x4EBA;&#x7684;&#x4FEE;&#x6B63;&#x3002;</p>
 <ul>
-<li>&#x6B64;node&#x6C92;&#x6709;child<ul>
-<li>&#x76F4;&#x63A5;&#x5C07;&#x5176;parent&#x7684;&#x6B64;child&#x8B8A;&#x6210;null</li>
+<li>&#x53EF;&#x80FD;&#x6703;&#x78B0;&#x5230;&#x7684;&#x554F;&#x984C;<ul>
+<li>merge&#x6642;&#x8981;&#x6CE8;&#x610F;&#x81EA;&#x5DF1;&#x7684;merge&#x662F;&#x5728;local&#x7AEF;(&#x81EA;&#x5DF1;&#x7684;&#x96FB;&#x8166;&#x4E0A;)&#x9084;&#x662F;&#x6709;push&#x5230;git server(github&#x4E0A;)</li>
+<li>&#x6BD4;&#x8F03;&#x665A;merge&#x7684;&#x4EBA;&#x8981;merge&#x5230;&#x54EA;&#x500B;&#x7248;&#x672C;&#x7684;master branch?</li>
 </ul>
 </li>
-<li>&#x6B64;node&#x6709;&#x4E00;&#x500B;child<ul>
-<li>&#x5C07;child&#x8B8A;&#x6210;&#x539F;parent&#x7684;child</li>
-</ul>
-</li>
-<li>&#x6B64;node&#x6709;&#x5169;&#x500B;child<ul>
-<li>&#x627E;&#x53F3;&#x5B50;&#x6A39;&#x4E2D;&#x7684;&#x6700;&#x5C0F;&#x503C;&#x4F86;&#x88DC;&#x9019;&#x500B;&#x4F4D;&#x7F6E;&#xFF0C;&#x4E26;&#x628A;&#x53F3;&#x5B50;&#x6A39;&#x4E2D;&#x7684;&#x6700;&#x5C0F;&#x503C;&#x522A;&#x9664;</li>
+<li>Tips<ul>
+<li>&#x5982;&#x679C;&#x641E;&#x4E0D;&#x6E05;&#x695A;&#x76EE;&#x524D;git server&#x4E0A;&#x7684;&#x72C0;&#x614B;&#xFF0C;&#x53EF;&#x4EE5;&#x770B;source tree&#x4E0A;&#xFF0C;&#x6709;origin/&#x958B;&#x982D;&#x7684;brach&#x70BA;remote branch</li>
 </ul>
 </li>
 </ul>
-<pre><code class="lang-cpp=1">Node* delete(Node* root, int target){
-    if(!root) return false;
-    if(root-&gt;value == target){
-        if(root-&gt;left == nullptr &amp;&amp; root-&gt;right == nullptr){
-            root = nullptr;
-        }
-        else if(root-&gt;left == nullptr &amp;&amp; root-&gt;right != nullptr){
-            root = root-&gt;right;
-        }
-        else if(root-&gt;left != nullptr &amp;&amp; root-&gt;right == nullptr){
-            root = root-&gt;left;
-        }
-        else{
-            Node* n = root-&gt;right;
-            while(n-&gt;left)
-                n = n-&gt;left;
-            root-&gt;val = n-&gt;val;
-            root-&gt;right = delete(root-&gt;right, n-&gt;val);
-        }
-    }
-    else if(target &gt; root-&gt;value){
-        root-&gt;right = delete(root-&gt;right, target);
-    }
-    else{
-        root-&gt;left = delete(root-&gt;left, target);
-    }
-}
-</code></pre>
-<p>&#x6642;&#x9593;&#x8907;&#x96DC;&#x5EA6;?</p>
 
                                 
                                 </section>
@@ -1707,12 +1656,12 @@ bool insert(Node* root, Node* newNode)
 
             
                 
-                <a href="tree.html" class="navigation navigation-prev " aria-label="Previous page: Tree">
+                <a href="git_basic.html" class="navigation navigation-prev " aria-label="Previous page: Git">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="avl.html" class="navigation navigation-next " aria-label="Next page: AVL Tree">
+                <a href="cpp.html" class="navigation navigation-next " aria-label="Next page: C/C++">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1723,7 +1672,7 @@ bool insert(Node* root, Node* newNode)
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Binary Search Tree","level":"1.5.7.1.1","depth":4,"next":{"title":"AVL Tree","level":"1.5.7.1.2","depth":4,"path":"cpp_sec/avl.md","ref":"cpp_sec/avl.md","articles":[]},"previous":{"title":"Tree","level":"1.5.7.1","depth":3,"path":"cpp_sec/tree.md","ref":"cpp_sec/tree.md","articles":[{"title":"Binary Search Tree","level":"1.5.7.1.1","depth":4,"path":"cpp_sec/bst.md","ref":"cpp_sec/bst.md","articles":[]},{"title":"AVL Tree","level":"1.5.7.1.2","depth":4,"path":"cpp_sec/avl.md","ref":"cpp_sec/avl.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cpp_sec/bst.md","mtime":"2021-08-01T14:57:55.039Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-08-09T11:26:03.969Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Git Advanced","level":"1.2.1","depth":2,"next":{"title":"C/C++","level":"1.3","depth":1,"path":"cpp_sec/cpp.md","ref":"cpp_sec/cpp.md","articles":[{"title":"安裝環境","level":"1.3.1","depth":2,"path":"cpp_sec/install.md","ref":"cpp_sec/install.md","articles":[]},{"title":"編譯、輸入、輸出","level":"1.3.2","depth":2,"path":"cpp_sec/compile_io.md","ref":"cpp_sec/compile_io.md","articles":[]},{"title":"資料型態&宣告","level":"1.3.3","depth":2,"path":"cpp_sec/Variable.md","ref":"cpp_sec/Variable.md","articles":[]},{"title":"If/Else","level":"1.3.4","depth":2,"path":"cpp_sec/if_else.md","ref":"cpp_sec/if_else.md","articles":[]},{"title":"Switch","level":"1.3.5","depth":2,"path":"cpp_sec/switch.md","ref":"cpp_sec/switch.md","articles":[]},{"title":"Loop","level":"1.3.6","depth":2,"path":"cpp_sec/loop.md","ref":"cpp_sec/loop.md","articles":[]},{"title":"Array","level":"1.3.7","depth":2,"path":"cpp_sec/array.md","ref":"cpp_sec/array.md","articles":[]},{"title":"String","level":"1.3.8","depth":2,"path":"cpp_sec/string.md","ref":"cpp_sec/string.md","articles":[]},{"title":"Function","level":"1.3.9","depth":2,"path":"cpp_sec/function.md","ref":"cpp_sec/function.md","articles":[]},{"title":"Pointer","level":"1.3.10","depth":2,"path":"cpp_sec/pointer.md","ref":"cpp_sec/pointer.md","articles":[]},{"title":"Struct/Object","level":"1.3.11","depth":2,"path":"cpp_sec/class.md","ref":"cpp_sec/class.md","articles":[]},{"title":"位元運算","level":"1.3.12","depth":2,"path":"cpp_sec/bitwise.md","ref":"cpp_sec/bitwise.md","articles":[]},{"title":"[Sort]","level":"1.3.13","depth":2,"ref":"","articles":[]}]},"previous":{"title":"Git","level":"1.2","depth":1,"path":"cpp_sec/git_basic.md","ref":"cpp_sec/git_basic.md","articles":[{"title":"Git Advanced","level":"1.2.1","depth":2,"path":"cpp_sec/git_advanced.md","ref":"cpp_sec/git_advanced.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cpp_sec/git_advanced.md","mtime":"2021-08-06T03:39:03.853Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-08-09T11:26:03.969Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
