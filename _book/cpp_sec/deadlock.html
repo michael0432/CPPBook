@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Priority Queue · GitBook</title>
+        <title>Deadlock · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="priority_queue_method.html" />
+    <link rel="next" href="handle_deadlock.html" />
     
     
-    <link rel="prev" href="heap.html" />
+    <link rel="prev" href="mutex.html" />
     
 
     </head>
@@ -677,7 +677,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.5.10" data-path="priority_queue.html">
+        <li class="chapter " data-level="1.5.10" data-path="priority_queue.html">
             
                 <a href="priority_queue.html">
             
@@ -1249,7 +1249,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7.6" data-path="deadlock.html">
+        <li class="chapter active" data-level="1.7.6" data-path="deadlock.html">
             
                 <a href="deadlock.html">
             
@@ -1575,7 +1575,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Priority Queue</a>
+        <a href=".." >Deadlock</a>
     </h1>
 </div>
 
@@ -1590,36 +1590,49 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="priority-queue">Priority Queue</h1>
-<h6 id="tags--data-structure">tags = <code>Data Structure</code></h6>
-<p>Priority Queue&#x662F;&#x4E00;&#x7A2E;&#x300C;&#x5148;&#x53D6;&#x51FA;&#x6700;&#x91CD;&#x8981;&#x8CC7;&#x6599;&#x300D;&#x7684;queue&#x3002;</p>
+                                <h1 id="deadlock">Deadlock</h1>
+<h6 id="tags--operating-system">tags = <code>Operating System</code></h6>
+<p>&#x5728;Multi-thread&#x6216;Multi-process&#x7684;&#x4F5C;&#x696D;&#x7CFB;&#x7D71;&#x4E0A;&#xFF0C;&#x8A31;&#x591A;Process&#x6216;Thread&#x8981;&#x7AF6;&#x722D;&#x4E00;&#x4E9B;&#x6709;&#x9650;&#x7684;&#x8CC7;&#x6E90;&#xFF0C;&#x4F46;&#x662F;&#x70BA;&#x4E86;&#x907F;&#x514D;Race condition&#xFF0C;&#x5728;&#x4E00;&#x500B;Process/Thread&#x8981;&#x4F7F;&#x7528;&#x4E00;&#x500B;&#x8CC7;&#x6E90;&#x6642;&#xFF0C;&#x6B64;&#x8CC7;&#x6E90;&#x4E0D;&#x4E00;&#x5B9A;&#x662F;&#x53EF;&#x7528;&#x7684;&#xFF0C;&#x53EF;&#x80FD;&#x9700;&#x8981;&#x7B49;&#x5F85;&#x5176;&#x4ED6;Process/Thread&#x91CB;&#x51FA;&#x6B64;&#x8CC7;&#x6E90;&#x7684;&#x4F7F;&#x7528;&#x6B0A;&#x3002;</p>
+<blockquote>
+<p>&#x7576;&#x5169;&#x8F1B;&#x706B;&#x8ECA;&#x540C;&#x6642;&#x5230;&#x9054;&#x4E00;&#x500B;&#x4EA4;&#x53C9;&#x8DEF;&#x53E3;&#x6642;&#xFF0C;&#x96D9;&#x65B9;&#x90FD;&#x5FC5;&#x9808;&#x5B8C;&#x5168;&#x505C;&#x6B62;&#xFF0C;&#x7B49;&#x5F85;&#x4E00;&#x8F1B;&#x99DB;&#x53BB;&#x5F8C;&#xFF0C;&#x53E6;&#x4E00;&#x8F1B;&#x518D;&#x901A;&#x904E;&#x3002;</p>
+</blockquote>
+<p>&#x5728;&#x4F5C;&#x696D;&#x7CFB;&#x7D71;&#x4E0A;&#xFF0C;&#x4E5F;&#x6709;&#x53EF;&#x80FD;&#x767C;&#x751F;Process/Thread&#x4E4B;&#x9593;&#x4E92;&#x76F8;&#x7B49;&#x5F85;&#x8CC7;&#x6E90;&#xFF0C;&#x6700;&#x5F8C;&#x5C0E;&#x81F4;&#x6C92;&#x6709;&#x4EFB;&#x4F55;&#x4E00;&#x500B;Process/Thread&#x53EF;&#x4EE5;&#x53D6;&#x5F97;&#x8CC7;&#x6E90;&#x7684;&#x60C5;&#x5F62;&#xFF0C;&#x9019;&#x7A2E;&#x60C5;&#x6CC1;&#x6211;&#x5011;&#x7A31;&#x70BA;Deadlock&#x3002;</p>
+<p>&#x8209;&#x4F8B;&#x4F86;&#x8AAA;&#xFF0C;&#x5047;&#x8A2D;&#x4F5C;&#x696D;&#x7CFB;&#x7D71;&#x4E0A;&#x6709;&#x5169;&#x500B;&#x8CC7;&#x6E90;Resource A, Resource B&#xFF0C;&#x4EE5;&#x53CA;&#x5169;&#x500B;Process X, Process Y&#xFF0C;X&#x53CA;Y&#x90FD;&#x540C;&#x6642;&#x9700;&#x8981;&#x5169;&#x500B;&#x8CC7;&#x6E90;&#x624D;&#x80FD;&#x505A;&#x904B;&#x7B97;&#xFF0C;&#x6B64;&#x6642;&#xFF0C;Process X&#x5148;lock A&#xFF0C;&#x518D;lock B&#xFF1B;Process Y&#x5148;lock B&#xFF0C;&#x518D;lock A:</p>
+<pre><code class="lang-cpp=1">// X.cpp
+mutexA-&gt;lock();
+mutexB-&gt;lock();
+A + B
+mutexA-&gt;unlock();
+mutexB-&gt;unlock();
+
+// Y.cpp
+mutexB-&gt;lock();
+mutexA-&gt;lock();
+A + B
+mutexB-&gt;unlock();
+mutexA-&gt;unlock();
+</code></pre>
+<p>&#x7576;X&#x62FF;&#x5230;Resource A&#x6642;&#xFF0C;&#x82E5;&#x767C;&#x751F;context switch&#xFF1B;Y&#x62FF;&#x5230;Resource B&#xFF0C;&#x6B64;&#x6642;&#x5C31;&#x6703;&#x767C;&#x751F;deadlock&#xFF0C;&#x56E0;&#x70BA;X&#x5728;&#x7B49;A&#xFF1B;Y&#x5728;&#x7B49;B&#xFF0C;&#x4F46;&#x662F;&#x5169;&#x8005;&#x90FD;&#x6C38;&#x9060;&#x7B49;&#x4E0D;&#x5230;&#x8CC7;&#x6E90;&#xFF1B;&#x4E5F;&#x4E0D;&#x6703;&#x653E;&#x6389;&#x624B;&#x4E0A;&#x7684;&#x8CC7;&#x6E90;&#x3002;</p>
+<h2 id="deadlock&#x767C;&#x751F;&#x7684;&#x689D;&#x4EF6;">Deadlock&#x767C;&#x751F;&#x7684;&#x689D;&#x4EF6;</h2>
+<p>&#x7576;&#x4E0B;&#x5217;&#x56DB;&#x7A2E;&#x60C5;&#x6CC1;&#x540C;&#x6642;&#x6210;&#x7ACB;&#x6642;&#xFF0C;deadlock&#x6703;&#x6210;&#x7ACB;</p>
+<h3 id="mutual-exclision">Mutual exclision</h3>
+<p>&#x81F3;&#x5C11;&#x8981;&#x6709;&#x4E00;&#x500B;Resource&#x662F;&#x4E0D;&#x53EF;&#x5171;&#x7528;&#x7684;&#x5F62;&#x5F0F;&#xFF0C;&#x4E00;&#x6B21;&#x53EA;&#x6709;&#x4E00;&#x500B;process/thread&#x53EF;&#x4EE5;&#x4F7F;&#x7528;</p>
+<h3 id="hold-and-wait">Hold and wait</h3>
+<p>&#x81F3;&#x5C11;&#x4E00;&#x500B;process&#x5FC5;&#x9808;&#x4F54;&#x7528;&#x4E00;&#x500B;&#x8CC7;&#x6E90;&#xFF0C;&#x4E14;&#x6B63;&#x5728;&#x7B49;&#x5019;&#x5176;&#x4ED6;&#x5DF2;&#x88AB;&#x5360;&#x7528;&#x7684;&#x8CC7;&#x6E90;</p>
+<h3 id="no-preemption">No preemption</h3>
+<p>&#x8CC7;&#x6E90;&#x4E0D;&#x80FD;&#x88AB;&#x5F37;&#x5236;&#x6436;&#x5148;&#x4F7F;&#x7528;&#xFF0C;&#x4E00;&#x500B;&#x8CC7;&#x6E90;&#x5FC5;&#x9808;&#x7B49;&#x5F85;&#x4F7F;&#x7528;&#x5B83;&#x7684;&#x4EBA;&#x4F7F;&#x7528;&#x5B8C;&#x624D;&#x88AB;&#x91CB;&#x653E;</p>
+<h3 id="circular-wait">Circular wait</h3>
+<p>&#x5FC5;&#x9808;&#x5B58;&#x5728;&#x4E00;&#x500B;&#x4E92;&#x76F8;&#x7B49;&#x5F85;&#x7684;&#x96C6;&#x5408;{P0, P1... ,Pn}&#xFF0C;&#x5176;&#x4E2D;P0&#x7B49;&#x5F85;&#x7684;&#x8CC7;&#x6E90;&#x88AB;P1&#x5360;&#x7528;&#xFF0C;P1&#x7684;&#x8CC7;&#x6E90;&#x88AB;P2&#x5360;&#x7528;....Pn-1&#x7684;&#x8CC7;&#x6E90;&#x88AB;Pn&#x5360;&#x7528;&#x3002;</p>
+<h2 id="resource-allocation-graph">Resource Allocation Graph</h2>
+<p><img src="https://i.imgur.com/4yc9wCi.png" alt=""></p>
 <ul>
-<li>Priority : &#x8CC7;&#x6599;&#x7684;&#x512A;&#x5148;&#x5EA6;&#xFF08;&#x91CD;&#x8981;&#x5EA6;&#xFF09;</li>
+<li>P : Process</li>
+<li>R : Resource</li>
+<li>R-&gt;P : P&#x6B63;&#x5360;&#x7528;R&#x7684;&#x8CC7;&#x6E90;</li>
+<li>P-&gt;R : P&#x6B63;&#x5728;&#x7B49;&#x5F85;R&#x7684;&#x8CC7;&#x6E90;</li>
 </ul>
-<p>Priority queue&#x5206;&#x70BA;&#x5169;&#x7A2E;&#xFF1A;Max priority queue / Min priority queue&#xFF0C;&#x5206;&#x5225;&#x70BA;&#x512A;&#x5148;&#x53D6;&#x51FA;&#x6B0A;&#x91CD;&#x6700;&#x91CD;&#x7684;&#x8CC7;&#x6599;&#x5373;&#x53D6;&#x51FA;&#x6B0A;&#x91CD;&#x6700;&#x8F15;&#x7684;&#x8CC7;&#x6599;&#x3002;</p>
-<p>&#x4EE5;Max priority queue&#x70BA;&#x4F8B;&#xFF0E;&#x9700;&#x8981;&#x4E09;&#x500B;&#x6700;&#x57FA;&#x672C;&#x7684;&#x64CD;&#x4F5C;&#xFF1A;</p>
-<ul>
-<li>Delete : &#x53D6;&#x5F97;&#x6700;&#x91CD;&#x8981;&#x7684;&#x8CC7;&#x6599;&#x4E26;&#x5C07;&#x5176;&#x5F9E;queue&#x4E2D;&#x522A;&#x9664;</li>
-<li>Insert : &#x5C07;&#x4E00;&#x7B46;&#x8CC7;&#x6599;&#x653E;&#x9032;queue&#x4E2D;</li>
-<li>Update Priority : &#x66F4;&#x65B0;&#x8CC7;&#x6599;&#x7684;&#x512A;&#x5148;&#x7A0B;&#x5EA6;</li>
-</ul>
-<p><img src="https://i.imgur.com/NSZWlu9.png" alt=""></p>
-<h3 id="&#x7528;max-heap&#x5BE6;&#x73FE;priority-queue">&#x7528;Max heap&#x5BE6;&#x73FE;priority queue</h3>
-<p>&#x6211;&#x5011;&#x6703;&#x767C;&#x73FE;&#xFF0C;&#x4E0A;&#x8FF0;&#x9700;&#x8981;&#x7684;&#x4E09;&#x500B;&#x57FA;&#x672C;&#x7684;&#x64CD;&#x4F5C;&#x90FD;&#x53EF;&#x4EE5;&#x5C0D;&#x61C9;&#x5230;max heap&#x7684;&#x64CD;&#x4F5C;&#xFF1A;</p>
-<ul>
-<li>Delete : &#x5C07;heap&#x7684;root&#x522A;&#x9664;&#xFF0C;&#x4E26;&#x5C07;heap&#x66F4;&#x65B0;&#xFF08;&#x8207;heap sort&#x7684;&#x65B9;&#x6CD5;&#x76F8;&#x540C;&#xFF09;</li>
-<li>Insert : &#x5C07;&#x4E00;&#x7B46;&#x8CC7;&#x6599;&#x653E;&#x9032;heap&#x7684;&#x6700;&#x5C3E;&#x7AEF;&#xFF08;complete binary tree&#x7684;&#x6700;&#x5C3E;&#x7AEF;&#xFF09;&#xFF0C;&#x4E26;&#x5C0D;&#x5176;&#x6240;&#x6709;&#x7684;&#x7956;&#x5148;&#x505A;heapify</li>
-<li>Update Priority : <ul>
-<li>&#x5C07;&#x4E00;&#x500B;node&#x7684;&#x512A;&#x5148;&#x7A0B;&#x5EA6;&#x63D0;&#x9AD8;&#xFF1A;&#x66F4;&#x65B0;&#x8A72;node&#x7684;&#x512A;&#x5148;&#x5EA6;&#x4E26;&#x5C0D;&#x8A72;node&#x6240;&#x6709;&#x7684;&#x7956;&#x5148;&#x505A;heapify</li>
-<li>&#x5C07;&#x4E00;&#x500B;node&#x7684;&#x512A;&#x5148;&#x7A0B;&#x5EA6;&#x964D;&#x4F4E;&#xFF1A;&#x66F4;&#x65B0;&#x8A72;node&#x7684;&#x512A;&#x5148;&#x5EA6;&#x4E26;&#x5C0D;&#x8A72;node&#x7684;&#x6240;&#x6709;&#x5B50;&#x5B6B;&#x505A;heapify</li>
-</ul>
-</li>
-</ul>
-<h3 id="&#x5C0F;&#x7DF4;&#x7FD2;">&#x5C0F;&#x7DF4;&#x7FD2;</h3>
-<ul>
-<li><a href="https://leetcode.com/problems/last-stone-weight/" target="_blank">https://leetcode.com/problems/last-stone-weight/</a></li>
-<li><a href="https://leetcode.com/problems/sort-characters-by-frequency/" target="_blank">https://leetcode.com/problems/sort-characters-by-frequency/</a></li>
-</ul>
+<p>&#x5982;&#x679C;Resource Allocation Graph&#x5B58;&#x5728;Cycle&#xFF0C;&#x8868;&#x793A;<strong>&#x53EF;&#x80FD;</strong>&#x5B58;&#x5728;Deadlock&#xFF0C;&#x4F46;&#x4E0D;&#x8868;&#x793A;&#x4E00;&#x5B9A;&#x5B58;&#x5728;Deadlock&#x3002;&#x4EE5;&#x4E0A;&#x5716;&#x800C;&#x8A00;&#xFF0C;R1-&gt;P1-&gt;R2-&gt;P2-&gt;R1&#xFF0C;&#x662F;&#x4E00;&#x500B;Cycle&#xFF0C;&#x4F46;&#x662F;&#x4E26;&#x4E0D;&#x662F;deadlock&#xFF0C;&#x56E0;&#x70BA;&#x7576;P3&#x91CB;&#x653E;R2&#x4E4B;&#x5F8C;&#xFF0C;P1&#x53EF;&#x4EE5;&#x7372;&#x5F97;R2&#xFF0C;&#x6B64;&#x6642;P1&#x6EFF;&#x8DB3;&#x6240;&#x6709;&#x9700;&#x6C42;&#xFF0C;&#x57F7;&#x884C;&#x5B8C;&#x5F8C;&#x6703;&#x91CB;&#x653E;R1,R2&#xFF0C;&#x6B64;&#x6642;P2&#x5373;&#x53EF;&#x57F7;&#x884C;&#x3002;</p>
+<p><img src="https://i.imgur.com/dZbo7ui.png" alt=""></p>
 
                                 
                                 </section>
@@ -1647,12 +1660,12 @@
 
             
                 
-                <a href="heap.html" class="navigation navigation-prev " aria-label="Previous page: Heap">
+                <a href="mutex.html" class="navigation navigation-prev " aria-label="Previous page: Mutex & Semaphore">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="priority_queue_method.html" class="navigation navigation-next " aria-label="Next page: 常用Method">
+                <a href="handle_deadlock.html" class="navigation navigation-next " aria-label="Next page: Handle Deadlock">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1663,7 +1676,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Priority Queue","level":"1.5.10","depth":2,"next":{"title":"常用Method","level":"1.5.10.1","depth":3,"path":"cpp_sec/priority_queue_method.md","ref":"cpp_sec/priority_queue_method.md","articles":[]},"previous":{"title":"Heap","level":"1.5.9","depth":2,"path":"cpp_sec/heap.md","ref":"cpp_sec/heap.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cpp_sec/priority_queue.md","mtime":"2021-08-09T11:26:06.981Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-08-15T01:39:22.438Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Deadlock","level":"1.7.6","depth":2,"next":{"title":"Handle Deadlock","level":"1.7.6.1","depth":3,"path":"cpp_sec/handle_deadlock.md","ref":"cpp_sec/handle_deadlock.md","articles":[]},"previous":{"title":"Mutex & Semaphore","level":"1.7.5.2","depth":3,"path":"cpp_sec/mutex.md","ref":"cpp_sec/mutex.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cpp_sec/deadlock.md","mtime":"2021-08-15T01:38:34.613Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-08-15T01:39:22.438Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Priority Queue · GitBook</title>
+        <title>Handle Deadlock · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="priority_queue_method.html" />
     
-    
-    <link rel="prev" href="heap.html" />
+    <link rel="prev" href="deadlock.html" />
     
 
     </head>
@@ -677,7 +675,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.5.10" data-path="priority_queue.html">
+        <li class="chapter " data-level="1.5.10" data-path="priority_queue.html">
             
                 <a href="priority_queue.html">
             
@@ -1263,7 +1261,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.7.6.1" data-path="handle_deadlock.html">
+        <li class="chapter active" data-level="1.7.6.1" data-path="handle_deadlock.html">
             
                 <a href="handle_deadlock.html">
             
@@ -1575,7 +1573,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Priority Queue</a>
+        <a href=".." >Handle Deadlock</a>
     </h1>
 </div>
 
@@ -1590,36 +1588,358 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="priority-queue">Priority Queue</h1>
-<h6 id="tags--data-structure">tags = <code>Data Structure</code></h6>
-<p>Priority Queue&#x662F;&#x4E00;&#x7A2E;&#x300C;&#x5148;&#x53D6;&#x51FA;&#x6700;&#x91CD;&#x8981;&#x8CC7;&#x6599;&#x300D;&#x7684;queue&#x3002;</p>
+                                <h1 id="handle-deadlock">Handle Deadlock</h1>
+<h6 id="tags--operating-system">tags = <code>Operating System</code></h6>
+<p>&#x4E00;&#x822C;&#x4F86;&#x8AAA;&#xFF0C;&#x4F5C;&#x696D;&#x7CFB;&#x7D71;&#x63A1;&#x7528;&#x4E0B;&#x5217;&#x4E09;&#x7A2E;&#x65B9;&#x6CD5;&#x4E4B;&#x4E00;&#x4F86;&#x89E3;&#x6C7A;Deadlock:</p>
 <ul>
-<li>Priority : &#x8CC7;&#x6599;&#x7684;&#x512A;&#x5148;&#x5EA6;&#xFF08;&#x91CD;&#x8981;&#x5EA6;&#xFF09;</li>
+<li>&#x4F7F;&#x7528;&#x67D0;&#x500B;&#x5354;&#x8B70;&#x9632;&#x6B62;&#x6216;&#x907F;&#x514D;Deadlock&#x767C;&#x751F;</li>
+<li>&#x5141;&#x8A31;&#x7CFB;&#x7D71;&#x9032;&#x5165;Deadlock&#xFF0C;&#x5075;&#x6E2C;&#x5230;&#x5F8C;&#x518D;&#x60F3;&#x8FA6;&#x6CD5;&#x89E3;&#x6C7A;</li>
+<li>&#x5FFD;&#x7565;Deadlock&#xFF0C;&#x5047;&#x88DD;&#x6C92;&#x767C;&#x751F;</li>
 </ul>
-<p>Priority queue&#x5206;&#x70BA;&#x5169;&#x7A2E;&#xFF1A;Max priority queue / Min priority queue&#xFF0C;&#x5206;&#x5225;&#x70BA;&#x512A;&#x5148;&#x53D6;&#x51FA;&#x6B0A;&#x91CD;&#x6700;&#x91CD;&#x7684;&#x8CC7;&#x6599;&#x5373;&#x53D6;&#x51FA;&#x6B0A;&#x91CD;&#x6700;&#x8F15;&#x7684;&#x8CC7;&#x6599;&#x3002;</p>
-<p>&#x4EE5;Max priority queue&#x70BA;&#x4F8B;&#xFF0E;&#x9700;&#x8981;&#x4E09;&#x500B;&#x6700;&#x57FA;&#x672C;&#x7684;&#x64CD;&#x4F5C;&#xFF1A;</p>
+<p>&#x5176;&#x5BE6;&#xFF0C;&#x591A;&#x6578;&#x4F5C;&#x696D;&#x7CFB;&#x7D71;&#x63A1;&#x7528;&#x7B2C;&#x4E09;&#x7A2E;&#x65B9;&#x6CD5;&#xFF0C;&#x56E0;&#x6B64;&#xFF0C;&#x5728;&#x958B;&#x767C;&#x7A0B;&#x5F0F;&#x6642;&#xFF0C;&#x9700;&#x8981;&#x81EA;&#x5DF1;&#x8003;&#x616E;&#x5230;&#x8655;&#x7406;deadlock&#x7684;&#x72C0;&#x6CC1;&#x3002;</p>
+<h2 id="&#x9810;&#x9632;deadlock">&#x9810;&#x9632;Deadlock</h2>
+<p>&#x4E4B;&#x524D;&#x63D0;&#x5230;&#xFF0C;Deadlock&#x7684;&#x7522;&#x751F;&#x6709;&#x56DB;&#x500B;&#x5FC5;&#x8981;&#x689D;&#x4EF6;&#xFF0C;&#x53EA;&#x8981;&#x53EF;&#x4EE5;&#x4F7F;&#x5176;&#x4E2D;&#x4E4B;&#x4E00;&#x4E00;&#x5B9A;&#x4E0D;&#x6210;&#x7ACB;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x9810;&#x9632;deadlock&#x7684;&#x7522;&#x751F;&#x3002;</p>
 <ul>
-<li>Delete : &#x53D6;&#x5F97;&#x6700;&#x91CD;&#x8981;&#x7684;&#x8CC7;&#x6599;&#x4E26;&#x5C07;&#x5176;&#x5F9E;queue&#x4E2D;&#x522A;&#x9664;</li>
-<li>Insert : &#x5C07;&#x4E00;&#x7B46;&#x8CC7;&#x6599;&#x653E;&#x9032;queue&#x4E2D;</li>
-<li>Update Priority : &#x66F4;&#x65B0;&#x8CC7;&#x6599;&#x7684;&#x512A;&#x5148;&#x7A0B;&#x5EA6;</li>
+<li>Mutual exclision : &#x81F3;&#x5C11;&#x8981;&#x6709;&#x4E00;&#x500B;Resource&#x662F;&#x4E0D;&#x53EF;&#x5171;&#x7528;&#x7684;&#x5F62;&#x5F0F;<ul>
+<li>&#x4E0D;&#x53EF;&#x80FD;&#x6392;&#x9664;&#x9019;&#x500B;&#x689D;&#x4EF6;&#xFF0C;&#x56E0;&#x70BA;&#x6703;&#x9020;&#x6210;Race condition</li>
 </ul>
-<p><img src="https://i.imgur.com/NSZWlu9.png" alt=""></p>
-<h3 id="&#x7528;max-heap&#x5BE6;&#x73FE;priority-queue">&#x7528;Max heap&#x5BE6;&#x73FE;priority queue</h3>
-<p>&#x6211;&#x5011;&#x6703;&#x767C;&#x73FE;&#xFF0C;&#x4E0A;&#x8FF0;&#x9700;&#x8981;&#x7684;&#x4E09;&#x500B;&#x57FA;&#x672C;&#x7684;&#x64CD;&#x4F5C;&#x90FD;&#x53EF;&#x4EE5;&#x5C0D;&#x61C9;&#x5230;max heap&#x7684;&#x64CD;&#x4F5C;&#xFF1A;</p>
-<ul>
-<li>Delete : &#x5C07;heap&#x7684;root&#x522A;&#x9664;&#xFF0C;&#x4E26;&#x5C07;heap&#x66F4;&#x65B0;&#xFF08;&#x8207;heap sort&#x7684;&#x65B9;&#x6CD5;&#x76F8;&#x540C;&#xFF09;</li>
-<li>Insert : &#x5C07;&#x4E00;&#x7B46;&#x8CC7;&#x6599;&#x653E;&#x9032;heap&#x7684;&#x6700;&#x5C3E;&#x7AEF;&#xFF08;complete binary tree&#x7684;&#x6700;&#x5C3E;&#x7AEF;&#xFF09;&#xFF0C;&#x4E26;&#x5C0D;&#x5176;&#x6240;&#x6709;&#x7684;&#x7956;&#x5148;&#x505A;heapify</li>
-<li>Update Priority : <ul>
-<li>&#x5C07;&#x4E00;&#x500B;node&#x7684;&#x512A;&#x5148;&#x7A0B;&#x5EA6;&#x63D0;&#x9AD8;&#xFF1A;&#x66F4;&#x65B0;&#x8A72;node&#x7684;&#x512A;&#x5148;&#x5EA6;&#x4E26;&#x5C0D;&#x8A72;node&#x6240;&#x6709;&#x7684;&#x7956;&#x5148;&#x505A;heapify</li>
-<li>&#x5C07;&#x4E00;&#x500B;node&#x7684;&#x512A;&#x5148;&#x7A0B;&#x5EA6;&#x964D;&#x4F4E;&#xFF1A;&#x66F4;&#x65B0;&#x8A72;node&#x7684;&#x512A;&#x5148;&#x5EA6;&#x4E26;&#x5C0D;&#x8A72;node&#x7684;&#x6240;&#x6709;&#x5B50;&#x5B6B;&#x505A;heapify</li>
+</li>
+<li>Hold and wait : &#x81F3;&#x5C11;&#x4E00;&#x500B;process&#x5FC5;&#x9808;&#x4F54;&#x7528;&#x4E00;&#x500B;&#x8CC7;&#x6E90;&#xFF0C;&#x4E14;&#x6B63;&#x5728;&#x7B49;&#x5019;&#x5176;&#x4ED6;&#x5DF2;&#x88AB;&#x5360;&#x7528;&#x7684;&#x8CC7;&#x6E90;<ul>
+<li>&#x8981;&#x6C42;&#x6BCF;&#x500B;Process&#x5728;&#x4F54;&#x7528;&#x8CC7;&#x6E90;&#x6642;&#xFF0C;&#x4E00;&#x5B9A;&#x8981;&#x4E00;&#x6B21;&#x53D6;&#x5F97;&#x6240;&#x6709;&#x6240;&#x9700;&#x7684;&#x8CC7;&#x6E90;</li>
+<li>&#x8981;&#x6C42;&#x6BCF;&#x500B;Process&#x5728;&#x8981;&#x6C42;&#x8CC7;&#x6E90;&#x524D;&#xFF0C;&#x4E00;&#x5B9A;&#x8981;&#x628A;&#x76EE;&#x524D;&#x6240;&#x4F54;&#x7684;&#x8CC7;&#x6E90;&#x5168;&#x90E8;&#x91CB;&#x653E;</li>
+<li>&#x7F3A;&#x9EDE;: &#x6703;&#x8B93;&#x8CC7;&#x6E90;&#x4F7F;&#x7528;&#x7387;&#x5F88;&#x4F4E;&#xFF1B;&#x4E14;&#x53EF;&#x80FD;&#x5C0E;&#x81F4;&#x67D0;&#x4E9B;Process&#x6C38;&#x9060;&#x57F7;&#x884C;&#x4E0D;&#x5230;</li>
+</ul>
+</li>
+<li>No preemption : &#x8CC7;&#x6E90;&#x4E0D;&#x80FD;&#x88AB;&#x5F37;&#x5236;&#x6436;&#x5148;&#x4F7F;&#x7528;<ul>
+<li>&#x8981;&#x6C42;&#x6BCF;&#x500B;Process&#x5728;&#x8981;&#x6C42;&#x7684;&#x8CC7;&#x6E90;&#x7121;&#x6CD5;&#x7ACB;&#x5373;&#x53D6;&#x5F97;&#x6642;&#xFF0C;&#x8981;&#x628A;&#x76EE;&#x524D;&#x6240;&#x4F54;&#x7684;&#x8CC7;&#x6E90;&#x5168;&#x90E8;&#x91CB;&#x653E;</li>
+<li>&#x7F3A;&#x9EDE;: &#x6BCF;&#x7576;&#x653E;&#x6389;&#x6240;&#x6709;&#x8CC7;&#x6E90;&#xFF0C;Process&#x9700;&#x8981;&#x82B1;&#x5927;&#x91CF;&#x6642;&#x9593;&#x91CD;&#x65B0;&#x53D6;&#x5F97;&#x8CC7;&#x6E90;</li>
+</ul>
+</li>
+<li>Circular wait :&#x3000;&#x5FC5;&#x9808;&#x5B58;&#x5728;&#x4E00;&#x500B;&#x4E92;&#x76F8;&#x7B49;&#x5F85;&#x7684;&#x96C6;&#x5408;<ul>
+<li>&#x5C0D;&#x6240;&#x6709;&#x8CC7;&#x6E90;&#x5F37;&#x8FEB;&#x5B89;&#x6392;&#x4E00;&#x500B;&#x9806;&#x5E8F;&#xFF0C;&#x6240;&#x6709;Process&#x8981;&#x8CC7;&#x6E90;&#x6642;&#x9700;&#x8981;&#x7167;&#x8457;&#x6B64;&#x9806;&#x5E8F;</li>
+<li>&#x7F3A;&#x9EDE;: &#x96E3;&#x4EE5;&#x5B9A;&#x7FA9;&#x4F5C;&#x696D;&#x7CFB;&#x7D71;&#x4E0A;&#x6240;&#x6709;&#x8CC7;&#x6E90;&#x7684;&#x9806;&#x5E8F;&#xFF0C;&#x4E14;&#x9806;&#x5E8F;&#x5B89;&#x6392;&#x4E0D;&#x7576;&#x6703;&#x4F7F;&#x7CFB;&#x7D71;&#x6548;&#x7387;&#x4F4E;</li>
 </ul>
 </li>
 </ul>
-<h3 id="&#x5C0F;&#x7DF4;&#x7FD2;">&#x5C0F;&#x7DF4;&#x7FD2;</h3>
+<h2 id="&#x907F;&#x514D;deadlock">&#x907F;&#x514D;Deadlock</h2>
+<p>&#x4E0A;&#x8FF0;&#x5E7E;&#x500B;&#x9810;&#x9632;Deadlock&#x7684;&#x65B9;&#x6CD5;&#x90FD;&#x6709;&#x6D6A;&#x8CBB;&#x8CC7;&#x6E90;&#x7684;&#x554F;&#x984C;&#xFF0C;&#x56E0;&#x6B64;&#x8981;&#x6BD4;&#x8F03;&#x6709;&#x6548;&#x7684;&#x907F;&#x514D;Deadlock&#xFF0C;&#x4F5C;&#x696D;&#x7CFB;&#x7D71;&#x9700;&#x8981;&#x66F4;&#x591A;&#x7684;&#x8CC7;&#x8A0A;:</p>
 <ul>
-<li><a href="https://leetcode.com/problems/last-stone-weight/" target="_blank">https://leetcode.com/problems/last-stone-weight/</a></li>
-<li><a href="https://leetcode.com/problems/sort-characters-by-frequency/" target="_blank">https://leetcode.com/problems/sort-characters-by-frequency/</a></li>
+<li>&#x7CFB;&#x7D71;&#x76EE;&#x524D;&#x53EF;&#x7528;&#x7684;&#x8CC7;&#x6E90;&#x6578;&#x91CF;</li>
+<li>&#x5404;Process&#x7684;&#x8CC7;&#x6E90;&#x9700;&#x6C42;&#x91CF;</li>
+<li>&#x5404;Process&#x76EE;&#x524D;&#x6301;&#x6709;&#x7684;&#x8CC7;&#x6E90;&#x91CF;</li>
 </ul>
+<p>&#x8209;&#x4F8B;&#x4F86;&#x8AAA;&#xFF0C;&#x5047;&#x8A2D;Resource A&#x6709;12&#x500B;instance(&#x6709;12&#x500B;&#x8CC7;&#x6E90;&#x53EF;&#x4EE5;&#x540C;&#x6642;&#x88AB;&#x4F7F;&#x7528;)&#xFF0C;&#x800C;Process 0, 1, 2&#x5206;&#x5225;&#x9700;&#x8981;&#x5360;&#x7528;&#x90E8;&#x5206;&#x8CC7;&#x6E90;:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>&#x6700;&#x5927;&#x9700;&#x6C42;&#x91CF;</th>
+<th>&#x76EE;&#x524D;&#x9700;&#x6C42;&#x91CF;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P0</td>
+<td>10</td>
+<td>5</td>
+</tr>
+<tr>
+<td>P1</td>
+<td>4</td>
+<td>2</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>9</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+<p>&#x5728;&#x6B64;&#x6642;&#xFF0C;Safe sequence&#x5B58;&#x5728;&#x3002;</p>
+<ul>
+<li>Safe sequence: &#x7576;&#x53EF;&#x4EE5;&#x627E;&#x5230;&#x4E00;&#x500B;&#x7279;&#x5B9A;&#x9806;&#x5E8F;&#xFF0C;&#x8B93;Process&#x4F9D;&#x5E8F;&#x62FF;&#x53D6;&#x8CC7;&#x6E90;&#xFF0C;&#x62FF;&#x5230;&#x6700;&#x5927;&#x9700;&#x6C42;&#x91CF;&#x5F8C;&#xFF0C;&#x4F7F;&#x7528;&#x5B8C;&#x8CC7;&#x6E90;&#x4E26;&#x91CB;&#x653E;&#xFF0C;&#x53EA;&#x8981;&#x6B64;&#x9806;&#x5E8F;&#x80FD;&#x6EFF;&#x8DB3;&#x6240;&#x6709;Process&#x7684;&#x6700;&#x5927;&#x9700;&#x6C42;&#x91CF;&#xFF0C;&#x5373;&#x70BA;Safe sequence&#x3002;</li>
+</ul>
+<p>P1 -&gt; P0 -&gt; P2&#x70BA;&#x4E00;&#x500B;Safe sequence</p>
+<ul>
+<li>P1&#x4F7F;&#x7528;&#x6642;&#xFF0C;&#x6703;&#x591A;&#x62FF;&#x5169;&#x500B;instance&#xFF0C;&#x6B64;&#x6642;&#x7E3D;&#x9700;&#x6C42;&#x70BA;11&#x500B;instance&#xFF0C;&#x6C92;&#x6709;&#x8D85;&#x904E;&#x7E3D;&#x8CC7;&#x6E90;12&#x500B;instance:</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>&#x6700;&#x5927;&#x9700;&#x6C42;&#x91CF;</th>
+<th>&#x76EE;&#x524D;&#x9700;&#x6C42;&#x91CF;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P0</td>
+<td>10</td>
+<td>5</td>
+</tr>
+<tr>
+<td>P1</td>
+<td>4</td>
+<td>4</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>9</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>P1&#x4F7F;&#x7528;&#x5B8C;&#x5F8C;&#x91CB;&#x653E;&#x8CC7;&#x6E90;&#xFF0C;&#x63DB;P0&#x4F7F;&#x7528;&#xFF0C;&#x6B64;&#x6642;&#x7E3D;&#x9700;&#x6C42;&#x70BA;12&#x500B;instance&#xFF0C;&#x6C92;&#x6709;&#x8D85;&#x904E;&#x7E3D;&#x8CC7;&#x6E90;12&#x500B;instance:</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>&#x6700;&#x5927;&#x9700;&#x6C42;&#x91CF;</th>
+<th>&#x76EE;&#x524D;&#x9700;&#x6C42;&#x91CF;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P0</td>
+<td>10</td>
+<td>10</td>
+</tr>
+<tr>
+<td>P1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>9</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>&#x6700;&#x5F8C;&#xFF0C;P2&#x4F7F;&#x7528;&#xFF0C;&#x6B64;&#x6642;&#x7E3D;&#x9700;&#x6C42;&#x70BA;9&#x500B;instance&#xFF0C;&#x6C92;&#x6709;&#x8D85;&#x904E;&#x7E3D;&#x8CC7;&#x6E90;12&#x500B;instance:</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>&#x6700;&#x5927;&#x9700;&#x6C42;&#x91CF;</th>
+<th>&#x76EE;&#x524D;&#x9700;&#x6C42;&#x91CF;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>P1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>9</td>
+<td>9</td>
+</tr>
+</tbody>
+</table>
+<p>&#x82E5;&#x5C07;&#x4E00;&#x958B;&#x59CB;P2&#x7684;&#x9700;&#x6C42;&#x91CF;&#x6539;&#x70BA;3&#xFF0C;&#x5247;&#x6709;&#x53EF;&#x80FD;&#x767C;&#x751F;deadlock&#xFF0C;&#x56E0;&#x70BA;&#x627E;&#x4E0D;&#x5230;Safe sequence(&#x627E;&#x4E0D;&#x5230;&#x4E00;&#x500B;&#x5FC5;&#x5B9A;&#x4E0D;&#x6703;&#x767C;&#x751F;deadlock&#x7684;&#x57F7;&#x884C;&#x9806;&#x5E8F;)&#xFF0C;&#x56E0;&#x6B64;&#xFF0C;&#x8981;&#x907F;&#x514D;deadlock&#x7684;&#x65B9;&#x5F0F;&#x5C31;&#x662F;&#x7576;P2&#x5728;&#x4E00;&#x958B;&#x59CB;&#x8981;&#x6C42;&#x76EE;&#x524D;&#x9700;&#x6C42;&#x91CF;&#x6642;&#xFF0C;&#x4F5C;&#x696D;&#x7CFB;&#x7D71;&#x8981;&#x62D2;&#x7D55;P2&#x7684;&#x9019;&#x500B;&#x8ACB;&#x6C42;&#x3002;</p>
+<h3 id="bank-algorithm">Bank Algorithm</h3>
+<p>Bank Algorithm&#x7528;&#x65BC;&#x5728;&#x6709;&#x591A;&#x500B;Resource&#x53CA;instance&#x7684;&#x7CFB;&#x7D71;&#x4E0A;&#x907F;&#x514D;deadlock&#xFF0C;&#x9019;&#x500B;&#x6F14;&#x7B97;&#x6CD5;&#x4F7F;&#x7528;&#x4E86;&#x4EE5;&#x4E0B;&#x5E7E;&#x500B;&#x8CC7;&#x6599;&#x7D50;&#x69CB;&#xFF0C;&#x5176;&#x4E2D;m&#x70BA;Resource&#x7684;&#x6578;&#x91CF;&#xFF1B;n&#x70BA;Process&#x7684;&#x6578;&#x91CF;:</p>
+<pre><code>Available : &#x5927;&#x5C0F;&#x70BA;m&#x7684;Array&#xFF0C;Available[j] = k&#x8868;&#x793A;Resource j&#x76EE;&#x524D;&#x6709;k&#x500B;instance&#x53EF;&#x4EE5;&#x4F7F;&#x7528;
+Max : &#x4E00;&#x500B;n*m&#x7684;Array&#xFF0C;Max[i][j]&#x8868;&#x793A;Process i&#x5C0D;Resource j&#x7684;&#x6700;&#x5927;&#x9700;&#x6C42;&#x91CF;
+Allocation : &#x4E00;&#x500B;n*m&#x7684;Array&#xFF0C;Allocation[i][j] = k&#x8868;&#x793A;&#x76EE;&#x524D;Process i&#x5DF2;&#x4F54;&#x7528;k&#x500B;Resource j
+Need : &#x4E00;&#x500B;n*m&#x7684;Array&#xFF0C;Need[i][j] = k&#x8868;&#x793A;&#x76EE;&#x524D;Process i&#x9084;&#x9700;&#x8981;&#x5E7E;&#x500B;Resource j&#x624D;&#x80FD;&#x5B8C;&#x6210;&#x5176;&#x5DE5;&#x4F5C;
+Finish : &#x4E00;&#x500B;&#x5927;&#x5C0F;&#x70BA;n&#x7684;Bool Array&#xFF0C;Work[i] = false&#x8868;&#x793A;Process i&#x9084;&#x6C92;&#x7D50;&#x675F;
+</code></pre><p>Bank Algorithm:</p>
+<pre><code class="lang-cpp=1">Finish[0:n-1]&#x7686;&#x8A2D;&#x70BA;False
+Work = Available
+for (int i = 0; i &lt; n; i++)
+{
+    if (Finish[i] == False &amp;&amp; all Need[i] &lt;= Work)
+        All Need[i] &lt; Work =&gt; Process i&#x6240;&#x9700;&#x7684;&#x6240;&#x6709;&#x8CC7;&#x6E90;&#x90FD;&#x80FD;&#x88AB;&#x6EFF;&#x8DB3;
+        Work = Work + Allocation[i]
+        continue
+}
+if (All Finish[0:n-1] == True) =&gt; Safe sequence&#x5B58;&#x5728;
+else =&gt; Safe sequence&#x4E0D;&#x5B58;&#x5728;
+</code></pre>
+<h4 id="example">Example</h4>
+<p>&#x5047;&#x8A2D;&#x67D0;&#x7CFB;&#x7D71;&#x6709;5&#x500B;Process&#x53CA;3&#x500B;Resource&#x3002;</p>
+<ul>
+<li>Allocation</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>P1</td>
+<td>2</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>3</td>
+<td>0</td>
+<td>2</td>
+</tr>
+<tr>
+<td>P3</td>
+<td>2</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>P4</td>
+<td>0</td>
+<td>0</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Max</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P0</td>
+<td>7</td>
+<td>5</td>
+<td>3</td>
+</tr>
+<tr>
+<td>P1</td>
+<td>3</td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>9</td>
+<td>0</td>
+<td>2</td>
+</tr>
+<tr>
+<td>P3</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr>
+<td>P4</td>
+<td>4</td>
+<td>3</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Need = Max - Allocation</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P0</td>
+<td>7</td>
+<td>4</td>
+<td>3</td>
+</tr>
+<tr>
+<td>P1</td>
+<td>1</td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>6</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>P3</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>P4</td>
+<td>4</td>
+<td>3</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Available</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>3</td>
+<td>3</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+<p>&#x900F;&#x904E;Bank Algorithm:</p>
+<pre><code class="lang-cpp=1">Work = Allocation = {3,3,2}
+for loop
+    Finish[1] == False &#x4E14; Need[1] = {1,2,2} all &lt; Work = {3,3,2}
+        Finish[1] = True
+        Work = {3,3,2} + Allocation[1] = {5,3,2}
+
+    Finish[3] == False &#x4E14; Need[3] = {0,1,1} all &lt; Work = {5,3,2}
+        Finish[3] = True
+        Work = {5,3,2} + Allocation[3] = {7,4,3}
+
+    Finish[4] == False &#x4E14; Need[4] = {4,3,1} all &lt; Work = {7,4,3}
+        ... &#x4EE5;&#x6B64;&#x985E;&#x63A8;
+</code></pre>
+<p>&#x6642;&#x9593;&#x8907;&#x96DC;&#x5EA6;?</p>
+<p>&#x5F9E;&#x4E0A;&#x8FF0;&#x7684;Bank Algorithm&#x53EF;&#x4EE5;&#x767C;&#x73FE;&#xFF0C;&#x4E0D;&#x8AD6;&#x662F;&#x4F7F;&#x7528;Bank Algorithm&#x4F86;&#x9810;&#x9632;Deadlock(&#x767C;&#x73FE;&#x627E;&#x4E0D;&#x5230;safe sequence&#x5C31;&#x4E0D;&#x5141;&#x8A31;&#x7279;&#x5B9A;Process&#x53D6;&#x5F97;&#x7279;&#x5B9A;&#x8CC7;&#x6E90;)&#xFF1B;&#x6216;&#x662F;&#x4F7F;&#x7528;Bank Algorithm&#x4F86;&#x5075;&#x6E2C;Deadlock(&#x78BA;&#x8A8D;&#x662F;&#x5426;&#x5B58;&#x5728;Safe sequence)&#xFF0C;&#x5C0D;&#x4F5C;&#x696D;&#x7CFB;&#x7D71;&#x4F86;&#x8AAA;&#x90FD;&#x76F8;&#x7576;&#x8017;&#x8CBB;&#x8CC7;&#x6E90;&#xFF0C;&#x56E0;&#x6B64;&#xFF0C;&#x5927;&#x591A;&#x6578;&#x7684;&#x4F5C;&#x696D;&#x7CFB;&#x7D71;&#x624D;&#x9078;&#x64C7;&#x4E0D;&#x9810;&#x9632;&#x3001;&#x4E5F;&#x4E0D;&#x5075;&#x6E2C;Deadlock&#x3002;</p>
 
                                 
                                 </section>
@@ -1647,14 +1967,10 @@
 
             
                 
-                <a href="heap.html" class="navigation navigation-prev " aria-label="Previous page: Heap">
+                <a href="deadlock.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Deadlock">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
-                
-                <a href="priority_queue_method.html" class="navigation navigation-next " aria-label="Next page: 常用Method">
-                    <i class="fa fa-angle-right"></i>
-                </a>
                 
             
         
@@ -1663,7 +1979,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Priority Queue","level":"1.5.10","depth":2,"next":{"title":"常用Method","level":"1.5.10.1","depth":3,"path":"cpp_sec/priority_queue_method.md","ref":"cpp_sec/priority_queue_method.md","articles":[]},"previous":{"title":"Heap","level":"1.5.9","depth":2,"path":"cpp_sec/heap.md","ref":"cpp_sec/heap.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cpp_sec/priority_queue.md","mtime":"2021-08-09T11:26:06.981Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-08-15T01:39:22.438Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Handle Deadlock","level":"1.7.6.1","depth":3,"next":{"title":"[Signal]","level":"1.7.7","depth":2,"ref":"","articles":[]},"previous":{"title":"Deadlock","level":"1.7.6","depth":2,"path":"cpp_sec/deadlock.md","ref":"cpp_sec/deadlock.md","articles":[{"title":"Handle Deadlock","level":"1.7.6.1","depth":3,"path":"cpp_sec/handle_deadlock.md","ref":"cpp_sec/handle_deadlock.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cpp_sec/handle_deadlock.md","mtime":"2021-08-15T01:38:28.469Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-08-15T01:39:22.438Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

@@ -78,7 +78,8 @@
   * [Synchronization](cpp_sec/synchronization.md)
     * [Peterson Solution](cpp_sec/peterson.md)
     * [Mutex & Semaphore](cpp_sec/mutex.md)
-  * [Deadlock]
+  * [Deadlock](cpp_sec/deadlock.md)
+    * [Handle Deadlock](cpp_sec/handle_deadlock.md)
   * [Signal]
   * [Memory]
   * [Virtual Memory]
