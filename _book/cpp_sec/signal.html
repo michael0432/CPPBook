@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>常用Method · GitBook</title>
+        <title>Signal · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="set.html" />
+    <link rel="next" href="memory.html" />
     
     
-    <link rel="prev" href="priority_queue.html" />
+    <link rel="prev" href="handle_deadlock.html" />
     
 
     </head>
@@ -691,7 +691,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter active" data-level="1.5.10.1" data-path="priority_queue_method.html">
+        <li class="chapter " data-level="1.5.10.1" data-path="priority_queue_method.html">
             
                 <a href="priority_queue_method.html">
             
@@ -1281,7 +1281,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7.7" data-path="signal.html">
+        <li class="chapter active" data-level="1.7.7" data-path="signal.html">
             
                 <a href="signal.html">
             
@@ -1594,7 +1594,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >常用Method</a>
+        <a href=".." >Signal</a>
     </h1>
 </div>
 
@@ -1609,65 +1609,154 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="priority-queue&#x5E38;&#x7528;method">Priority Queue&#x5E38;&#x7528;method</h1>
-<h6 id="tags--data-structure">tags = <code>Data Structure</code></h6>
-<h3 id="&#x5BA3;&#x544A;">&#x5BA3;&#x544A;</h3>
-<p>&#x5BA3;&#x544A;priority queue&#x9700;&#x8981;&#x4E09;&#x500B;&#x8B8A;&#x6578;&#xFF1A;queue&#x4E2D;&#x7684;&#x8CC7;&#x6599;&#x578B;&#x614B;&#x3001;&#x7528;&#x4EC0;&#x9EBC;&#x8CC7;&#x6599;&#x7D50;&#x69CB;&#x5132;&#x5B58;heap&#x3001;&#x6BD4;&#x8F03;priority&#x7684;&#x65B9;&#x5F0F;&#x3002;</p>
-<pre><code class="lang-cpp=1">#include &lt;queue&gt;
-priority_queue&lt;int, vector&lt;int&gt;, greater&lt;int&gt;()&gt; pq;
-// int : &#x8CC7;&#x6599;&#x578B;&#x614B;&#x70BA;int
-// vector&lt;int&gt; : &#x7528;vector&#x5B58;heap&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x7528;deque
-// greater&lt;int&gt;() : max heap
-// less&lt;int&gt;() : min heap
+                                <h1 id="signal">Signal</h1>
+<h6 id="tags--operating-system">tags = <code>Operating System</code></h6>
+<p>&#x9664;&#x4E86;&#x4E4B;&#x524D;&#x63D0;&#x904E;&#x7684;Pipe, Fifo, Socket&#x4E4B;&#x5916;&#xFF0C;&#x53E6;&#x4E00;&#x7A2E;Process&#x4E4B;&#x9593;&#x50B3;&#x905E;&#x8A0A;&#x606F;&#x7684;&#x65B9;&#x6CD5;&#x70BA;Signal&#xFF0C;Signal&#x662F;&#x7528;&#x4F86;&#x50B3;&#x905E;&#x8A0A;&#x865F;&#x800C;&#x4E0D;&#x662F;&#x7528;&#x4F86;&#x50B3;&#x905E;&#x8CC7;&#x6599;&#x7684;&#xFF0C;&#x7576;&#x5C0D;&#x4E00;&#x500B;Procss&#x50B3;&#x905E;Signal&#x6642;&#xFF0C;Procss&#x5C0D;Signal&#x7684;&#x8655;&#x7406;&#x65B9;&#x5F0F;&#x6709;&#x4E09;&#x7A2E;:</p>
+<ul>
+<li>Process&#x5167;&#x90E8;&#x6307;&#x5B9A;&#x7279;&#x5B9A;&#x7684;function&#x4F86;&#x8655;&#x7406;&#x7279;&#x5B9A;&#x7684;Signal</li>
+<li>&#x5FFD;&#x7565;&#x8A72;Signal</li>
+<li>&#x4F7F;&#x7528;&#x5C0D;&#x8A72;Signal&#x9810;&#x8A2D;&#x7684;&#x8655;&#x7406;&#x65B9;&#x5F0F;(&#x901A;&#x5E38;&#x70BA;&#x505C;&#x6B62;Process)</li>
+</ul>
+<p>Linux&#x5B9A;&#x7FA9;&#x4E86;&#x7684;Signal:</p>
+<p><img src="https://i.imgur.com/iaAt5JL.png" alt=""></p>
+<p>&#x5E7E;&#x500B;&#x6BD4;&#x8F03;&#x5E38;&#x7528;&#x7684;Signal:</p>
+<ul>
+<li>SIGINT : &#x7576;&#x5F9E;&#x9375;&#x76E4;&#x6309;ctrl+c&#xFF0C;&#x6703;&#x5C0D;&#x6B64;process&#x9001;&#x51FA;SIGINT&#xFF0C;&#x9810;&#x8A2D;&#x7684;&#x8655;&#x7406;&#x65B9;&#x5F0F;&#x70BA;&#x5F37;&#x5236;&#x505C;&#x6B62;Process</li>
+<li>SIGKILL : Kill process&#xFF0C;&#x8207;SIGINT&#x4E0D;&#x540C;&#x7684;&#x662F;&#xFF0C;Process&#x5167;&#x4E0D;&#x80FD;&#x5FFD;&#x7565;&#x3001;&#x4E5F;&#x4E0D;&#x80FD;&#x81EA;&#x8A02;&#x5C0D;&#x6B64;Signal&#x7684;&#x8655;&#x7406;&#x65B9;&#x5F0F;</li>
+<li>SIGFPE : &#x767C;&#x751F;&#x904B;&#x7B97;&#x932F;&#x8AA4;&#x6642;&#x6703;&#x767C;&#x51FA;&#x6B64;Signal&#xFF0C;&#x4F8B;&#x5982;&#x9664;&#x4EE5;0</li>
+<li>SIGTSTP : &#x66AB;&#x505C;Process&#x57F7;&#x884C;&#xFF0C;&#x76F8;&#x7576;&#x65BC;&#x5728;&#x9375;&#x76E4;&#x8F38;&#x5165;ctrl+z</li>
+<li>SIGCONT : &#x7E7C;&#x7E8C;&#x57F7;&#x884C;Process&#xFF0C;&#x76F8;&#x7576;&#x65BC;&#x8F38;&#x5165;fg</li>
+<li>SIGCHLD : Child process&#x7D50;&#x675F;&#x6642;&#xFF0C;Parent&#x6703;&#x6536;&#x5230;&#x9019;&#x500B;signal&#xFF0C;wait()&#x5C31;&#x662F;&#x7B49;&#x5F85;&#x9019;&#x500B;signal</li>
+<li>SIGUSR1 : User&#x53EF;&#x81EA;&#x8A02;&#x7684;Signal&#xFF0C;&#x9810;&#x8A2D;&#x70BA;&#x505C;&#x6B62;Process</li>
+</ul>
+<p>&#x53EF;&#x4EE5;&#x4F7F;&#x7528;kill -l&#x4F86;&#x67E5;&#x6709;&#x54EA;&#x4E9B;Signal&#x53EF;&#x4EE5;&#x4F7F;&#x7528;</p>
+<pre><code>kill -l 
+</code></pre><h2 id="signal-programming">Signal Programming</h2>
+<h3 id="signal-handle">Signal Handle</h3>
+<p>&#x5728;Linux&#x4E2D;&#xFF0C;&#x4F7F;&#x7528;signal()&#x4F86;&#x5B9A;&#x7FA9;&#x4F7F;&#x7528;&#x54EA;&#x500B;function&#x4F86;&#x8655;&#x7406;&#x54EA;&#x500B;signal</p>
+<pre><code class="lang-cpp=1">#include &lt;signal.h&gt;
+void (*signal(int signo, void (*func)(int)))(int);
 </code></pre>
-<h3 id="push">Push</h3>
-<p>&#x628A;element&#x653E;&#x9032;priority queue&#x4E2D;</p>
-<pre><code class="lang-cpp=1">pq.push(1);
-</code></pre>
-<h3 id="push">Push</h3>
-<p>&#x628A;element&#x653E;&#x9032;priority queue&#x4E2D;</p>
-<pre><code class="lang-cpp=1">pq.push(1);
-</code></pre>
-<h3 id="pop">Pop</h3>
-<p>&#x5C07;heap&#x7684;root&#x522A;&#x9664;</p>
-<pre><code class="lang-cpp=1">pq.pop();
-</code></pre>
-<h3 id="top">Top</h3>
-<p>&#x56DE;&#x50B3;heap&#x7684;root</p>
-<pre><code class="lang-cpp=1">cout &lt;&lt; pq.top() &lt;&lt; endl;
-</code></pre>
-<h3 id="empty">Empty</h3>
-<p>&#x56DE;&#x50B3;priority queue&#x662F;&#x5426;&#x70BA;&#x7A7A;</p>
-<pre><code class="lang-cpp=1">if(pq.empty()){
+<ul>
+<li>input : <ul>
+<li>signo : Signal Number&#xFF0C;&#x5373;&#x70BA;&#x4E0A;&#x65B9;&#x8868;&#x683C;&#x5217;&#x7684;Signal Name&#xFF0C;&#x8868;&#x793A;&#x8981;&#x8655;&#x7406;&#x7684;signal</li>
+<li>func : &#x8655;&#x7406;&#x6B64;signal&#x7684;function pointer&#xFF0C;function&#x7684;&#x683C;&#x5F0F;&#x662F;input&#x70BA;1&#x500B;int&#xFF0C;output&#x70BA;void<ul>
+<li>&#x5982;&#x679C;&#x8981;&#x81EA;&#x5B9A;&#x7FA9;&#x8655;&#x7406;&#x7684;function&#xFF0C;&#x9019;&#x908A;&#x5C31;&#x586B;&#x81EA;&#x5DF1;&#x5BEB;&#x7684;function</li>
+<li>&#x4E5F;&#x53EF;&#x4EE5;&#x586B;&#x5165;Linux&#x5B9A;&#x7FA9;&#x597D;&#x7684;function pointer<ul>
+<li>SIG_IGN : &#x5FFD;&#x7565;&#x6B64;Signal</li>
+<li>SIG_DFL : &#x4F7F;&#x7528;&#x6B64;Signal&#x7684;&#x9810;&#x8A2D;&#x8655;&#x7406;&#x65B9;&#x5F0F;</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>return value:<ul>
+<li>&#x56DE;&#x50B3;&#x4E00;&#x500B;function pointer&#xFF0C;function&#x7684;&#x683C;&#x5F0F;&#x662F;input&#x70BA;1&#x500B;int&#xFF0C;output&#x70BA;void&#xFF0C;&#x6307;&#x5411;&#x4E4B;&#x524D;&#x6307;&#x5B9A;Singal&#x8655;&#x7406;&#x7684;function</li>
+</ul>
+</li>
+</ul>
+<h3 id="example">Example</h3>
+<pre><code class="lang-cpp=1"># include &lt;signal.h&gt;
+# include &lt;stdio.h&gt;
+# include &lt;unistd.h&gt;
 
+void singal_handle_func(int signo)
+{
+    if (signo == SIGINT)
+    {
+        printf(&quot;Receive CTRL + C\n&quot;);
+        exit(1);
+    }
+    if (signo == SIGUSR1)
+    {
+        printf(&quot;Receive user defined signal&quot;);
+    }
+}
+
+int main()
+{
+    if (SIG_ERR == signal(SIGINT, singal_handle_func))
+    {
+        printf(&quot;Set signal SIGINT handle&quot;);
+    }
+    if (SIG_ERR == signal(SIGUSR1, singal_handle_func))
+    {
+        printf(&quot;Set signal SIGUSR1 handle&quot;);
+    }
+    sleep(100);
 }
 </code></pre>
-<h3 id="size">Size</h3>
-<p>&#x56DE;&#x50B3;priority queue&#x7684;&#x5927;&#x5C0F;</p>
-<pre><code class="lang-cpp=1">cout &lt;&lt; pq.size() &lt;&lt; endl;
+<h3 id="send-signal">Send Signal</h3>
+<p>&#x5728;Linux&#x4E2D;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;kill -SIGNO pid&#x4F86;&#x9001;&#x4E00;&#x500B;signal&#x7D66;&#x7279;&#x5B9A;process&#xFF0C;&#x8209;&#x4F8B;&#x4F86;&#x8AAA;</p>
+<pre><code>kill -SIGINT 1234
+</code></pre><p>&#x5C31;&#x76F8;&#x7576;&#x65BC;&#x5C0D;process 1234&#x4E0B;ctrl+c&#x3002;</p>
+<p>&#x540C;&#x6A23;&#x7684;&#xFF0C;&#x5728;C/C++&#xFF0C;&#x4E5F;&#x662F;&#x4F7F;&#x7528;kill function&#x4F86;&#x50B3;&#x905E;signal&#x3002;</p>
+<pre><code class="lang-cpp=1">#include &lt;sys/types.h&gt;
+#include &lt;signal.h&gt;
+
+int kill(pid_t pid, int signo);
 </code></pre>
-<h3 id="custom-class-priority-queue">Custom Class Priority Queue</h3>
-<p>&#x6709;&#x4E9B;&#x6642;&#x5019;&#xFF0C;priority queue&#x6709;&#x53EF;&#x80FD;&#x9700;&#x8981;&#x5B58;&#x81EA;&#x5DF1;&#x5B9A;&#x7FA9;&#x7684;class&#xFF0C;&#x9019;&#x6642;&#x9700;&#x8981;&#x81EA;&#x5DF1;&#x5B9A;&#x7FA9;&#x6BD4;&#x5927;&#x5C0F;&#x7684;function&#x3002;</p>
-<pre><code class="lang-cpp=1">class customClass{
-    int x;
-    int y;
-};
+<ul>
+<li>input : <ul>
+<li>pid : &#x8981;&#x9001;signal&#x7D66;&#x54EA;&#x500B;Process</li>
+<li>signo : Signal number</li>
+</ul>
+</li>
+<li>return value:<ul>
+<li>&#x6210;&#x529F;&#x56DE;&#x50B3;0</li>
+<li>&#x5931;&#x6557;&#x56DE;&#x50B3;&lt;0</li>
+</ul>
+</li>
+</ul>
+<h3 id="example">Example</h3>
+<pre><code class="lang-cpp=1"># include &lt;signal.h&gt;
+# include &lt;stdio.h&gt;
+# include &lt;sys/types.h&gt;
 
-class Compare{
-
-};
-
-priority_queue&lt;customClass, vector&lt;customClass&gt;, Compare&gt; pq
-class Compare
+int main()
 {
-public:
-    bool operator() (const customClass&amp; a, const customClass&amp; b)
+    pid_t PID = fork();
+    if(PID == -1)
     {
-        return a.x &gt; b.x; // &#x5F9E;&#x5C0F;&#x6392;&#x5230;&#x5927;
+        //error
     }
-};
+    else if(PID == 0)
+    {
+        //child process
+        printf(&quot;I&apos;m child, child PID = %d&quot;, getpid());
+        execl(&quot;./signal_handle&quot;, &quot;./signal_handle&quot;);
+    }
+    else
+    {
+        // parent process
+        printf(&quot;I&apos;m parent, parent PID = %d, my child PID = %d&quot;, getpid(), PID);
+        sleep(1);
+        kill(PID, SIGUSR1);
+        waitpid(PID, NULL);
+    }
+}
 </code></pre>
-<h3 id="&#x6CE8;&#x610F;&#xFF01;-c&#x7684;priority-queue&#x4E0D;&#x652F;&#x63F4;&#x66F4;&#x6539;&#x6B0A;&#x91CD;">&#x6CE8;&#x610F;&#xFF01; C++&#x7684;priority queue&#x4E0D;&#x652F;&#x63F4;&#x66F4;&#x6539;&#x6B0A;&#x91CD;</h3>
+<h2 id="&#x5C0F;&#x7DF4;&#x7FD2;">&#x5C0F;&#x7DF4;&#x7FD2;</h2>
+<p>&#x5BEB;&#x5169;&#x96BB;&#x7A0B;&#x5F0F;&#x78BC;: signal_sender.cpp&#x53CA;signal_receiver.cpp&#xFF0C;&#x5176;&#x4E2D;single_sender&#x70BA;parent process&#xFF0C;&#x57F7;&#x884C;single_sender&#x5F8C;fork&#x51FA;4&#x500B;child process&#xFF0C;child process&#x90FD;&#x57F7;&#x884C;signal_receiver.cpp&#x3002;</p>
+<p>fork&#x5B8C;&#x6210;&#x5F8C;&#xFF0C;signal_sender&#x6BCF;&#x9694;0.1&#x79D2;&#x9001;&#x51FA;&#x4E00;&#x500B;SIGUSR1&#x7D66;&#x96A8;&#x6A5F;&#x4E00;&#x500B;signal_receiver&#xFF0C;signal_receiver&#x8981;&#x8A08;&#x7B97;&#x81EA;&#x5DF1;&#x6536;&#x5230;&#x5E7E;&#x6B21;signal&#x3002;</p>
+<p>&#x7576;signal_sender&#x9001;&#x51FA;20&#x500B;signal&#x5F8C;&#xFF0C;&#x5C0D;&#x6240;&#x6709;signal_receiver&#x9001;&#x51FA;SIGINT&#xFF0C;&#x4E26;wait()&#x7B49;&#x5F85;signal_receiver&#x7D50;&#x675F;&#xFF0C;signal_receiver&#x6536;&#x5230;SIGINT&#x5370;&#x51FA;&#x81EA;&#x5DF1;&#x7E3D;&#x5171;&#x6536;&#x5230;&#x5E7E;&#x6B21;signal&#x5F8C;&#x7D50;&#x675F;&#xFF0C;signal_sender wait&#x5230;&#x6240;&#x6709;signal_receiver&#x5F8C;&#x7D50;&#x675F;&#x3002;</p>
+<h3 id="signal-sender">Signal sender</h3>
+<ul>
+<li>input : no</li>
+<li>output : &#x6BCF;&#x6B21;&#x9001;&#x51FA;Signal&#xFF0C;&#x5370;&#x51FA;:<ul>
+<li>Send signal to PID XXXX</li>
+</ul>
+</li>
+</ul>
+<h3 id="signal-receiver">Signal receiver</h3>
+<ul>
+<li>input : no</li>
+<li>output : &#x6700;&#x5F8C;&#x7D50;&#x675F;&#x6642;&#x5370;&#x51FA;:<ul>
+<li>PID XXX receive OOO signal</li>
+</ul>
+</li>
+</ul>
 
                                 
                                 </section>
@@ -1695,12 +1784,12 @@ public:
 
             
                 
-                <a href="priority_queue.html" class="navigation navigation-prev " aria-label="Previous page: Priority Queue">
+                <a href="handle_deadlock.html" class="navigation navigation-prev " aria-label="Previous page: Handle Deadlock">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="set.html" class="navigation navigation-next " aria-label="Next page: Set / Disjoint Set">
+                <a href="memory.html" class="navigation navigation-next " aria-label="Next page: Memory">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1711,7 +1800,7 @@ public:
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"常用Method","level":"1.5.10.1","depth":3,"next":{"title":"Set / Disjoint Set","level":"1.5.11","depth":2,"path":"cpp_sec/set.md","ref":"cpp_sec/set.md","articles":[]},"previous":{"title":"Priority Queue","level":"1.5.10","depth":2,"path":"cpp_sec/priority_queue.md","ref":"cpp_sec/priority_queue.md","articles":[{"title":"常用Method","level":"1.5.10.1","depth":3,"path":"cpp_sec/priority_queue_method.md","ref":"cpp_sec/priority_queue_method.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cpp_sec/priority_queue_method.md","mtime":"2021-08-15T01:39:24.960Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-08-21T14:24:28.657Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Signal","level":"1.7.7","depth":2,"next":{"title":"Memory","level":"1.7.8","depth":2,"path":"cpp_sec/memory.md","ref":"cpp_sec/memory.md","articles":[{"title":"Paging","level":"1.7.8.1","depth":3,"path":"cpp_sec/paging.md","ref":"cpp_sec/paging.md","articles":[]}]},"previous":{"title":"Handle Deadlock","level":"1.7.6.1","depth":3,"path":"cpp_sec/handle_deadlock.md","ref":"cpp_sec/handle_deadlock.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cpp_sec/signal.md","mtime":"2021-08-21T14:23:29.733Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-08-21T14:24:28.657Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
