@@ -83,7 +83,8 @@
   * [Signal](cpp_sec/signal.md)
   * [Memory](cpp_sec/memory.md)
     * [Paging](cpp_sec/paging.md)
-  * [Virtual Memory]
+  * [Virtual Memory](cpp_sec/virtual_memory.md)
+    * [Page Replacement](cpp_sec/page_replacement.md)
   * [File System]
   * [Disk]
 * [Object Oriented Programming](cpp_sec/oop.md)
