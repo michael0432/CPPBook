@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Vector · GitBook</title>
+        <title>File System · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="vector_method.html" />
     
-    
-    <link rel="prev" href="list.html" />
+    <link rel="prev" href="page_replacement.html" />
     
 
     </head>
@@ -433,7 +431,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.5.3" data-path="vector.html">
+        <li class="chapter " data-level="1.5.3" data-path="vector.html">
             
                 <a href="vector.html">
             
@@ -1358,7 +1356,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7.10" data-path="filesystem.html">
+        <li class="chapter active" data-level="1.7.10" data-path="filesystem.html">
             
                 <a href="filesystem.html">
             
@@ -1613,7 +1611,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Vector</a>
+        <a href=".." >File System</a>
     </h1>
 </div>
 
@@ -1628,67 +1626,45 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="vector">Vector</h1>
-<h6 id="tags--data-structure">tags = <code>Data Structure</code></h6>
-<h3 id="vector">Vector</h3>
-<p>Vector&#x662F;&#x9032;&#x968E;&#x7248;&#x7684;Array&#xFF0C;&#x662F;C++C++ &#x6A19;&#x6E96;&#x7A0B;&#x5F0F;&#x5EAB;&#x4E2D;&#x7684;&#x4E00;&#x500B; class&#xFF0C;&#x53EF;&#x4EE5;&#x8996;&#x70BA;&#x6703;&#x81EA;&#x52D5;&#x64F4;&#x589E;&#x5927;&#x5C0F;&#x7684;Array&#x3002;&#x7576;&#x4F7F;&#x7528;Array&#x6642;&#xFF0C;&#x9700;&#x8981;&#x5148;&#x5BA3;&#x544A;Array&#x7684;&#x5927;&#x5C0F;&#xFF0C;&#x7576;&#x8CC7;&#x6599;&#x91CF;&#x8D85;&#x904E;Array&#x7684;&#x5927;&#x5C0F;&#x6642;&#xFF0C;&#x9700;&#x8981;&#x5148;&#x91CD;&#x65B0;&#x5BA3;&#x544A;&#x4E00;&#x500B;&#x66F4;&#x5927;&#x7684;Array&#xFF0C;&#x518D;&#x5C07;&#x8CC7;&#x6599;&#x5F9E;&#x820A;&#x7684;Array&#x8907;&#x88FD;&#x5230;&#x65B0;&#x7684;Array&#xFF0C;Vector&#x5DF2;&#x7D93;&#x5167;&#x5EFA;&#x4E86;&#x9019;&#x500B;&#x64CD;&#x4F5C;&#x3002;</p>
-<p>&#x5BA3;&#x544A;&#x65B9;&#x5F0F;&#xFF1A;</p>
-<pre><code class="lang-cpp=1">#include &lt;vector&gt; // inlcude library
-using namespace std;
-
-vector&lt;&#x8CC7;&#x6599;&#x578B;&#x614B;&gt; &#x540D;&#x7A31;;
-vector&lt;&#x8CC7;&#x6599;&#x578B;&#x614B;&gt; &#x540D;&#x7A31;{1,2,3};
-vector&lt;&#x8CC7;&#x6599;&#x578B;&#x614B;&gt; &#x540D;&#x7A31;(&#x521D;&#x59CB;&#x503C;,&#x5927;&#x5C0F;);
-</code></pre>
-<pre><code class="lang-cpp=1">#include &lt;vector&gt;
-using namespace std;
-
-int main(){
-    vector&lt;int&gt; v1;
-    vector&lt;int&gt; v2{1,2,3};
-    vector&lt;int&gt; v3(0,3);
-}
-</code></pre>
-<h3 id="vector-and-array">Vector and Array</h3>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>Array</th>
-<th>Vector</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Access</td>
-<td>O(1)</td>
-<td>O(1)</td>
-</tr>
-<tr>
-<td>Find</td>
-<td>O(logn)</td>
-<td>O(logn)</td>
-</tr>
-<tr>
-<td>Insert</td>
-<td>O(n)</td>
-<td>O(n)</td>
-</tr>
-<tr>
-<td>Delete</td>
-<td>O(n)</td>
-<td>O(n)</td>
-</tr>
-</tbody>
-</table>
-<h3 id="&#x5C0F;&#x7DF4;&#x7FD2;">&#x5C0F;&#x7DF4;&#x7FD2;</h3>
+                                <h1 id="file-system">File System</h1>
+<h6 id="tags--operating-system">tags = <code>Operating System</code></h6>
+<p>File system&#x63D0;&#x4F9B;&#x4F5C;&#x696D;&#x7CFB;&#x7D71;&#x4EE5;&#x53CA;&#x4F7F;&#x7528;&#x8005;&#x5132;&#x5B58;&#x548C;&#x5B58;&#x53D6;&#x8CC7;&#x6599;&#x7684;&#x529F;&#x80FD;&#xFF0C;&#x6A94;&#x6848;&#x7CFB;&#x7D71;&#x7531;&#x5169;&#x500B;&#x4E0D;&#x540C;&#x7684;&#x90E8;&#x5206;&#x7D44;&#x6210;: File(&#x6A94;&#x6848;)&#x548C;Directory(&#x8CC7;&#x6599;&#x593E;)&#x3002;</p>
+<h2 id="file">File</h2>
+<p>&#x5728;&#x4F5C;&#x696D;&#x7CFB;&#x7D71;&#x4E0A;&#xFF0C;&#x6240;&#x6709;&#x7684;&#x8CC7;&#x6599;&#x5FC5;&#x9808;&#x653E;&#x5728;&#x6A94;&#x6848;&#x4E2D;&#xFF0C;&#x624D;&#x80FD;&#x5132;&#x5B58;&#x5728;&#x5132;&#x5B58;&#x88DD;&#x7F6E;&#x4E2D;(&#x786C;&#x789F;&#x7B49;&#x7B49;)&#xFF0C;&#x4E00;&#x500B;&#x6A94;&#x6848;&#x901A;&#x5E38;&#x6703;&#x6709;&#x5E7E;&#x500B;&#x7279;&#x6027;:</p>
 <ul>
-<li><a href="https://www.hackerrank.com/challenges/vector-sort/problem" target="_blank">https://www.hackerrank.com/challenges/vector-sort/problem</a></li>
-<li><a href="https://leetcode.com/problems/squares-of-a-sorted-array/" target="_blank">https://leetcode.com/problems/squares-of-a-sorted-array/</a></li>
-<li><a href="https://leetcode.com/problems/move-zeroes/" target="_blank">https://leetcode.com/problems/move-zeroes/</a></li>
-<li><a href="https://leetcode.com/problems/flipping-an-image/" target="_blank">https://leetcode.com/problems/flipping-an-image/</a></li>
-<li><a href="https://leetcode.com/problems/toeplitz-matrix/" target="_blank">https://leetcode.com/problems/toeplitz-matrix/</a></li>
+<li>File name : &#x6A94;&#x6848;&#x540D;&#x7A31;&#xFF0C;&#x4EBA;&#x770B;&#x7684;&#x61C2;&#x7684;&#x540D;&#x5B57;</li>
+<li>ID : &#x6A94;&#x6848;&#x8B58;&#x5225;&#x7B26;&#x865F;&#xFF0C;&#x901A;&#x5E38;&#x662F;&#x4E00;&#x500B;&#x7368;&#x4E00;&#x7121;&#x4E8C;&#x7684;&#x6578;&#x5B57;&#xFF0C;&#x8B93;&#x4F5C;&#x696D;&#x7CFB;&#x7D71;&#x8B58;&#x5225;&#x6A94;&#x6848;</li>
+<li>Type : &#x5C0D;&#x65BC;&#x652F;&#x63F4;&#x4E0D;&#x540C;&#x6A94;&#x6848;&#x578B;&#x614B;&#x7684;&#x4F5C;&#x696D;&#x7CFB;&#x7D71;&#x4F86;&#x8AAA;&#xFF0C;&#x9700;&#x8981;Type&#x4F86;&#x5206;&#x8FA8;&#x6B64;&#x6A94;&#x6848;&#x578B;&#x614B;&#x70BA;&#x4F55;&#xFF0C;&#x4E0D;&#x540C;&#x7684;&#x4F5C;&#x696D;&#x7CFB;&#x7D71;&#x652F;&#x63F4;&#x7684;&#x6A94;&#x6848;&#x578B;&#x614B;&#x53EF;&#x80FD;&#x4E0D;&#x540C;&#xFF0C;&#x4F8B;&#x5982;&#xFF0C;Windows&#x7CFB;&#x7D71;&#x652F;&#x63F4;exe&#x6A94;&#xFF1B;&#x4F46;&#x662F;Linux&#x4E0D;&#x652F;&#x63F4;&#x3002;</li>
+<li>Location : &#x4E00;&#x500B;&#x6307;&#x5411;&#x8A72;&#x6A94;&#x6848;&#x5132;&#x5B58;&#x4F4D;&#x7F6E;&#x7684;&#x6307;&#x6A19;</li>
+<li>Size : &#x6A94;&#x6848;&#x76EE;&#x524D;&#x7684;&#x5BB9;&#x91CF;&#x5927;&#x5C0F;</li>
+<li>Protection : &#x63A7;&#x5236;&#x54EA;&#x500B;&#x4F7F;&#x7528;&#x8005;&#x80FD;&#x8B80;&#x3001;&#x5BEB;&#x3001;&#x57F7;&#x884C;&#x6B64;&#x6A94;&#x6848;</li>
+<li>Time : &#x5305;&#x542B;&#x4E0A;&#x6B21;&#x4FEE;&#x6539;&#x3001;&#x4E0A;&#x6B21;&#x4F7F;&#x7528;&#x7684;&#x6642;&#x9593;&#x7B49;&#x7B49;&#x8CC7;&#x8A0A; </li>
 </ul>
+<p><img src="https://i.imgur.com/GnmVN0u.png" alt=""></p>
+<h2 id="directory">Directory</h2>
+<p>&#x4F5C;&#x696D;&#x7CFB;&#x7D71;&#x4E0A;&#xFF0C;&#x901A;&#x5E38;&#x6703;&#x9700;&#x8981;&#x5132;&#x5B58;&#x5927;&#x91CF;&#x7684;&#x6A94;&#x6848;&#xFF0C;&#x56E0;&#x6B64;&#xFF0C;&#x9700;&#x8981;&#x8CC7;&#x6599;&#x593E;&#x7684;&#x6982;&#x5FF5;&#x5C07;&#x6A94;&#x6848;&#x5206;&#x9580;&#x5225;&#x985E;&#x7684;&#x6574;&#x7406;&#xFF0C;&#x8B93;&#x4F7F;&#x7528;&#x8005;&#x53EF;&#x4EE5;&#x5FEB;&#x901F;&#x627E;&#x5230;&#x9700;&#x8981;&#x7684;&#x6A94;&#x6848;&#xFF0C;&#x73FE;&#x4ECA;&#x7684;&#x4F5C;&#x696D;&#x7CFB;&#x7D71;&#x901A;&#x5E38;&#x4F7F;&#x7528;&#x6A39;&#x72C0;&#x76EE;&#x9304;&#x4F86;&#x5132;&#x5B58;&#x8CC7;&#x6599;&#x593E;&#x3002;</p>
+<p><img src="https://i.imgur.com/WcmoOrk.png" alt=""></p>
+<p>&#x5F9E;&#x4F7F;&#x7528;&#x8005;&#x7684;&#x89C0;&#x9EDE;&#x4F86;&#x770B;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x6A94;&#x6848;&#x8DEF;&#x5F91;&#x4F86;&#x627E;&#x5230;&#x9700;&#x8981;&#x7684;&#x6A94;&#x6848;&#xFF0C;&#x6A94;&#x6848;&#x8DEF;&#x5F91;&#x5206;&#x70BA;&#x5169;&#x7A2E;: &#x7D55;&#x5C0D;&#x8DEF;&#x5F91;(Absolute path name)&#xFF1B;&#x76F8;&#x5C0D;&#x8DEF;&#x5F91;(relative path name)&#x3002;</p>
+<ul>
+<li>&#x7D55;&#x5C0D;&#x8DEF;&#x5F91;: &#x7531;&#x6839;&#x90E8;&#x958B;&#x59CB;&#x5FAA;&#x8457;&#x4E00;&#x689D;&#x8DEF;&#x627E;&#x5230;&#x6A94;&#x6848; <ul>
+<li>&#x5728;linux&#x4E2D;&#xFF0C;&#x7D55;&#x5C0D;&#x8DEF;&#x5F91;&#x7684;&#x8868;&#x793A;&#x6CD5;&#x70BA;/&#x958B;&#x982D;&#xFF0C;&#x8209;&#x4F8B;&#x4F86;&#x8AAA;: /bin/stat/</li>
+</ul>
+</li>
+<li>&#x76F8;&#x5C0D;&#x8DEF;&#x5F91;: &#x7531;&#x76EE;&#x524D;&#x73FE;&#x7528;&#x7684;&#x4F4D;&#x7F6E;&#x53BB;&#x7684;&#x8DEF;&#x5F91;<ul>
+<li>&#x5728;linux&#x4E2D;&#xFF0C;&#x76F8;&#x5C0D;&#x8DEF;&#x5F91;&#x7684;&#x8868;&#x793A;&#x6CD5;&#x70BA;./&#x6216;&#x6C92;&#x6709;&#x958B;&#x982D;&#xFF0C;&#x8209;&#x4F8B;&#x4F86;&#x8AAA;: mydir/a.txt&#x6216;./mydir/a.txt</li>
+</ul>
+</li>
+</ul>
+<p>&#x5728;&#x6A39;&#x72C0;&#x76EE;&#x9304;&#x4E2D;&#xFF0C;&#x6574;&#x500B;&#x6A94;&#x6848;&#x7CFB;&#x7D71;&#x7684;&#x7D50;&#x69CB;&#x662F;&#x4E00;&#x500B;Tree&#xFF0C;&#x610F;&#x601D;&#x662F;&#xFF0C;&#x6C92;&#x6709;&#x4EFB;&#x4F55;&#x4E00;&#x500B;&#x6A94;&#x6848;&#x6216;&#x8CC7;&#x6599;&#x593E;&#x6709;&#x5169;&#x500B;parent&#xFF0C;&#x9019;&#x9805;&#x5B9A;&#x7FA9;&#x9650;&#x5236;&#x4E86;&#x6A94;&#x6848;&#x6216;&#x8CC7;&#x6599;&#x593E;&#x7684;&#x5171;&#x7528;&#x3002;</p>
+<h3 id="acyclic-graph">Acyclic Graph</h3>
+<p>&#x4E00;&#x500B;Acyclic graph&#x5141;&#x8A31;&#x76F8;&#x540C;&#x7684;&#x8CC7;&#x6599;&#x593E;&#x6216;&#x662F;&#x6A94;&#x6848;&#x53EF;&#x4EE5;&#x5B58;&#x5728;&#x4E0D;&#x540C;&#x7684;&#x8CC7;&#x6599;&#x593E;&#x4E2D;&#xFF0C;&#x5728;&#x88AB;&#x8A31;&#x591A;&#x4EBA;&#x5171;&#x7528;&#x7684;Server&#x4E0A;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;Acyclic Graph&#x4F5C;&#x70BA;&#x6A94;&#x6848;&#x7CFB;&#x7D71;&#x3002;</p>
+<p><img src="https://i.imgur.com/XVGUnE2.png" alt=""></p>
+<p>&#x7528;Acyclic graph&#x4F5C;&#x70BA;&#x6A94;&#x6848;&#x7CFB;&#x7D71;&#x7684;&#x7D50;&#x69CB;&#x8B93;&#x6574;&#x500B;&#x6A94;&#x6848;&#x7CFB;&#x7D71;&#x66F4;&#x52A0;&#x5F48;&#x6027;&#xFF0C;&#x4F46;&#x662F;&#x8981;&#x89E3;&#x6C7A;&#x7684;&#x554F;&#x984C;&#x4E5F;&#x8B8A;&#x591A;&#x4E86;&#xFF0C;&#x9019;&#x6642;&#xFF0C;&#x4E00;&#x500B;&#x6A94;&#x6848;&#x53EF;&#x4EE5;&#x6709;&#x591A;&#x500B;&#x7D55;&#x5C0D;&#x8DEF;&#x5F91;&#xFF0C;&#x56E0;&#x6B64;&#xFF0C;&#x4E0D;&#x540C;&#x7684;&#x6A94;&#x6848;&#x540D;&#x7A31;(&#x8DEF;&#x5F91;&#x540D;&#x7A31;)&#x53EF;&#x80FD;&#x6307;&#x5411;&#x540C;&#x4E00;&#x500B;&#x6A94;&#x6848;&#xFF0C;&#x4E14;&#x5728;&#x522A;&#x9664;&#x6A94;&#x6848;&#x6642;&#x4E5F;&#x9700;&#x8981;&#x6AA2;&#x67E5;&#x9019;&#x500B;&#x6A94;&#x6848;&#x662F;&#x5426;&#x6709;&#x591A;&#x500B;&#x6307;&#x6A19;&#x4F7F;&#x7528;&#xFF0C;&#x4E26;&#x627E;&#x51FA;&#x9019;&#x4E9B;&#x6307;&#x6A19;&#x7684;&#x4E3B;&#x4EBA;&#xFF0C;&#x9019;&#x53EF;&#x80FD;&#x6703;&#x82B1;&#x8CBB;&#x76F8;&#x7576;&#x5927;&#x7684;&#x7CFB;&#x7D71;&#x6548;&#x80FD;&#x3002;</p>
+<h2 id="file-system">File System</h2>
+<p>&#x4E00;&#x500B;&#x6A94;&#x6848;&#x7CFB;&#x7D71;&#x9700;&#x8981;&#x5148;Mount&#x624D;&#x53EF;&#x4EE5;&#x5728;&#x4F5C;&#x696D;&#x7CFB;&#x7D71;&#x4E0A;&#x4F7F;&#x7528;&#xFF0C;&#x5728;Linux&#x4E0A;&#xFF0C;&#x4E00;&#x500B;&#x786C;&#x789F;&#x4E0A;&#x4E5F;&#x53EF;&#x4EE5;&#x6709;&#x8A31;&#x591A;&#x500B;File System: </p>
+<p><img src="https://i.imgur.com/UBfehvY.png" alt=""></p>
+<p>&#x6BCF;&#x7A2E;&#x4E0D;&#x540C;&#x7684;file system&#x6709;&#x4E0D;&#x540C;&#x7684;&#x4F7F;&#x7528;&#x60C5;&#x5883;&#xFF0C;&#x8209;&#x4F8B;&#x4F86;&#x8AAA;&#xFF0C;tmpfs : &#x7576;&#x8A18;&#x61B6;&#x9AD4;&#x7522;&#x751F;&#x66AB;&#x6642;&#x7684;&#x6A94;&#x6848;&#x6642;&#xFF0C;&#x6703;&#x5148;&#x653E;&#x5728;tmpfs&#x4E0B;&#xFF0C;&#x7CFB;&#x7D71;&#x91CD;&#x88FD;&#x6642;&#xFF0C;&#x6574;&#x500B;tmpfs&#x90FD;&#x6703;&#x88AB;&#x6E05;&#x9664;&#x3002;</p>
+<p><img src="https://i.imgur.com/eiMeOJ3.png" alt=""></p>
 
                                 
                                 </section>
@@ -1716,14 +1692,10 @@ int main(){
 
             
                 
-                <a href="list.html" class="navigation navigation-prev " aria-label="Previous page: Linked-List">
+                <a href="page_replacement.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Page Replacement">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
-                
-                <a href="vector_method.html" class="navigation navigation-next " aria-label="Next page: 常用Method">
-                    <i class="fa fa-angle-right"></i>
-                </a>
                 
             
         
@@ -1732,7 +1704,7 @@ int main(){
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Vector","level":"1.5.3","depth":2,"next":{"title":"常用Method","level":"1.5.3.1","depth":3,"path":"cpp_sec/vector_method.md","ref":"cpp_sec/vector_method.md","articles":[]},"previous":{"title":"Linked-List","level":"1.5.2","depth":2,"path":"cpp_sec/list.md","ref":"cpp_sec/list.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cpp_sec/vector.md","mtime":"2021-09-05T05:40:57.123Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-09-05T15:04:04.624Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"File System","level":"1.7.10","depth":2,"next":{"title":"[Disk]","level":"1.7.11","depth":2,"ref":"","articles":[]},"previous":{"title":"Page Replacement","level":"1.7.9.1","depth":3,"path":"cpp_sec/page_replacement.md","ref":"cpp_sec/page_replacement.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cpp_sec/filesystem.md","mtime":"2021-09-05T15:03:48.011Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-09-05T15:04:04.624Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
