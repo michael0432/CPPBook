@@ -95,7 +95,7 @@
   * [Polymorphism](cpp_sec/polymorphism.md)
   * [Template](cpp_sec/template.md)
   * [Exception Handling](cpp_sec/exception.md)
-* * [Software Engineering](cpp_sec/software_engineering.md)
+* [Software Engineering](cpp_sec/software_engineering.md)
   * [Object Orientation Concept](cpp_sec/ooc.md)
   * [Design Pattern Concept]
   
