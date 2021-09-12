@@ -39,6 +39,26 @@ File system提供作業系統以及使用者儲存和存取資料的功能，檔
 
 ## File System
 
+一個File system的架構如下圖:
+
+![](https://i.imgur.com/lO9Oz5V.png)
+
+* Basic file system : 負責發出命令給Driver，例如，讀XX硬碟的OO sector。
+* File organization module : 知道每個檔案對應的邏輯區段(作業系統上的檔案路徑)以及實體區段(在硬碟上的位置)
+* Logical file system : 包含檔案的metadata，但不包含真正的資料，通常被稱為FCB或inode。
+
+整個讀取檔案的流程為:
+* Application : Process發出讀取檔案的請求
+* Logical file system : 確認權限，根據檔案路徑找到對應的FCB或inode
+* File organization module : 將檔案路徑對應到硬碟實體的區塊
+* Basic file system : 對硬碟的Driver下I/O指令
+* I/O Control : 實際的I/O控制
+* Device : 從儲存裝置中讀出資料
+
+### Mount and Partition
+
+一個磁碟可以根據作業系統的設定有不同的規劃，一個磁碟可以被分割成多個Partition，各個Partition可以有不同的功能以及不同的格式，舉例來說，root partition包含作業系統的kernel以及其他系統相關的檔案，在電腦被啟動時就會被mounted(掛載)，其他的partition可以在稍後被手動或自動mounted。
+
 一個檔案系統需要先Mount才可以在作業系統上使用，在Linux上，一個硬碟上也可以有許多個File System: 
 
 ![](https://i.imgur.com/UBfehvY.png)
@@ -46,4 +66,3 @@ File system提供作業系統以及使用者儲存和存取資料的功能，檔
 每種不同的file system有不同的使用情境，舉例來說，tmpfs : 當記憶體產生暫時的檔案時，會先放在tmpfs下，系統重製時，整個tmpfs都會被清除。
 
 ![](https://i.imgur.com/eiMeOJ3.png)
-

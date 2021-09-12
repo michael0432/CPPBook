@@ -86,7 +86,7 @@
   * [Virtual Memory](cpp_sec/virtual_memory.md)
     * [Page Replacement](cpp_sec/page_replacement.md)
   * [File System](cpp_sec/filesystem.md)
-  * [Disk]
+  * [Disk](cpp_sec/disk.md)
 * [Object Oriented Programming](cpp_sec/oop.md)
   * [Class Constructors](cpp_sec/constructor.md)
   * [Class Methods](cpp_sec/method.md)
