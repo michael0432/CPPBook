@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Linked-List · GitBook</title>
+        <title>Design Pattern Concept · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,8 +57,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="vector.html" />
     
+    <link rel="prev" href="ooc.html" />
     
 
     </head>
@@ -418,7 +418,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.5.2" data-path="list.html">
+        <li class="chapter " data-level="1.5.2" data-path="list.html">
             
                 <a href="list.html">
             
@@ -1524,7 +1524,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.2" data-path="design_pattern.html">
+        <li class="chapter active" data-level="1.9.2" data-path="design_pattern.html">
             
                 <a href="design_pattern.html">
             
@@ -1682,7 +1682,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Linked-List</a>
+        <a href=".." >Design Pattern Concept</a>
     </h1>
 </div>
 
@@ -1697,65 +1697,83 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="linked-list">Linked List</h1>
-<h6 id="tags--data-structure">tags = <code>Data Structure</code></h6>
-<h3 id="linked-list">Linked List</h3>
-<p>Linked List&#x4F7F;&#x7528;Node&#x4F86;&#x8A18;&#x9304;&#x3001;&#x5132;&#x5B58;&#x8CC7;&#x6599;&#xFF0C;&#x4E26;&#x4E14;&#x5229;&#x7528;Node&#x4E2D;&#x7684;Pointer&#x6307;&#x5411;&#x4E0B;&#x4E00;&#x7B46;&#x8CC7;&#x6599;&#xFF0C;&#x7528;Null&#x8868;&#x793A;&#x7D42;&#x9EDE;&#x3002;
-<img src="https://i.imgur.com/PyBAUPI.png" alt="">
-<img src="https://i.imgur.com/46bnbI2.png" alt=""></p>
-<p>&#x5728;&#x4F7F;&#x7528;Linked List&#x6642;&#xFF0C;&#x53EA;&#x9700;&#x8981;&#x6709;&#x7B2C;&#x4E00;&#x500B;Node&#x7684;Address&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x4F9D;&#x5E8F;&#x627E;&#x5230;&#x5F8C;&#x9762;&#x6240;&#x6709;&#x7684;&#x8CC7;&#x6599;&#x3002;</p>
-<pre><code class="lang-cpp=1">class Node{
-public:
-    Node *next;
-    int data;
-}
-</code></pre>
-<p>&#x904D;&#x6B77;Linked List:</p>
-<pre><code class="lang-cpp=1">void traverse(Node *head){
-    while(head != NULL){
-        cout &lt;&lt; head-&gt;data;
-        head = head-&gt;next;
-    }
-}
-</code></pre>
-<h3 id="array-and-linked-list">Array and Linked List</h3>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>Array</th>
-<th>Linked List</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Access</td>
-<td>O(1)</td>
-<td>O(n)</td>
-</tr>
-<tr>
-<td>Find</td>
-<td>O(logn)</td>
-<td>O(n)</td>
-</tr>
-<tr>
-<td>Insert</td>
-<td>O(n)</td>
-<td>O(1)</td>
-</tr>
-<tr>
-<td>Delete</td>
-<td>O(n)</td>
-<td>O(1)</td>
-</tr>
-</tbody>
-</table>
-<h3 id="&#x5C0F;&#x7DF4;&#x7FD2;">&#x5C0F;&#x7DF4;&#x7FD2;</h3>
+                                <h1 id="design-pattern-concepts">Design Pattern Concepts</h1>
+<h6 id="tags--software-engineering">tags = <code>Software Engineering</code></h6>
+<blockquote>
+<p>Each pattern describes a problem which occurs over and over again
+in our environment, and then describes the core of the solution to
+that problem, in such a way that you can use this solution a million
+times over.</p>
+</blockquote>
+<p>&#x4E00;&#x500B;design pattern&#x5305;&#x542B;:</p>
 <ul>
-<li><a href="https://leetcode.com/problems/middle-of-the-linked-list/" target="_blank">https://leetcode.com/problems/middle-of-the-linked-list/</a></li>
-<li><a href="https://leetcode.com/problems/reverse-linked-list/" target="_blank">https://leetcode.com/problems/reverse-linked-list/</a></li>
-<li><a href="https://leetcode.com/problems/merge-two-sorted-lists/" target="_blank">https://leetcode.com/problems/merge-two-sorted-lists/</a></li>
+<li>Pattern name</li>
+<li>Problem : &#x9019;&#x500B;pattern&#x7528;&#x5728;&#x89E3;&#x6C7A;&#x54EA;&#x500B;&#x985E;&#x578B;&#x7684;&#x554F;&#x984C;</li>
+<li>Solution : &#x63CF;&#x8FF0;&#x9019;&#x500B;pattern&#x600E;&#x9EBC;&#x89E3;&#x6C7A;&#x554F;&#x984C;</li>
+<li>Consequence : &#x63CF;&#x8FF0;&#x9019;&#x500B;&#x89E3;&#x6C7A;&#x65B9;&#x6CD5;&#x7684;&#x512A;&#x7F3A;&#x9EDE;&#xFF0C;&#x4EE5;&#x53CA;&#x53EF;&#x64F4;&#x5C55;&#x6027;&#x7B49;&#x7B49;</li>
 </ul>
+<h2 id="design-principles">Design Principles</h2>
+<p>&#x5728;&#x8EDF;&#x9AD4;&#x8A2D;&#x8A08;&#x4E0A;&#xFF0C;&#x6709;&#x4E00;&#x500B;&#x6700;&#x91CD;&#x8981;&#x7684;&#x539F;&#x5247;: <strong>High cohesion, low coupling</strong>&#xFF0C;&#x8981;&#x5C07;&#x76F8;&#x95DC;&#x806F;&#x6027;&#x9AD8;&#x7684;module&#x805A;&#x5408;&#x8D77;&#x4F86;&#xFF0C;&#x8B93;&#x4ED6;&#x5011;&#x6210;&#x70BA;&#x540C;&#x4E00;&#x500B;module&#x4E0B;&#x7684;submodule&#xFF1B;&#x4F46;&#x662F;module&#x8207;module&#x4E4B;&#x9593;&#x4E0D;&#x80FD;&#x592A;&#x904E;&#x4E4E;&#x76F8;&#x4F9D;&#x8CF4;&#xFF0C;&#x907F;&#x514D;&#x4E00;&#x500B;module&#x7684;&#x6539;&#x52D5;&#x5F71;&#x97FF;&#x5176;&#x4ED6;&#x7684;module&#x592A;&#x591A;&#x3002;</p>
+<p>&#x70BA;&#x4E86;&#x9054;&#x5230;&#x9019;&#x500B;&#x76EE;&#x7684;&#xFF0C;&#x6211;&#x5011;&#x5728;&#x8A2D;&#x8A08;&#x6642;&#x8981;&#x8003;&#x616E;&#x5E7E;&#x9EDE;&#x91CD;&#x9EDE;:</p>
+<h3 id="encapsulate-what-variable">Encapsulate what variable</h3>
+<p>&#x628A;&#x9069;&#x5408;&#x7684;function/variable&#x653E;&#x5728;&#x6700;&#x9069;&#x5408;&#x7684;class&#x88E1;</p>
+<p><img src="https://i.imgur.com/dMSNCI1.png" alt=""></p>
+<h3 id="program-to-interface">Program to interface</h3>
+<p>&#x8981;&#x4F7F;&#x7528;&#x4E00;&#x7A2E;class&#x6642;&#xFF0C;&#x4F7F;&#x7528;&#x4ED6;&#x7684;abstract class/interface</p>
+<p><img src="https://i.imgur.com/yQcOlAR.png" alt=""></p>
+<h3 id="make-class-easily-extend">Make class easily extend</h3>
+<p>&#x8B93;&#x4FEE;&#x6539;class&#x6642;&#x53EF;&#x4EE5;&#x8F15;&#x9B06;&#x52A0;&#x4E0A;&#x5176;&#x4ED6;&#x529F;&#x80FD;&#xFF1B;&#x4F46;&#x4E0D;&#x6703;&#x5F71;&#x97FF;&#x820A;&#x7684;&#x529F;&#x80FD;</p>
+<p><img src="https://i.imgur.com/L3VNAVF.png" alt=""></p>
+<h3 id="only-talk-to-your-friends">Only talk to your friends</h3>
+<p>&#x6E1B;&#x5C11;&#x7A0B;&#x5F0F;&#x7684;&#x63A5;&#x53E3;&#xFF0C;&#x8B93;client&#x7AEF;&#x9032;&#x5165;&#x7A0B;&#x5F0F;&#x78BC;&#x7684;entry point&#x76E1;&#x91CF;&#x55AE;&#x4E00;</p>
+<p><img src="https://i.imgur.com/GZc84Gm.png" alt=""></p>
+<h3 id="abstraction-abstraction-abstraction">Abstraction, abstraction, abstraction</h3>
+<p>&#x70BA;&#x4E86;&#x964D;&#x4F4E;&#x5404;&#x500B;class&#x4E4B;&#x9593;&#x7684;&#x95DC;&#x806F;&#x6027;&#xFF0C;&#x5229;&#x7528;abstraction&#x964D;&#x4F4E;class&#x4E4B;&#x9593;&#x7684;&#x95DC;&#x806F;&#x6027;</p>
+<p><img src="https://i.imgur.com/nMcSNMV.png" alt=""></p>
+<h2 id="&#x5C0F;&#x7DF4;&#x7FD2;">&#x5C0F;&#x7DF4;&#x7FD2;</h2>
+<p>&#x756B;&#x51FA;Class Diagram&#x4EE5;&#x53CA;&#x76F8;&#x5C0D;&#x61C9;&#x7684;code&#x67B6;&#x69CB;&#xFF0C;&#x628A;class&#x7684;&#x5B9A;&#x7FA9;&#x653E;&#x5728;.h&#x6A94;&#xFF0C;implement&#x653E;&#x5728;.cpp&#x6A94;&#x3002;</p>
+<ul>
+<li>&#x8A2D;&#x8A08;&#x4E00;&#x500B;&#x7DDA;&#x4E0A;&#x8CFC;&#x7269;&#x8A02;&#x55AE;&#x7CFB;&#x7D71;&#xFF0C;&#x6B64;&#x7CFB;&#x7D71;&#x6703;&#x5C07;&#x5F8C;&#x53F0;&#x7684;&#x8A02;&#x55AE;&#x8F49;&#x63DB;&#x6210;&#x4E0D;&#x540C;&#x7684;&#x683C;&#x5F0F;&#xFF0C;&#x53EF;&#x4EE5;&#x8F49;&#x63DB;&#x7684;&#x683C;&#x5F0F;&#x6709;&#x4E09;&#x7A2E;:<ul>
+<li>CSV</li>
+<li>XML</li>
+<li>DOC</li>
+</ul>
+</li>
+<li>&#x9019;&#x4E09;&#x7A2E;&#x683C;&#x5F0F;&#x7684;&#x6A94;&#x6848;&#x90FD;&#x8981;&#x5305;&#x542B;&#x4EE5;&#x4E0B;&#x5167;&#x5BB9;:<ul>
+<li>Header</li>
+<li>&#x8A02;&#x55AE;&#x8CC7;&#x6599;</li>
+<li>Footer</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://i.imgur.com/XoLAyqL.png" alt=""></p>
+<pre><code class="lang-cpp=1">class OrderSystem
+{
+public:
+    transformOrder(Order o, string format)
+    {
+        if(format == &quot;csv&quot;)
+        {
+            createCSVHeader();
+            createCSVData(o);
+            createCSVFooter();
+        }
+        else if(format == &quot;doc&quot;)
+        {
+            createDocHeader();
+            createDocData(o);
+            createDocFooter();
+        }
+        else if(format == &quot;xml&quot;)
+        {
+            createXMLHeader();
+            createXMLData(o);
+            createXMLFooter();
+        }
+    }
+};
+</code></pre>
+<p><img src="https://i.imgur.com/Nuqqonb.png" alt=""></p>
 
                                 
                                 </section>
@@ -1783,10 +1801,10 @@ public:
 
             
                 
-                
-                <a href="vector.html" class="navigation navigation-next navigation-unique" aria-label="Next page: Vector">
-                    <i class="fa fa-angle-right"></i>
+                <a href="ooc.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Object Orientation Concept">
+                    <i class="fa fa-angle-left"></i>
                 </a>
+                
                 
             
         
@@ -1795,7 +1813,7 @@ public:
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Linked-List","level":"1.5.2","depth":2,"next":{"title":"Vector","level":"1.5.3","depth":2,"path":"cpp_sec/vector.md","ref":"cpp_sec/vector.md","articles":[{"title":"常用Method","level":"1.5.3.1","depth":3,"path":"cpp_sec/vector_method.md","ref":"cpp_sec/vector_method.md","articles":[]}]},"previous":{"title":"時間複雜度","level":"1.5.1","depth":2,"ref":"","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cpp_sec/list.md","mtime":"2021-09-12T15:54:57.807Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-09-19T12:10:11.546Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Design Pattern Concept","level":"1.9.2","depth":2,"next":{"title":"[Strategy]","level":"1.9.3","depth":2,"ref":"","articles":[]},"previous":{"title":"Object Orientation Concept","level":"1.9.1","depth":2,"path":"cpp_sec/ooc.md","ref":"cpp_sec/ooc.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cpp_sec/design_pattern.md","mtime":"2021-09-19T12:09:20.128Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-09-19T12:10:11.546Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

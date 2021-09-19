@@ -97,7 +97,9 @@
   * [Exception Handling](cpp_sec/exception.md)
 * [Software Engineering](cpp_sec/software_engineering.md)
   * [Object Orientation Concept](cpp_sec/ooc.md)
-  * [Design Pattern Concept]
+  * [Design Pattern Concept](cpp_sec/design_pattern.md)
+  * [Strategy]
+  * [Dependency Injection]
   
 * [Practice]
   * [STL Vector](cpp_sec/practice_vector.md)
