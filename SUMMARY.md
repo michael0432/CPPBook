@@ -98,7 +98,8 @@
 * [Software Engineering](cpp_sec/software_engineering.md)
   * [Object Orientation Concept](cpp_sec/ooc.md)
   * [Design Pattern Concept](cpp_sec/design_pattern.md)
-  * [Strategy]
+  * [Strategy](cpp_sec/strategy.md)
+  * [Observer](cpp_sec/observer.md)
   * [Dependency Injection]
   
 * [Practice]

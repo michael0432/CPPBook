@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Virtual Memory · GitBook</title>
+        <title>Strategy · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="page_replacement.html" />
+    <link rel="next" href="observer.html" />
     
     
-    <link rel="prev" href="paging.html" />
+    <link rel="prev" href="design_pattern.html" />
     
 
     </head>
@@ -1326,7 +1326,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.7.9" data-path="virtual_memory.html">
+        <li class="chapter " data-level="1.7.9" data-path="virtual_memory.html">
             
                 <a href="virtual_memory.html">
             
@@ -1539,7 +1539,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.3" data-path="strategy.html">
+        <li class="chapter active" data-level="1.9.3" data-path="strategy.html">
             
                 <a href="strategy.html">
             
@@ -1697,7 +1697,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Virtual Memory</a>
+        <a href=".." >Strategy</a>
     </h1>
 </div>
 
@@ -1712,43 +1712,68 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="virtual-memory">Virtual Memory</h1>
-<h6 id="tags--operating-system">tags = <code>Operating System</code></h6>
-<p>&#x4E4B;&#x524D;&#x4ECB;&#x7D39;&#x8A18;&#x61B6;&#x9AD4;&#x7684;&#x8A2D;&#x8A08;&#x6709;&#x4E00;&#x500B;&#x91CD;&#x9EDE;: Process&#x5728;&#x57F7;&#x884C;&#x524D;&#xFF0C;&#x6240;&#x9700;&#x7684;&#x8CC7;&#x6599;&#x4E00;&#x5B9A;&#x8981;&#x5728;memory&#x88E1;&#x3002;Virtual memory(&#x865B;&#x64EC;&#x8A18;&#x61B6;&#x9AD4;)&#x662F;&#x4E00;&#x7A2E;&#x5141;&#x8A31;&#x6574;&#x500B;Process&#x7684;&#x8CC7;&#x6599;&#x4E0D;&#x7528;&#x90FD;&#x5728;Memory&#x88E1;&#xFF0C;&#x4F46;&#x4ECD;&#x7136;&#x53EF;&#x4EE5;&#x57F7;&#x884C;&#x7684;&#x6280;&#x8853;&#xFF0C;&#x9019;&#x500B;&#x65B9;&#x6CD5;&#x7684;&#x512A;&#x9EDE;&#x5C31;&#x662F;&#x53EF;&#x4EE5;&#x57F7;&#x884C;&#x6BD4;&#x8A18;&#x61B6;&#x9AD4;&#x7A7A;&#x9593;&#x9084;&#x5927;&#x7684;Process&#xFF0C;&#x800C;&#x4E14;&#x5C07;Virtual Memory&#x7684;&#x5927;&#x5C0F;&#x53CA;Physical Memory&#x7684;&#x5927;&#x5C0F;&#x5206;&#x958B;&#xFF0C;&#x5169;&#x8005;&#x4E0D;&#x7528;&#x4E00;&#x6A23;&#x5927;&#xFF0C;&#x6709;&#x5229;&#x65BC;&#x7A0B;&#x5F0F;&#x8A2D;&#x8A08;&#x6642;&#x7684;&#x5F48;&#x6027;&#x3002;</p>
-<p>&#x5728;&#x4ECB;&#x7D39;Virtual memory&#x662F;&#x600E;&#x9EBC;&#x904B;&#x4F5C;&#x524D;&#xFF0C;&#x5148;&#x8003;&#x616E;&#x770B;&#x770B;&#x70BA;&#x4EC0;&#x9EBC;&#x5C07;Process&#x6240;&#x6709;&#x6240;&#x9700;&#x7684;&#x8CC7;&#x6599;&#x653E;&#x5165;&#x8A18;&#x61B6;&#x9AD4;&#x662F;&#x4E0D;&#x5FC5;&#x8981;&#x7684;:</p>
+                                <h1 id="strategy">Strategy</h1>
+<h6 id="tags--software-engineering">tags = <code>Software Engineering</code></h6>
+<p>&#x7576;&#x6709;&#x4E00;&#x7CFB;&#x5217;&#x7684;&#x6F14;&#x7B97;&#x6CD5;&#x9700;&#x8981;&#x4F7F;&#x7528;&#x7684;&#x6642;&#x5019;&#xFF0C;Strategy&#x5C07;&#x9019;&#x4E9B;&#x6F14;&#x7B97;&#x6CD5;Abract&#x6210;&#x4E00;&#x500B;abstract class&#x6216;interface&#xFF0C;&#x53EF;&#x4EE5;&#x85C9;&#x7531;&#x66FF;&#x63DB;&#x4E0D;&#x540C;&#x7684;strategy&#x8B93;&#x7269;&#x4EF6;&#x6709;&#x4E0D;&#x540C;&#x7684;&#x884C;&#x70BA;&#x3002;</p>
+<p><img src="https://i.imgur.com/Cg8sRE3.png" alt=""></p>
+<h2 id="example">Example</h2>
+<p>&#x6709;&#x4E00;&#x500B;&#x7DB2;&#x7AD9;&#x9700;&#x8981;&#x6839;&#x64DA;&#x5546;&#x54C1;&#x7684;&#x50F9;&#x683C;&#x9032;&#x884C;&#x6392;&#x5E8F;:
+<img src="https://i.imgur.com/dv6MqbJ.png" alt=""></p>
+<pre><code class="lang-cpp=1">class Client
+{
+public:
+    Use()
+    {    
+        QuickSort qSort;
+        new Website(qSort);
+        Website.Context();
+    }
+};
+
+class Website
+{
+private:
+    Sortstrategy sortStrategy;
+public:
+    Context()
+    {
+        sortStrategy.sort();
+    }
+    Website(Sortstrategy s)
+    {
+        sortStrategy = s;
+    }
+};
+</code></pre>
+<h2 id="&#x5C0F;&#x7DF4;&#x7FD2;">&#x5C0F;&#x7DF4;&#x7FD2;</h2>
+<p>&#x5728;&#x4E00;&#x500B;&#x904A;&#x6232;&#x4E2D;&#xFF0C;&#x6709;&#x56DB;&#x7A2E;&#x4EA4;&#x901A;&#x5DE5;&#x5177;: &#x98DB;&#x6A5F;&#x3001;&#x6C7D;&#x8ECA;&#x3001;&#x6A5F;&#x8ECA;&#x3001;&#x8173;&#x8E0F;&#x8ECA;&#xFF0C;&#x9019;&#x56DB;&#x7A2E;&#x4EA4;&#x901A;&#x5DE5;&#x5177;&#x90FD;&#x53EF;&#x4EE5;&#x79FB;&#x52D5;&#x3002;</p>
 <ul>
-<li>&#x4E0D;&#x662F;Process&#x4E2D;&#x6240;&#x6709;&#x7684;&#x7A0B;&#x5F0F;&#x78BC;&#x90FD;&#x6703;&#x7D93;&#x5E38;&#x88AB;&#x57F7;&#x884C;&#xFF0C;&#x4F8B;&#x5982;&#x6AA2;&#x67E5;&#x932F;&#x8AA4;&#x7684;&#x7A0B;&#x5F0F;&#x78BC;&#x53EF;&#x80FD;&#x5F88;&#x5C11;&#x88AB;&#x57F7;&#x884C;</li>
-<li>&#x4F7F;&#x7528;&#x8005;&#x5E38;&#x5E38;&#x5BA3;&#x544A;&#x6BD4;&#x5BE6;&#x969B;&#x4F7F;&#x7528;&#x9084;&#x5927;&#x7684;&#x8A18;&#x61B6;&#x9AD4;&#x7A7A;&#x9593;&#xFF0C;&#x4F8B;&#x5982;&#x5148;&#x5BA3;&#x544A;&#x4E00;&#x500B;&#x5F88;&#x5927;&#x7684;array&#xFF0C;&#x4F46;&#x4E26;&#x4E0D;&#x771F;&#x7684;&#x6703;&#x4F7F;&#x7528;&#x5230;&#x90A3;&#x9EBC;&#x5927;&#x7684;&#x7A7A;&#x9593;</li>
-<li>&#x67D0;&#x4E9B;&#x689D;&#x4EF6;&#x5224;&#x65B7;&#x5E7E;&#x4E4E;&#x4E0D;&#x6703;&#x9032;&#x5165;</li>
+<li>&#x98DB;&#x6A5F;&#x53EF;&#x4EE5;&#x98DB;&#x6216;&#x662F;&#x5728;&#x9678;&#x4E0A;&#x79FB;&#x52D5;&#xFF1B;&#x6C7D;&#x8ECA;&#x3001;&#x6A5F;&#x8ECA;&#x3001;&#x8173;&#x8E0F;&#x8ECA;&#x90FD;&#x53EA;&#x80FD;&#x5728;&#x9678;&#x4E0A;&#x79FB;&#x52D5;</li>
+<li>&#x56DB;&#x7A2E;&#x4EA4;&#x901A;&#x5DE5;&#x5177;&#x90FD;&#x53EF;&#x4EE5;&#x96A8;&#x6642;&#x555F;&#x52D5;&#x53CA;&#x505C;&#x6B62;(&#x66F4;&#x6539;&#x76EE;&#x524D;&#x662F;&#x5426;&#x6B63;&#x5728;&#x79FB;&#x52D5;&#x7684;&#x72C0;&#x614B;)&#xFF0C;&#x4E14;&#x90FD;&#x6709;&#x4F4E;&#x901F;&#x3001;&#x4E2D;&#x901F;&#x3001;&#x9AD8;&#x901F;&#x4E09;&#x7A2E;&#x79FB;&#x52D5;&#x901F;&#x5EA6;&#xFF0C;&#x53EF;&#x4EE5;&#x5728;run time&#x8ABF;&#x6574;</li>
+<li>&#x98DB;&#x6A5F;&#x3001;&#x6C7D;&#x8ECA;&#x3001;&#x6A5F;&#x8ECA;&#x53EF;&#x4EE5;&#x52A0;&#x6CB9;&#xFF0C;&#x4E14;&#x4E09;&#x7A2E;&#x4EA4;&#x901A;&#x5DE5;&#x5177;&#x5BB6;&#x4E0D;&#x540C;&#x7A2E;&#x6CB9;&#xFF1B;&#x8173;&#x8E0F;&#x8ECA;&#x4E0D;&#x884C;</li>
+<li>&#x56DB;&#x7A2E;&#x4EA4;&#x901A;&#x5DE5;&#x5177;&#x90FD;&#x53EF;&#x4EE5;&#x5728;compile time&#x66F4;&#x65B0;&#x984F;&#x8272;(UpdateColor)</li>
 </ul>
-<p>&#x56E0;&#x6B64;&#xFF0C;&#x9019;&#x4E9B;&#x4E0D;&#x5E38;&#x4F7F;&#x7528;&#x5230;&#x7684;&#x90E8;&#x5206;&#x5982;&#x679C;&#x53EF;&#x4EE5;&#x4E0D;&#x88AB;&#x653E;&#x9032;&#x5BE6;&#x9AD4;&#x8A18;&#x61B6;&#x9AD4;&#x4E2D;&#xFF0C;&#x7B49;&#x5230;&#x6709;&#x5FC5;&#x8981;&#x7684;&#x6642;&#x5019;&#x518D;swap&#x9032;&#x8A18;&#x61B6;&#x9AD4;&#xFF0C;&#x5C0D;&#x65BC;&#x7CFB;&#x7D71;&#x4F86;&#x8AAA;&#x53EF;&#x4EE5;&#x6E1B;&#x5C11;&#x4E00;&#x4E9B;&#x8CA0;&#x64D4;&#xFF0C;&#x4E5F;&#x80FD;&#x66F4;&#x6709;&#x6548;&#x7684;&#x5229;&#x7528;&#x8A18;&#x61B6;&#x9AD4;&#x3002;</p>
-<h2 id="demand-paging">Demand Paging</h2>
-<p>&#x5728;Process&#x958B;&#x59CB;&#x57F7;&#x884C;&#x6642;&#xFF0C;&#x6211;&#x5011;&#x4E0D;&#x76F4;&#x63A5;&#x5C07;&#x6240;&#x6709;&#x8CC7;&#x6599;&#x653E;&#x9032;&#x8A18;&#x61B6;&#x9AD4;&#x4E2D;&#xFF0C;&#x800C;&#x662F;&#x5148;&#x8F09;&#x5165;&#x4E00;&#x958B;&#x59CB;&#x6240;&#x9700;&#x8981;&#x7684;page&#xFF0C;&#x9019;&#x500B;&#x7B56;&#x7565;&#x70BA;demand paging&#xFF0C;&#x4E5F;&#x5C31;&#x662F;page&#x53EA;&#x6709;&#x5728;&#x771F;&#x7684;&#x9700;&#x8981;&#x6642;&#x624D;&#x88AB;swap in&#x8A18;&#x61B6;&#x9AD4;&#x4E2D;&#xFF0C;&#x57F7;&#x884C;&#x9019;&#x500B;&#x64CD;&#x4F5C;&#x5224;&#x65B7;&#x7684;&#x7A0B;&#x5F0F;&#x7A31;&#x70BA;Pager&#x3002;</p>
-<p>&#x5982;&#x679C;Process&#x4E0D;&#x5C0D;&#x6C92;&#x6709;&#x88AB;Pager&#x9078;&#x5230;&#x653E;&#x9032;&#x8A18;&#x61B6;&#x9AD4;&#x4E2D;&#x7684;page&#x505A;&#x64CD;&#x4F5C;&#xFF0C;&#x90A3;Process&#x53EF;&#x4EE5;&#x6B63;&#x5E38;&#x7684;&#x57F7;&#x884C;&#xFF0C;&#x4F46;&#x662F;&#xFF0C;&#x82E5;Process&#x5617;&#x8A66;&#x4F7F;&#x7528;&#x4E0D;&#x5728;&#x8A18;&#x61B6;&#x9AD4;&#x4E2D;&#x7684;page&#xFF0C;&#x5247;&#x6703;&#x767C;&#x751F;Page-fault&#xFF0C;&#x70BA;&#x4E86;&#x907F;&#x514D;Page-fault&#xFF0C;&#x9700;&#x8981;&#x5728;page table&#x4E0A;&#x5B58;&#x4E0B;&#x54EA;&#x4E9B;page&#x662F;&#x771F;&#x7684;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x7684;&#x8CC7;&#x8A0A;&#x3002;</p>
-<p><img src="https://i.imgur.com/6GC6Fpy.png" alt=""></p>
-<p>&#x56E0;&#x6B64;&#xFF0C;Process&#x5B58;&#x53D6;&#x8CC7;&#x6599;&#x6642;&#x7684;&#x6D41;&#x7A0B;&#x5982;&#x4E0B;:</p>
-<ol>
-<li>&#x6AA2;&#x67E5;Page table&#xFF0C;&#x78BA;&#x8A8D;page&#x662F;&#x5426;valid</li>
-<li>&#x82E5;Page&#x662F;invalid&#xFF0C;&#x5247;&#x767C;&#x51FA;interruput signal&#xFF0C;&#x901A;&#x77E5;&#x4F5C;&#x696D;&#x7CFB;&#x7D71;&#x6B64;Process&#x9700;&#x8981;&#x505A;I/O&#x5F8C;&#x624D;&#x80FD;&#x7E7C;&#x7E8C;&#x904B;&#x4F5C;</li>
-<li>&#x5F9E;Disk&#x62FF;&#x53D6;&#x9700;&#x8981;&#x7684;&#x8CC7;&#x6599;</li>
-<li>&#x5728;Memory&#x627E;&#x5230;&#x4E00;&#x500B;&#x7A7A;&#x767D;&#x7684;Frame&#xFF0C;&#x5C07;&#x8CC7;&#x6599;&#x653E;&#x5165;&#x6B64;frame</li>
-<li>&#x66F4;&#x65B0;page table&#xFF0C;&#x56E0;&#x70BA;&#x6B64;page&#x5DF2;&#x7D93;&#x53EF;&#x4EE5;&#x5C0D;&#x61C9;&#x5230;&#x5BE6;&#x9AD4;&#x8A18;&#x61B6;&#x9AD4;&#x4E2D;&#x7684;frame&#x4E86;</li>
-<li>&#x91CD;&#x65B0;&#x57F7;&#x884C;&#x539F;&#x672C;&#x7684;&#x6307;&#x4EE4;</li>
-</ol>
-<p><img src="https://i.imgur.com/XScA866.png" alt=""></p>
-<h2 id="effectiveness-of-demand-paging">Effectiveness of Demand Paging</h2>
-<p>Page Fault&#x7684;&#x6A5F;&#x7387;&#x6703;&#x5927;&#x5927;&#x5F71;&#x97FF;&#x7CFB;&#x7D71;&#x7684;&#x6548;&#x80FD;&#xFF0C;&#x56E0;&#x70BA;&#x6BCF;&#x6B21;page fault&#x6642;&#xFF0C;&#x4F5C;&#x696D;&#x7CFB;&#x7D71;&#x90FD;&#x8981;&#x505A;&#x4E0B;&#x5217;&#x9019;&#x4E9B;&#x4E8B;:</p>
+<p>&#x8A2D;&#x8A08;&#x51FA;&#x4E00;&#x500B;&#x4F7F;&#x7528;&#x8005;&#x4F7F;&#x7528;&#x9019;&#x56DB;&#x7A2E;&#x4EA4;&#x901A;&#x5DE5;&#x5177;&#x7684;&#x8EDF;&#x9AD4;&#x67B6;&#x69CB;&#x3002;</p>
+<h3 id="init-design">Init Design</h3>
+<p><img src="https://i.imgur.com/Iue5j7F.png" alt=""></p>
+<p>&#x6709;&#x54EA;&#x4E9B;function&#x53EF;&#x80FD;&#x6703;&#x5BEB;&#x91CD;&#x8907;&#x7684;&#x7A0B;&#x5F0F;&#x78BC;&#x6216;&#x662F;&#x5F48;&#x6027;&#x592A;&#x4F4E;?</p>
 <ul>
-<li>&#x767C;&#x51FA;interrupt&#xFF0C;&#x4E26;&#x78BA;&#x8A8D;&#x9019;&#x500B;interrupt&#x662F;&#x56E0;&#x70BA;page fault&#x5C0E;&#x81F4;</li>
-<li>&#x4FDD;&#x5B58;&#x76EE;&#x524D;Process&#x7684;&#x72C0;&#x614B;&#x53CA;Context switch</li>
-<li>&#x627E;&#x5230;&#x8A72;page&#x5B58;&#x5728;disk&#x4E0A;&#x7684;&#x4F55;&#x8655;&#x4E26;&#x4E14;&#x505A;I/O</li>
-<li>&#x518D;&#x6B21;interrupt&#xFF0C;&#x7531;disk&#x767C;&#x51FA;&#x505A;&#x597D;I/O&#x7684;&#x8A0A;&#x865F;</li>
-<li>&#x66F4;&#x65B0;memory&#x53CA;page table</li>
+<li>Refuel : &#x4E09;&#x7A2E;&#x4EA4;&#x901A;&#x5DE5;&#x5177;&#x90FD;&#x53EF;&#x4EE5;&#x52A0;&#x6CB9;&#xFF0C;&#x53EA;&#x662F;&#x52A0;&#x4E0D;&#x540C;&#x7684;&#x6CB9;</li>
+<li><p>changeSpeed : &#x88E1;&#x9762;&#x53EF;&#x80FD;&#x6703;&#x5BEB;&#x6B7B;&#x4E09;&#x7A2E;&#x79FB;&#x52D5;&#x901F;&#x5EA6;&#xFF0C;&#x4E0D;&#x5BB9;&#x6613;&#x8ABF;&#x6574;</p>
+<pre><code class="lang-cpp=1">  changeSpeed(speedMode s)
+  {
+      if(s == &quot;low&quot;)
+          ...
+      else if(s == &quot;medium&quot;)
+          ...
+      else if(s == &quot;high&quot;)
+          ...
+  }
+</code></pre>
+</li>
 </ul>
-<p>&#x9019;&#x4E9B;&#x5DE5;&#x4F5C;&#x7E3D;&#x8A08;&#x7D04;&#x70BA;8ms&#x3002;</p>
-<p>&#x5047;&#x8A2D;page fault&#x767C;&#x751F;&#x7684;&#x6A5F;&#x7387;&#x70BA;p&#xFF0C;&#x7576;&#x6C92;&#x6709;&#x767C;&#x751F;page fault&#x6642;&#xFF0C;&#x5B58;&#x53D6;&#x8A18;&#x61B6;&#x9AD4;&#x7684;&#x6642;&#x9593;&#x70BA;200ns&#xFF0C;&#x6709;&#x6548;&#x5B58;&#x53D6;&#x6642;&#x9593;(effective access time)&#x70BA;:</p>
-<pre><code>effective access time = (1-p) * 200ns + p * 8000000ns = 200 + 7999800p
-</code></pre><p>&#x53EF;&#x4EE5;&#x767C;&#x73FE;page fault&#x767C;&#x751F;&#x7684;&#x6A5F;&#x7387;&#x5C0D;&#x65BC;effective access time&#x7684;&#x5F71;&#x97FF;&#x975E;&#x5E38;&#x5927;&#xFF0C;&#x56E0;&#x6B64;&#xFF0C;&#x6211;&#x5011;&#x518D;&#x4F86;&#x6703;&#x8A0E;&#x8AD6;&#x5982;&#x4F55;&#x6709;&#x6548;&#x66FF;&#x63DB;&#x4E0D;&#x9700;&#x8981;&#x7684;page&#xFF0C;&#x964D;&#x4F4E;page fault&#x767C;&#x751F;&#x7684;&#x6A5F;&#x7387;&#x3002;</p>
+<h3 id="refactor">Refactor</h3>
+<p><img src="https://i.imgur.com/xfHw6Mf.png" alt=""></p>
 
                                 
                                 </section>
@@ -1776,12 +1801,12 @@
 
             
                 
-                <a href="paging.html" class="navigation navigation-prev " aria-label="Previous page: Paging">
+                <a href="design_pattern.html" class="navigation navigation-prev " aria-label="Previous page: Design Pattern Concept">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="page_replacement.html" class="navigation navigation-next " aria-label="Next page: Page Replacement">
+                <a href="observer.html" class="navigation navigation-next " aria-label="Next page: Observer">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1792,7 +1817,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Virtual Memory","level":"1.7.9","depth":2,"next":{"title":"Page Replacement","level":"1.7.9.1","depth":3,"path":"cpp_sec/page_replacement.md","ref":"cpp_sec/page_replacement.md","articles":[]},"previous":{"title":"Paging","level":"1.7.8.1","depth":3,"path":"cpp_sec/paging.md","ref":"cpp_sec/paging.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cpp_sec/virtual_memory.md","mtime":"2021-09-20T10:56:49.690Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-09-26T07:46:50.372Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Strategy","level":"1.9.3","depth":2,"next":{"title":"Observer","level":"1.9.4","depth":2,"path":"cpp_sec/observer.md","ref":"cpp_sec/observer.md","articles":[]},"previous":{"title":"Design Pattern Concept","level":"1.9.2","depth":2,"path":"cpp_sec/design_pattern.md","ref":"cpp_sec/design_pattern.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cpp_sec/strategy.md","mtime":"2021-09-26T07:46:20.138Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-09-26T07:46:50.372Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
