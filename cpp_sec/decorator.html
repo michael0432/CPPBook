@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Process Communication · GitBook</title>
+        <title>Decorator · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="pipe.html" />
+    <link rel="next" href="factory.html" />
     
     
-    <link rel="prev" href="process_lifecycle.html" />
+    <link rel="prev" href="observer.html" />
     
 
     </head>
@@ -1096,7 +1096,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.7.3.3" data-path="process_communiation.html">
+        <li class="chapter " data-level="1.7.3.3" data-path="process_communiation.html">
             
                 <a href="process_communiation.html">
             
@@ -1565,7 +1565,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.5" data-path="decorator.html">
+        <li class="chapter active" data-level="1.9.5" data-path="decorator.html">
             
                 <a href="decorator.html">
             
@@ -1723,7 +1723,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Process Communication</a>
+        <a href=".." >Decorator</a>
     </h1>
 </div>
 
@@ -1738,16 +1738,50 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="process-communication">Process Communication</h1>
-<h6 id="tags--operating-system">tags = <code>Operating System</code></h6>
-<p>&#x4F5C;&#x696D;&#x7CFB;&#x7D71;&#x9700;&#x8981;&#x63D0;&#x4F9B;&#x74B0;&#x5883;&#x8B93;process&#x4E4B;&#x9593;&#x4E92;&#x76F8;&#x5408;&#x4F5C;&#xFF0C;&#x56E0;&#x6B64;&#x9700;&#x8981;&#x63D0;&#x4F9B;Process&#x4E4B;&#x9593;&#x4E92;&#x76F8;&#x6E9D;&#x901A;&#x7684;&#x65B9;&#x5F0F;&#x3002;</p>
-<p>&#x8209;&#x4F8B;&#x4F86;&#x8AAA;&#xFF0C;Chrome&#x700F;&#x89BD;&#x5668;&#x7531;&#x591A;&#x500B;process&#x6240;&#x7D44;&#x6210;&#xFF0C;&#x56E0;&#x6B64;&#x7576;&#x4E00;&#x500B;&#x5206;&#x9801;crash&#x6642;&#xFF0C;&#x4E0D;&#x6703;&#x5C0E;&#x81F4;&#x6574;&#x500B;&#x700F;&#x89BD;&#x5668;crash&#x3002;</p>
-<p>Process&#x4E4B;&#x9593;&#x4E92;&#x76F8;&#x6E9D;&#x901A;(Interprocrss communication, IPC)&#x53EF;&#x4EE5;&#x5206;&#x6210;&#x5169;&#x7A2E;:</p>
+                                <h1 id="decorator">Decorator</h1>
+<h6 id="tags--software-engineering">tags = <code>Software Engineering</code></h6>
+<blockquote>
+<p>Attach additional responsibilities to an object dynamically. Decorators provide a flexible alternative to subclassing for extending functionality.</p>
+</blockquote>
+<p><img src="https://i.imgur.com/3m8p7lC.png" alt="">
+<img src="https://i.imgur.com/n2k7sMZ.png" alt=""></p>
+<h2 id="example">Example</h2>
+<p>&#x5728;&#x4E00;&#x5BB6;&#x98F2;&#x6599;&#x5E97;&#x4E2D;&#xFF0C;&#x6709;&#x8CE3;&#x5404;&#x7A2E;&#x4E0D;&#x540C;&#x7684;&#x98F2;&#x6599;&#xFF0C;&#x4F8B;&#x5982;&#x7D05;&#x8336;&#x3001;&#x7DA0;&#x8336;&#x3001;&#x725B;&#x5976;&#xFF0C;&#x9664;&#x4E86;&#x9019;&#x4E9B;&#x98F2;&#x6599;&#x4E4B;&#x5916;&#xFF0C;&#x4ED6;&#x5011;&#x4E5F;&#x53EF;&#x4EE5;&#x5F7C;&#x6B64;&#x6DF7;&#x642D;&#xFF0C;&#x4F8B;&#x5982;&#x7D05;&#x8336;&#x52A0;&#x725B;&#x5976;&#x53EF;&#x4EE5;&#x8B8A;&#x6210;&#x5976;&#x8336;&#xFF0C;&#x9664;&#x6B64;&#x4E4B;&#x5916;&#xFF0C;&#x6BCF;&#x7A2E;&#x98F2;&#x6599;&#x5BA2;&#x4EBA;&#x53EF;&#x4EE5;&#x81EA;&#x7531;&#x9078;&#x64C7;&#x8981;&#x4E0D;&#x8981;&#x52A0;&#x73CD;&#x73E0;&#x6216;&#x662F;&#x679C;&#x51CD;&#xFF0C;&#x8A2D;&#x8A08;&#x4E00;&#x500B;&#x98F2;&#x6599;&#x5E97;&#x7684;&#x67B6;&#x69CB;&#xFF0C;&#x5BA2;&#x4EBA;&#x53EF;&#x4EE5;&#x9EDE;&#x83DC;&#x55AE;&#x4E0A;&#x7684;&#x98F2;&#x6599;&#xFF0C;&#x4E26;&#x4E14;&#x5E97;&#x5BB6;&#x53EF;&#x4EE5;&#x65B0;&#x589E;&#x65B0;&#x7684;&#x98F2;&#x6599;&#x5230;&#x83DC;&#x55AE;&#x4E0A;&#x3002;</p>
+<p><img src="https://i.imgur.com/wgcyuwk.png" alt=""></p>
 <ul>
-<li>shared memory: &#x8A18;&#x61B6;&#x9AD4;&#x7684;&#x67D0;&#x500B;&#x5340;&#x584A;&#x88AB;&#x5169;&#x500B;&#x6216;&#x591A;&#x500B;process&#x5171;&#x540C;&#x4F7F;&#x7528;&#xFF0C;Process&#x85C9;&#x7531;&#x8B80;&#x5BEB;&#x8CC7;&#x6599;&#x5230;&#x540C;&#x4E00;&#x584A;&#x8A18;&#x61B6;&#x9AD4;&#x4F86;&#x4EA4;&#x63DB;&#x8CC7;&#x8A0A;&#x3002;</li>
-<li>message passing: &#x5C07;&#x8A0A;&#x606F;&#x50B3;&#x905E;&#x5230;&#x975E;&#x5169;&#x500B;process&#x4F7F;&#x7528;&#x7684;&#x7A7A;&#x9593;&#xFF0C;&#x5728;&#x6B64;&#x7A7A;&#x9593;&#x50B3;&#x905E;&#x8A0A;&#x606F;</li>
+<li>Problem<ul>
+<li>&#x5982;&#x679C;&#x65B0;&#x589E;&#x5F88;&#x591A;&#x98F2;&#x6599;&#xFF0C;&#x6BCF;&#x500B;&#x98F2;&#x6599;&#x90FD;&#x8981;&#x7E7C;&#x627F;Beverage</li>
+<li>&#x5982;&#x679C;&#x6709;&#x6DF7;&#x642D;&#x7684;&#x98F2;&#x6599;(&#x4F8B;&#x5982;&#x5976;&#x8336; = &#x725B;&#x5976;+&#x7D05;&#x8336;)&#xFF0C;&#x56E0;&#x70BA;&#x5976;&#x8336;&#x662F;&#x4E00;&#x500B;&#x7368;&#x7ACB;&#x7684;class&#xFF0C;&#x53EF;&#x80FD;&#x6703;&#x591A;&#x5BEB;&#x5F88;&#x591A;&#x91CD;&#x8907;&#x7684;code&#xFF0C;&#x7576;&#x8A2D;&#x8A08;&#x51FA;&#x66F4;&#x591A;&#x6DF7;&#x9054;&#x7684;&#x98F2;&#x6599;&#x6642;&#xFF0C;&#x7A0B;&#x5F0F;&#x78BC;&#x6703;&#x5F88;&#x96E3;&#x7DAD;&#x8B77;&#x3002;</li>
 </ul>
-<p>&#x9019;&#x908A;&#x6703;&#x4ECB;&#x7D39;&#x4E09;&#x7A2E;&#x4E0D;&#x540C;&#x7684;&#x901A;&#x8A0A;&#x65B9;&#x5F0F;: Pipe, Fifo, Socket</p>
+</li>
+</ul>
+<p>Decorator Pattern&#x4F7F;&#x7528;&#x5C0D;&#x540C;&#x4E00;&#x500B;&#x7269;&#x4EF6;&quot;&#x9644;&#x52A0;&quot;&#x5176;&#x4ED6;&#x7279;&#x6027;&#x7684;&#x6982;&#x5FF5;&#x4F86;&#x89E3;&#x6C7A;&#x9019;&#x500B;&#x554F;&#x984C;:</p>
+<p><img src="https://i.imgur.com/GtdsHpH.png" alt=""></p>
+<p>&#x7576;&#x8981;&#x88FD;&#x4F5C;&#x51FA;&#x4E00;&#x676F;&#x73CD;&#x73E0;&#x5976;&#x8336;&#x6642;&#xFF0C;&#x6D41;&#x7A0B;&#x6703;&#x8B8A;&#x6210;:</p>
+<ul>
+<li>&#x62FF;&#x5230;&#x676F;&#x5B50;</li>
+<li>&#x52A0;&#x4E0A;&#x7D05;&#x8336;</li>
+<li>&#x52A0;&#x4E0A;&#x725B;&#x5976;</li>
+<li>&#x52A0;&#x4E0A;&#x73CD;&#x73E0;</li>
+</ul>
+<pre><code class="lang-cpp=1">Beverage* b = new Bottle();
+b = new Tea(b); // beverage = b
+b = new Milk(b);
+b = new Bubble(b);
+b-&gt;make(); // beverage-&gt;make
+</code></pre>
+<ul>
+<li>Bubble&#x4E2D;&#xFF0C;&#x5B58;&#x7684;b&#x70BA;Milk&#xFF1B;Milk&#x4E2D;&#x5B58;&#x7684;b&#x70BA;Tea&#xFF1B;Tea&#x4E2D;&#x5B58;&#x7684;b&#x70BA;Bottle</li>
+<li>b-&gt;make<ul>
+<li>Bubble-&gt;make</li>
+<li>Milk-&gt;make</li>
+<li>Tea-&gt;make</li>
+<li>Bottle-&gt;make</li>
+</ul>
+</li>
+</ul>
+<h2 id="&#x5C0F;&#x7DF4;&#x7FD2;">&#x5C0F;&#x7DF4;&#x7FD2;</h2>
+<p>&#x5BEB;&#x51FA;&#x4E00;&#x500B;&#x86CB;&#x7CD5;&#x5DE5;&#x5EE0;&#x7684;&#x6D41;&#x7A0B;&#x8A2D;&#x8A08;&#xFF0C;&#x5728;&#x88FD;&#x4F5C;&#x4E00;&#x500B;&#x86CB;&#x7CD5;&#x7684;&#x6642;&#x5019;&#xFF0C;&#x9664;&#x4E86;&#x86CB;&#x7CD5;&#x9AD4;&#x672C;&#x8EAB;&#x4E4B;&#x5916;&#xFF0C;&#x53EF;&#x4EE5;&#x52A0;&#x5165;&#x4E0D;&#x540C;&#x7684;&#x914D;&#x6599;&#xFF0C;&#x914D;&#x6599;&#x5305;&#x542B;&#x5976;&#x6CB9;&#x3001;&#x8349;&#x8393;&#x3001;&#x6C34;&#x871C;&#x6843;&#xFF0C;&#x9664;&#x6B64;&#x4E4B;&#x5916;&#xFF0C;&#x86CB;&#x7CD5;&#x5DE5;&#x5EE0;&#x4E5F;&#x80FD;&#x96A8;&#x6642;&#x65B0;&#x589E;&#x4E0D;&#x540C;&#x7684;&#x914D;&#x6599;&#xFF0C;&#x88FD;&#x4F5C;&#x51FA;&#x65B0;&#x53E3;&#x5473;&#x7684;&#x86CB;&#x7CD5;&#x3002;</p>
 
                                 
                                 </section>
@@ -1775,12 +1809,12 @@
 
             
                 
-                <a href="process_lifecycle.html" class="navigation navigation-prev " aria-label="Previous page: Process Lifecycle">
+                <a href="observer.html" class="navigation navigation-prev " aria-label="Previous page: Observer">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="pipe.html" class="navigation navigation-next " aria-label="Next page: Pipe">
+                <a href="factory.html" class="navigation navigation-next " aria-label="Next page: Factor">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1791,7 +1825,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Process Communication","level":"1.7.3.3","depth":3,"next":{"title":"Pipe","level":"1.7.3.3.1","depth":4,"path":"cpp_sec/pipe.md","ref":"cpp_sec/pipe.md","articles":[]},"previous":{"title":"Process Lifecycle","level":"1.7.3.2","depth":3,"path":"cpp_sec/process_lifecycle.md","ref":"cpp_sec/process_lifecycle.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cpp_sec/process_communiation.md","mtime":"2021-09-26T07:46:53.010Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-10-03T14:20:53.368Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Decorator","level":"1.9.5","depth":2,"next":{"title":"Factor","level":"1.9.6","depth":2,"path":"cpp_sec/factory.md","ref":"cpp_sec/factory.md","articles":[]},"previous":{"title":"Observer","level":"1.9.4","depth":2,"path":"cpp_sec/observer.md","ref":"cpp_sec/observer.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cpp_sec/decorator.md","mtime":"2021-10-03T14:20:04.162Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-10-03T14:20:53.368Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
