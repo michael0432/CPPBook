@@ -100,6 +100,8 @@
   * [Design Pattern Concept](cpp_sec/design_pattern.md)
   * [Strategy](cpp_sec/strategy.md)
   * [Observer](cpp_sec/observer.md)
+  * [Decorator](cpp_sec/decorator.md)
+  * [Factor](cpp_sec/factory.md)
   * [Dependency Injection]
   
 * [Practice]
