@@ -101,7 +101,9 @@
   * [Strategy](cpp_sec/strategy.md)
   * [Observer](cpp_sec/observer.md)
   * [Decorator](cpp_sec/decorator.md)
-  * [Factor](cpp_sec/factory.md)
+  * [Factory](cpp_sec/factory.md)
+  * [Abstract Factory](cpp_sec/abstract_factory.md)
+  * [Singleton](cpp_sec/singleton.md)
   * [Dependency Injection]
   
 * [Practice]
