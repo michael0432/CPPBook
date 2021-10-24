@@ -104,6 +104,8 @@
   * [Factory](cpp_sec/factory.md)
   * [Abstract Factory](cpp_sec/abstract_factory.md)
   * [Singleton](cpp_sec/singleton.md)
+  * [Builder](cpp_sec/builder.md)
+  * [Practice](cpp_sec/SE_practice.md)
   * [Dependency Injection]
   
 * [Practice]
