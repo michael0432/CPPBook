@@ -106,6 +106,7 @@
   * [Singleton](cpp_sec/singleton.md)
   * [Builder](cpp_sec/builder.md)
   * [Practice](cpp_sec/SE_practice.md)
+  * [Iterator](cpp_sec/iteractor.md)
   * [Dependency Injection]
   
 * [Practice]
