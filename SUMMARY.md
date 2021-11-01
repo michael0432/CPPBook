@@ -107,6 +107,8 @@
   * [Builder](cpp_sec/builder.md)
   * [Practice](cpp_sec/SE_practice.md)
   * [Iterator](cpp_sec/iterator.md)
+  * [Composite](cpp_sec/composite.md)
+  * [Facade](cpp_sec/facade.md)
   * [Dependency Injection]
   
 * [Practice]
