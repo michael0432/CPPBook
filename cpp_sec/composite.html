@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Process Schedule Algorithm · GitBook</title>
+        <title>Composite · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="process_lifecycle.html" />
+    <link rel="next" href="facade.html" />
     
     
-    <link rel="prev" href="process_schedule.html" />
+    <link rel="prev" href="iterator.html" />
     
 
     </head>
@@ -1065,7 +1065,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter active" data-level="1.7.3.1.1" data-path="process_schedule_algo.html">
+        <li class="chapter " data-level="1.7.3.1.1" data-path="process_schedule_algo.html">
             
                 <a href="process_schedule_algo.html">
             
@@ -1656,7 +1656,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.12" data-path="composite.html">
+        <li class="chapter active" data-level="1.9.12" data-path="composite.html">
             
                 <a href="composite.html">
             
@@ -1814,7 +1814,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Process Schedule Algorithm</a>
+        <a href=".." >Composite</a>
     </h1>
 </div>
 
@@ -1829,416 +1829,24 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="process-schedule-algorithm">Process Schedule Algorithm</h1>
-<h6 id="tags--operating-system">tags = <code>Operating System</code></h6>
-<p>&#x9078;&#x53D6;CPU&#x8981;&#x57F7;&#x884C;&#x7684;process&#x662F;&#x7531;short term scheduler&#x4F86;&#x57F7;&#x884C;&#xFF0C;&#x5176;&#x4E2D;&#xFF0C;&#x767C;&#x751F;&#x4EE5;&#x4E0B;&#x56DB;&#x7A2E;&#x60C5;&#x6CC1;&#x5176;&#x4E2D;&#x4E4B;&#x4E00;&#x6642;&#xFF0C;short term scheduler&#x8981;&#x57F7;&#x884C;schedule&#x7684;&#x6F14;&#x7B97;&#x6CD5;:</p>
+                                <h1 id="composite">Composite</h1>
+<h6 id="tags--software-engineering">tags = <code>Software Engineering</code></h6>
+<blockquote>
+<p>The composite pattern describes a group of objects that are treated the same way as a single instance of the same type of object. The intent of a composite is to &quot;compose&quot; objects into tree structures to represent part-whole hierarchies. Implementing the composite pattern lets clients treat individual objects and compositions uniformly.</p>
+</blockquote>
+<p><img src="https://i.imgur.com/qEKwxtq.png" alt=""></p>
+<h2 id="example">Example</h2>
+<p>&#x5728;PPT&#x4E2D;&#xFF0C;&#x4F7F;&#x7528;&#x8005;&#x53EF;&#x4EE5;&#x5728;&#x9801;&#x9762;&#x4E0A;&#x756B;&#x65B9;&#x584A;&#x3001;&#x76F4;&#x7DDA;&#x4EE5;&#x53CA;&#x63D2;&#x5165;&#x6587;&#x5B57;&#xFF0C;&#x9664;&#x6B64;&#x4E4B;&#x5916;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x5C07;&#x9019;&#x4E9B;&#x7269;&#x4EF6;&#x7D44;&#x5408;&#x6210;&#x7FA4;&#x7D44;&#xFF0C;&#x4E14;&#x4E00;&#x500B;&#x7FA4;&#x7D44;&#x7269;&#x4EF6;&#x4E2D;&#xFF0C;&#x53EF;&#x4EE5;&#x5305;&#x542B;&#x5176;&#x4ED6;&#x7FA4;&#x7D44;&#x7269;&#x4EF6;&#x3002;</p>
+<h3 id="init-design">Init Design</h3>
+<p><img src="https://i.imgur.com/kEoqdS8.png" alt=""></p>
 <ul>
-<li>&#x7576;&#x4E00;&#x500B;process&#x5F9E;Runnig&#x8B8A;&#x6210;Waiting&#x72C0;&#x614B;&#x6642; (I/O&#x6216;&#x662F;wait())<ul>
-<li>&#x9078;&#x64C7;&#x4E00;&#x500B;&#x65B0;&#x7684;Process&#x57F7;&#x884C;</li>
+<li>Problem:<ul>
+<li>&#x5982;&#x679C;&#x65B0;&#x589E;&#x4E86;&#x65B0;&#x7684;&#x7269;&#x4EF6;&#xFF0C;&#x6703;&#x9700;&#x8981;&#x66F4;&#x6539;group&#x7684;&#x7A0B;&#x5F0F;&#x78BC;&#x3002;</li>
 </ul>
 </li>
-<li>&#x7576;&#x4E00;&#x500B;process&#x5F9E;Runnig&#x8B8A;&#x6210;Ready&#x72C0;&#x614B;&#x6642; (Interrupt&#x767C;&#x751F;&#x6642;)</li>
-<li>&#x7576;&#x4E00;&#x500B;process&#x5F9E;Waiting&#x8B8A;&#x6210;Ready&#x72C0;&#x614B;&#x6642; (I/O&#x6216;&#x662F;wait()&#x7D50;&#x675F;)</li>
-<li>&#x7576;process&#x7D50;&#x675F;&#x6642;<ul>
-<li>&#x9078;&#x64C7;&#x4E00;&#x500B;&#x65B0;&#x7684;Process&#x57F7;&#x884C;</li>
 </ul>
-</li>
-</ul>
-<p>&#x7576;&#x91CD;&#x65B0;&#x6392;&#x73ED;&#x53EA;&#x5728;1, 4&#x5169;&#x7A2E;&#x72C0;&#x6CC1;&#x57F7;&#x884C;&#x6642;&#xFF0C;&#x7A31;&#x70BA;&#x4E0D;&#x53EF;&#x6436;&#x5148;(non-preemtive)&#x7684;&#x6392;&#x7A0B;&#xFF1B;&#x82E5;&#x56DB;&#x7A2E;&#x72C0;&#x6CC1;&#x90FD;&#x57F7;&#x884C;&#xFF0C;&#x5247;&#x70BA;&#x53EF;&#x6436;&#x5148;&#x7684;&#x6392;&#x7A0B;(preemtive)&#x3002;
-&#x7576;&#x6392;&#x73ED;&#x65B9;&#x5F0F;&#x70BA;preemtive&#x6642;&#xFF0C;&#x53EF;&#x80FD;&#x6703;&#x767C;&#x751F;race condition&#x3002;</p>
-<h2 id="schedule&#x539F;&#x5247;">Schedule&#x539F;&#x5247;</h2>
-<p>&#x4E0D;&#x540C;&#x7684;CPU Schedule&#x65B9;&#x5F0F;&#x6709;&#x4E0D;&#x540C;&#x7684;&#x7279;&#x6027;&#xFF0C;&#x901A;&#x5E38;&#x5728;&#x8A55;&#x4F30;CPU Schedule&#x7684;&#x65B9;&#x5F0F;&#x6642;&#xFF0C;&#x6703;&#x53C3;&#x8003;&#x4EE5;&#x4E0B;&#x5E7E;&#x500B;&#x6A19;&#x6E96;:</p>
-<ul>
-<li>CPU&#x4F7F;&#x7528;&#x7387;: &#x4F7F;CPU&#x76E1;&#x53EF;&#x80FD;&#x5FD9;&#x788C;</li>
-<li>&#x7522;&#x91CF;(Throughtput): &#x55AE;&#x4F4D;&#x6642;&#x9593;&#x5167;&#x80FD;&#x5B8C;&#x6210;&#x7684;&#x5DE5;&#x4F5C;&#x91CF;(&#x6BCF;&#x55AE;&#x4F4D;&#x6642;&#x9593;&#x80FD;&#x5B8C;&#x6210;&#x7684;process&#x6578;&#x91CF;)</li>
-<li>&#x56DE;&#x5FA9;&#x6642;&#x9593;(turnaround time): &#x5C0D;&#x7279;&#x5B9A;Process&#x800C;&#x8A00;&#xFF0C;&#x5B8C;&#x6210;&#x7684;&#x7E3D;&#x6642;&#x9593;&#xFF0C;&#x5305;&#x542B;&#x5728;Ready Queue&#x4E2D;&#x7B49;&#x5F85;&#x7684;&#x6642;&#x9593;&#x53CA;&#x5728;CPU&#x57F7;&#x884C;&#x7684;&#x6642;&#x9593;&#x3002;</li>
-<li>&#x7B49;&#x5019;&#x6642;&#x9593;(waiting time): &#x5C0D;&#x7279;&#x5B9A;Process&#x800C;&#x8A00;&#xFF0C;&#x5728;Ready Queue&#x4E2D;&#x7B49;&#x5F85;&#x7684;&#x6642;&#x9593;&#x3002;</li>
-</ul>
-<p>&#x5728;&#x5F8C;&#x9762;&#x4ECB;&#x7D39;&#x7684;&#x6F14;&#x7B97;&#x6CD5;&#x8A55;&#x4F30;&#x4E0A;&#xFF0C;&#x6211;&#x5011;&#x66AB;&#x6642;&#x5C07;&#x8003;&#x91CF;&#x7C21;&#x5316;&#x5230;&#x53EA;&#x8003;&#x616E;&#x6BCF;&#x500B;Process&#x9700;&#x8981;&#x7684;CPU Time&#xFF0C;&#x4F86;&#x8003;&#x91CF;&#x6574;&#x9AD4;&#x6392;&#x73ED;&#x6F14;&#x7B97;&#x6CD5;&#x7684;&#x6548;&#x7387;</p>
-<h2 id="fifo">FIFO</h2>
-<p>FIFO(First-in-first-out)&#xFF0C;CPU&#x512A;&#x5148;&#x904B;&#x7B97;Ready Queue&#x4E2D;&#x7684;&#x7B2C;&#x4E00;&#x500B;Process&#xFF0C;&#x76F4;&#x5230;&#x6B64;Process&#x7D50;&#x675F;&#x518D;&#x57F7;&#x884C;&#x4E0B;&#x4E00;&#x500B;Process&#x3002;</p>
-<p>&#x8003;&#x616E;&#x4EE5;&#x4E0B;&#x7684;Process:</p>
-<table>
-<thead>
-<tr>
-<th>Process</th>
-<th>CPU Time</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>P1</td>
-<td>24</td>
-</tr>
-<tr>
-<td>P2</td>
-<td>3</td>
-</tr>
-<tr>
-<td>P3</td>
-<td>3</td>
-</tr>
-</tbody>
-</table>
-<p>&#x6B64;&#x6642;&#xFF0C;CPU&#x7684;&#x4F7F;&#x7528;&#x60C5;&#x6CC1;&#x70BA;:</p>
-<table>
-<thead>
-<tr>
-<th>0~24</th>
-<th>24~27</th>
-<th>27~30</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>P1</td>
-<td>P2</td>
-<td>P3</td>
-</tr>
-</tbody>
-</table>
-<p>&#x5E73;&#x5747;&#x7B49;&#x5F85;&#x6642;&#x9593;&#x70BA; (0+24+27)/3 = 17:</p>
-<table>
-<thead>
-<tr>
-<th>Process</th>
-<th>CPU Time</th>
-<th>Wait Time </th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>P1</td>
-<td>24</td>
-<td>0</td>
-</tr>
-<tr>
-<td>P2</td>
-<td>3</td>
-<td>24</td>
-</tr>
-<tr>
-<td>P3</td>
-<td>3</td>
-<td>27</td>
-</tr>
-</tbody>
-</table>
-<p>&#x4F46;&#x662F;&#xFF0C;&#x82E5;Process&#x5230;&#x9054;Ready Queue&#x7684;&#x9806;&#x5E8F;&#x8B8A;&#x6210;P2, P3, P1&#xFF0C;&#x65B0;&#x7684;CPU&#x4F7F;&#x7528;&#x72C0;&#x6CC1;&#x8B8A;&#x6210;:</p>
-<table>
-<thead>
-<tr>
-<th>0~3</th>
-<th>3~6</th>
-<th>6~30</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>P2</td>
-<td>P3</td>
-<td>P1</td>
-</tr>
-</tbody>
-</table>
-<p>&#x5E73;&#x5747;&#x7B49;&#x5F85;&#x6642;&#x9593;&#x8B8A;&#x6210; (0+3+6)/3 = 3:</p>
-<table>
-<thead>
-<tr>
-<th>Process</th>
-<th>CPU Time</th>
-<th>Wait Time </th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>P1</td>
-<td>24</td>
-<td>6</td>
-</tr>
-<tr>
-<td>P2</td>
-<td>3</td>
-<td>0</td>
-</tr>
-<tr>
-<td>P3</td>
-<td>3</td>
-<td>3</td>
-</tr>
-</tbody>
-</table>
-<p>&#x7531;&#x4E0A;&#x8FF0;&#x4F8B;&#x5B50;&#x53EF;&#x4EE5;&#x77E5;&#x9053;&#xFF0C;FIFO&#x6F14;&#x7BF9;&#x6CD5;&#x4E0D;&#x4E00;&#x5B9A;&#x662F;&#x6700;&#x5DEE;&#x7684;&#x6F14;&#x7B97;&#x6CD5;&#xFF0C;&#x4F46;&#x5E73;&#x5747;&#x7B49;&#x5F85;&#x6642;&#x9593;&#x53EF;&#x80FD;&#x6703;&#x56E0;&#x70BA;Ready Queue&#x4E2D;Process&#x7684;&#x6392;&#x5217;&#x9806;&#x5E8F;&#x6709;&#x5F88;&#x5927;&#x7684;&#x5DEE;&#x7570;&#xFF0C;&#x662F;&#x4E00;&#x500B;&#x4E0D;&#x592A;&#x7A69;&#x5B9A;&#x7684;&#x6F14;&#x7B97;&#x6CD5;&#xFF0C;&#x7576;&#x6709;&#x4E00;&#x500B;&#x57F7;&#x884C;&#x6642;&#x9593;&#x904E;&#x9577;&#x7684;Process&#x5B58;&#x5728;&#xFF0C;&#x4FBF;&#x5BB9;&#x6613;&#x5C0E;&#x81F4;&#x5F8C;&#x65B9;&#x6240;&#x6709;&#x7684;Process&#x90FD;&#x56E0;&#x5176;&#x5F88;&#x7B49;&#x5F85;&#x6642;&#x9593;&#x62C9;&#x9577;&#x3002;</p>
-<h2 id="sjf">SJF</h2>
-<p>Shortest-Job-First(SJF)&#xFF0C;&#x512A;&#x5148;&#x57F7;&#x884C;CPU Time&#x6700;&#x77ED;&#x7684;Process&#x3002;</p>
-<p>&#x8003;&#x616E;&#x4EE5;&#x4E0B;&#x7684;Process:</p>
-<table>
-<thead>
-<tr>
-<th>Process</th>
-<th>CPU Time</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>P1</td>
-<td>6</td>
-</tr>
-<tr>
-<td>P2</td>
-<td>8</td>
-</tr>
-<tr>
-<td>P3</td>
-<td>7</td>
-</tr>
-<tr>
-<td>P4</td>
-<td>3</td>
-</tr>
-</tbody>
-</table>
-<p>&#x6B64;&#x6642;&#xFF0C;CPU&#x7684;&#x4F7F;&#x7528;&#x60C5;&#x6CC1;&#x70BA;:</p>
-<table>
-<thead>
-<tr>
-<th>0~3</th>
-<th>3~9</th>
-<th>9~16</th>
-<th>16~24</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>P4</td>
-<td>P1</td>
-<td>P3</td>
-<td>P2</td>
-</tr>
-</tbody>
-</table>
-<p>&#x5E73;&#x5747;&#x7B49;&#x5F85;&#x6642;&#x9593;: (0+3+9+16)/4 = 7</p>
-<table>
-<thead>
-<tr>
-<th>Process</th>
-<th>CPU Time</th>
-<th>Wait Time</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>P1</td>
-<td>6</td>
-<td>3</td>
-</tr>
-<tr>
-<td>P2</td>
-<td>8</td>
-<td>16</td>
-</tr>
-<tr>
-<td>P3</td>
-<td>7</td>
-<td>9</td>
-</tr>
-<tr>
-<td>P4</td>
-<td>3</td>
-<td>0</td>
-</tr>
-</tbody>
-</table>
-<p>&#x6839;&#x64DA;Greedy&#x6F14;&#x7B97;&#x6CD5;&#xFF0C;&#x53EF;&#x4EE5;&#x5F97;&#x77E5;SJF&#x662F;&#x6700;&#x7406;&#x60F3;&#x7684;&#x6F14;&#x7B97;&#x6CD5;&#xFF0C;&#x53EF;&#x4EE5;&#x5F97;&#x5230;&#x4E00;&#x7D44;&#x5E73;&#x5747;&#x7B49;&#x5F85;&#x6642;&#x9593;&#x6700;&#x77ED;&#x7684;&#x6392;&#x5E8F;&#x6CD5;&#xFF0C;&#x7136;&#x800C;&#xFF0C;SJF&#x6F14;&#x7B97;&#x6CD5;&#x56F0;&#x96E3;&#x7684;&#x90E8;&#x5206;&#x5728;&#x65BC;&#x5982;&#x4F55;&#x5F97;&#x77E5;&#x6BCF;&#x4E00;&#x500B;Process&#x6240;&#x9700;&#x8981;&#x7684;CPU&#x6642;&#x9593;&#x3002;</p>
-<p>&#x82E5;&#x5C07;SJF&#x6F14;&#x7B97;&#x6CD5;&#x6539;&#x70BA;preemtive&#xFF0C;&#x53EF;&#x4EE5;&#x5C07;&#x5224;&#x65B7;&#x7684;&#x689D;&#x4EF6;&#x6539;&#x6210;&#x5269;&#x9918;&#x6642;&#x9593;&#x6700;&#x77ED;&#x7684;Process&#x6700;&#x5148;&#x505A;&#x3002;</p>
-<table>
-<thead>
-<tr>
-<th>Process</th>
-<th>Arrive Time</th>
-<th>CPU Time</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>P1</td>
-<td>0</td>
-<td>8</td>
-</tr>
-<tr>
-<td>P2</td>
-<td>1</td>
-<td>4</td>
-</tr>
-<tr>
-<td>P3</td>
-<td>2</td>
-<td>9</td>
-</tr>
-<tr>
-<td>P4</td>
-<td>3</td>
-<td>5</td>
-</tr>
-</tbody>
-</table>
-<p>&#x6B64;&#x6642;&#xFF0C;CPU&#x7684;&#x4F7F;&#x7528;&#x60C5;&#x6CC1;&#x70BA;:</p>
-<table>
-<thead>
-<tr>
-<th>0~1</th>
-<th>1~5</th>
-<th>5~10</th>
-<th>10~17</th>
-<th>17~26</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>P1</td>
-<td>P2</td>
-<td>P4</td>
-<td>P1</td>
-<td>P3</td>
-</tr>
-</tbody>
-</table>
-<p>&#x7531;&#x65BC;P1&#x5F9E;&#x6642;&#x9593;0&#x958B;&#x59CB;&#xFF0C;&#x6B64;&#x6642;&#x53EA;&#x6709;&#x4E00;&#x500B;Process&#xFF0C;&#x56E0;&#x6B64;&#x53EF;&#x4EE5;&#x5148;&#x4F54;&#x7528;1&#x55AE;&#x4F4D;&#x6642;&#x9593;&#xFF0C;&#x7576;P2&#x5728;&#x6642;&#x9593;1&#x5230;&#x9054;&#x6642;&#xFF0C;P2&#x5269;&#x9918;&#x6642;&#x9593;&#x70BA;4&#xFF0C;P1&#x5269;&#x9918;&#x6642;&#x9593;&#x70BA;7&#xFF0C;&#x56E0;&#x6B64;&#x5148;&#x8B93;P2&#x57F7;&#x884C;&#xFF0C;&#x5F8C;&#x65B9;&#x4EE5;&#x6B64;&#x985E;&#x63A8;&#x3002;</p>
-<p>&#x6B64;&#x4F8B;&#x7684;preemtive SJF&#xFF0C;&#x5E73;&#x5747;&#x7B49;&#x5F85;&#x6642;&#x9593;&#x70BA;6.5&#xFF1B;&#x76F8;&#x8F03;&#x65BC;non-preemtive SJF&#x7684;7.75&#x7A0D;&#x5FEB;&#x4E00;&#x4E9B;&#x3002;</p>
-<h2 id="priority-schedule">Priority Schedule</h2>
-<p>&#x5728;&#x591A;&#x6578;&#x7684;&#x4F5C;&#x696D;&#x7CFB;&#x7D71;&#x4E2D;&#xFF0C;&#x4E0D;&#x540C;&#x7684;Process Priority&#x53EF;&#x80FD;&#x4E0D;&#x540C;&#xFF0C;&#x56E0;&#x6B64;&#x5728;Schedule&#x6642;&#x4E5F;&#x9700;&#x8981;&#x8003;&#x616E;&#x4E0D;&#x540C;Process&#x7684;Priority&#xFF0C;&#x6BCF;&#x500B;&#x4F5C;&#x696D;&#x7CFB;&#x7D71;&#x8868;&#x793A;Priority&#x7684;&#x503C;&#x4E0D;&#x540C;&#xFF0C;&#x6709;&#x53EF;&#x80FD;&#x662F;&#x503C;&#x8D8A;&#x5927;&#x8D8A;&#x512A;&#x5148;&#xFF0C;&#x4E5F;&#x6709;&#x53EF;&#x80FD;&#x76F8;&#x53CD;&#xFF0C;&#x9019;&#x88E1;&#x7528;&#x6578;&#x503C;&#x5C0F;&#x4EE3;&#x8868;&#x8D8A;&#x512A;&#x5148;&#x3002;</p>
-<p>&#x6700;&#x57FA;&#x672C;&#x7684;Priority Schedule&#x9075;&#x5FAA;&#x5169;&#x500B;&#x539F;&#x5247;:</p>
-<ul>
-<li>Priority&#x8D8A;&#x9AD8;&#x7684;Process&#x512A;&#x5148;&#x57F7;&#x884C;</li>
-<li>Priority&#x76F8;&#x540C;&#x7684;Process&#xFF0C;&#x63A1;&#x7528;FIFO</li>
-</ul>
-<p>Priority Schedule&#x53EF;&#x4EE5;&#x662F;preemtive&#x4E5F;&#x53EF;&#x4EE5;&#x662F;nonpreemtive&#xFF0C;preemtive&#x6642;&#xFF0C;&#x82E5;&#x65B0;&#x9032;&#x7684;Process&#x512A;&#x5148;&#x5EA6;&#x6BD4;&#x76EE;&#x524D;&#x5728;&#x57F7;&#x884C;&#x7684;Process&#x9AD8;&#xFF0C;&#x5247;&#x6436;&#x5148;&#x57F7;&#x884C;&#x3002;</p>
-<p>&#x8003;&#x616E;&#x4EE5;&#x4E0B;&#x7684;Process:</p>
-<table>
-<thead>
-<tr>
-<th>Process</th>
-<th>CPU Time</th>
-<th>Priority</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>P1</td>
-<td>10</td>
-<td>3</td>
-</tr>
-<tr>
-<td>P2</td>
-<td>1</td>
-<td>1</td>
-</tr>
-<tr>
-<td>P3</td>
-<td>2</td>
-<td>4</td>
-</tr>
-<tr>
-<td>P4</td>
-<td>1</td>
-<td>5</td>
-</tr>
-<tr>
-<td>P5</td>
-<td>5</td>
-<td>2</td>
-</tr>
-</tbody>
-</table>
-<p>&#x6B64;&#x6642;&#xFF0C;CPU&#x7684;&#x4F7F;&#x7528;&#x60C5;&#x6CC1;&#x70BA;&#xFF0C;&#x5E73;&#x5747;&#x7B49;&#x5F85;&#x6642;&#x9593;&#x70BA;8.2:</p>
-<table>
-<thead>
-<tr>
-<th>0~1</th>
-<th>1~6</th>
-<th>6~16</th>
-<th>16~18</th>
-<th>18~19</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>P2</td>
-<td>P5</td>
-<td>P1</td>
-<td>P3</td>
-<td>P4</td>
-</tr>
-</tbody>
-</table>
-<p>Priority Schedule&#x6700;&#x5927;&#x7684;&#x554F;&#x984C;&#x662F;starvation&#xFF0C;&#x4E00;&#x4E9B;&#x512A;&#x5148;&#x6B0A;&#x4F4E;&#x7684;Process&#x53EF;&#x80FD;&#x6703;&#x4E00;&#x76F4;&#x7121;&#x671F;&#x9650;&#x7684;&#x7B49;&#x5F85;CPU&#xFF0C;&#x5728;&#x7CFB;&#x7D71;&#x8F03;&#x7E41;&#x5FD9;&#x7684;&#x60C5;&#x6CC1;&#x4E0B;&#xFF0C;&#x4E00;&#x9023;&#x4E32;&#x9AD8;&#x512A;&#x5148;&#x6B0A;&#x7684;Process&#x6703;&#x8B93;&#x512A;&#x5148;&#x6B0A;&#x4F4E;&#x7684;Process&#x59CB;&#x7D42;&#x5F97;&#x4E0D;&#x5230;CPU&#x3002;&#x6B64;&#x554F;&#x984C;&#x7684;&#x89E3;&#x6C7A;&#x65B9;&#x5F0F;&#x662F;aging&#xFF0C;&#x9010;&#x6F38;&#x63D0;&#x9AD8;&#x505C;&#x7559;&#x5728;&#x7CFB;&#x7D71;&#x4E4B;&#x4E2D;&#x9577;&#x6642;&#x9593;&#x7B49;&#x5F85;Process&#x7684;&#x512A;&#x5148;&#x6B0A;&#x3002;</p>
-<h2 id="rr">RR</h2>
-<p>Round-robin(RR)&#x6F14;&#x7B97;&#x6CD5;&#x662F;&#x70BA;&#x4E86;Time-sharing&#x7684;&#x4F5C;&#x696D;&#x7CFB;&#x7D71;&#x8A2D;&#x8A08;&#x7684;&#xFF0C;Time-sharing&#x7684;&#x4F5C;&#x696D;&#x7CFB;&#x7D71;&#x4F7F;&#x6BCF;&#x500B;Process&#x5728;&#x57F7;&#x884C;&#x4E00;&#x6BB5;&#x6642;&#x9593;&#x5F8C;&#x5F37;&#x5236;&#x91CB;&#x653E;CPU&#x8CC7;&#x6E90;&#x7D66;&#x5176;&#x4ED6;&#x7684;Process&#xFF0C;&#x9019;&#x500B;&#x4E00;&#x6BB5;&#x6642;&#x9593;&#x7A31;&#x70BA;time slice&#x3002;</p>
-<p>&#x8003;&#x616E;&#x4EE5;&#x4E0B;&#x7684;Process:</p>
-<table>
-<thead>
-<tr>
-<th>Process</th>
-<th>CPU Time</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>P1</td>
-<td>24</td>
-</tr>
-<tr>
-<td>P2</td>
-<td>3</td>
-</tr>
-<tr>
-<td>P3</td>
-<td>3</td>
-</tr>
-</tbody>
-</table>
-<p>&#x6709;&#x5169;&#x7A2E;&#x60C5;&#x6CC1;&#x6703;&#x767C;&#x751F;:</p>
-<ul>
-<li>&#x67D0;process&#x5269;&#x9918;&#x7684;CPU Time &gt; time slice&#xFF0C;&#x6B64;&#x6642;&#x5148;&#x57F7;&#x884C;time slice&#x5F8C;&#xFF0C;&#x4F5C;&#x696D;&#x7CFB;&#x7D71;&#x6703;&#x767C;&#x51FA;interupt&#xFF0C;&#x4F7F;&#x8A72;process&#x56DE;&#x5230;Ready Queue&#x4E2D;&#x7B49;&#x5F85;&#x3002;</li>
-<li>&#x67D0;process&#x5269;&#x9918;&#x7684;CPU Time &lt;= time slice&#xFF0C;&#x6B64;&#x6642;process&#x6703;&#x81EA;&#x7136;&#x7D50;&#x675F;&#x3002;</li>
-</ul>
-<p>&#x7576;time slice&#x70BA;4&#x6642;:</p>
-<table>
-<thead>
-<tr>
-<th>0~4</th>
-<th>4~7</th>
-<th>7~10</th>
-<th>10~14</th>
-<th>14~18</th>
-<th>18~22</th>
-<th>22~26</th>
-<th>26~30</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>P1</td>
-<td>P2</td>
-<td>P3</td>
-<td>P1</td>
-<td>P1</td>
-<td>P1</td>
-<td>P1</td>
-<td>P1</td>
-</tr>
-</tbody>
-</table>
-<p>&#x5E73;&#x5747;&#x7B49;&#x5F85;&#x6642;&#x9593;&#x70BA;: (6+4+7)/3 = 5.66</p>
-<p>RR&#x6F14;&#x7B97;&#x6CD5;&#x7684;&#x6548;&#x80FD;&#x6C7A;&#x5B9A;&#x65BC;time slice&#x7684;&#x9577;&#x77ED;&#xFF0C;&#x5982;&#x679C;time slice&#x592A;&#x5927;&#xFF0C;&#x7D50;&#x679C;&#x5C31;&#x8DDF;FIFO&#x4E00;&#x6A23;&#xFF0C;&#x5982;&#x679C;time slice&#x592A;&#x77ED;&#xFF0C;&#x5927;&#x90E8;&#x5206;&#x7684;&#x6642;&#x9593;&#x90FD;&#x82B1;&#x5728;context switch&#x3002;</p>
-<h2 id="multilevel">MultiLevel</h2>
-<p>&#x7531;&#x65BC;&#x4E0D;&#x540C;&#x7A2E;Schedule Algorithm&#x6709;&#x4E0D;&#x540C;&#x7684;&#x512A;&#x7F3A;&#x9EDE;&#xFF0C;&#x53EF;&#x4EE5;&#x6839;&#x64DA;&#x4E0D;&#x540C;Process&#x6027;&#x8CEA;&#x5C07;&#x5176;&#x5206;&#x985E;&#xFF0C;&#x5C07;&#x6BD4;&#x8F03;&#x9AD8;priority&#x7684;process&#x8DDF;&#x8F03;&#x4F4E;priority&#x7684;process&#x653E;&#x5728;&#x4E0D;&#x540C;&#x7684;quque&#x4E2D;&#xFF0C;&#x4EE5;&#x4E0D;&#x540C;&#x7684;&#x65B9;&#x5F0F;schedule&#x3002;</p>
-<p>&#x5C0D;&#x65BC;priority&#x4E0D;&#x540C;&#x7684;queue&#x6709;&#x5169;&#x7A2E;&#x5E38;&#x898B;&#x7684;&#x8A2D;&#x8A08;&#x65B9;&#x5F0F;:</p>
-<ul>
-<li>Preemtive&#xFF0C;&#x9AD8;&#x512A;&#x5148;&#x5EA6;&#x7684;process&#x6C38;&#x9060;&#x53EF;&#x4EE5;&#x5148;&#x57F7;&#x884C;</li>
-<li>Time sharing&#xFF0C;&#x5B89;&#x6392;&#x8F03;&#x9AD8;&#x6BD4;&#x4F8B;&#x7684;CPU&#x6642;&#x9593;&#x7D66;&#x9AD8;&#x512A;&#x5148;&#x5EA6;&#x7684;Process(&#x4F8B;&#x5982;System process 80%&#x3001;&#x5176;&#x4ED6;process 20%)</li>
-</ul>
-<p><img src="https://i.imgur.com/eTob5PB.png" alt=""></p>
+<h3 id="refactor">Refactor</h3>
+<p><img src="https://i.imgur.com/2eOXQuE.png" alt=""></p>
 
                                 
                                 </section>
@@ -2266,12 +1874,12 @@
 
             
                 
-                <a href="process_schedule.html" class="navigation navigation-prev " aria-label="Previous page: Process Schedule">
+                <a href="iterator.html" class="navigation navigation-prev " aria-label="Previous page: Iterator">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="process_lifecycle.html" class="navigation navigation-next " aria-label="Next page: Process Lifecycle">
+                <a href="facade.html" class="navigation navigation-next " aria-label="Next page: Facade">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -2282,7 +1890,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Process Schedule Algorithm","level":"1.7.3.1.1","depth":4,"next":{"title":"Process Lifecycle","level":"1.7.3.2","depth":3,"path":"cpp_sec/process_lifecycle.md","ref":"cpp_sec/process_lifecycle.md","articles":[]},"previous":{"title":"Process Schedule","level":"1.7.3.1","depth":3,"path":"cpp_sec/process_schedule.md","ref":"cpp_sec/process_schedule.md","articles":[{"title":"Process Schedule Algorithm","level":"1.7.3.1.1","depth":4,"path":"cpp_sec/process_schedule_algo.md","ref":"cpp_sec/process_schedule_algo.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cpp_sec/process_schedule_algo.md","mtime":"2021-10-31T04:23:01.087Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-11-01T08:25:55.280Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Composite","level":"1.9.12","depth":2,"next":{"title":"Facade","level":"1.9.13","depth":2,"path":"cpp_sec/facade.md","ref":"cpp_sec/facade.md","articles":[]},"previous":{"title":"Iterator","level":"1.9.11","depth":2,"path":"cpp_sec/iterator.md","ref":"cpp_sec/iterator.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cpp_sec/composite.md","mtime":"2021-11-01T08:23:37.716Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-11-01T08:25:55.280Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
