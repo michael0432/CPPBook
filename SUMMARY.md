@@ -89,7 +89,7 @@
   * [Disk](cpp_sec/disk.md)
 * [Computer Networking](cpp_sec/network.md)
   * [TCP/IP](cpp_sec/tcp_ip.md)
-  * [Internet Layer]](cpp_sec/internet_layer.md)
+  * [Internet Layer](cpp_sec/internet_layer.md)
 
 * [Object Oriented Programming](cpp_sec/oop.md)
   * [Class Constructors](cpp_sec/constructor.md)
