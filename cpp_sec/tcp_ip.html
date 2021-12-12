@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Decorator · GitBook</title>
+        <title>TCP/IP · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="factory.html" />
+    <link rel="next" href="internet_layer.html" />
     
     
-    <link rel="prev" href="observer.html" />
+    <link rel="prev" href="network.html" />
     
 
     </head>
@@ -1403,7 +1403,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.8.1" data-path="tcp_ip.html">
+        <li class="chapter active" data-level="1.8.1" data-path="tcp_ip.html">
             
                 <a href="tcp_ip.html">
             
@@ -1610,7 +1610,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.10.5" data-path="decorator.html">
+        <li class="chapter " data-level="1.10.5" data-path="decorator.html">
             
                 <a href="decorator.html">
             
@@ -1859,7 +1859,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Decorator</a>
+        <a href=".." >TCP/IP</a>
     </h1>
 </div>
 
@@ -1874,50 +1874,48 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="decorator">Decorator</h1>
-<h6 id="tags--software-engineering">tags = <code>Software Engineering</code></h6>
-<blockquote>
-<p>Attach additional responsibilities to an object dynamically. Decorators provide a flexible alternative to subclassing for extending functionality.</p>
-</blockquote>
-<p><img src="https://i.imgur.com/3m8p7lC.png" alt="">
-<img src="https://i.imgur.com/n2k7sMZ.png" alt=""></p>
-<h2 id="example">Example</h2>
-<p>&#x5728;&#x4E00;&#x5BB6;&#x98F2;&#x6599;&#x5E97;&#x4E2D;&#xFF0C;&#x6709;&#x8CE3;&#x5404;&#x7A2E;&#x4E0D;&#x540C;&#x7684;&#x98F2;&#x6599;&#xFF0C;&#x4F8B;&#x5982;&#x7D05;&#x8336;&#x3001;&#x7DA0;&#x8336;&#x3001;&#x725B;&#x5976;&#xFF0C;&#x9664;&#x4E86;&#x9019;&#x4E9B;&#x98F2;&#x6599;&#x4E4B;&#x5916;&#xFF0C;&#x4ED6;&#x5011;&#x4E5F;&#x53EF;&#x4EE5;&#x5F7C;&#x6B64;&#x6DF7;&#x642D;&#xFF0C;&#x4F8B;&#x5982;&#x7D05;&#x8336;&#x52A0;&#x725B;&#x5976;&#x53EF;&#x4EE5;&#x8B8A;&#x6210;&#x5976;&#x8336;&#xFF0C;&#x9664;&#x6B64;&#x4E4B;&#x5916;&#xFF0C;&#x6BCF;&#x7A2E;&#x98F2;&#x6599;&#x5BA2;&#x4EBA;&#x53EF;&#x4EE5;&#x81EA;&#x7531;&#x9078;&#x64C7;&#x8981;&#x4E0D;&#x8981;&#x52A0;&#x73CD;&#x73E0;&#x6216;&#x662F;&#x679C;&#x51CD;&#xFF0C;&#x8A2D;&#x8A08;&#x4E00;&#x500B;&#x98F2;&#x6599;&#x5E97;&#x7684;&#x67B6;&#x69CB;&#xFF0C;&#x5BA2;&#x4EBA;&#x53EF;&#x4EE5;&#x9EDE;&#x83DC;&#x55AE;&#x4E0A;&#x7684;&#x98F2;&#x6599;&#xFF0C;&#x4E26;&#x4E14;&#x5E97;&#x5BB6;&#x53EF;&#x4EE5;&#x65B0;&#x589E;&#x65B0;&#x7684;&#x98F2;&#x6599;&#x5230;&#x83DC;&#x55AE;&#x4E0A;&#x3002;</p>
-<p><img src="https://i.imgur.com/wgcyuwk.png" alt=""></p>
+                                <h1 id="tcp-ip--osi-7-layer">TCP IP &amp; OSI 7 Layer</h1>
+<h6 id="tags--network">tags = <code>Network</code></h6>
+<p>&#x5728;&#x7DB2;&#x8DEF;&#x901A;&#x8A0A;&#x7684;&#x5354;&#x5B9A;(Protocal)&#x4E2D;&#xFF0C;&#x5C07;&#x7DB2;&#x8DEF;&#x6A21;&#x578B;&#x5206;&#x6210;&#x591A;&#x500B;&#x5C64;&#x6B21;&#xFF0C;&#x6BCF;&#x500B;&#x5C64;&#x6B21;&#x5404;&#x53F8;&#x5176;&#x8077;&#x3002;
+&#x5728;OSI&#x6A21;&#x578B;&#x4E2D;&#xFF0C;&#x5C07;&#x7DB2;&#x8DEF;&#x67B6;&#x69CB;&#x5206;&#x6210;&#x4E03;&#x5C64;:</p>
 <ul>
-<li>Problem<ul>
-<li>&#x5982;&#x679C;&#x65B0;&#x589E;&#x5F88;&#x591A;&#x98F2;&#x6599;&#xFF0C;&#x6BCF;&#x500B;&#x98F2;&#x6599;&#x90FD;&#x8981;&#x7E7C;&#x627F;Beverage</li>
-<li>&#x5982;&#x679C;&#x6709;&#x6DF7;&#x642D;&#x7684;&#x98F2;&#x6599;(&#x4F8B;&#x5982;&#x5976;&#x8336; = &#x725B;&#x5976;+&#x7D05;&#x8336;)&#xFF0C;&#x56E0;&#x70BA;&#x5976;&#x8336;&#x662F;&#x4E00;&#x500B;&#x7368;&#x7ACB;&#x7684;class&#xFF0C;&#x53EF;&#x80FD;&#x6703;&#x591A;&#x5BEB;&#x5F88;&#x591A;&#x91CD;&#x8907;&#x7684;code&#xFF0C;&#x7576;&#x8A2D;&#x8A08;&#x51FA;&#x66F4;&#x591A;&#x6DF7;&#x9054;&#x7684;&#x98F2;&#x6599;&#x6642;&#xFF0C;&#x7A0B;&#x5F0F;&#x78BC;&#x6703;&#x5F88;&#x96E3;&#x7DAD;&#x8B77;&#x3002;</li>
+<li>Application</li>
+<li>Presentation</li>
+<li>Session</li>
+<li>Transport</li>
+<li>Internet</li>
+<li>Data-link</li>
+<li>Physical</li>
 </ul>
-</li>
-</ul>
-<p>Decorator Pattern&#x4F7F;&#x7528;&#x5C0D;&#x540C;&#x4E00;&#x500B;&#x7269;&#x4EF6;&quot;&#x9644;&#x52A0;&quot;&#x5176;&#x4ED6;&#x7279;&#x6027;&#x7684;&#x6982;&#x5FF5;&#x4F86;&#x89E3;&#x6C7A;&#x9019;&#x500B;&#x554F;&#x984C;:</p>
-<p><img src="https://i.imgur.com/GtdsHpH.png" alt=""></p>
-<p>&#x7576;&#x8981;&#x88FD;&#x4F5C;&#x51FA;&#x4E00;&#x676F;&#x73CD;&#x73E0;&#x5976;&#x8336;&#x6642;&#xFF0C;&#x6D41;&#x7A0B;&#x6703;&#x8B8A;&#x6210;:</p>
+<p>&#x5728;TCP/IP&#x5354;&#x5B9A;&#x4E2D;&#xFF0C;&#x5C07;&#x7DB2;&#x8DEF;&#x67B6;&#x69CB;&#x5206;&#x70BA;&#x56DB;&#x5C64;:</p>
 <ul>
-<li>&#x62FF;&#x5230;&#x676F;&#x5B50;</li>
-<li>&#x52A0;&#x4E0A;&#x7D05;&#x8336;</li>
-<li>&#x52A0;&#x4E0A;&#x725B;&#x5976;</li>
-<li>&#x52A0;&#x4E0A;&#x73CD;&#x73E0;</li>
+<li>Application</li>
+<li>Transport</li>
+<li>Internet</li>
+<li>Network Access</li>
 </ul>
-<pre><code class="lang-cpp=1">Beverage* b = new Bottle();
-b = new Tea(b); // beverage = b
-b = new Milk(b);
-b = new Bubble(b);
-b-&gt;make(); // beverage-&gt;make
-</code></pre>
-<ul>
-<li>Bubble&#x4E2D;&#xFF0C;&#x5B58;&#x7684;b&#x70BA;Milk&#xFF1B;Milk&#x4E2D;&#x5B58;&#x7684;b&#x70BA;Tea&#xFF1B;Tea&#x4E2D;&#x5B58;&#x7684;b&#x70BA;Bottle</li>
-<li>b-&gt;make<ul>
-<li>Bubble-&gt;make</li>
-<li>Milk-&gt;make</li>
-<li>Tea-&gt;make</li>
-<li>Bottle-&gt;make</li>
-</ul>
-</li>
-</ul>
-<h2 id="&#x5C0F;&#x7DF4;&#x7FD2;">&#x5C0F;&#x7DF4;&#x7FD2;</h2>
-<p>&#x5BEB;&#x51FA;&#x4E00;&#x500B;&#x86CB;&#x7CD5;&#x5DE5;&#x5EE0;&#x7684;&#x6D41;&#x7A0B;&#x8A2D;&#x8A08;&#xFF0C;&#x5728;&#x88FD;&#x4F5C;&#x4E00;&#x500B;&#x86CB;&#x7CD5;&#x7684;&#x6642;&#x5019;&#xFF0C;&#x9664;&#x4E86;&#x86CB;&#x7CD5;&#x9AD4;&#x672C;&#x8EAB;&#x4E4B;&#x5916;&#xFF0C;&#x53EF;&#x4EE5;&#x52A0;&#x5165;&#x4E0D;&#x540C;&#x7684;&#x914D;&#x6599;&#xFF0C;&#x914D;&#x6599;&#x5305;&#x542B;&#x5976;&#x6CB9;&#x3001;&#x8349;&#x8393;&#x3001;&#x6C34;&#x871C;&#x6843;&#xFF0C;&#x9664;&#x6B64;&#x4E4B;&#x5916;&#xFF0C;&#x86CB;&#x7CD5;&#x5DE5;&#x5EE0;&#x4E5F;&#x80FD;&#x96A8;&#x6642;&#x65B0;&#x589E;&#x4E0D;&#x540C;&#x7684;&#x914D;&#x6599;&#xFF0C;&#x88FD;&#x4F5C;&#x51FA;&#x65B0;&#x53E3;&#x5473;&#x7684;&#x86CB;&#x7CD5;&#x3002;</p>
+<p><img src="https://i.imgur.com/dx50HVV.png" alt=""></p>
+<p>&#x4E0D;&#x8AD6;&#x662F;&#x5728;OSI&#x9084;&#x662F;TCP/IP&#x67B6;&#x69CB;&#x4E0A;&#xFF0C;&#x6BCF;&#x5C64;&#x90FD;&#x6709;&#x5C0D;&#x61C9;&#x7684;&#x5354;&#x5B9A;(Protocal)</p>
+<h2 id="why-protocal">Why protocal?</h2>
+<p>&#x8A66;&#x60F3;&#x4E00;&#x500B;&#x60C5;&#x5883;&#xFF0C;&#x5728;&#x4E00;&#x500B;&#x7CFB;&#x7D71;&#x4E2D;&#xFF0C;&#x82E5;&#x5169;&#x500B;Process&#x9593;&#x8981;&#x4E92;&#x76F8;&#x6E9D;&#x901A;:
+<img src="https://i.imgur.com/n3Assmk.png" alt="">
+&#x5728;&#x9019;&#x6A23;&#x7684;&#x60C5;&#x5883;&#x4E0B;&#xFF0C;&#x96D9;&#x65B9;&#x9700;&#x8981;&#x5B9A;&#x7FA9;&#x4ED6;&#x5011;&#x50B3;&#x8F38;&#x8CC7;&#x6599;&#x7684;&#x683C;&#x5F0F;&#x8207;&#x9806;&#x5E8F;&#xFF0C;&#x624D;&#x80FD;&#x8B93;Sender&#x8DDF;Receiver&#x6B63;&#x78BA;&#x6536;&#x5230;&#x8CC7;&#x8A0A;&#x4E26;&#x89E3;&#x8B80;&#x8CC7;&#x8A0A;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x9019;&#x5169;&#x500B;Process&#x73FE;&#x5728;&#x88AB;&#x653E;&#x5728;&#x4E0D;&#x540C;&#x7CFB;&#x7D71;&#x4E0A;&#xFF0C;&#x9700;&#x8981;&#x8DE8;&#x7CFB;&#x7D71;&#x7684;&#x4EA4;&#x6D41;&#xFF0C;&#x4E26;&#x4E14;&#x5728;&#x50B3;&#x8F38;&#x8CC7;&#x8A0A;&#x6642;&#xFF0C;&#x9700;&#x8981;&#x7D93;&#x904E;&#x52A0;&#x89E3;&#x5BC6;&#xFF0C;&#x4E26;&#x4E14;&#x900F;&#x904E;&#x4E00;&#x500B;&#x4E2D;&#x4ECB;&#x7CFB;&#x7D71;&#x5354;&#x52A9;&#x4ED6;&#x5011;&#x8F49;&#x50B3;&#x8CC7;&#x6599;&#x3002;
+<img src="https://i.imgur.com/BI7mtNq.png" alt=""></p>
+<p>&#x6211;&#x5011;&#x53EF;&#x4EE5;&#x628A;&#x52A0;&#x89E3;&#x5BC6;&#x8DDF;&#x50B3;&#x8F38;&#x76F8;&#x95DC;&#x7684;&#x8A2D;&#x8A08;&#x90FD;&#x5BEB;&#x5728;Sender&#x8DDF;Receiver&#x5167;&#xFF0C;&#x4F46;&#x662F;&#xFF0C;&#x7576;&#x9019;&#x500B;&#x67B6;&#x69CB;&#x8D8A;&#x4F86;&#x8D8A;&#x8907;&#x96DC;&#x6642;(&#x4F8B;&#x5982;&#x52A0;&#x89E3;&#x5BC6;&#x7684;&#x6F14;&#x7B97;&#x6CD5;&#x8981;&#x8B8A;&#x8907;&#x96DC;)&#xFF0C;&#x6703;&#x8B93;&#x6240;&#x6709;&#x7684;&#x7A0B;&#x5F0F;&#x78BC;&#x90FD;&#x5BEB;&#x5728;Sender&#x8DDF;Receiver&#x88E1;&#x96E3;&#x4EE5;&#x7DAD;&#x8B77;&#xFF0C;&#x9664;&#x6B64;&#x4E4B;&#x5916;&#xFF0C;&#x7576;&#x6709;&#x66F4;&#x591A;&#x7684;Sender&#x8DDF;Receiver&#x9700;&#x8981;&#x50B3;&#x905E;&#x8CC7;&#x6599;&#x6642;&#xFF0C;&#x5C31;&#x5FC5;&#x9808;&#x91CD;&#x65B0;&#x5BE6;&#x4F5C;&#x4E00;&#x6B21;&#x6574;&#x500B;&#x50B3;&#x8F38;&#x7684;&#x6D41;&#x7A0B;&#xFF0C;&#x56E0;&#x6B64;&#xFF0C;&#x6211;&#x5011;&#x5C07;&#x50B3;&#x8F38;&#x904E;&#x7A0B;&#x4E2D;&#x6240;&#x9700;&#x7684;&#x6D41;&#x7A0B;&#x6A21;&#x7D44;&#x5316;&#xFF0C;&#x88AB;&#x6A21;&#x7D44;&#x5316;&#x7684;&#x5340;&#x584A;&#x8B8A;&#x6210;&#x4E00;&#x500B;&#x9ED1;&#x76D2;&#x5B50;&#xFF0C;&#x6BCF;&#x5C64;&#x6A21;&#x7D44;&#x4E4B;&#x9593;&#x53EA;&#x9700;&#x8981;&#x77E5;&#x9053;&#x5982;&#x4F55;&#x8DDF;&#x5176;&#x4ED6;&#x6A21;&#x7D44;&#x6E9D;&#x901A;&#xFF0C;&#x800C;&#x4E0D;&#x9700;&#x8981;&#x77E5;&#x9053;&#x5176;&#x7D30;&#x7BC0;&#x3002;</p>
+<p>&#x5728;&#x5206;&#x5C64;&#x5354;&#x5B9A;(Layer Protocal)&#x7684;&#x6982;&#x5FF5;&#x4E2D;&#xFF0C;&#x6BCF;&#x5C64;&#x90FD;&#x6703;&#x9700;&#x8981;&#x80FD;&#x5920;&#x57F7;&#x884C;&#x5169;&#x500B;&#x76F8;&#x5C0D;&#x7684;&#x52D5;&#x4F5C;(&#x4F8B;&#x5982;&#x52A0;&#x5BC6;&#x8DDF;&#x89E3;&#x5BC6;)&#x4E14;&#x5C0D;&#x61C9;&#x5206;&#x5C64;&#x7684;&#x5169;&#x7AEF;&#x5FC5;&#x9808;&#x76F8;&#x540C;&#xFF0C;&#x9019;&#x6A23;&#x624D;&#x80FD;&#x9032;&#x884C;&#x96D9;&#x5411;&#x7684;&#x6E9D;&#x901A;&#x3002;</p>
+<h2 id="tcpip">TCP/IP</h2>
+<h3 id="application">Application</h3>
+<p>Application Layer&#x70BA;&#x5169;&#x500B;&#x61C9;&#x7528;&#x4E4B;&#x9593;&#x4E92;&#x76F8;&#x7684;&#x6E9D;&#x901A;&#xFF0C;&#x901A;&#x5E38;&#x662F;&#x5728;&#x5169;&#x500B;Process&#x4E4B;&#x9593;&#x7684;&#x6E9D;&#x901A;&#xFF0C;&#x4E0D;&#x540C;&#x985E;&#x578B;&#x7684;Process&#x6703;&#x900F;&#x904E;&#x4E0D;&#x540C;&#x7684;&#x5354;&#x5B9A;&#x9032;&#x884C;&#x6E9D;&#x901A;&#xFF0C;&#x4F8B;&#x5982;HTTP&#x5354;&#x5B9A;&#x70BA;&#x5B58;&#x53D6;&#x7DB2;&#x9801;&#x7684;&#x5354;&#x5B9A;&#xFF1B;FTP&#x5354;&#x5B9A;&#x70BA;&#x50B3;&#x8F38;&#x6A94;&#x6848;&#x7684;&#x5354;&#x5B9A;&#xFF0C;&#x9019;&#x4E9B;Application&#x5C64;&#x7684;&#x5354;&#x5B9A;&#x6703;&#x5B9A;&#x7FA9;Process&#x9593;&#x8981;&#x7528;&#x54EA;&#x7A2E;&#x683C;&#x5F0F;&#x4F86;&#x89E3;&#x8B80;&#x50B3;&#x8F38;&#x7684;&#x8CC7;&#x6599;&#x3002;</p>
+<h3 id="transport">Transport</h3>
+<p>Transport&#x5C64;&#x8CA0;&#x8CAC;&#x5C07;Application&#x5C64;&#x62FF;&#x5230;&#x7684;&#x8A0A;&#x606F;&#xFF0C;&#x5C01;&#x88DD;&#x6210;&#x4E00;&#x500B;&#x4E00;&#x500B;&#x7684;&#x5C01;&#x5305;(Packet)&#x4E26;&#x9001;&#x51FA;&#x53BB;&#xFF0C;&#x63A5;&#x6536;&#x7AEF;&#x63A5;&#x6536;&#x5230;&#x5C01;&#x5305;&#x5F8C;&#xFF0C;&#x518D;&#x6839;&#x64DA;&#x5354;&#x5B9A;&#x5C07;&#x5C01;&#x5305;&#x5408;&#x4F75;&#x6210;Application&#x5C64;&#x770B;&#x5F97;&#x61C2;&#x7684;&#x683C;&#x5F0F;&#xFF0C;TCP&#x5354;&#x5B9A;&#x662F;&#x4E3B;&#x8981;&#x7684;Transport&#x5C64;&#x5354;&#x5B9A;&#x4E4B;&#x4E00;&#x3002;</p>
+<h3 id="internet">Internet</h3>
+<p>Internet&#x5C64;&#x7684;&#x901A;&#x8A0A;&#x70BA;&#x4E3B;&#x6A5F;&#x5C0D;&#x4E3B;&#x6A5F;&#x7684;&#x9023;&#x7DDA;&#xFF0C;&#x9019;&#x88E1;&#x7684;&#x4E3B;&#x6A5F;&#x5230;&#x4E3B;&#x6A5F;&#x4E0D;&#x53EA;&#x4EE3;&#x8868;&#x50B3;&#x8F38;&#x8005;&#x8207;&#x63A5;&#x6536;&#x8005;&#x6240;&#x5728;&#x7684;&#x5169;&#x500B;&#x88DD;&#x7F6E;&#x4E0A;&#xFF0C;&#x800C;&#x662F;&#x5305;&#x542B;&#x4E86;&#x6240;&#x6709;&#x50B3;&#x8F38;&#x4E0A;&#x6703;&#x7D93;&#x904E;&#x7684;Router&#x3001;Hub&#x7B49;&#x7B49;&#xFF0C;Internet&#x5C64;&#x7684;&#x4E3B;&#x8981;&#x5354;&#x5B9A;&#x70BA;IP&#xFF0C;&#x5B83;&#x5B9A;&#x7FA9;&#x4E86;Internet&#x5C64;&#x7684;&#x5C01;&#x5305;&#x683C;&#x5F0F;&#xFF0C;&#x85C9;&#x7531;&#x6B64;&#x683C;&#x5F0F;&#x6C7A;&#x5B9A;Packet&#x61C9;&#x8A72;&#x5982;&#x4F55;&#x5728;Router&#x4E4B;&#x9593;&#x6D41;&#x901A;&#x3002;</p>
+<h3 id="network-access">Network Access</h3>
+<p>Network Access&#x5C64;&#x7528;bit&#x70BA;&#x55AE;&#x4F4D;&#x50B3;&#x8F38;&#x8CC7;&#x6599;&#xFF0C;&#x6709;&#x8A31;&#x591A;&#x5354;&#x5B9A;&#x80FD;&#x5C07;&#x4F4D;&#x5143;&#x8F49;&#x63DB;&#x6210;&#x8A0A;&#x865F;&#xFF0C;&#x9664;&#x6B64;&#x4E4B;&#x5916;Network Access&#x5C64;&#x4E0D;&#x4E00;&#x5B9A;&#x70BA;&#x6709;&#x7DDA;&#x7684;&#x9023;&#x7D50;&#xFF0C;&#x9023;&#x7D50;&#x65B9;&#x5F0F;&#x5927;&#x81F4;&#x4E0A;&#x53EF;&#x4EE5;&#x5206;&#x70BA;&#x56DB;&#x7A2E;:&#x6709;&#x7DDA;LAN&#x3001;&#x7121;&#x7DDA;LAN&#x3001;&#x6709;&#x7DDA;WAN&#x3001;&#x7121;&#x7DDA;WAN&#xFF0C;&#x53EF;&#x4EE5;&#x6839;&#x64DA;&#x4E0D;&#x540C;&#x7684;&#x9023;&#x7D50;&#x65B9;&#x5F0F;&#x5B9A;&#x7FA9;&#x4E0D;&#x540C;&#x7684;&#x5354;&#x5B9A;(&#x4F8B;&#x5982;WIFI&#x5C31;&#x6709;&#x5F88;&#x591A;&#x4E0D;&#x540C;&#x4EE3;&#x7684;&#x5354;&#x5B9A;)&#x3002;</p>
+<p><img src="https://i.imgur.com/KT2KFU5.png" alt=""></p>
+<h2 id="osi-open-system-interconnection-model">OSI (Open System Interconnection Model)</h2>
+<p>OSI&#x6BD4;TCP/IP&#x5354;&#x5B9A;&#x665A;&#x63D0;&#x51FA;&#xFF0C;&#x4F46;&#x7D50;&#x69CB;&#x76F8;&#x8F03;&#x65BC;TCP/IP&#x5354;&#x5B9A;&#x5B8C;&#x6574;&#xFF0C;&#x5728;OSI&#x5354;&#x5B9A;&#x4E2D;&#xFF0C;&#x5C07;&#x7DB2;&#x8DEF;&#x67B6;&#x69CB;&#x5206;&#x70BA;&#x4E03;&#x5C64;&#xFF0C;&#x4F46;&#x7531;&#x65BC;&#x7576;&#x6642;&#x7DB2;&#x8DEF;&#x67B6;&#x69CB;&#x5DF2;&#x7D93;&#x6839;&#x64DA;TCP/IP&#x5354;&#x5B9A;&#x67B6;&#x8A2D;&#x53CA;&#x904B;&#x884C;&#xFF0C;&#x82E5;&#x6539;&#x70BA;&#x4F7F;&#x7528;OSI&#x5354;&#x5B9A;&#xFF0C;&#x8017;&#x8CBB;&#x7684;&#x6210;&#x672C;&#x904E;&#x9AD8;&#xFF0C;&#x56E0;&#x6B64;&#xFF0C;OSI&#x6A21;&#x578B;&#x76EE;&#x524D;&#x662F;&#x4E00;&#x7A2E;&#x7406;&#x8AD6;&#x4E0A;&#x7684;&#x67B6;&#x69CB;&#xFF0C;&#x53EF;&#x4EE5;&#x7528;OSI&#x5354;&#x5B9A;&#x4F86;&#x5B78;&#x7FD2;&#x7DB2;&#x8DEF;&#x67B6;&#x69CB;&#x7684;&#x6982;&#x5FF5;&#xFF0C;&#x4F46;&#x5BE6;&#x969B;&#x4E0A;&#x76EE;&#x524D;&#x7DB2;&#x8DEF;&#x4E16;&#x754C;&#x7684;&#x904B;&#x4F5C;&#x9084;&#x662F;&#x6839;&#x64DA;TCP/IP&#x5354;&#x5B9A;&#x3002;</p>
 
                                 
                                 </section>
@@ -1945,12 +1943,12 @@ b-&gt;make(); // beverage-&gt;make
 
             
                 
-                <a href="observer.html" class="navigation navigation-prev " aria-label="Previous page: Observer">
+                <a href="network.html" class="navigation navigation-prev " aria-label="Previous page: Computer Networking">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="factory.html" class="navigation navigation-next " aria-label="Next page: Factory">
+                <a href="internet_layer.html" class="navigation navigation-next " aria-label="Next page: Internet Layer">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1961,7 +1959,7 @@ b-&gt;make(); // beverage-&gt;make
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Decorator","level":"1.10.5","depth":2,"next":{"title":"Factory","level":"1.10.6","depth":2,"path":"cpp_sec/factory.md","ref":"cpp_sec/factory.md","articles":[]},"previous":{"title":"Observer","level":"1.10.4","depth":2,"path":"cpp_sec/observer.md","ref":"cpp_sec/observer.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cpp_sec/decorator.md","mtime":"2021-11-21T16:19:52.328Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-12-12T03:19:20.425Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TCP/IP","level":"1.8.1","depth":2,"next":{"title":"Internet Layer","level":"1.8.2","depth":2,"path":"cpp_sec/internet_layer.md","ref":"cpp_sec/internet_layer.md","articles":[]},"previous":{"title":"Computer Networking","level":"1.8","depth":1,"path":"cpp_sec/network.md","ref":"cpp_sec/network.md","articles":[{"title":"TCP/IP","level":"1.8.1","depth":2,"path":"cpp_sec/tcp_ip.md","ref":"cpp_sec/tcp_ip.md","articles":[]},{"title":"Internet Layer","level":"1.8.2","depth":2,"path":"cpp_sec/internet_layer.md","ref":"cpp_sec/internet_layer.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cpp_sec/tcp_ip.md","mtime":"2021-12-12T03:18:46.116Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-12-12T03:19:20.425Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
