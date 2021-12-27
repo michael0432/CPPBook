@@ -74,3 +74,28 @@ RIP是為了小型的AS所設計；而OSPF則是為了中型的AS所設計，OSP
     * Link-state ack : 確認每一個訊息都有收到回應
 
 ### BGP(Border Gateway Protocal)
+BGP分為兩個協定:eBGP(external BGP)及iBGP(internal BGP)，其中，eBGP會被用於AS的邊界router(跟其他AS相連的Router)；iBGP會用於所有的router上。
+![](https://i.imgur.com/dMJrntB.png)
+
+#### eBGP
+eBGP可以視為一個p2p(peer-to-peer)的連線協定，在有連線的Edge router之間，建立一個eBGP session，eBGP session可以讓兩個Edge router之間做資訊交流，舉例來說，下圖中，R2會跟R6說，要到達N1,N2,N3,N4這個四個LAN可以透過R2。
+![](https://i.imgur.com/SkW77ht.png)
+
+雖然eBGP協定可以讓相鄰的AS互相交換資訊，讓封包可以跨越AS的傳遞，但是，可以注意到eBGP只能讓相鄰的AS傳遞訊息，但沒辦法讓不相鄰的AS互相得知資訊，例如，只透過eBGP，AS3沒辦法知道如何傳遞要到達N15的封包；此外，當有一個封包目前在R3，要傳往N8，R3無法判斷應該要往R1傳遞這個封包，因為R3沒有任何方式知道N8在AS2，因此，需要iBGP的協助。
+
+#### iBGP
+在同一個AS中的任兩個Router，都會建立iBGP session，跟RIP及OSPF不同的是，router不會將資訊透過iBGP做第二手的傳遞，iBGP只用於告知每個自己跟其他所有router的可到達性。
+舉例來說，對於R1，他會將"自己可以到達AS2"的這個資訊透過iBGP跟所有AS1的router說，如此一來，所有在AS1中的Router只要收到要傳往AS2的封包時，都知道要傳遞給R1，再透過AS內部的協定(RIP或OSPF)，找出傳遞到R1的最短路徑。
+![](https://i.imgur.com/AN70Mxi.png)
+
+#### 路徑選取
+上述的例子AS之間都只有一條路徑可以到達其他的AS，但在現今全世界的網路架構之中，AS之間的路線可能有非常多條，因此，BGP定義了一些屬性設定，讓AS的管理者可以藉由設定這些屬性來影響路徑選取的判斷。
+
+幾個用於路徑判斷的屬性:
+* LOCAL-PREF : 管理者可以設定自己管理的幾個AS之間，哪條路線的LOCAL-PREF值比較高，LOCAL-PREF的值越高，表示管理者越希望Routing時能走這個路線
+* MULT-EXIT-DISC : 對一個router來說，如果已知有多個Edge Router可以到達目的地，會選擇MULT-EXIT-DISC最小的值做為目的地
+* AS-PATH : 定義到達目的地需經過的AS系統清單，這個清單也可以利用某些shortest-path相關的演算法計算出最短距離
+
+![](https://i.imgur.com/78TajgE.png)
+
+
