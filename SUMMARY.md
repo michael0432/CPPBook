@@ -15,7 +15,7 @@
   * [Pointer](cpp_sec/pointer.md)
   * [Struct/Object](cpp_sec/class.md)
   * [位元運算](cpp_sec/bitwise.md)
-  * [Sort]
+  * [Compile](cpp_sec/compile.md)
 * [APCS](cpp_sec/apcs.md)
   * [Linux Environment](cpp_sec/linux_env.md)
   * [Problem - 觀念題](cpp_sec/problem_concept.md)
