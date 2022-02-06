@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Problem - 觀念題2 · GitBook</title>
+        <title>Transport Layer · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="problem_coding.html" />
+    <link rel="next" href="oop.html" />
     
     
-    <link rel="prev" href="problem_concept.html" />
+    <link rel="prev" href="multicast_routing.html" />
     
 
     </head>
@@ -362,7 +362,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.4.3" data-path="problem_concept2.html">
+        <li class="chapter " data-level="1.4.3" data-path="problem_concept2.html">
             
                 <a href="problem_concept2.html">
             
@@ -1461,7 +1461,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8.3" data-path="transport_layer.html">
+        <li class="chapter active" data-level="1.8.3" data-path="transport_layer.html">
             
                 <a href="transport_layer.html">
             
@@ -1911,7 +1911,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Problem - 觀念題2</a>
+        <a href=".." >Transport Layer</a>
     </h1>
 </div>
 
@@ -1926,138 +1926,75 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="problem---&#x89C0;&#x5FF5;&#x984C;2">Problem - &#x89C0;&#x5FF5;&#x984C;2</h1>
-<h6 id="tags--apcs">tags = <code>APCS</code></h6>
-<h2 id="&#x905E;&#x8FF4;">&#x905E;&#x8FF4;</h2>
-<h3 id="q1-&#x8ACB;&#x554F;&#x4E0B;&#x5217;&#x7A0B;&#x5F0F;&#x78BC;&#x4E2D;&#x6703;&#x8F38;&#x51FA;&#x5E7E;&#x500B;">Q1: &#x8ACB;&#x554F;&#x4E0B;&#x5217;&#x7A0B;&#x5F0F;&#x78BC;&#x4E2D;&#x6703;&#x8F38;&#x51FA;&#x5E7E;&#x500B;*?</h3>
-<pre><code class="lang-cpp=1">int func(int n)
-{
-    if(n &gt; 0)
-    {
-        printf(&quot;*\n&quot;);
-    }
-    else
-    {
-        return 1;
-    }
-    return func(n-1);
-}
-
-int main()
-{
-    func(5);
-}
-</code></pre>
-<h3 id="q2-&#x8ACB;&#x554F;&#x4E0B;&#x5217;&#x7A0B;&#x5F0F;&#x78BC;&#x4E2D;&#x6703;&#x8F38;&#x51FA;&#x5E7E;&#x500B;">Q2: &#x8ACB;&#x554F;&#x4E0B;&#x5217;&#x7A0B;&#x5F0F;&#x78BC;&#x4E2D;&#x6703;&#x8F38;&#x51FA;&#x5E7E;&#x500B;*?</h3>
-<pre><code class="lang-cpp=1">int func(int n, int k)
-{
-    if(n &gt; 0 &amp;&amp; k &lt; 5)
-    {
-        printf(&quot;*\n&quot;);
-    }
-    else
-    {
-        return 1;
-    }
-    return func(n-1, k+1);
-}
-
-int main()
-{
-    func(4, 3);
-}
-</code></pre>
-<h3 id="q3-&#x8ACB;&#x554F;&#x4E0B;&#x5217;&#x7A0B;&#x5F0F;&#x78BC;&#x4E2D;&#x6703;&#x8F38;&#x51FA;&#x5E7E;&#x500B;">Q3: &#x8ACB;&#x554F;&#x4E0B;&#x5217;&#x7A0B;&#x5F0F;&#x78BC;&#x4E2D;&#x6703;&#x8F38;&#x51FA;&#x5E7E;&#x500B;*?</h3>
-<pre><code class="lang-cpp=1">int func(int n, int k)
-{
-    if(n &gt; 0 &amp;&amp; k &lt; 5)
-    {
-        printf(&quot;*\n&quot;);
-    }
-    else
-    {
-        return 1;
-    }
-    return func(n-1, k) + func(n, k+1);
-}
-
-int main()
-{
-    func(2, 3);
-}
-</code></pre>
-<h3 id="q4-&#x4E0B;&#x5217;&#x7A0B;&#x5F0F;&#x7684;&#x8F38;&#x51FA;&#x70BA;&#x4F55;">Q4: &#x4E0B;&#x5217;&#x7A0B;&#x5F0F;&#x7684;&#x8F38;&#x51FA;&#x70BA;&#x4F55;</h3>
-<pre><code class="lang-cpp=1">void func(int n)
-{
-    printf(&quot;%d\n&quot;, n);
-    if(n &lt;= 2) 
-        return;
-    if(n % 2 == 1)
-        return func(n + 1);
-    else
-        return func(n / 2);
-}
-
-int main()
-{
-    func(13);
-}
-</code></pre>
-<h3 id="q5-&#x4E0B;&#x5217;&#x7A0B;&#x5F0F;&#x7684;&#x8F38;&#x51FA;&#x70BA;&#x4F55;">Q5: &#x4E0B;&#x5217;&#x7A0B;&#x5F0F;&#x7684;&#x8F38;&#x51FA;&#x70BA;&#x4F55;</h3>
-<pre><code class="lang-cpp=1">int func(int n)
-{
-    if(n &lt;= 0) return 0;
-    if(n % 2 == 0)
-        return 1;
-    else
-        return func(n-1) + func(n-2);
-}
-
-int main()
-{
-    printf(&quot;%d\n&quot;, func(5));
-}
-</code></pre>
-<h2 id="&#x8B8A;&#x6578;">&#x8B8A;&#x6578;</h2>
-<h3 id="q6-&#x4E0B;&#x5217;&#x7A0B;&#x5F0F;&#x7684;&#x8F38;&#x51FA;&#x70BA;&#x4F55;">Q6: &#x4E0B;&#x5217;&#x7A0B;&#x5F0F;&#x7684;&#x8F38;&#x51FA;&#x70BA;&#x4F55;</h3>
-<pre><code class="lang-cpp=1">int a = 2;
-int b = 3;
-
-void func()
-{
-    b = 4;
-}
-
-int main()
-{
-    printf(&quot;%d\n&quot;, a + b);
-    func();
-    printf(&quot;%d\n&quot;, a + b);
-}
-</code></pre>
-<h3 id="q7-&#x4E0B;&#x5217;&#x7A0B;&#x5F0F;&#x7684;&#x8F38;&#x51FA;&#x70BA;&#x4F55;">Q7: &#x4E0B;&#x5217;&#x7A0B;&#x5F0F;&#x7684;&#x8F38;&#x51FA;&#x70BA;&#x4F55;</h3>
-<pre><code class="lang-cpp=1">int a = 20, b = 30;
-
-int func(int x)
-{
-    int a = 10;
-    return x + a;
-}
-
-int main()
-{
-    b = func(b);
-    printf(&quot;%d\n&quot;, func(b));
-}
-</code></pre>
-<h2 id="ans">ANS</h2>
-<h3 id="q1-5">Q1: 5</h3>
-<h3 id="q2-2">Q2: 2</h3>
-<h3 id="q3-5">Q3: 5</h3>
-<h3 id="q4-13-14-7-8-4-2">Q4: 13 14 7 8 4 2</h3>
-<h3 id="q5-2">Q5: 2</h3>
-<h3 id="q6-5-6">Q6: 5 6</h3>
-<h3 id="q7-50">Q7: 50</h3>
+                                <h1 id="transport-layer-introduction">Transport Layer Introduction</h1>
+<h6 id="tags--network">tags = <code>Network</code></h6>
+<p>&#x900F;&#x904E;Internet Layer&#x5F8C;&#x50B3;&#x8F38;&#x5C01;&#x5305;&#x5F8C;&#xFF0C;Receiver&#x6703;&#x63A5;&#x53D7;&#x5230;&#x5F9E;Sender&#x50B3;&#x4F86;&#x7684;&#x5C01;&#x5305;&#x3002;&#x9019;&#x6642;&#x9700;&#x8981;&#x4F7F;&#x7528;Transport Layer&#x7684;&#x5354;&#x5B9A;&#x4F86;&#x89E3;&#x6790;&#x9019;&#x500B;&#x5C01;&#x5305;&#x3002;&#x5C0D;&#x65BC;Sender&#x548C;Receiver&#x4F86;&#x8AAA;&#xFF0C;Transport Layer&#x5C31;&#x50CF;&#x662F;&#x4E00;&#x500B;&#x5047;&#x60F3;&#x7684;&#x76F4;&#x63A5;&#x9023;&#x7DDA;&#xFF0C;&#x53EF;&#x4EE5;&#x900F;&#x904E;Transport Layer&#x7684;&#x5354;&#x5B9A;&#x5EFA;&#x7ACB;&#x4E00;&#x500B;&#x9023;&#x7DDA;&#x4E26;&#x50B3;&#x9001;&#x6216;&#x6536;&#x53D6;&#x8A0A;&#x606F;&#x3002;</p>
+<p><img src="https://i.imgur.com/KT2KFU5.png" alt=""></p>
+<p>Internet Layer&#x900F;&#x904E;IP Address&#x5B9A;&#x7FA9;&#x4E86;&#x4E3B;&#x6A5F;&#x4E4B;&#x9593;&#x5982;&#x4F55;&#x901A;&#x8A0A;&#x3002;Transport Layer&#x5247;&#x662F;&#x5B9A;&#x7FA9;&#x4E86;Process&#x4E4B;&#x9593;&#x7684;&#x901A;&#x8A0A;(Process&#x5C6C;&#x65BC;application layer)&#xFF0C;&#x7576;&#x900F;&#x904E;Internet Layer&#x5C07;&#x5C01;&#x5305;&#x9001;&#x5230;&#x6B63;&#x78BA;&#x7684;&#x6A5F;&#x5668;&#x4E0A;&#x5F8C;&#xFF0C;&#x8981;&#x900F;&#x904E;Transport Layer&#x5C07;&#x5C01;&#x5305;&#x50B3;&#x9001;&#x7D66;&#x6B63;&#x78BA;&#x7684;Process&#x3002;</p>
+<h2 id="port">Port</h2>
+<p>&#x70BA;&#x4E86;&#x53EF;&#x4EE5;&#x505A;&#x5230;Process&#x4E4B;&#x9593;&#x7684;&#x901A;&#x8A0A;&#xFF0C;&#x9700;&#x8981;&#x6709;&#x4E00;&#x500B;&#x5206;&#x8FA8;&#x4F86;&#x6E90;&#x53CA;&#x63A5;&#x53D7;Process&#x8CC7;&#x8A0A;&#x7684;&#x503C;&#xFF0C;&#x9019;&#x500B;&#x503C;&#x7A31;&#x70BA;Port&#x3002;Port number&#x4ECB;&#x65BC;0&#x5230;65535&#x4E4B;&#x9593;(16bit)&#xFF0C;&#x5176;&#x4E2D;:</p>
+<ul>
+<li>0~1023 : &#x9810;&#x8A2D;&#x5DF2;&#x88AB;&#x5360;&#x7528;&#x7684;port&#xFF0C;&#x4E0D;&#x540C;&#x7684;port&#x6709;&#x4E0D;&#x540C;&#x7684;&#x7528;&#x9014;<ul>
+<li><a href="https://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers" target="_blank">https://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers</a></li>
+</ul>
+</li>
+<li>1024~49151 : &#x53EF;&#x4EE5;&#x81EA;&#x7531;&#x4F7F;&#x7528;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x5728;&#x7CFB;&#x7D71;&#x4E0A;&#x8A3B;&#x518A;&#x70BA;&#x7279;&#x5B9A;&#x7528;&#x9014;</li>
+<li>19152~65535 : &#x81EA;&#x7531;&#x4F7F;&#x7528;</li>
+</ul>
+<p><img src="https://i.imgur.com/QANtzyu.png" alt=""></p>
+<h2 id="packeting">Packeting</h2>
+<p>&#x5728;&#x767C;&#x9001;&#x7AEF;Transport Layer&#x6536;&#x5230;&#x5F9E;Application Layer&#x50B3;&#x4F86;&#x7684;&#x8CC7;&#x6599;&#x5F8C;&#xFF0C;&#x6703;&#x5C07;&#x5176;&#x5305;&#x88DD;&#x6210;Packet&#xFF08;&#x5C01;&#x5305;&#xFF09;&#xFF0C;&#x610F;&#x601D;&#x662F;&#x5C07;&#x8CC7;&#x6599;&#x52A0;&#x4E0A;header&#x3002;
+&#x5728;&#x63A5;&#x6536;&#x7AEF;Transport Layer&#x6536;&#x5230;&#x5C01;&#x5305;&#x5F8C;&#xFF0C;&#x6703;&#x5C07;header&#x79FB;&#x9664;&#x5F8C;&#x628A;&#x8CC7;&#x6599;&#x50B3;&#x7D66;&#x5C0D;&#x61C9;&#x7684;Process(Application Layer)&#x3002;</p>
+<p><img src="https://i.imgur.com/ElUkEAi.png" alt=""></p>
+<h2 id="&#x6D41;&#x91CF;&#x63A7;&#x5236;">&#x6D41;&#x91CF;&#x63A7;&#x5236;</h2>
+<p>Transport Layer&#x9084;&#x9700;&#x8981;&#x8655;&#x7406;&#x6D41;&#x91CF;&#x63A7;&#x5236;&#x7684;&#x554F;&#x984C;&#x3002;&#x7576;&#x767C;&#x9001;&#x7AEF;&#x4E0D;&#x65B7;&#x50B3;&#x9001;&#x5C01;&#x5305;&#x5230;&#x63A5;&#x6536;&#x7AEF;&#xFF1B;&#x800C;&#x63A5;&#x6536;&#x7AEF;&#x4F86;&#x4E0D;&#x53CA;&#x8655;&#x7406;&#x8CC7;&#x6599;&#x6642;&#xFF0C;&#x5C31;&#x6709;&#x53EF;&#x80FD;&#x5C0E;&#x81F4;&#x8CC7;&#x6599;&#x7684;&#x4E1F;&#x5931;&#x3002;&#x53CD;&#x4E4B;&#xFF0C;&#x7576;&#x767C;&#x9001;&#x7AEF;&#x70BA;&#x4E86;&#x907F;&#x514D;&#x8CC7;&#x6599;&#x4E1F;&#x5931;&#x964D;&#x4F4E;&#x50B3;&#x9001;&#x901F;&#x5EA6;&#xFF0C;&#x5C31;&#x6709;&#x53EF;&#x80FD;&#x5C0E;&#x81F4;&#x7CFB;&#x7D71;&#x6548;&#x7387;&#x964D;&#x4F4E;&#x3002;&#x56E0;&#x6B64;Transport Layer&#x9700;&#x8981;&#x4E00;&#x500B;&#x6A5F;&#x5236;&#x89E3;&#x6C7A;&#x9019;&#x500B;&#x554F;&#x984C;&#x3002;
+&#x9019;&#x500B;&#x554F;&#x984C;&#x727D;&#x626F;&#x5230;&#x56DB;&#x500B;&#x89D2;&#x8272;&#xFF1A;</p>
+<ul>
+<li>&#x767C;&#x9001;&#x7AEF;Process(Application) : &#x4E00;&#x76F4;&#x50B3;&#x51FA;&#x8CC7;&#x6599;</li>
+<li>&#x767C;&#x9001;&#x7AEF;Transport Layer : &#x63A5;&#x6536;&#x767C;&#x9001;&#x7AEF;Process&#x50B3;&#x4F86;&#x7684;&#x8CC7;&#x6599;&#xFF0C;&#x4E26;&#x50B3;&#x51FA;&#x5C01;&#x5305;&#x5230;&#x63A5;&#x6536;&#x7AEF;Process</li>
+<li>&#x63A5;&#x6536;&#x7AEF;Transport Layer : &#x63A5;&#x6536;&#x5C01;&#x5305;&#xFF0C;&#x89E3;&#x958B;&#x5C01;&#x5305;&#x5F8C;&#x50B3;&#x51FA;&#x8CC7;&#x6599;&#x7D66;&#x63A5;&#x6536;&#x7AEF;Process</li>
+<li>&#x63A5;&#x6536;&#x7AEF;Process(Application) : &#x4E00;&#x76F4;&#x63A5;&#x6536;&#x8CC7;&#x6599;</li>
+</ul>
+<h3 id="buffer">Buffer</h3>
+<p>&#x70BA;&#x4E86;&#x89E3;&#x6C7A;&#x6D41;&#x91CF;&#x63A7;&#x5236;&#x7684;&#x554F;&#x984C;&#xFF0C;&#x5728;&#x767C;&#x9001;&#x7AEF;Transport Layer&#x53CA;&#x63A5;&#x6536;&#x7AEF;Transport Layer&#x90FD;&#x6709;&#x4E00;&#x500B;buffer&#x3002;</p>
+<ul>
+<li>&#x7576;&#x767C;&#x9001;&#x7AEF;Transport Layer buffer&#x6EFF;&#x6642;&#xFF0C;&#x6703;&#x901A;&#x77E5;&#x767C;&#x9001;&#x7AEF;Process&#x66AB;&#x505C;&#x50B3;&#x8F38;</li>
+<li>&#x7576;&#x63A5;&#x6536;&#x7AEF;Transport Layer buffer&#x6EFF;&#x6642;&#xFF0C;&#x6703;&#x901A;&#x77E5;&#x767C;&#x9001;&#x7AEF;Transport Layer&#x66AB;&#x505C;&#x50B3;&#x8F38;</li>
+</ul>
+<h2 id="&#x932F;&#x8AA4;&#x63A7;&#x5236;">&#x932F;&#x8AA4;&#x63A7;&#x5236;</h2>
+<p>&#x5728;&#x7DB2;&#x8DEF;&#x67B6;&#x69CB;&#x4E2D;&#xFF0C;Internet Layer&#x4EE5;&#x4E0B;&#x7684;&#x5354;&#x5B9A;&#x4E26;&#x4E0D;&#x4FDD;&#x8B49;&#x662F;&#x53EF;&#x9760;&#x7684;&#xFF08;&#x6709;&#x53EF;&#x80FD;&#x6389;&#x8CC7;&#x6599;&#xFF09;&#xFF0C;&#x56E0;&#x6B64;&#x82E5;Application&#x9700;&#x8981;&#x53EF;&#x9760;&#x7684;&#x50B3;&#x8F38;&#xFF0C;&#x9700;&#x8981;&#x900F;&#x904E;Transport Layer&#x9032;&#x884C;&#x932F;&#x8AA4;&#x63A7;&#x5236;&#x3002;&#x932F;&#x8AA4;&#x63A7;&#x5236;&#x5305;&#x542B;:</p>
+<ul>
+<li>&#x82E5;&#x5C01;&#x5305;&#x8CC7;&#x6599;&#x6BC0;&#x640D;&#xFF0C;&#x9700;&#x4E1F;&#x68C4;</li>
+<li>&#x82E5;&#x907A;&#x6F0F;&#x5C01;&#x5305;&#xFF0C;&#x9700;&#x91CD;&#x65B0;&#x50B3;&#x9001;</li>
+<li>&#x82E5;&#x6709;&#x91CD;&#x8907;&#x7684;&#x5C01;&#x5305;&#xFF0C;&#x9700;&#x4E1F;&#x68C4;</li>
+<li>&#x82E5;&#x5C01;&#x5305;&#x9806;&#x5E8F;&#x932F;&#x8AA4;&#xFF0C;&#x9700;&#x78BA;&#x8A8D;&#x662F;&#x5426;&#x6709;&#x907A;&#x6F0F;&#x5C01;&#x5305;&#xFF0C;&#x4E26;&#x91CD;&#x65B0;&#x6392;&#x5217;
+&#x70BA;&#x4E86;&#x932F;&#x8AA4;&#x63A7;&#x5236;&#xFF0C;Transport Layer&#x52A0;&#x4E0A;&#x7684;header&#x6703;&#x9700;&#x8981;&#x4EE5;&#x4E0B;&#x7684;&#x8CC7;&#x8A0A;</li>
+</ul>
+<h3 id="sequence-number">Sequence Number</h3>
+<p>Sequence Number&#x662F;&#x5C01;&#x5305;&#x7684;&#x5E8F;&#x865F;&#xFF0C;&#x50B3;&#x8F38;&#x7AEF;&#x6BCF;&#x6B21;&#x50B3;&#x51FA;&#x5C01;&#x5305;&#x6642;&#x6703;&#x4F9D;&#x5E8F;&#x7D66;&#x4E88;&#x5C01;&#x5305;Sequence Number&#xFF0C;&#x8B93;&#x63A5;&#x6536;&#x7AEF;&#x53EF;&#x4EE5;&#x77E5;&#x9053;&#x5C01;&#x5305;&#x7684;&#x9806;&#x5E8F;&#xFF0C;&#x4E26;&#x78BA;&#x8A8D;&#x662F;&#x5426;&#x6709;&#x907A;&#x6F0F;&#x3002;Sequence Number&#x7684;&#x7BC4;&#x570D;&#x70BA;2^m(&#x5728;TCP&#x4E2D;m=32)&#x3002;</p>
+<h3 id="ack">Ack</h3>
+<p>&#x5728;&#x63A5;&#x6536;&#x7AEF;&#x6536;&#x5230;&#x5C01;&#x5305;&#x5F8C;&#xFF0C;&#x6703;&#x56DE;&#x50B3;&#x4E00;&#x500B;&#x78BA;&#x8A8D;&#x7684;&#x8A0A;&#x865F;Ack&#x7D66;&#x50B3;&#x8F38;&#x7AEF;&#xFF0C;&#x8868;&#x793A;&#x78BA;&#x8A8D;&#x9019;&#x500B;&#x5C01;&#x5305;&#x6709;&#x6B63;&#x78BA;&#x7684;&#x62B5;&#x9054;&#x3002;
+&#x5728;&#x63A5;&#x6536;&#x7AEF;&#x6703;&#x6709;&#x4E00;&#x500B;&#x8A08;&#x6642;&#x5668;&#xFF0C;&#x82E5;&#x6642;&#x9593;&#x5167;&#x6C92;&#x6709;&#x6536;&#x5230;Ack&#xFF0C;&#x6703;&#x91CD;&#x65B0;&#x50B3;&#x4E00;&#x6B21;&#x5C01;&#x5305;&#x3002;
+&#x82E5;Ack&#x592A;&#x665A;&#x62B5;&#x9054;&#xFF0C;&#x63A5;&#x6536;&#x7AEF;&#x53EF;&#x80FD;&#x6703;&#x6536;&#x5230;&#x5169;&#x6B21;&#x91CD;&#x8907;&#x7684;&#x5C01;&#x5305;&#xFF0C;&#x9019;&#x6642;&#x6703;&#x4F7F;&#x7528;Seq number&#x5224;&#x65B7;&#x5C01;&#x5305;&#x91CD;&#x8907;&#x4E26;&#x4E1F;&#x68C4;&#x3002;</p>
+<h3 id="checksum">Checksum</h3>
+<p>Checksum&#x662F;&#x4E00;&#x7A2E;&#x78BA;&#x8A8D;&#x8CC7;&#x6599;&#x662F;&#x5426;&#x6709;&#x6B63;&#x78BA;&#x50B3;&#x905E;&#x7684;&#x6A5F;&#x5236;&#xFF0C;&#x6709;&#x8A31;&#x591A;&#x73FE;&#x884C;&#x7684;Checksum&#x6F14;&#x7B97;&#x6CD5;: md5&#x3001;SHA1&#x7B49;&#x7B49;&#x3002;&#x6211;&#x5011;&#x8209;&#x4E00;&#x500B;&#x6700;&#x7C21;&#x55AE;&#x7684;&#x4F8B;&#x5B50;&#xFF1A;</p>
+<ul>
+<li>&#x50B3;&#x8F38;&#x7AEF;&#x518D;&#x50B3;&#x51FA;&#x5C01;&#x5305;&#x524D;&#xFF0C;&#x5148;&#x628A;&#x50B3;&#x8F38;&#x7684;&#x8CC7;&#x6599;&#x5167;&#x6BCF;&#x500B;&#x4E00;&#x500B;bytes&#x52A0;&#x7E3D;&#x5F8C;mod 2^32&#xFF0C;&#x5C07;&#x7D50;&#x679C;&#x5B58;&#x6210;&#x4E00;&#x500B;32bit&#x7684;&#x8CC7;&#x6599;&#xFF0C;&#x4E26;&#x52A0;&#x9032;&#x5C01;&#x5305;&#x7684;header&#x3002;</li>
+<li>&#x63A5;&#x6536;&#x7AEF;&#x6536;&#x5230;&#x5C01;&#x5305;&#x5F8C;&#xFF0C;&#x53EF;&#x4EE5;&#x628A;&#x6536;&#x5230;&#x7684;&#x8CC7;&#x6599;&#x5167;&#x500B;&#x4E00;&#x500B;bytes&#x52A0;&#x7E3D;&#x5F8C;mod 2^32&#xFF0C;&#x78BA;&#x8A8D;&#x503C;&#x662F;&#x5426;&#x8DDF;header&#x5B58;&#x7684;32bits&#x76F8;&#x540C;&#x3002;</li>
+</ul>
+<p>&#x82E5;checksum&#x901A;&#x904E;&#xFF0C;&#x53EF;&#x4EE5;&#x67D0;&#x7A2E;&#x7A0B;&#x5EA6;&#x7684;&#x78BA;&#x8A8D;&#x50B3;&#x905E;&#x7684;&#x8CC7;&#x6599;&#x662F;&#x6C92;&#x6709;&#x6BC0;&#x640D;&#x7684;&#x3002;</p>
+<h2 id="sliding-window">Sliding Window</h2>
+<p>&#x4E0A;&#x9762;&#x8A0E;&#x8AD6;&#x5B8C;&#x6D41;&#x91CF;&#x63A7;&#x5236;&#x4EE5;&#x53CA;&#x932F;&#x8AA4;&#x63A7;&#x5236;&#xFF0C;&#x6211;&#x5011;&#x53EF;&#x4EE5;&#x5229;&#x7528;Sliding Window&#x628A;&#x5169;&#x500B;&#x9700;&#x6C42;&#x7D50;&#x5408;&#x8D77;&#x4F86;&#x3002;
+<img src="https://i.imgur.com/xtp1HDB.png" alt=""></p>
+<p>Sliding window&#x7531;&#x5169;&#x500B;index&#x7D44;&#x6210;&#xFF0C;&#x5169;&#x500B;index&#x9593;&#x7684;&#x5C01;&#x5305;&#x8868;&#x793A;&#x5C1A;&#x672A;&#x6536;&#x5230;ack&#x7684;&#x5C01;&#x5305;&#x3002;
+&#x7576;&#x6536;&#x5230;ack&#x6642;:</p>
+<ul>
+<li>&#x82E5;ack == &#x5C0F;&#x7684;index&#xFF0C;&#x5C0F;&#x7684;index++</li>
+<li>&#x82E5;ack &gt; &#x5C0F;&#x7684;index&#xFF0C;&#x8868;&#x793A;&#x6709;&#x53EF;&#x80FD;&#x907A;&#x6F0F;&#x5C01;&#x5305;&#xFF0C;&#x91CD;&#x65B0;&#x50B3;&#x9001;&#x4E26;&#x66AB;&#x6642;&#x4E0D;&#x8655;&#x7406;&#x9019;&#x500B;ack
+&#x7576;&#x50B3;&#x51FA;&#x65B0;&#x5C01;&#x5305;&#x6642;:</li>
+<li>&#x5927;&#x7684;index++</li>
+</ul>
+<p>&#x53EF;&#x4EE5;&#x900F;&#x904E;sliding windows&#x5927;&#x5C0F;&#x7684;&#x4E0A;&#x9650;&#x503C;(&#x5927;&#x7684;index-&#x5C0F;&#x7684;index)&#x4F86;&#x63A7;&#x5236;&#x6D41;&#x91CF;&#x3002;</p>
 
                                 
                                 </section>
@@ -2085,12 +2022,12 @@ int main()
 
             
                 
-                <a href="problem_concept.html" class="navigation navigation-prev " aria-label="Previous page: Problem - 觀念題">
+                <a href="multicast_routing.html" class="navigation navigation-prev " aria-label="Previous page: Multicast Routing">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="problem_coding.html" class="navigation navigation-next " aria-label="Next page: Problem - 實作題">
+                <a href="oop.html" class="navigation navigation-next " aria-label="Next page: Object Oriented Programming">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -2101,7 +2038,7 @@ int main()
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Problem - 觀念題2","level":"1.4.3","depth":2,"next":{"title":"Problem - 實作題","level":"1.4.4","depth":2,"path":"cpp_sec/problem_coding.md","ref":"cpp_sec/problem_coding.md","articles":[]},"previous":{"title":"Problem - 觀念題","level":"1.4.2","depth":2,"path":"cpp_sec/problem_concept.md","ref":"cpp_sec/problem_concept.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cpp_sec/problem_concept2.md","mtime":"2022-01-24T10:10:49.898Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-02-06T06:53:19.831Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Transport Layer","level":"1.8.3","depth":2,"next":{"title":"Object Oriented Programming","level":"2.1","depth":1,"path":"cpp_sec/oop.md","ref":"cpp_sec/oop.md","articles":[{"title":"Class Constructors","level":"2.1.1","depth":2,"path":"cpp_sec/constructor.md","ref":"cpp_sec/constructor.md","articles":[]},{"title":"Class Methods","level":"2.1.2","depth":2,"path":"cpp_sec/method.md","ref":"cpp_sec/method.md","articles":[]},{"title":"Encapsulation","level":"2.1.3","depth":2,"path":"cpp_sec/encapsulation.md","ref":"cpp_sec/encapsulation.md","articles":[]},{"title":"Inheritance","level":"2.1.4","depth":2,"path":"cpp_sec/inheritance.md","ref":"cpp_sec/inheritance.md","articles":[]},{"title":"Polymorphism","level":"2.1.5","depth":2,"path":"cpp_sec/polymorphism.md","ref":"cpp_sec/polymorphism.md","articles":[]},{"title":"Template","level":"2.1.6","depth":2,"path":"cpp_sec/template.md","ref":"cpp_sec/template.md","articles":[]},{"title":"Exception Handling","level":"2.1.7","depth":2,"path":"cpp_sec/exception.md","ref":"cpp_sec/exception.md","articles":[]}]},"previous":{"title":"Multicast Routing","level":"1.8.2.2","depth":3,"path":"cpp_sec/multicast_routing.md","ref":"cpp_sec/multicast_routing.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cpp_sec/transport_layer.md","mtime":"2022-02-06T06:47:03.747Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-02-06T06:53:19.831Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
