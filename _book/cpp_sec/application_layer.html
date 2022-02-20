@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Mutex & Semaphore · GitBook</title>
+        <title>Application Layer · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="deadlock.html" />
+    <link rel="next" href="application_layer_example.html" />
     
     
-    <link rel="prev" href="peterson.html" />
+    <link rel="prev" href="transport_layer_protocal.html" />
     
 
     </head>
@@ -1231,7 +1231,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.7.5.2" data-path="mutex.html">
+        <li class="chapter " data-level="1.7.5.2" data-path="mutex.html">
             
                 <a href="mutex.html">
             
@@ -1493,7 +1493,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8.4" data-path="application_layer.html">
+        <li class="chapter active" data-level="1.8.4" data-path="application_layer.html">
             
                 <a href="application_layer.html">
             
@@ -1962,7 +1962,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Mutex & Semaphore</a>
+        <a href=".." >Application Layer</a>
     </h1>
 </div>
 
@@ -1977,170 +1977,21 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="mutex">Mutex</h1>
-<h6 id="tags--operating-system">tags = <code>Operating System</code></h6>
-<p>&#x70BA;&#x4E86;&#x907F;&#x514D;&#x5169;&#x500B;&#x6216;&#x591A;&#x500B;process&#x540C;&#x6642;&#x9032;&#x5165;critical section&#xFF0C;&#x4F5C;&#x696D;&#x7CFB;&#x7D71;&#x4F7F;&#x7528;&#x4E86;Mutex&#x53CA;Semaphere&#x7684;&#x8A2D;&#x8A08;&#x4F86;&#x4FDD;&#x8B77;critical section&#x3002;
-&#x5728;process&#x9032;&#x5165;critical section&#x524D;&#xFF0C;&#x5FC5;&#x9808;&#x5148;&#x53D6;&#x5F97;mutex lock&#xFF1B;&#x5728;&#x7D50;&#x675F;critical section&#x6642;&#x5C07;&#x91CB;&#x653E;mutex lock&#x3002;</p>
-<pre><code class="lang-cpp=1">do
-{
-    acquire lock
-        critical section
-    release lock
-        remainder section
-}
-while(true)
-
-acquire()
-{
-    while(!available); // wait
-    available = false;
-}
-
-release()
-{
-    available = true;
-}
-</code></pre>
-<p>&#x70BA;&#x4E86;&#x78BA;&#x4FDD;&#x6C92;&#x6709;race condition&#xFF0C;acqurie()&#x8DDF;release()&#x9019;&#x5169;&#x500B;function&#x5FC5;&#x9808;&#x70BA;atomic operation&#xFF0C;&#x610F;&#x601D;&#x662F;&#x9019;&#x500B;&#x64CD;&#x4F5C;&#x5FC5;&#x9808;&#x4E0D;&#x53EF;&#x5206;&#x5272;&#x7684;&#x88AB;&#x57F7;&#x884C;(&#x4E2D;&#x9593;&#x4E0D;&#x80FD;&#x6709;context switch)&#xFF0C;&#x56E0;&#x6B64;&#xFF0C;&#x9019;&#x500B;&#x90E8;&#x5206;&#x6703;&#x4F7F;&#x7528;&#x786C;&#x9AD4;&#x6A5F;&#x5236;&#x4F86;&#x4FDD;&#x8B49;&#x5176;&#x70BA;atomic&#x3002;</p>
-<h2 id="mutex-coding-in-linux">Mutex coding in Linux</h2>
-<h3 id="mutex-init">Mutex init</h3>
-<p>Init&#x6709;&#x5169;&#x7A2E;&#x65B9;&#x5F0F;</p>
-<ul>
-<li>&#x5C07;mutex&#x8B8A;&#x6578;&#x8A2D;&#x70BA;PTHREAD_MUTEX_INITIALIZER&#xFF0C;&#x6703;&#x5957;&#x7528;&#x9810;&#x8A2D;&#x7684;mutex&#xFF0C;&#x9019;&#x500B;&#x65B9;&#x6CD5;&#x4E0D;&#x7528;destroy&#xFF0C;&#x4F5C;&#x696D;&#x7CFB;&#x7D71;&#x6703;&#x5728;process&#x7D50;&#x675F;&#x6642;destroy</li>
-<li>&#x4F7F;&#x7528;pthread_mutex_init&#xFF0C;&#x5728;&#x4E0D;&#x7528;mutex&#x6642;&#x8981;&#x81EA;&#x884C;destroy</li>
-</ul>
-<pre><code class="lang-cpp=1">#include &lt;pthread&gt;
-
-pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
-
-int pthread_mutex_init(pthread_mutex_t *restrict mutex, const pthread_mutexattr_t *restric attr);
-</code></pre>
-<ul>
-<li>mutex : &#x653E;mutex&#x7684;pointer</li>
-<li>attr : &#x653E;mutex&#x7684;&#x53C3;&#x6578;&#xFF0C;&#x4F7F;&#x7528;NULL&#x5373;&#x53EF;</li>
-<li>return value : <ul>
-<li>&#x6210;&#x529F;&#x70BA;0</li>
-<li>&#x5931;&#x6557;&#x4E0D;&#x70BA;0</li>
-</ul>
-</li>
-</ul>
-<h3 id="mutex-locktrylock">Mutex lock/trylock</h3>
-<ul>
-<li>trylock&#x70BA;non-blocking&#xFF0C;&#x5982;&#x679C;mutex&#x539F;&#x672C;&#x5C31;&#x88AB;&#x9396;&#x4F4F;&#x4E86;&#xFF0C;&#x6703;&#x56DE;&#x50B3;error&#xFF1B;&#x5982;&#x679C;&#x6C92;&#x88AB;&#x9396;&#x4F4F;&#xFF0C;&#x56DE;&#x50B3;0</li>
-<li>lock&#x70BA;blocking&#xFF0C;&#x5361;&#x5728;&#x9019;&#x884C;&#x7B49;&#x62FF;&#x5230;&#x9396;</li>
-</ul>
-<pre><code class="lang-cpp=1">#include &lt;pthread&gt;
-
-int pthread_mutex_trylock(pthread_mutex_t* mutex);
-int pthread_mutex_lock(pthread_mutex_t *mutex);
-</code></pre>
-<ul>
-<li>return value : <ul>
-<li>&#x6210;&#x529F;&#x70BA;0</li>
-<li>&#x5931;&#x6557;&#x4E0D;&#x70BA;0</li>
-</ul>
-</li>
-</ul>
-<h3 id="mutex-unlock">Mutex unlock</h3>
-<pre><code class="lang-cpp=1">#include &lt;pthread&gt;
-
-int pthread_mutex_unlock(pthread_mutex_t *mutex);
-</code></pre>
-<ul>
-<li>return value : <ul>
-<li>&#x6210;&#x529F;&#x70BA;0</li>
-<li>&#x5931;&#x6557;&#x4E0D;&#x70BA;0</li>
-</ul>
-</li>
-</ul>
-<h3 id="mutex-destroy">Mutex destroy</h3>
-<pre><code class="lang-cpp=1">#include &lt;pthread&gt;
-
-int pthread_mutex_destroy(pthread_mutex_t *mutex);
-</code></pre>
-<ul>
-<li>return value : <ul>
-<li>&#x6210;&#x529F;&#x70BA;0</li>
-<li>&#x5931;&#x6557;&#x4E0D;&#x70BA;0</li>
-</ul>
-</li>
-</ul>
-<h2 id="&#x5C0F;&#x7DF4;&#x7FD2;">&#x5C0F;&#x7DF4;&#x7FD2;</h2>
-<p>&#x5BEB;&#x4E00;&#x6BB5;&#x7A0B;&#x5F0F;&#x78BC;&#xFF0C;&#x5305;&#x542B;&#x5169;&#x7A2E;thread: Producer&#x8DDF;Customer&#xFF0C;&#x4EE5;&#x53CA;&#x4E00;&#x500B;Producer&#x53CA;Customer&#x5171;&#x7528;&#x7684;Ring buffer&#x3002;&#x7A0B;&#x5F0F;&#x78BC;&#x6703;&#x5305;&#x542B;&#x5169;&#x500B;Producer&#x53CA;&#x4E09;&#x500B;Customer(&#x5169;&#x500B;thread&#x8DD1;Producer&#xFF1B;&#x4E09;&#x500B;thread&#x8DD1;Customer&#xFF0C;&#x5171;&#x4E94;&#x500B;thread)&#xFF0C;&#x5176;&#x4E2D;&#xFF0C;&#x5169;&#x500B;Producer&#x5FC5;&#x9808;&#x4F7F;&#x7528;&#x540C;&#x4E00;&#x500B;function&#xFF0C;&#x4F46;&#x5BEB;&#x8CC7;&#x6599;&#x7684;&#x983B;&#x7387;&#x4E0D;&#x540C;&#xFF1B;&#x4E09;&#x500B;Customer&#x5FC5;&#x9808;&#x4F7F;&#x7528;&#x540C;&#x4E00;&#x500B;function&#xFF0C;&#x4F46;&#x8B80;&#x8CC7;&#x6599;&#x7684;&#x983B;&#x7387;&#x4E0D;&#x540C;&#x3002;</p>
-<ul>
-<li>Producer: &#x8CA0;&#x8CAC;&#x5C07;&#x8B80;&#x53D6;&#x5230;&#x7684;data&#x653E;&#x9032;Buffer&#x3002;<ul>
-<li>&#x6BCF;&#x4E00;&#x6BB5;&#x6642;&#x9593;&#x56FA;&#x5B9A;&#x96A8;&#x6A5F;&#x751F;&#x6210;&#x4E00;&#x7B46;&#x8CC7;&#x6599;&#x653E;&#x9032;buffer&#x4E2D;</li>
-<li>&#x8CC7;&#x6599;&#x5305;&#x542B;<ul>
-<li>&#x751F;&#x6210;&#x9019;&#x7B46;&#x8CC7;&#x6599;&#x7684;&#x6642;&#x9593;(&#x683C;&#x5F0F;&#x96A8;&#x610F;&#xFF0C;&#x53EF;&#x4EE5;Google&#x770B;C&#x6216;C++&#x62FF;linux&#x7CFB;&#x7D71;&#x7684;&#x73FE;&#x5728;&#x6642;&#x9593;&#x600E;&#x9EBC;&#x62FF;)</li>
-<li>Data(&#x683C;&#x5F0F;&#x70BA;int&#xFF0C;&#x96A8;&#x4FBF;&#x5BEB;&#x4E00;&#x500B;&#x6578;&#x5B57;&#x5373;&#x53EF;&#xFF0C;&#x53EF;&#x4EE5;&#x6839;&#x64DA;Producer&#x7684;&#x7DE8;&#x865F;&#x5BEB;&#x4E0D;&#x540C;&#x7684;&#x503C;)</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Customer: &#x8CA0;&#x8CAC;&#x5C07;data&#x5F9E;Ring buffer&#x8B80;&#x51FA;&#x3002;<ul>
-<li>&#x6BCF;&#x4E00;&#x6BB5;&#x6642;&#x9593;&#x56FA;&#x5B9A;&#x5F9E;Ring buffer&#x4E2D;&#x8B80;&#x53D6;&#x51FA;&#x8CC7;&#x6599;&#xFF0C;&#x4E00;&#x6B21;&#x8B80;&#x51FA;&#x76EE;&#x524D;buffer&#x4E2D;&#x9084;&#x6C92;&#x8B80;&#x904E;&#x7684;&#x6240;&#x6709;&#x8CC7;&#x6599;</li>
-<li>&#x6BCF;&#x6B21;&#x8B80;&#x5B8C;&#x8CC7;&#x6599;&#x5F8C;&#xFF0C;&#x5370;&#x51FA;&#x8B80;&#x5230;&#x7684;&#x6240;&#x6709;&#x8CC7;&#x6599;&#xFF0C;&#x4EE5;&#x53CA;&#x8B80;&#x53D6;&#x6642;&#x7684;&#x6642;&#x9593;</li>
-</ul>
-</li>
-<li>Buffer: &#x4E00;&#x584A;&#x8A18;&#x61B6;&#x9AD4;&#x7A7A;&#x9593;&#xFF0C;&#x66AB;&#x6642;&#x5B58;&#x53D6;&#x8CC7;&#x6599;&#x3002;<ul>
-<li>&#x56FA;&#x5B9A;&#x5927;&#x5C0F;&#x7684;Ring buffer&#xFF0C;&#x5982;&#x679C;&#x8CC7;&#x6599;&#x5BEB;&#x5230;&#x6700;&#x5F8C;&#x4E00;&#x500B;index&#xFF0C;&#x4E0B;&#x4E00;&#x7B46;&#x5C31;&#x5F9E;&#x982D;&#x958B;&#x59CB;&#x5BEB;&#xFF0C;&#x628A;&#x539F;&#x672C;&#x7684;&#x8CC7;&#x6599;&#x84CB;&#x6389;</li>
-</ul>
-</li>
-</ul>
-<h3 id="requirement">Requirement</h3>
-<ul>
-<li>&#x4E0D;&#x80FD;&#x51FA;&#x73FE;&#x6F5B;&#x5728;&#x7684;Race condition&#x554F;&#x984C; (&#x6E2C;&#x8A66;&#x7A0B;&#x5F0F;&#x6642;&#x4E0D;&#x4E00;&#x5B9A;&#x6703;&#x767C;&#x751F;&#xFF0C;&#x4F46;&#x662F;&#x5BEB;&#x7A0B;&#x5F0F;&#x6642;&#x8981;&#x6CE8;&#x610F;!)</li>
-<li>&#x4E0D;&#x80FD;&#x6709;&#x6389;&#x8CC7;&#x6599;&#x7684;&#x554F;&#x984C;&#xFF0C;&#x6CE8;&#x610F;Buffer&#x5927;&#x5C0F;&#x8DDF;&#x8B80;&#x5BEB;&#x8CC7;&#x6599;&#x983B;&#x7387;&#x4E4B;&#x9593;&#x7684;&#x95DC;&#x4FC2;</li>
-<li>Customer&#x8B80;&#x53D6;&#x5230;&#x7684;&#x8CC7;&#x6599;&#x4E0D;&#x80FD;&#x91CD;&#x8907;</li>
-</ul>
-<h3 id="output">Output</h3>
-<pre><code class="lang-cpp=1">    // producer 1
-    Producer 1 write data: time is : 12345678, data is : 1
-    // producer 2
-    Producer 2 write data: time is : 12345680, data is : 2
-
-    // customer 1
-    Customer 1 read data: read time is: 13330000, data time is : 12345678, data is : 1
-    Customer 1 read data: read time is: 13330000, data time is : 12345680, data is : 2
-</code></pre>
-<h3 id="example-code">Example Code</h3>
-<pre><code class="lang-cpp=1">#define BufferSize 1000
-
-typedef struct Data{
-    time;
-    data;
-}Data;
-
-Data Buffer[1000];
-
-void ProducerFunction(void* arg)
-{
-    Input* param = (Input*)argv;
-    int id = param-&gt;producerid;
-    int frequency = param-&gt;frequency;
-    ...
-}
-
-void CustomerFunction(void* arg)
-{
-    Input* param = (Input*)arg;
-    int id = param-&gt;customerid;
-    int frequency = param-&gt;frequency;
-    ...
-}
-
-int main()
-{
-    for(int i=0; i&lt;2; i++)
-    {
-        pthread_create(); // create producer
-    }
-    for(int i=0; i&lt;3; i++)
-    {
-        pthread_create(); // create customer
-    }
-}
-</code></pre>
+                                <h1 id="application-layer-introduction">Application Layer Introduction</h1>
+<p>Application Layer&#x63D0;&#x4F9B;&#x61C9;&#x7528;&#x7A0B;&#x5F0F;(Process&#x9593;)&#x4EA4;&#x6D41;&#x7684;Protocal&#xFF0C;&#x7528;&#x4F86;&#x8A2D;&#x5B9A;&#x5169;&#x500B;&#x6216;&#x591A;&#x500B;&#x61C9;&#x7528;&#x7A0B;&#x5F0F;&#x4E4B;&#x9593;&#x7684;&#x901A;&#x8A0A;&#x3002;&#x5E38;&#x898B;&#x7684;&#x67B6;&#x69CB;&#x6709;&#x5169;&#x7A2E;&#xFF1A;Server-Client&#x67B6;&#x69CB;&#x4EE5;&#x53CA;P2P&#x67B6;&#x69CB;&#x3002;</p>
+<h2 id="server-client&#x67B6;&#x69CB;">Server-Client&#x67B6;&#x69CB;</h2>
+<p>Server-Client&#x67B6;&#x69CB;&#x662F;&#x73FE;&#x4ECA;&#x6700;&#x5E38;&#x898B;&#x7684;&#x67B6;&#x69CB;&#xFF0C;&#x4E3B;&#x52D5;&#x63D0;&#x51FA;Request&#x7684;&#x4E00;&#x65B9;&#x7A31;&#x70BA;Client&#x7AEF;&#xFF08;&#x63D0;&#x51FA;&#x9023;&#x7DDA;&#x3001;&#x8CC7;&#x6599;&#x50B3;&#x9001;&#x7684;&#x4E00;&#x65B9;&#xFF09;&#xFF1B;&#x88AB;&#x52D5;&#x56DE;&#x5FA9;Response&#x7684;&#x4E00;&#x65B9;&#x7A31;&#x70BA;Server&#x7AEF;&#x3002;
+<img src="https://i.imgur.com/QUJeqrr.png" alt=""></p>
+<p>&#x901A;&#x5E38;Server&#x7AEF;&#x6703;&#x5728;&#x6A5F;&#x5668;&#x4E0A;&#x6839;&#x64DA;&#x4E0D;&#x540C;&#x7684;&#x529F;&#x80FD;&#x4F7F;&#x7528;&#x4E0D;&#x540C;&#x7684;port&#xFF0C;&#x8B93;Client&#x7AEF;&#x53EF;&#x4EE5;&#x6839;&#x64DA;&#x5176;&#x9700;&#x6C42;&#x53CA;&#x60F3;&#x8D70;&#x7684;&#x5354;&#x5B9A;&#x767C;Requeset&#x5230;&#x5C0D;&#x61C9;&#x7684;port&#x3002;</p>
+<h3 id="scalability">Scalability</h3>
+<p>Server-Client&#x67B6;&#x69CB;&#x7684;&#x7B2C;&#x4E00;&#x500B;&#x68D8;&#x624B;&#x7684;&#x554F;&#x984C;&#x662F;&#x53EF;&#x64F4;&#x5145;&#x6027;&#x554F;&#x984C;&#xFF0C;&#x7576;Client&#x7AEF;&#x7684;&#x6578;&#x76EE;&#x9010;&#x6F38;&#x589E;&#x52A0;&#xFF0C;Server&#x7684;&#x8CA0;&#x64D4;&#x6703;&#x52A0;&#x91CD;&#xFF0C;&#x4E14;&#x6BCF;&#x53F0;Server&#x55AE;&#x4F4D;&#x6642;&#x9593;&#x53EF;&#x4EE5;&#x8655;&#x7406;&#x7684;Request&#x6578;&#x91CF;&#x662F;&#x6709;&#x9650;&#x7684;&#x3002;&#x73FE;&#x5728;&#x7684;Server&#x9760;&#x8457;&#x5206;&#x6563;&#x5F0F;&#x7CFB;&#x7D71;&#x89E3;&#x6C7A;Scalability&#x7684;&#x554F;&#x984C;&#x3002;</p>
+<h3 id="reliability">Reliability</h3>
+<p>&#x7B2C;&#x4E8C;&#x500B;&#x554F;&#x984C;&#x662F;&#x53EF;&#x9760;&#x5EA6;&#x7684;&#x554F;&#x984C;&#xFF0C;&#x53EF;&#x9760;&#x5EA6;&#x6307;&#x7684;&#x662F;&#x7CFB;&#x7D71;&#x7684;&#x7A69;&#x5B9A;&#x5EA6;&#x53CA;&#x8CC7;&#x6599;&#x662F;&#x5426;&#x6703;&#x907A;&#x5931;&#x7B49;&#x7B49;&#x3002;&#x7531;&#x7576;Server&#x932F;&#x8AA4;&#x6216;&#x4E2D;&#x65B7;&#x6642;&#xFF0C;&#x6703;&#x5C0E;&#x81F4;&#x6574;&#x500B;Client-Server&#x67B6;&#x69CB;&#x505C;&#x64FA;&#xFF0C;&#x73FE;&#x5728;&#x7684;Server&#x4E00;&#x6A23;&#x9760;&#x8457;&#x5206;&#x6563;&#x5F0F;&#x7CFB;&#x7D71;&#x89E3;&#x6C7A;Reliability&#x7684;&#x554F;&#x984C;&#x3002;</p>
+<h2 id="p2p&#x67B6;&#x69CB;">P2P&#x67B6;&#x69CB;</h2>
+<p>P2P(Peer-to-peer)&#x662F;&#x4E00;&#x7A2E;&#x9EDE;&#x5C0D;&#x9EDE;&#x7684;&#x67B6;&#x69CB;&#xFF0C;&#x5404;&#x500B;&#x9023;&#x7DDA;&#x88DD;&#x7F6E;&#x4E4B;&#x9593;&#x4E26;&#x6C92;&#x6709;&#x4E3B;&#x5F9E;&#x95DC;&#x4FC2;&#xFF0C;&#x6BCF;&#x500B;&#x88DD;&#x7F6E;&#x53EF;&#x4EE5;&#x4E3B;&#x52D5;&#x5730;&#x767C;&#x9001;&#x8CC7;&#x6599;&#x3001;&#x4E5F;&#x53EF;&#x4EE5;&#x4E3B;&#x52D5;&#x5730;&#x63A5;&#x6536;&#x8CC7;&#x6599;&#x3002;
+<img src="https://i.imgur.com/gWytlzz.png" alt=""></p>
+<p>&#x7531;&#x65BC;&#x6BCF;&#x53F0;&#x88DD;&#x7F6E;&#x90FD;&#x540C;&#x6642;&#x626E;&#x6F14;Client&#x53CA;Server&#x7684;&#x89D2;&#x8272;&#xFF0C;&#x5C31;&#x4E0D;&#x5BB9;&#x6613;&#x78B0;&#x5230;Scalability&#x8DDF;Reliability&#x7684;&#x554F;&#x984C;&#xFF0C;&#x56E0;&#x70BA;Client&#x7684;&#x589E;&#x52A0;&#x540C;&#x6642;&#x4E5F;&#x610F;&#x5473;&#x8457;Server&#x7684;&#x589E;&#x52A0;&#xFF1B;&#x4E00;&#x53F0;&#x6A5F;&#x5668;&#x7684;&#x932F;&#x8AA4;&#x4E5F;&#x4E0D;&#x6703;&#x5C0E;&#x81F4;&#x6574;&#x500B;P2P&#x7DB2;&#x8DEF;&#x7684;&#x932F;&#x8AA4;&#x3002;</p>
+<p>&#x7136;&#x800C;&#xFF0C;&#x7531;&#x65BC;P2P&#x6C92;&#x6709;&#x4E00;&#x500B;&#x4E2D;&#x5FC3;&#x5316;&#x7684;&#x7BA1;&#x7406;&#xFF0C;&#x56E0;&#x6B64;&#x6703;&#x6709;&#x5F88;&#x591A;&#x8CC7;&#x8A0A;&#x5B89;&#x5168;&#x76F8;&#x95DC;&#x7684;&#x554F;&#x984C;&#x9700;&#x8981;&#x8655;&#x7406;&#x3002;&#x6B64;&#x5916;&#xFF0C;&#x7531;&#x65BC;&#x8CC7;&#x6599;&#x53EF;&#x80FD;&#x6703;&#x91CD;&#x8907;&#x5B58;&#x5728;&#x4E0D;&#x540C;&#x53F0;&#x8A2D;&#x5099;&#x4E2D;&#x3001;&#x4E5F;&#x6709;&#x53EF;&#x80FD;&#x53EA;&#x5B58;&#x5728;&#x5C11;&#x91CF;&#x7684;&#x8A2D;&#x5099;&#x4E2D;&#xFF0C;&#x4F7F;&#x5F97;&#x8CC7;&#x6599;&#x88AB;&#x91CD;&#x8907;&#x5132;&#x5B58;&#x6D6A;&#x8CBB;&#x7A7A;&#x9593;&#x53CA;&#x8CC7;&#x6599;&#x80FD;&#x5426;&#x6C38;&#x4E45;&#x4FDD;&#x5B58;&#x90FD;&#x5145;&#x6EFF;&#x4E0D;&#x78BA;&#x5B9A;&#x6027;&#x3002;</p>
 
                                 
                                 </section>
@@ -2168,12 +2019,12 @@ int main()
 
             
                 
-                <a href="peterson.html" class="navigation navigation-prev " aria-label="Previous page: Peterson Solution">
+                <a href="transport_layer_protocal.html" class="navigation navigation-prev " aria-label="Previous page: Transport Layer Protocal">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="deadlock.html" class="navigation navigation-next " aria-label="Next page: Deadlock">
+                <a href="application_layer_example.html" class="navigation navigation-next " aria-label="Next page: Application Layer Example">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -2184,7 +2035,7 @@ int main()
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Mutex & Semaphore","level":"1.7.5.2","depth":3,"next":{"title":"Deadlock","level":"1.7.6","depth":2,"path":"cpp_sec/deadlock.md","ref":"cpp_sec/deadlock.md","articles":[{"title":"Handle Deadlock","level":"1.7.6.1","depth":3,"path":"cpp_sec/handle_deadlock.md","ref":"cpp_sec/handle_deadlock.md","articles":[]}]},"previous":{"title":"Peterson Solution","level":"1.7.5.1","depth":3,"path":"cpp_sec/peterson.md","ref":"cpp_sec/peterson.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cpp_sec/mutex.md","mtime":"2022-02-13T15:08:17.209Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-02-20T15:13:05.957Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Application Layer","level":"1.8.4","depth":2,"next":{"title":"Application Layer Example","level":"1.8.4.1","depth":3,"path":"cpp_sec/application_layer_example.md","ref":"cpp_sec/application_layer_example.md","articles":[]},"previous":{"title":"Transport Layer Protocal","level":"1.8.3.1","depth":3,"path":"cpp_sec/transport_layer_protocal.md","ref":"cpp_sec/transport_layer_protocal.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cpp_sec/application_layer.md","mtime":"2022-02-20T15:10:46.200Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-02-20T15:13:05.957Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
